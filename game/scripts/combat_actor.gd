@@ -20,6 +20,7 @@ var current_health: int = 0
 
 
 func _ready() -> void:
+	add_to_group("combat_actors")
 	current_health = max_health
 	health_changed.emit(current_health, max_health)
 

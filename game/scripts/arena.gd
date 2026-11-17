@@ -8,6 +8,8 @@ extends Node3D
 
 func _ready() -> void:
 	player.get_node("Weapon").projectile_parent = $Projectiles
+	player.get_node("PowerWeapon").projectile_parent = $Projectiles
+	player.get_node("PulseAbility").effects_parent = $Effects
 	enemy.get_node("Weapon").projectile_parent = $Projectiles
 	enemy.target = player
 	_update_hud()
@@ -33,4 +35,12 @@ func _update_hud() -> void:
 		status = " · Jugador caído"
 	elif not enemy.is_alive():
 		status = " · Enemigo abatido"
-	label.text = "T03 · Combate offline · Valores provisionales\nWASD: mover · Ratón: orientar · Clic izq.: disparar · R: restaurar\nJugador: %d / %d · Enemigo: %d / %d%s\nRecarga de disparo: %.1f s · Q/E aún no implementadas" % [player.current_health, player.max_health, enemy.current_health, enemy.max_health, status, player.get_node("Weapon").cooldown_remaining]
+	label.text = "T04 · Habilidades · Valores provisionales\nWASD: mover · Ratón: orientar · Clic izq.: disparar\nQ: proyectil potente · E: pulso · R: restaurar\nJugador: %d / %d · Enemigo: %d / %d%s\nBásico: %.1f s · %s · %s" % [player.current_health, player.max_health, enemy.current_health, enemy.max_health, status, player.get_node("Weapon").cooldown_remaining, _ability_status("Q", player.get_node("PowerWeapon").cooldown_remaining), _ability_status("E", player.get_node("PulseAbility").cooldown_remaining)]
+
+
+func _ability_status(key: String, remaining: float) -> String:
+	if not player.is_alive():
+		return "%s: BLOQUEADA (%.1f s)" % [key, remaining]
+	if remaining > 0.0:
+		return "%s: %.1f s" % [key, remaining]
+	return "%s: LISTA" % key

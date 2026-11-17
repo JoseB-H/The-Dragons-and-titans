@@ -10,6 +10,11 @@ extends "res://scripts/combat_actor.gd"
 @onready var camera: Camera3D = $Camera
 @onready var facing: Node3D = $Facing
 @onready var weapon: Node3D = $Weapon
+@onready var power_weapon: Node3D = $PowerWeapon
+@onready var pulse_ability: Node3D = $PulseAbility
+
+var _q_held := false
+var _e_held := false
 
 
 func _ready() -> void:
@@ -32,6 +37,34 @@ func _physics_process(delta: float) -> void:
 	_aim_at_cursor(get_viewport().get_mouse_position())
 	if Input.is_action_pressed("attack"):
 		weapon.try_fire(-facing.global_basis.z)
+
+
+func _unhandled_input(event: InputEvent) -> void:
+	if not event is InputEventKey:
+		return
+	if event.is_action("ability_q"):
+		# Marcar antes de activar: los callbacks de daño pueden retirar la escena.
+		get_viewport().set_input_as_handled()
+		if not event.pressed:
+			_q_held = false
+		elif not event.echo and not _q_held:
+			_q_held = true
+			if is_alive():
+				power_weapon.try_fire(-facing.global_basis.z)
+	elif event.is_action("ability_e"):
+		get_viewport().set_input_as_handled()
+		if not event.pressed:
+			_e_held = false
+		elif not event.echo and not _e_held:
+			_e_held = true
+			if is_alive():
+				pulse_ability.try_activate()
+
+
+func _notification(what: int) -> void:
+	if what == NOTIFICATION_APPLICATION_FOCUS_OUT or what == NOTIFICATION_WM_WINDOW_FOCUS_OUT:
+		_q_held = false
+		_e_held = false
 
 
 func _constrain_position() -> void:

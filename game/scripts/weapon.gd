@@ -3,7 +3,9 @@ extends Node3D
 ## Debe ser hija directa de un CombatActor; Arena asigna projectile_parent.
 
 const PROJECTILE_SCENE := preload("res://scenes/projectile.tscn")
+const PROJECTILE_SCRIPT := preload("res://scripts/projectile.gd")
 
+@export var projectile_scene: PackedScene = PROJECTILE_SCENE
 @export_range(1, 10000, 1, "or_greater") var damage: int = 20
 @export_range(0.0, 1000.0, 0.1, "or_greater") var projectile_speed: float = 28.0
 @export_range(0.0, 30.0, 0.01, "or_greater") var projectile_lifetime: float = 2.0
@@ -27,8 +29,13 @@ func try_fire(direction: Vector3) -> bool:
 	var flat_direction := Vector3(direction.x, 0.0, direction.z)
 	if flat_direction.is_zero_approx() or cooldown_remaining > 0.0:
 		return false
+	if projectile_scene == null or not projectile_scene.can_instantiate():
+		return false
 	flat_direction = flat_direction.normalized()
-	var projectile := PROJECTILE_SCENE.instantiate() as Node3D
+	var projectile := projectile_scene.instantiate()
+	if not projectile is PROJECTILE_SCRIPT:
+		projectile.free()
+		return false
 	projectile.direction = flat_direction
 	projectile.damage = damage
 	projectile.speed = projectile_speed
