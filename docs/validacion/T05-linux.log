@@ -1,0 +1,141 @@
+T05 — Transcripción final de comprobaciones Linux
+Fecha de cierre: 17 de noviembre de 2026.
+Rama: feat/v0.1-t05-ciclo-partida
+Base: 37e1ee96e41023bb28965dcd87c90abdf0e706e8
+Código comprobado: a9be6e5e31d0d6fe8c2c7acfb85264f72393f44d
+Directorio: /workspace/The-Dragons-and-titans
+Godot: 4.6.3.stable.official.7d41c59c4, GDScript, Compatibility.
+XDG_CACHE_HOME=/tmp/dragons-t05/cache
+XDG_DATA_HOME=/tmp/dragons-t05/data
+XDG_CONFIG_HOME=/tmp/dragons-t05/config
+Gráficos: Xorg temporal :93, driver dummy, Mesa llvmpipe/OpenGL 4.5.
+
+Se conservan las salidas finales, eliminando solo secuencias ANSI de terminal.
+Todos estos procesos finalizaron con código 0. Los fallos intermedios de montaje
+corregidos se explican en ESTADO.md; esta transcripción recoge las repeticiones
+finales. La revisión independiente repitió headless/importación/arranque en copia
+sin caché y no repitió gráficos. No se ejecutó CI ni Windows.
+
+$ godot --headless --path game --import
+Godot Engine v4.6.3.stable.official.7d41c59c4 - https://godotengine.org
+
+[   0% ] first_scan_filesystem | Started Project initialization (5 steps)
+[   0% ] first_scan_filesystem | Scanning file structure...
+[  16% ] first_scan_filesystem | Loading global class names...
+[  33% ] first_scan_filesystem | Verifying GDExtensions...
+[  50% ] first_scan_filesystem | Creating autoload scripts...
+[  66% ] first_scan_filesystem | Initializing plugins...
+[  83% ] first_scan_filesystem | Starting file scan...
+[ DONE ] first_scan_filesystem
+
+[   0% ] update_scripts_classes | Started Registering global classes... (2 steps)
+[   0% ] update_scripts_classes | 
+[  33% ] update_scripts_classes | 
+[ DONE ] update_scripts_classes
+
+[   0% ] loading_editor_layout | Started Loading editor (5 steps)
+[   0% ] loading_editor_layout | Loading editor layout...
+[  16% ] loading_editor_layout | Loading docks...
+[ DONE ] loading_editor_layout
+[exit 0]
+
+$ godot --headless --path game --script res://tests/test_match_state.gd
+Godot Engine v4.6.3.stable.official.7d41c59c4 - https://godotengine.org
+
+T05 estado: 51 comprobaciones, 0 fallos
+[exit 0]
+
+$ godot --headless --path game --script res://tests/test_t02.gd
+Godot Engine v4.6.3.stable.official.7d41c59c4 - https://godotengine.org
+
+T02: 34 comprobaciones, 0 fallos
+[exit 0]
+
+$ godot --headless --path game --script res://tests/test_combat_core.gd
+Godot Engine v4.6.3.stable.official.7d41c59c4 - https://godotengine.org
+
+T03 núcleo: 51 comprobaciones, 0 fallos
+[exit 0]
+
+$ godot --headless --path game --script res://tests/test_t03.gd
+Godot Engine v4.6.3.stable.official.7d41c59c4 - https://godotengine.org
+
+T03 integración: 52 comprobaciones, 0 fallos
+[exit 0]
+
+$ godot --headless --path game --script res://tests/test_power_projectile.gd
+Godot Engine v4.6.3.stable.official.7d41c59c4 - https://godotengine.org
+
+T04 Q: 57 comprobaciones, 0 fallos
+[exit 0]
+
+$ godot --headless --path game --script res://tests/test_pulse.gd
+Godot Engine v4.6.3.stable.official.7d41c59c4 - https://godotengine.org
+
+T04 pulso: 78 comprobaciones, 0 fallos
+[exit 0]
+
+$ godot --headless --path game --script res://tests/test_t04.gd
+Godot Engine v4.6.3.stable.official.7d41c59c4 - https://godotengine.org
+
+T04 integración: 42 comprobaciones, 0 fallos
+[exit 0]
+
+$ godot --headless --path game --quit-after 120
+Godot Engine v4.6.3.stable.official.7d41c59c4 - https://godotengine.org
+[exit 0]
+
+$ DISPLAY=:93 godot --path game --display-driver x11 --audio-driver Dummy --script res://tests/test_t05_window.gd -- --output-dir=/tmp/dragons-t05/graphics
+Godot Engine v4.6.3.stable.official.7d41c59c4 - https://godotengine.org
+WARNING: Could not set V-Sync mode, as changing V-Sync mode is not supported by the graphics driver.
+     at: set_use_vsync (platform/linuxbsd/x11/gl_manager_x11.cpp:364)
+OpenGL API 4.5 (Core Profile) Mesa 25.0.7-2+deb13u1 - Compatibility - Using Device: Mesa - llvmpipe (LLVM 19.1.7, 256 bits)
+
+T05 ventana: 145 comprobaciones, 0 fallos; capturas en /tmp/dragons-t05/graphics
+[exit 0]
+
+$ DISPLAY=:93 godot --path game --display-driver x11 --audio-driver Dummy --script res://tests/test_t02_window.gd -- --output-dir=/tmp/dragons-t05/graphics
+Godot Engine v4.6.3.stable.official.7d41c59c4 - https://godotengine.org
+WARNING: Could not set V-Sync mode, as changing V-Sync mode is not supported by the graphics driver.
+     at: set_use_vsync (platform/linuxbsd/x11/gl_manager_x11.cpp:364)
+OpenGL API 4.5 (Core Profile) Mesa 25.0.7-2+deb13u1 - Compatibility - Using Device: Mesa - llvmpipe (LLVM 19.1.7, 256 bits)
+
+T02 ventana: 22 comprobaciones, 0 fallos; capturas en /tmp/dragons-t05/graphics
+[exit 0]
+
+$ DISPLAY=:93 godot --path game --display-driver x11 --audio-driver Dummy --script res://tests/test_t03_window.gd -- --output-dir=/tmp/dragons-t05/graphics
+Godot Engine v4.6.3.stable.official.7d41c59c4 - https://godotengine.org
+WARNING: Could not set V-Sync mode, as changing V-Sync mode is not supported by the graphics driver.
+     at: set_use_vsync (platform/linuxbsd/x11/gl_manager_x11.cpp:364)
+OpenGL API 4.5 (Core Profile) Mesa 25.0.7-2+deb13u1 - Compatibility - Using Device: Mesa - llvmpipe (LLVM 19.1.7, 256 bits)
+
+T03 ventana: 34 comprobaciones, 0 fallos; capturas en /tmp/dragons-t05/graphics
+[exit 0]
+
+$ DISPLAY=:93 godot --path game --display-driver x11 --audio-driver Dummy --script res://tests/test_t04_window.gd -- --output-dir=/tmp/dragons-t05/graphics
+Godot Engine v4.6.3.stable.official.7d41c59c4 - https://godotengine.org
+WARNING: Could not set V-Sync mode, as changing V-Sync mode is not supported by the graphics driver.
+     at: set_use_vsync (platform/linuxbsd/x11/gl_manager_x11.cpp:364)
+OpenGL API 4.5 (Core Profile) Mesa 25.0.7-2+deb13u1 - Compatibility - Using Device: Mesa - llvmpipe (LLVM 19.1.7, 256 bits)
+
+T04 ventana: 49 comprobaciones, 0 fallos; salida 0; capturas en /tmp/dragons-t05/graphics
+[exit 0]
+
+Comprobaciones adicionales:
+- git diff --check: sin errores.
+- git check-ignore -v game/.godot/: excluido por .gitignore, línea 2.
+- git log --merges --oneline 37e1ee9..HEAD: sin merges nuevos.
+- Capturas nativas de ventana comprobadas: 1280x720 y 960x540; no reescaladas.
+- Inspección visual de seis capturas: HUD legible, jugador visible, resultado y
+  botón enfocado claros; sin recortes. Entrada automatizada, sin manejo humano.
+
+Evidencia propia guardada junto a este log:
+- T05-derrota-1280x720-linux.png
+- T05-derrota-960x540-linux.png
+- T05-jugando-1280x720-linux.png
+- T05-jugando-960x540-linux.png
+- T05-victoria-1280x720-linux.png
+- T05-victoria-960x540-linux.png
+
+Windows nativo, GPU física y manejo humano prolongado pendientes. T06 y paquete
+comprobable para laptop pendientes. T05 no declara V0.1 entregada.

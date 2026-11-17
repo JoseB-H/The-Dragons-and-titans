@@ -1,9 +1,9 @@
 # DRAGONS AND TITANS
 
 Recreación independiente y progresiva. El primer hito es una arena offline;
-el estado actual incorpora **T01–T04**: arena iluminada, dragón provisional,
-movimiento, apuntado, cámara, combate y dos habilidades con recargas propias.
-La interfaz completa de fin de partida y la entrega comprobable siguen pendientes.
+el estado actual incorpora **T01–T05**: arena offline con dragón, combate,
+dos habilidades y ciclo de juego, victoria/derrota y reinicio. La entrega
+comprobable y el paquete para laptop (T06) siguen pendientes.
 
 ## Requisitos
 
@@ -44,7 +44,7 @@ $Godot = 'C:\Herramientas\Godot_v4.6.3-stable_win64.exe'
 
 Cerrar la ventana para terminar. No se ha generado un ejecutable Windows.
 
-## Controles provisionales de T02–T04
+## Controles provisionales de T02–T05
 
 | Entrada | Función implementada |
 | --- | --- |
@@ -54,7 +54,8 @@ Cerrar la ventana para terminar. No se ha generado un ejecutable Windows.
 | Clic izquierdo mantenido | Disparar un proyectil por intervalo de recarga |
 | Q (pulsar y soltar) | Proyectil potente hacia el hocico, con recarga propia |
 | E (pulsar y soltar) | Pulso instantáneo centrado en el jugador |
-| R | Restaurar la arena completa en cualquier momento (recarga de escena) |
+| R | Reiniciar durante el juego o después del final |
+| Botón Reiniciar | Clic, Enter o Espacio con el foco del panel final |
 
 WASD usa teclas físicas mediante `move_forward`, `move_back`, `move_left` y
 `move_right` en Input Map. El movimiento usa los ejes horizontales de la cámara,
@@ -77,7 +78,7 @@ durante recarga no se ejecuta más tarde automáticamente.
 El jugador cobrizo y el enemigo cian pertenecen a facciones rivales. El enemigo
 persigue y ataca dentro de alcance; se detiene si él o el jugador mueren. Los
 actores muertos no se mueven ni generan nuevos ataques. El panel muestra salud,
-recarga y si un actor ha caído; no hay todavía pantalla de victoria/derrota (T05).
+recargas y objetivo. Al terminar, ambos actores quedan bloqueados, incluido el ganador vivo.
 
 | Parámetro exportado | Jugador | Enemigo |
 | --- | --- | --- |
@@ -97,11 +98,12 @@ El proyectil hace un raycast continuo de todo su trayecto físico, incluido el
 tramo inicial entre el actor y el hocico, para evitar saltarse objetivos cercanos
 o atravesarlos por velocidad. Ignora emisor, aliados y muertos; aplica daño una
 sola vez al primer hostil válido y se elimina. También caduca si no impacta.
-Un proyectil ya disparado puede terminar su vuelo tras morir su emisor.
+Los daños del mismo paso físico pueden resolverse antes del resultado; al cerrar
+la partida se neutralizan y retiran los proyectiles restantes.
 
-**R** recarga `res://scenes/arena.tscn`: restablece salud, posiciones, orientación,
-recargas y objetivo de IA; elimina todos los actores y proyectiles anteriores.
-Es la restauración mínima de T03, no un sistema de estados de partida.
+**R** y el botón **Reiniciar** recargan `res://scenes/arena.tscn`: restablecen
+salud, posiciones, orientación, recargas, objetivo de IA, estados e indicadores;
+eliminan actores, proyectiles, efectos y conexiones de la escena anterior.
 
 ## Habilidades provisionales de T04
 
@@ -127,11 +129,35 @@ terminar su duración. E en vacío es una activación válida y consume recarga.
 
 Básico, Q y E tienen recargas independientes. Rechazos por recarga, muerte o
 configuración inválida no crean efectos ni consumen recarga. El HUD muestra
-`Q: LISTA`/`E: LISTA`, segundos restantes o `BLOQUEADA` si el jugador murió.
+`Q: LISTA`/`E: LISTA`, segundos restantes o `BLOQUEADA` al terminar la partida.
 **R** también elimina efectos de E/proyectiles de Q y restaura sus recargas.
 Todos los valores, materiales y geometrías son provisionales y propios.
-Completar T04 no completa V0.1: faltan T05 y T06 antes de preparar la prueba
-en laptop. La ejecución nativa de Windows continúa pendiente.
+Las habilidades ya forman parte del ciclo T05. Falta T06 antes de entregar un
+paquete comprobable para laptop. La ejecución nativa de Windows continúa pendiente.
+
+## Ciclo de partida T05
+
+- **Jugando:** vencer al enemigo es el objetivo provisional. Movimiento, básico y Q/E disponibles según sus recargas.
+- **Victoria:** el enemigo ha muerto y el jugador sigue vivo.
+- **Derrota:** el jugador ha muerto. Si ambos mueren en el mismo paso de resolución, se prioriza derrota.
+
+La resolución ocurre al final de cada paso físico, después de actores y
+proyectiles. Esa prioridad de empate es una regla **provisional**, no del original.
+Una partida terminada no vuelve a resolverse ni emite dos finales. Se bloquean
+movimiento, básico/Q/E y daño de ambos actores; se limpian proyectiles y efectos.
+La interfaz sigue activa, sin pausa global. El panel final muestra **VICTORIA** o
+**DERROTA**, con el botón **Reiniciar** enfocado para Enter/Espacio y accesible por clic.
+
+Se conserva R durante el juego. Tras cualquier reinicio, soltar las teclas y el
+clic que estaban mantenidos antes de volver: el HUD lo indica. Esas entradas no
+mueven ni disparan automáticamente en la nueva escena. Los clics/Enter de reinicio
+y las solicitudes rápidas no deben producir acciones ni escenas duplicadas.
+
+El HUD se comprueba en ventana de **1280×720** y **960×540**, con escalado de Godot:
+objetivo/controles/vida/recargas arriba, resultado y botón abajo, jugador visible
+al centro. Son recursos provisionales propios. Esto completa el ciclo offline,
+pero aún falta T06, el paquete Windows y la comprobación en laptop; no se ha
+validado ejecución nativa Windows ni manejo humano prolongado.
 
 ## Comprobaciones reproducibles
 
@@ -145,6 +171,7 @@ godot --headless --path game --script res://tests/test_t03.gd
 godot --headless --path game --script res://tests/test_power_projectile.gd
 godot --headless --path game --script res://tests/test_pulse.gd
 godot --headless --path game --script res://tests/test_t04.gd
+godot --headless --path game --script res://tests/test_match_state.gd
 godot --headless --path game --quit-after 120
 ```
 
@@ -156,6 +183,10 @@ un proyectil a 600 unidades/s); la integración T03 añade 52 comprobaciones de
 entrada, IA, muerte y tres restauraciones de la escena completa.
 T04 añade 57 comprobaciones de Q, 78 del pulso y 42 de integración de entrada,
 independencia, eco/tecla mantenida, muerte y restauración de habilidades.
+T05 añade 51 comprobaciones de estados, empate, bloqueo completo, reinicio rápido
+y controles retenidos. Los montajes T03/T04 pausan solo la resolución de partida
+para conservar pruebas de componentes después de muerte; no se retiran aserciones.
+La suite de T05 usa la resolución real y comprueba el cierre global.
 En headless no hay cursor OS: las pruebas de apuntado dan coordenadas explícitas
 al mismo método que usa el controlador. El último comando carga la escena
 principal durante 120 iteraciones; **headless no valida la imagen ni el manejo**.
@@ -197,6 +228,19 @@ aislar Q/E; la regresión T03 comprueba combate con IA activa. Las posiciones de
 prueba y los tiempos de espera abreviados del montaje no cambian el balance del juego.
 Es una prueba automatizada con inspección de capturas, no manejo humano ni Windows.
 
+Prueba gráfica completa T05:
+
+```bash
+godot --path game --audio-driver Dummy --script res://tests/test_t05_window.gd -- --output-dir=/tmp/dragons-t05/graphics
+```
+
+Prueba ambas ventanas nativas, ganar/perder mediante combate, bloqueo posterior,
+foco, botón por ratón/Enter y R, tres reinicios alternos por resolución y entradas
+retenidas: 145 comprobaciones y 0 fallos en Linux. Guarda seis capturas nativas
+(jugando/victoria/derrota en cada tamaño).
+Requiere un backend con captura de pantalla; en Linux se validó X11. No sustituye
+una prueba humana. Las regresiones gráficas T02/T03/T04 continúan siendo útiles.
+
 La caché `game/.godot/` se regenera y está excluida de Git. Si un contenedor Linux
 no permite escribir en el directorio de usuario, preparar directorios escribibles
 antes de ejecutar los comandos anteriores:
@@ -221,7 +265,8 @@ export XDG_CONFIG_HOME=/tmp/dragons-t01/config
 - `game/scripts/pulse_ability.gd`: daño instantáneo y recarga de E.
 - `game/scripts/pulse_effect.gd` y `game/scenes/pulse_effect.tscn`: anillo temporal sin daño.
 - `game/scripts/enemy_controller.gd` y `game/scenes/enemy.tscn`: IA y visual cian propio.
-- `game/scripts/arena.gd`: composición, salud visible y restauración mínima.
+- `game/scripts/arena.gd`: estados, cierre, HUD y reinicio protegido.
+- `game/scripts/hud.gd` y `game/scenes/hud.tscn`: estado/objetivo y panel final accesible.
 - `game/tests/`: pruebas de integración headless y de ventana.
 - `docs/IMPLEMENTACION.md`: tareas y aceptación de V0.1.
 - `docs/ESTADO.md`: resultados, limitaciones y siguiente paso para cualquier IA.

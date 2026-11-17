@@ -59,3 +59,25 @@ Comparar ramas y cambios de código contra esta referencia o la última entrega 
   Repetición sin errores de script; solo aviso V-Sync del driver virtual.
 - No CI ni PR nuevas ni cambios de permisos. **Windows, GPU física y manejo humano
   prolongado pendientes**. V0.1 aún requiere T05/T06 y entrega para laptop.
+
+## Entrega de programación T05 — 17 de noviembre de 2026
+- Base exacta `37e1ee96e41023bb28965dcd87c90abdf0e706e8`, conservando T01–T04.
+  Rama `feat/v0.1-t05-ciclo-partida`, sin merge ni force push. Encargo de main
+  `a5ea2f1cfa392625bcc7177039be078ce6f587f4` recuperado sin sustituir ESTADO.
+- Código `a9be6e5e31d0d6fe8c2c7acfb85264f72393f44d`; cierre documental posterior.
+- Revisión independiente local, código e integración en copia sin caché:
+  importación/arranque limpios, estados51/0, T02 34/0, núcleo51/0, T03 52/0,
+  Q57/0, E78/0 y T04 42/0. Sin hallazgos de aceptación. No gráficos repetidos
+  por el revisor ni revisión remota/CI nuevas.
+- Implementador: ventana T05 145/0 en tamaños nativos 1280×720 y 960×540;
+  regresiones gráficas T02 22/0, T03 34/0 y T04 49/0. Seis capturas inspeccionadas,
+  legibles y sin paneles sobre el jugador; estado, foco y botón inequívocos.
+  La automatización alternó victoria/derrota y tres reinicios por resolución
+  mediante R/Enter/clic; también controles retenidos y bloqueo completo al final.
+- Montajes legacy T03/T04 adaptados para pausar solo resolución de partida,
+  conservando todas sus aserciones. T05 ejercita el cierre real. Se corrigieron
+  sincronización del montaje, captura de ventana nativa y texto de salud con
+  resolución pausada; detalle y comandos en ESTADO.md y `T05-linux.log`.
+- Sin permisos nuevos ni PR/merge. **Windows, GPU física y manejo humano
+  prolongado pendientes**. Siguiente T06: validación integral y entrega comprobable
+  para laptop; T05 no acredita el paquete ni V0.1 completa.

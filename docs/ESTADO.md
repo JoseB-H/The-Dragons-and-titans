@@ -1,12 +1,12 @@
 # Estado del proyecto
 
-## Situación actual — entrega T04 (17 de noviembre de 2026)
-**T04 implementada y comprobada en Linux**, conservando T01–T03 y Godot 4.6.3
-Compatibility. Q dispara un proyectil potente; E aplica un pulso instantáneo con
-anillo temporal. Ambos tienen recargas independientes, activación por pulsación
-e indicadores visibles. R también limpia habilidades y efectos.
-La siguiente tarea es T05: ciclo e interfaz de partida. V0.1 todavía no está
-completa ni lista para declarar una prueba validada en la laptop del usuario.
+## Situación actual — entrega T05 (17 de noviembre de 2026)
+**T05 implementada y comprobada en Linux**, conservando T01–T04 y Godot 4.6.3
+Compatibility. La partida tiene estados jugando/victoria/derrota, bloquea a ambos
+actores y el daño al terminar, y permite reiniciar con R o botón mediante ratón y
+teclado. HUD y panel final comprobados en ventanas nativas de 1280×720 y 960×540.
+La siguiente tarea es **T06: validación integral y entrega para laptop**. T05
+completa el ciclo offline, pero V0.1 aún no tiene un paquete Windows comprobable.
 La validación nativa de Windows sigue **pendiente**.
 
 ## Lectura
@@ -22,18 +22,16 @@ La validación nativa de Windows sigue **pendiente**.
 | T02 Dragón y cámara | Terminada (Linux) | 34 comprobaciones headless y 22 de ventana; capturas de inicio/esquina inspeccionadas |
 | T03 Combate y enemigo | Terminada (Linux) | Núcleo 51/0, integración 52/0, gráfica T03 34/0; regresión T02 34/0 y 22/0; importación/arranque sin errores |
 | T04 Habilidades | Terminada (Linux) | Q 57/0, E 78/0, integración 42/0, ventana 49/0; regresión T02/T03 y arranque sin errores |
-| T05 Ciclo e interfaz | Pendiente | Sin ejecución registrada |
+| T05 Ciclo e interfaz | Terminada (Linux) | Estados 51/0, ventana 145/0 en dos tamaños; regresiones T02–T04 sin fallos y seis capturas inspeccionadas |
 | T06 Validación y entrega | Pendiente | Sin ejecución registrada |
 
 ## Próxima acción
-Implementar **T05 — Ciclo de partida e interfaz**, tras leer los documentos y
-verificar la rama y el código reales. Añadir estados jugando/victoria/derrota,
-bloqueo de combate al terminar y reinicio completo según IMPLEMENTACION.md.
-Reutilizar salud, recargas, indicadores y recarga de escena existentes, manteniendo
-regresión T02–T04. Después, T06: validar el hito y preparar un paquete Windows
-descargable e instrucciones para la laptop, distinguiendo exportación de ejecución
-nativa. Avisar al usuario cuando esa entrega sea jugable y visualmente clara;
-no dar por cumplido ese objetivo en T04. Windows sigue pendiente.
+Implementar **T06 — Validación y entrega**, tras leer el encargo vigente de main,
+los documentos y el código real. Base de continuidad: rama T05 y sus commits de
+código/cierre, sin perder T01–T04. Validar el hito y preparar un paquete Windows
+descargable con instrucciones para la laptop, distinguiendo exportación desde
+Linux de ejecución nativa. Avisar al usuario cuando esa entrega sea jugable y
+visualmente clara; T05 no acredita esa entrega ni la validación de Windows.
 
 ## Registro del incremento T01
 
@@ -339,6 +337,110 @@ En copia temporal sin caché se repitieron importación, Q57/0, E78/0, integraci
 T02 34/0, núcleo51/0, T03 52/0 y arranque, todos con salida 0. Esa revisión no
 repitió gráficos. `git diff --check` limpio; sin merges nuevos desde `b9da1e4`.
 
+## Registro del incremento T05
+
+### Base, referencias y archivos
+- Base exacta: `37e1ee96e41023bb28965dcd87c90abdf0e706e8`, cierre T04 conservado.
+  Nueva rama: `feat/v0.1-t05-ciclo-partida`. Sin merge, rebase ni force push.
+- Código T05: `a9be6e5e31d0d6fe8c2c7acfb85264f72393f44d`; el cierre documental
+  está en un commit posterior de la misma rama.
+- Encargo recuperado mediante `git show origin/main:docs/SIGUIENTE_TAREA.md`
+  desde main en `a5ea2f1cfa392625bcc7177039be078ce6f587f4`. Se conservaron
+  ESTADO y código de T04; no se incorporó main mediante merge.
+- `arena.gd`: estados explícitos y señal final única; resolución con prioridad
+  física 100 después de actores/proyectiles (0). El cierre deshabilita combate y
+  pone velocidad cero en ambos actores, neutraliza y retira proyectiles/efectos.
+  La interfaz continúa activa sin pausa global. Guardia de recarga contra
+  solicitudes repetidas y eco de R.
+- `combat_actor.gd`, controladores, `weapon.gd` y `pulse_ability.gd`: acciones y
+  daño rechazan actores bloqueados, incluido el ganador vivo. El controlador
+  registra solo las entradas mantenidas al crear la escena y exige soltarlas
+  antes de actuar; nuevas pulsaciones no prolongan esa lista inicial.
+- `hud.gd`/`hud.tscn`, instanciados por `arena.tscn`: objetivo, controles,
+  salud/recargas, panel VICTORIA/DERROTA y botón Reiniciar con foco visible.
+  Clic, Enter/Espacio y R; una sola petición del botón por final. El HUD anuncia
+  cuándo hay que soltar entradas retenidas. Panel superior compacto para evitar
+  cubrir al jugador y reducir la superposición sobre el enemigo.
+- `test_match_state.gd` y `test_t05_window.gd`: suites nuevas con UID versionados.
+  Los montajes T03/T04, headless y ventana, pausan solo la resolución de partida
+  para conservar sus casos que continúan tras una muerte. No se retiraron ni
+  relajaron aserciones; T05 comprueba el cierre real con resolución activa.
+  Las suites aisladas de salud/proyectiles/habilidades y T02 se conservan.
+- README, este ESTADO, REVISIONES, encargo, plan y evidencia actualizados.
+  Sin dependencias nuevas ni ampliación de catálogo, arte u online.
+
+### Reglas provisionales
+- Si ambos actores mueren durante el mismo paso de resolución, **derrota tiene
+  prioridad**, independientemente del orden del daño. Un resultado final no
+  cambia ni vuelve a emitir la señal. No se atribuye esta regla al juego original.
+- R se conserva durante el juego y al terminar. Reiniciar recarga la escena
+  completa: salud, posiciones/orientación, objetivo, recargas, indicadores,
+  estados, proyectiles, efectos y conexiones; no arrastra acciones mantenidas.
+
+### Pruebas realizadas
+Godot `4.6.3.stable.official.7d41c59c4`, desde `/workspace/The-Dragons-and-titans`.
+Directorios XDG escribibles bajo `/tmp/dragons-t05/{cache,data,config}`.
+Gráficos: Xorg temporal `:93` con driver dummy, Compatibility OpenGL 4.5,
+Mesa llvmpipe. Todas las pruebas siguientes finalizaron con salida 0.
+
+| Comando/suite | Resultado final |
+| --- | --- |
+| `godot --headless --path game --import` | Sin errores de scripts/recursos |
+| `godot --headless --path game --script res://tests/test_match_state.gd` | 51 comprobaciones, 0 fallos |
+| `godot --headless --path game --script res://tests/test_t02.gd` | 34 comprobaciones, 0 fallos |
+| `godot --headless --path game --script res://tests/test_combat_core.gd` | 51 comprobaciones, 0 fallos |
+| `godot --headless --path game --script res://tests/test_t03.gd` | 52 comprobaciones, 0 fallos |
+| `godot --headless --path game --script res://tests/test_power_projectile.gd` | 57 comprobaciones, 0 fallos |
+| `godot --headless --path game --script res://tests/test_pulse.gd` | 78 comprobaciones, 0 fallos |
+| `godot --headless --path game --script res://tests/test_t04.gd` | 42 comprobaciones, 0 fallos |
+| `godot --headless --path game --quit-after 120` | Arranque sin errores |
+
+Cada suite gráfica se ejecutó con:
+`DISPLAY=:93 godot --path game --display-driver x11 --audio-driver Dummy --script res://tests/<suite>.gd -- --output-dir=/tmp/dragons-t05/graphics`.
+
+| Suite gráfica | Resultado final |
+| --- | --- |
+| `test_t05_window` | 145 comprobaciones, 0 fallos; ventanas nativas 1280×720 y 960×540 |
+| `test_t02_window` | 22 comprobaciones, 0 fallos |
+| `test_t03_window` | 34 comprobaciones, 0 fallos |
+| `test_t04_window` | 49 comprobaciones, 0 fallos |
+
+Estados: victoria y derrota por proyectiles reales; empate en ambos órdenes;
+transición/señal única; bloqueo de movimiento, básico, Q/E y daño directo o
+pendiente en ambos actores; eliminación de transitorios y árbol sin pausa.
+También peticiones rápidas de reinicio, salud/posiciones/objetivo/recargas
+restaurados y liberación de WASD/clic/Q/E/R/aceptar retenidos antes de volver a jugar.
+
+Ventana: jugar→victoria→derrota→victoria en cada resolución, seguido cada final
+de reinicio, alternando R, botón con Enter y botón con clic nativo. Comprueba
+foco, bounds, texto, bloqueo posterior, tres restauraciones limpias por tamaño,
+conexiones únicas y ausencia de acciones heredadas con varias teclas/clic
+mantenidos. La automatización usa eventos físicos y colisiones reales.
+
+Se inspeccionaron las seis capturas propias `docs/validacion/T05-{jugando,victoria,derrota}-{1280x720,960x540}-linux.png`:
+objetivo/controles/salud/recargas legibles, resultado inequívoco, botón enfocado,
+sin texto cortado ni panel sobre el jugador. La captura lee la pantalla del
+servidor X11 y recorta la región de la ventana nativa; no redimensiona una imagen
+para simular otra resolución. Transcripción final: `docs/validacion/T05-linux.log`.
+
+Durante la validación se corrigieron sincronización de colliders en el montaje
+de estados y envío de Enter lógico además de físico. Se detectó que capturar la
+textura del viewport no acredita el tamaño nativo: se cambió al tamaño de Window
+y captura de pantalla, con comprobaciones explícitas de dimensiones. También se
+compactó el HUD tras inspección visual. Ninguna aserción se suprimió para pasar.
+Se reprodujo y corrigió además el texto de salud del HUD en montajes legacy que
+pausan la resolución: 4 comprobaciones/2 fallos antes, 4/0 después, sin cambiar
+las reglas de final. Resultados finales anteriores sin errores de scripts;
+único aviso gráfico: V-Sync no soportado por el driver virtual.
+
+Revisión independiente en copia temporal sin caché: importación, estados51/0,
+T02 34/0, núcleo51/0, T03 52/0, Q57/0, E78/0, T04 42/0 y arranque, todo con
+salida 0; sin hallazgos de aceptación. No repitió gráficos. El implementador
+ejecutó las suites gráficas e inspeccionó las capturas. No hubo manejo humano
+prolongado ni prueba Windows. `git diff --check` limpio y caché Godot excluida.
+La revisión documental final no encontró contradicciones entre alcance, pruebas,
+referencias SHA y pendientes de T06/Windows.
+
 ## Limitaciones conocidas
 - **Windows pendiente:** no se ejecutó el editor ni se exportó/probó un `.exe` en
   Windows. Los comandos de Windows están documentados, no verificados en esta máquina Linux.
@@ -346,10 +448,10 @@ repitió gráficos. `git diff --check` limpio; sin merges nuevos desde `b9da1e4`
   Linux, con inspección de capturas. No hubo sesión humana prolongada de manejo,
   prueba de GPU física ni interacción con el escritorio compartido. El seguimiento
   se verificó por fotograma; la sensación de manejo requiere evaluación del usuario.
-- Los estados completos de victoria/derrota/reinicio T05 siguen pendientes.
-  T04 incluye habilidades y restauración mínima, no la aceptación completa de V0.1.
+- T05 completa el ciclo offline comprobado en Linux. La aceptación integral y
+  entrega de V0.1 siguen pendientes de T06.
 - La prueba en laptop y paquete Windows descargable se prepararán en T06.
-  No se exportó ni ejecutó Windows en T04; no se declara listo el hito completo.
+  No se exportó ni ejecutó Windows en T05; no se declara listo el hito completo.
 - Chat compartido no accesible durante la preparación inicial; no se presupone su contenido.
 - Wiki pendiente de investigar y contrastar.
 - Cinco capturas de referencia del usuario pendientes de incorporar al repositorio;
