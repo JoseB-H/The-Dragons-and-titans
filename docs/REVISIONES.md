@@ -39,3 +39,9 @@ Comparar ramas y cambios de código contra esta referencia o la última entrega 
 - Revisión remota parcial: AGENTS, ESTADO, listado comparativo, pulse_ability.gd, arena.gd y T04-linux.log. Sin bloqueo detectado en lo revisado; no equivale a auditoría completa.
 - Evidencia publicada: Q57/0, E78/0, integración42/0, gráfica49/0; regresiones T02 34/0+22/0 y T03 núcleo51/0, integración52/0, gráfica34/0. No se ejecutó Godot ni se reinspeccionaron imágenes aquí. Windows/manejo humano siguen pendientes.
 - Encargo T05 publicado en main; partir de cierre T04. Este cambio documental no es una nueva entrega de código. V0.1 aún requiere T05/T06 y paquete para laptop.
+
+## Entrega T05 — 17 de noviembre de 2026
+- Rama revisada: `feat/v0.1-t05-ciclo-partida`; código `a9be6e5e31d0d6fe8c2c7acfb85264f72393f44d`; cierre `036553c7a9bd364f2e6d865a3d17b3ce46254ab1`.
+- Comparación con cierre T04: dos commits, base conservada. Revisados listado de cambios, ESTADO, arena.gd y T05-linux.log; revisión estática parcial sin bloqueo detectado en lo revisado.
+- Evidencia publicada: estados51/0, gráfica145/0 y regresiones T02–T04 aprobadas. No ejecutadas nuevamente ni capturas reinspeccionadas aquí. Windows y manejo humano siguen pendientes.
+- Encargo T06 publicado en main: validación, exportación y paquete descargable para laptop; distinguir candidato exportado de prueba Windows nativa. Cambios documentales de seguimiento no son avances de código.
