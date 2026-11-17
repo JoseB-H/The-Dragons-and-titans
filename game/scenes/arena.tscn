@@ -1,4 +1,6 @@
-[gd_scene load_steps=4 format=3]
+[gd_scene load_steps=5 format=3]
+
+[ext_resource type="PackedScene" path="res://scenes/dragon.tscn" id="1_dragon"]
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_ground"]
 albedo_color = Color(0.27, 0.36, 0.4, 1)
@@ -31,11 +33,27 @@ rotation = Vector3(-0.9599311, -0.4363323, 0)
 light_color = Color(1, 0.93, 0.82, 1)
 light_energy = 1.2
 
-[node name="Camera" type="Camera3D" parent="."]
-position = Vector3(18, 22, 18)
-rotation = Vector3(-0.7129307, 0.7853982, 0)
-projection = 1
-current = true
-size = 32.0
-near = 0.1
-far = 100.0
+[node name="Dragon" parent="." instance=ExtResource("1_dragon")]
+
+[node name="Controls" type="CanvasLayer" parent="."]
+
+[node name="Panel" type="PanelContainer" parent="Controls"]
+offset_left = 16.0
+offset_top = 16.0
+offset_right = 570.0
+offset_bottom = 105.0
+mouse_filter = 2
+
+[node name="Margin" type="MarginContainer" parent="Controls/Panel"]
+layout_mode = 2
+mouse_filter = 2
+theme_override_constants/margin_left = 14
+theme_override_constants/margin_top = 10
+theme_override_constants/margin_right = 14
+theme_override_constants/margin_bottom = 10
+
+[node name="Label" type="Label" parent="Controls/Panel/Margin"]
+layout_mode = 2
+mouse_filter = 2
+theme_override_font_sizes/font_size = 18
+text = "T02 · Dragón y cámara (prototipo)\nWASD: mover relativo a pantalla · Ratón: orientar\nControles provisionales · Combate aún no implementado"

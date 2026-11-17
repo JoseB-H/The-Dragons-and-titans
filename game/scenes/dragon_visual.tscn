@@ -1,0 +1,249 @@
+[gd_scene load_steps=13 format=3]
+
+[sub_resource type="StandardMaterial3D" id="Material_copper"]
+albedo_color = Color(0.76, 0.31, 0.095, 1)
+roughness = 0.83
+
+[sub_resource type="StandardMaterial3D" id="Material_amber"]
+albedo_color = Color(1, 0.61, 0.21, 1)
+roughness = 0.9
+
+[sub_resource type="StandardMaterial3D" id="Material_membrane"]
+albedo_color = Color(0.29, 0.085, 0.055, 1)
+roughness = 1.0
+
+[sub_resource type="StandardMaterial3D" id="Material_horn"]
+albedo_color = Color(0.92, 0.79, 0.51, 1)
+roughness = 0.95
+
+[sub_resource type="StandardMaterial3D" id="Material_eye"]
+albedo_color = Color(1, 0.87, 0.18, 1)
+emission_enabled = true
+emission = Color(1, 0.5, 0.035, 1)
+emission_energy_multiplier = 0.5
+roughness = 0.6
+
+[sub_resource type="SphereMesh" id="Mesh_round"]
+material = SubResource("Material_copper")
+radius = 1.0
+height = 2.0
+radial_segments = 16
+rings = 8
+
+[sub_resource type="BoxMesh" id="Mesh_box"]
+material = SubResource("Material_copper")
+size = Vector3(1, 1, 1)
+
+[sub_resource type="CylinderMesh" id="Mesh_wing_finger"]
+material = SubResource("Material_copper")
+top_radius = 0.035
+bottom_radius = 0.035
+height = 1.0
+radial_segments = 6
+
+[sub_resource type="CylinderMesh" id="Mesh_horn"]
+material = SubResource("Material_horn")
+top_radius = 0.0
+bottom_radius = 0.075
+height = 0.32
+radial_segments = 6
+
+[sub_resource type="CylinderMesh" id="Mesh_tail_base"]
+material = SubResource("Material_copper")
+top_radius = 0.105
+bottom_radius = 0.175
+height = 0.65
+radial_segments = 8
+
+[sub_resource type="CylinderMesh" id="Mesh_tail_middle"]
+material = SubResource("Material_copper")
+top_radius = 0.055
+bottom_radius = 0.105
+height = 0.45
+radial_segments = 8
+
+[sub_resource type="CylinderMesh" id="Mesh_tail_tip"]
+material = SubResource("Material_amber")
+top_radius = 0.0
+bottom_radius = 0.055
+height = 0.3
+radial_segments = 6
+
+[node name="DragonVisual" type="Node3D"]
+metadata/provenance = "Geometría y materiales provisionales propios; creados con primitivas de Godot, sin recursos externos."
+metadata/forward_axis = "-Z"
+
+[node name="Body" type="MeshInstance3D" parent="."]
+scale = Vector3(0.44, 0.34, 0.73)
+mesh = SubResource("Mesh_round")
+
+[node name="Chest" type="MeshInstance3D" parent="."]
+position = Vector3(0, -0.12, -0.23)
+scale = Vector3(0.34, 0.28, 0.48)
+material_override = SubResource("Material_amber")
+mesh = SubResource("Mesh_round")
+
+[node name="Neck" type="MeshInstance3D" parent="."]
+position = Vector3(0, 0.16, -0.68)
+rotation = Vector3(0.25, 0, 0)
+scale = Vector3(0.25, 0.25, 0.44)
+mesh = SubResource("Mesh_round")
+
+[node name="Head" type="MeshInstance3D" parent="."]
+position = Vector3(0, 0.32, -1.03)
+scale = Vector3(0.31, 0.27, 0.38)
+mesh = SubResource("Mesh_round")
+
+[node name="Snout" type="MeshInstance3D" parent="."]
+position = Vector3(0, 0.24, -1.47)
+scale = Vector3(0.44, 0.23, 0.53)
+mesh = SubResource("Mesh_box")
+
+[node name="LowerJaw" type="MeshInstance3D" parent="."]
+position = Vector3(0, 0.075, -1.46)
+scale = Vector3(0.4, 0.075, 0.48)
+material_override = SubResource("Material_amber")
+mesh = SubResource("Mesh_box")
+
+[node name="LeftEye" type="MeshInstance3D" parent="."]
+position = Vector3(-0.277, 0.414, -1.18)
+scale = Vector3(0.05, 0.055, 0.075)
+material_override = SubResource("Material_eye")
+mesh = SubResource("Mesh_round")
+
+[node name="RightEye" type="MeshInstance3D" parent="."]
+position = Vector3(0.277, 0.414, -1.18)
+scale = Vector3(0.05, 0.055, 0.075)
+material_override = SubResource("Material_eye")
+mesh = SubResource("Mesh_round")
+
+[node name="LeftHorn" type="MeshInstance3D" parent="."]
+position = Vector3(-0.205, 0.61, -0.86)
+rotation = Vector3(0.35, 0, 0.3)
+mesh = SubResource("Mesh_horn")
+
+[node name="RightHorn" type="MeshInstance3D" parent="."]
+position = Vector3(0.205, 0.61, -0.86)
+rotation = Vector3(0.35, 0, -0.3)
+mesh = SubResource("Mesh_horn")
+
+[node name="LeftWing" type="CSGPolygon3D" parent="."]
+position = Vector3(0, 0.19, 0)
+rotation = Vector3(1.5707963, 0, 0)
+polygon = PackedVector2Array(-0.3, -0.48, -0.68, -0.65, -1.74, -0.62, -1.56, -0.1, -1.67, 0.44, -1.08, 0.22, -0.87, 0.77, -0.51, 0.42, -0.3, 0.4)
+depth = 0.045
+material = SubResource("Material_membrane")
+
+[node name="RightWing" type="CSGPolygon3D" parent="."]
+position = Vector3(0, 0.19, 0)
+rotation = Vector3(1.5707963, 0, 0)
+polygon = PackedVector2Array(0.3, 0.4, 0.51, 0.42, 0.87, 0.77, 1.08, 0.22, 1.67, 0.44, 1.56, -0.1, 1.74, -0.62, 0.68, -0.65, 0.3, -0.48)
+depth = 0.045
+material = SubResource("Material_membrane")
+
+[node name="LeftWingShoulder" type="MeshInstance3D" parent="."]
+position = Vector3(-0.49, 0.225, -0.565)
+rotation = Vector3(1.5707963, -1.991581, 0)
+scale = Vector3(1, 0.416293, 1)
+mesh = SubResource("Mesh_wing_finger")
+
+[node name="RightWingShoulder" type="MeshInstance3D" parent="."]
+position = Vector3(0.49, 0.225, -0.565)
+rotation = Vector3(1.5707963, 1.991581, 0)
+scale = Vector3(1, 0.416293, 1)
+mesh = SubResource("Mesh_wing_finger")
+
+[node name="LeftWingLeadingEdge" type="MeshInstance3D" parent="."]
+position = Vector3(-1.21, 0.225, -0.635)
+rotation = Vector3(1.5707963, -1.542502, 0)
+scale = Vector3(1, 1.060425, 1)
+mesh = SubResource("Mesh_wing_finger")
+
+[node name="RightWingLeadingEdge" type="MeshInstance3D" parent="."]
+position = Vector3(1.21, 0.225, -0.635)
+rotation = Vector3(1.5707963, 1.542502, 0)
+scale = Vector3(1, 1.060425, 1)
+mesh = SubResource("Mesh_wing_finger")
+
+[node name="LeftWingOuterFinger" type="MeshInstance3D" parent="."]
+position = Vector3(-1.175, 0.225, -0.105)
+rotation = Vector3(1.5707963, -0.73737, 0)
+scale = Vector3(1, 1.47248, 1)
+mesh = SubResource("Mesh_wing_finger")
+
+[node name="RightWingOuterFinger" type="MeshInstance3D" parent="."]
+position = Vector3(1.175, 0.225, -0.105)
+rotation = Vector3(1.5707963, 0.73737, 0)
+scale = Vector3(1, 1.47248, 1)
+mesh = SubResource("Mesh_wing_finger")
+
+[node name="LeftWingInnerFinger" type="MeshInstance3D" parent="."]
+position = Vector3(-0.775, 0.225, 0.06)
+rotation = Vector3(1.5707963, -0.133017, 0)
+scale = Vector3(1, 1.432655, 1)
+mesh = SubResource("Mesh_wing_finger")
+
+[node name="RightWingInnerFinger" type="MeshInstance3D" parent="."]
+position = Vector3(0.775, 0.225, 0.06)
+rotation = Vector3(1.5707963, 0.133017, 0)
+scale = Vector3(1, 1.432655, 1)
+mesh = SubResource("Mesh_wing_finger")
+
+[node name="LeftFrontLeg" type="MeshInstance3D" parent="."]
+position = Vector3(-0.29, -0.31, -0.39)
+rotation = Vector3(0, -0.25, 0)
+scale = Vector3(0.13, 0.13, 0.23)
+material_override = SubResource("Material_amber")
+mesh = SubResource("Mesh_round")
+
+[node name="RightFrontLeg" type="MeshInstance3D" parent="."]
+position = Vector3(0.29, -0.31, -0.39)
+rotation = Vector3(0, 0.25, 0)
+scale = Vector3(0.13, 0.13, 0.23)
+material_override = SubResource("Material_amber")
+mesh = SubResource("Mesh_round")
+
+[node name="LeftHindLeg" type="MeshInstance3D" parent="."]
+position = Vector3(-0.29, -0.29, 0.39)
+rotation = Vector3(0, 0.25, 0)
+scale = Vector3(0.15, 0.15, 0.24)
+mesh = SubResource("Mesh_round")
+
+[node name="RightHindLeg" type="MeshInstance3D" parent="."]
+position = Vector3(0.29, -0.29, 0.39)
+rotation = Vector3(0, -0.25, 0)
+scale = Vector3(0.15, 0.15, 0.24)
+mesh = SubResource("Mesh_round")
+
+[node name="TailBase" type="MeshInstance3D" parent="."]
+position = Vector3(0, -0.015, 0.875)
+rotation = Vector3(1.5707963, 0, 0)
+mesh = SubResource("Mesh_tail_base")
+
+[node name="TailMiddle" type="MeshInstance3D" parent="."]
+position = Vector3(0, -0.015, 1.425)
+rotation = Vector3(1.5707963, 0, 0)
+mesh = SubResource("Mesh_tail_middle")
+
+[node name="TailTip" type="MeshInstance3D" parent="."]
+position = Vector3(0, -0.015, 1.8)
+rotation = Vector3(1.5707963, 0, 0)
+mesh = SubResource("Mesh_tail_tip")
+
+[node name="BackSpineFront" type="MeshInstance3D" parent="."]
+position = Vector3(0, 0.39, -0.22)
+scale = Vector3(0.9, 0.7, 0.9)
+material_override = SubResource("Material_amber")
+mesh = SubResource("Mesh_horn")
+
+[node name="BackSpineMiddle" type="MeshInstance3D" parent="."]
+position = Vector3(0, 0.38, 0.1)
+scale = Vector3(0.8, 0.65, 0.8)
+material_override = SubResource("Material_amber")
+mesh = SubResource("Mesh_horn")
+
+[node name="BackSpineRear" type="MeshInstance3D" parent="."]
+position = Vector3(0, 0.29, 0.42)
+scale = Vector3(0.6, 0.5, 0.6)
+material_override = SubResource("Material_amber")
+mesh = SubResource("Mesh_horn")
