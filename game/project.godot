@@ -1,0 +1,21 @@
+; Engine configuration file.
+; Edit with Godot 4.6.3 stable (standard/GDScript edition).
+
+config_version=5
+
+[application]
+
+config/name="Dragons and Titans — Prototipo offline"
+run/main_scene="res://scenes/arena.tscn"
+config/features=PackedStringArray("4.6", "GL Compatibility")
+
+[display]
+
+window/size/viewport_width=1280
+window/size/viewport_height=720
+window/stretch/mode="canvas_items"
+
+[rendering]
+
+renderer/rendering_method="gl_compatibility"
+renderer/rendering_method.mobile="gl_compatibility"
