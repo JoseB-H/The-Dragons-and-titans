@@ -1,12 +1,24 @@
-[gd_scene load_steps=3 format=3]
+[gd_scene load_steps=5 format=3]
 
 [ext_resource type="Script" path="res://scripts/dragon_controller.gd" id="1_controller"]
 [ext_resource type="PackedScene" path="res://scenes/dragon_visual.tscn" id="2_visual"]
+[ext_resource type="Script" path="res://scripts/weapon.gd" id="3_weapon"]
 
-[node name="Dragon" type="Node3D"]
+[sub_resource type="SphereShape3D" id="Shape_body"]
+radius = 0.8
+
+[node name="Dragon" type="CharacterBody3D"]
+collision_layer = 1
+collision_mask = 0
 script = ExtResource("1_controller")
 
+[node name="CollisionShape3D" type="CollisionShape3D" parent="."]
+shape = SubResource("Shape_body")
+
 [node name="Facing" parent="." instance=ExtResource("2_visual")]
+
+[node name="Weapon" type="Node3D" parent="."]
+script = ExtResource("3_weapon")
 
 [node name="Camera" type="Camera3D" parent="."]
 position = Vector3(18, 22, 18)

@@ -1,4 +1,4 @@
-extends Node3D
+extends "res://scripts/combat_actor.gd"
 ## Controles provisionales: movimiento relativo a pantalla y apuntado en plano XZ.
 ## La raíz solo se traslada; Facing gira y Camera hereda únicamente la traslación.
 
@@ -9,14 +9,18 @@ extends Node3D
 
 @onready var camera: Camera3D = $Camera
 @onready var facing: Node3D = $Facing
+@onready var weapon: Node3D = $Weapon
 
 
 func _ready() -> void:
+	super._ready()
 	_constrain_position()
 	reset_physics_interpolation()
 
 
 func _physics_process(delta: float) -> void:
+	if not is_alive():
+		return
 	var input := Input.get_vector("move_left", "move_right", "move_forward", "move_back")
 	var right := camera.global_basis.x
 	var back := camera.global_basis.z
@@ -26,6 +30,8 @@ func _physics_process(delta: float) -> void:
 	position += direction * movement_speed * delta
 	_constrain_position()
 	_aim_at_cursor(get_viewport().get_mouse_position())
+	if Input.is_action_pressed("attack"):
+		weapon.try_fire(-facing.global_basis.z)
 
 
 func _constrain_position() -> void:

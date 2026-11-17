@@ -24,6 +24,8 @@ func release_movement() -> void:
 func _run() -> void:
 	var arena: Node3D = load("res://scenes/arena.tscn").instantiate()
 	root.add_child(arena)
+	# Aislar movimiento/cámara: la IA y el combate se ejercitan en la suite T03.
+	arena.get_node("Enemy").set_physics_process(false)
 	await process_frame
 	var dragon: Node3D = arena.get_node_or_null("Dragon")
 	expect(dragon != null, "La escena principal debe contener el dragón de T02")

@@ -61,6 +61,8 @@ func _run() -> void:
 	DirAccess.make_dir_recursive_absolute(ProjectSettings.globalize_path(output_dir))
 	var arena: Node3D = load("res://scenes/arena.tscn").instantiate()
 	root.add_child(arena)
+	# Mantener todas las aserciones T02 sin ataques ajenos a esta regresión.
+	arena.get_node("Enemy").set_physics_process(false)
 	await process_frame
 	dragon = arena.get_node("Dragon")
 	camera = dragon.get_node("Camera")

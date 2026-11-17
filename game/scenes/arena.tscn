@@ -1,6 +1,8 @@
-[gd_scene load_steps=5 format=3]
+[gd_scene load_steps=7 format=3]
 
 [ext_resource type="PackedScene" path="res://scenes/dragon.tscn" id="1_dragon"]
+[ext_resource type="PackedScene" path="res://scenes/enemy.tscn" id="2_enemy"]
+[ext_resource type="Script" path="res://scripts/arena.gd" id="3_arena"]
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_ground"]
 albedo_color = Color(0.27, 0.36, 0.4, 1)
@@ -20,6 +22,7 @@ reflected_light_source = 1
 tonemap_mode = 0
 
 [node name="Arena" type="Node3D"]
+script = ExtResource("3_arena")
 
 [node name="Ground" type="MeshInstance3D" parent="."]
 position = Vector3(0, -0.5, 0)
@@ -35,13 +38,18 @@ light_energy = 1.2
 
 [node name="Dragon" parent="." instance=ExtResource("1_dragon")]
 
+[node name="Enemy" parent="." instance=ExtResource("2_enemy")]
+position = Vector3(0, 1.5, -7)
+
+[node name="Projectiles" type="Node3D" parent="."]
+
 [node name="Controls" type="CanvasLayer" parent="."]
 
 [node name="Panel" type="PanelContainer" parent="Controls"]
 offset_left = 16.0
 offset_top = 16.0
-offset_right = 570.0
-offset_bottom = 105.0
+offset_right = 760.0
+offset_bottom = 145.0
 mouse_filter = 2
 
 [node name="Margin" type="MarginContainer" parent="Controls/Panel"]
@@ -56,4 +64,4 @@ theme_override_constants/margin_bottom = 10
 layout_mode = 2
 mouse_filter = 2
 theme_override_font_sizes/font_size = 18
-text = "T02 · Dragón y cámara (prototipo)\nWASD: mover relativo a pantalla · Ratón: orientar\nControles provisionales · Combate aún no implementado"
+text = "T03 · Combate offline · Valores provisionales"
