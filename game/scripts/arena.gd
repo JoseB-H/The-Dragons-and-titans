@@ -22,6 +22,7 @@ func _ready() -> void:
 	enemy.get_node("Weapon").projectile_parent = $Projectiles
 	enemy.target = player
 	hud.restart_requested.connect(restore_arena)
+	hud.selection_requested.connect(return_to_selection)
 	_update_hud()
 
 
@@ -57,6 +58,18 @@ func restore_arena() -> Error:
 	return error
 
 
+func return_to_selection() -> Error:
+	if _restart_pending:
+		return OK
+	if state == MatchState.PLAYING:
+		return ERR_UNAVAILABLE
+	_restart_pending = true
+	var error := get_tree().change_scene_to_file("res://scenes/dragon_selection.tscn")
+	if error != OK:
+		_restart_pending = false
+	return error
+
+
 func _finish_match(result: MatchState) -> void:
 	if state != MatchState.PLAYING:
 		return
@@ -82,7 +95,7 @@ func _update_hud() -> void:
 	var release_hint := ""
 	if player.waiting_for_release():
 		release_hint = "\nSuelta las teclas y el clic mantenidos para jugar."
-	var text := "Objetivo: vencer al enemigo · Valores provisionales\nWASD: mover · Ratón: orientar · Clic izq.: disparar\nQ: proyectil potente · E: pulso · R: reiniciar\nJugador: %d / %d · Enemigo: %d / %d%s\n%s · %s · %s%s" % [player.current_health, player.max_health, enemy.current_health, enemy.max_health, status, _basic_status(player.get_node("Weapon").cooldown_remaining), _ability_status("Q", player.get_node("PowerWeapon").cooldown_remaining), _ability_status("E", player.get_node("PulseAbility").cooldown_remaining), release_hint]
+	var text := "%s · Objetivo: vencer al enemigo · Valores provisionales\nWASD: mover · Ratón: orientar · Clic izq.: disparar\nQ: proyectil potente · E: pulso · R: reiniciar\nJugador: %d / %d · Enemigo: %d / %d%s\n%s · %s · %s%s" % [player.profile_name, player.current_health, player.max_health, enemy.current_health, enemy.max_health, status, _basic_status(player.get_node("Weapon").cooldown_remaining), _ability_status("Q", player.get_node("PowerWeapon").cooldown_remaining), _ability_status("E", player.get_node("PulseAbility").cooldown_remaining), release_hint]
 	hud.update_view(text, state)
 
 

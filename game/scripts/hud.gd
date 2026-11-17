@@ -2,9 +2,11 @@ extends CanvasLayer
 ## Presentación de la partida; Arena conserva la lógica y la recarga de escena.
 
 signal restart_requested
+signal selection_requested
 
 @onready var label: Label = $Panel/Margin/Label
-@onready var restart_button: Button = $ResultPanel/Margin/Content/RestartButton
+@onready var restart_button: Button = $ResultPanel/Margin/Content/Actions/RestartButton
+@onready var selection_button: Button = $ResultPanel/Margin/Content/Actions/SelectionButton
 @onready var result_panel: PanelContainer = $ResultPanel
 @onready var result_title: Label = $ResultPanel/Margin/Content/ResultTitle
 
@@ -31,3 +33,10 @@ func _on_restart_button_pressed() -> void:
 		return
 	_restart_emitted = true
 	restart_requested.emit()
+
+
+func _on_selection_button_pressed() -> void:
+	if not result_panel.visible or _restart_emitted:
+		return
+	_restart_emitted = true
+	selection_requested.emit()

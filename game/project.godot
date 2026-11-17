@@ -6,8 +6,12 @@ config_version=5
 [application]
 
 config/name="Dragons and Titans — Prototipo offline"
-run/main_scene="res://scenes/arena.tscn"
+run/main_scene="res://scenes/dragon_selection.tscn"
 config/features=PackedStringArray("4.6", "GL Compatibility")
+
+[autoload]
+
+DragonRoster="*res://scripts/dragon_roster.gd"
 
 [display]
 

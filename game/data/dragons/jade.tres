@@ -1,0 +1,28 @@
+[gd_resource type="Resource" load_steps=2 format=3]
+
+[ext_resource type="Script" path="res://scripts/dragon_profile.gd" id="1_profile"]
+
+[resource]
+script = ExtResource("1_profile")
+id = &"jade"
+display_name = "Jade"
+description = "Ágil y de recargas rápidas, con menos salud y daño por golpe. Valores provisionales."
+max_health = 70
+movement_speed = 8.0
+basic_damage = 15
+basic_cooldown = 0.3
+basic_projectile_speed = 28.0
+basic_projectile_lifetime = 2.0
+basic_spawn_distance = 1.9
+power_damage = 35
+power_cooldown = 2.0
+power_projectile_speed = 36.0
+power_projectile_lifetime = 2.0
+power_spawn_distance = 1.9
+pulse_damage = 20
+pulse_radius = 3.5
+pulse_cooldown = 3.0
+pulse_effect_duration = 0.5
+body_color = Color(0.12, 0.52, 0.28, 1)
+accent_color = Color(0.5, 0.88, 0.43, 1)
+wing_color = Color(0.035, 0.2, 0.13, 1)

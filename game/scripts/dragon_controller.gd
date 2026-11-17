@@ -13,6 +13,9 @@ extends "res://scripts/combat_actor.gd"
 @onready var power_weapon: Node3D = $PowerWeapon
 @onready var pulse_ability: Node3D = $PulseAbility
 
+var profile_id: StringName
+var profile_name: String
+
 var _q_held := false
 var _e_held := false
 var _held_at_start: Array[StringName] = []
@@ -20,7 +23,14 @@ var _held_at_start: Array[StringName] = []
 const ENTRY_ACTIONS := [&"move_left", &"move_right", &"move_forward", &"move_back", &"attack", &"ability_q", &"ability_e", &"restore_arena", &"ui_accept"]
 
 
+func _enter_tree() -> void:
+	# El setter de CombatActor ya emite señales dentro de _ready. Preparar la
+	# máxima antes evita anunciar 0 de salud al inicializar un perfil distinto.
+	max_health = get_node("/root/DragonRoster").selected_profile().max_health
+
+
 func _ready() -> void:
+	_apply_profile(get_node("/root/DragonRoster").selected_profile())
 	super._ready()
 	for action: StringName in ENTRY_ACTIONS:
 		if Input.is_action_pressed(action):
@@ -29,6 +39,54 @@ func _ready() -> void:
 	_e_held = Input.is_action_pressed("ability_e")
 	_constrain_position()
 	reset_physics_interpolation()
+
+
+func _apply_profile(profile: Resource) -> void:
+	profile_id = profile.id
+	profile_name = profile.display_name
+	max_health = profile.max_health
+	movement_speed = profile.movement_speed
+	weapon.damage = profile.basic_damage
+	weapon.cooldown = profile.basic_cooldown
+	weapon.projectile_speed = profile.basic_projectile_speed
+	weapon.projectile_lifetime = profile.basic_projectile_lifetime
+	weapon.spawn_distance = profile.basic_spawn_distance
+	power_weapon.damage = profile.power_damage
+	power_weapon.cooldown = profile.power_cooldown
+	power_weapon.projectile_speed = profile.power_projectile_speed
+	power_weapon.projectile_lifetime = profile.power_projectile_lifetime
+	power_weapon.spawn_distance = profile.power_spawn_distance
+	pulse_ability.damage = profile.pulse_damage
+	pulse_ability.radius = profile.pulse_radius
+	pulse_ability.cooldown = profile.pulse_cooldown
+	pulse_ability.effect_duration = profile.pulse_effect_duration
+	_apply_palette(profile)
+
+
+func _apply_palette(profile: Resource) -> void:
+	# Los meshes de la escena siguen compartidos: solo copiar sus materiales.
+	# Las referencias originales identifican cuerpo, acentos y membranas sin
+	# acoplar el color al id del dragón ni recolorear ojos/cuernos.
+	var palette := {
+		facing.get_node("Body").get_active_material(0): profile.body_color,
+		facing.get_node("Chest").get_active_material(0): profile.accent_color,
+		facing.get_node("LeftWing").material: profile.wing_color,
+	}
+	for part in facing.get_children():
+		var source: StandardMaterial3D
+		if part is MeshInstance3D:
+			source = part.get_active_material(0) as StandardMaterial3D
+		elif part is CSGPolygon3D:
+			source = part.material as StandardMaterial3D
+		if source == null:
+			continue
+		var local_material := source.duplicate() as StandardMaterial3D
+		if palette.has(source):
+			local_material.albedo_color = palette[source]
+		if part is MeshInstance3D:
+			part.material_override = local_material
+		else:
+			part.material = local_material
 
 
 func _physics_process(delta: float) -> void:
