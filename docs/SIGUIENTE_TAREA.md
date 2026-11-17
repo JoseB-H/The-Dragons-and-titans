@@ -1,31 +1,28 @@
-# Siguiente encargo para Codex — T02: Dragón y cámara
+# Siguiente encargo — T03: Combate y enemigo
 
-## Informe recibido y comprobación remota
-El usuario transmite una entrega de Codex: T01 implementada con Godot 4, importación, arranque y renderizado comprobados en Linux; docs/ESTADO.md actualizado localmente. Windows pendiente. Comprobar versión y resultados contra los archivos locales antes de fijarlos como hechos del repositorio.
+## Base y contexto
+Entrega T02 publicada en `feat/v0.1-t02-dragon-y-camara`: código `66815e5f1d9ccd899baea84f76bce0ef9f5301b9`, cierre `f436099969a70df498ee46c92b3fba60d30c6ba9`. T01 está conservada en su historial. Partir de esta entrega en una rama descriptiva para T03; main aún contiene planificación. Recuperar este encargo sin sustituir el ESTADO ni el código más recientes de la rama. No hacer merge ni force push.
 
-IMPORTANTE: en la revisión remota que originó este encargo, GitHub solo devolvió la rama main y docs/ESTADO.md todavía mostraba T01 pendiente. No se pudo contrastar el informe local ni sus pruebas. No se declara T01 validada independientemente.
+Leer AGENTS.md, docs/CONTEXTO_IA.md, PLAN_INICIAL.md, IMPLEMENTACION.md, ESTADO.md y README de la rama. Revisar game/scenes/arena.tscn, dragon.tscn, dragon_visual.tscn, game/scripts/dragon_controller.gd y las dos suites T02. Conservar Godot 4.6.3 Compatibility.
 
-## Paso previo: conservar y sincronizar T01
-Lee AGENTS.md y todos sus documentos obligatorios. Inspecciona rama, estado Git y archivos reales antes de modificar. Si T01 existe localmente, conserva sus cambios y revisa su evidencia; no recrees el proyecto. Recupera este encargo sin sobrescribir archivos locales. Si no existe T01 en tu entorno, localiza la entrega o informa el bloqueo antes de construir T02 sobre una base inexistente. Publica la entrega mediante la rama de trabajo y PR cuando el flujo autorizado lo permita; no hagas merge ni force push. Incluye SHA y rama en el informe para que la siguiente revisión pueda consultar el código.
+## Encargo concreto
+1. Incorporar salud máxima/actual, facciones y recepción de daño sencilla para jugador y enemigo. Salud limitada a [0,máxima], señal de muerte una sola vez; actores muertos no se mueven ni atacan.
+2. Clic izquierdo dispara proyectil hacia el hocico -Z de Facing, con daño, velocidad, duración y recarga configurables. Cámara y movimiento siguen independientes del apuntado.
+3. Proyectil con colisión real: ignorar emisor y aliados, aplicar daño una sola vez, retirarse al impactar o agotar duración. Evitar atravesar objetivos a la velocidad configurada; comprobarlo con pasos de física reales.
+4. Enemigo provisional distinguible que persigue al jugador y ataca dentro de rango con recarga. Respetar arena/altura y detenerse cuando cualquiera de los actores ya no sea objetivo válido.
+5. Añadir restauración mínima reproducible de arena para comprobar T03: restablecer vida, posiciones, recargas y eliminar proyectiles. Puede usarse recarga de escena; documentar cómo invocarla. La interfaz completa de victoria/derrota pertenece a T05.
+6. Mostrar controles y salud suficientes para observar combate. No implementar Q/E, forja, cuentas ni multijugador. Valores marcados como provisionales.
 
-## Implementación T02
-1. Reutiliza la arena, luz y cámara de T01 y su versión real de Godot. No actualices motor sin necesidad.
-2. Añade un dragón provisional propio reconocible por cuerpo, cabeza, alas y cola. Sin descargas de recursos originales.
-3. Implementa movimiento WASD sobre XZ, altura visual fija, velocidad configurable y diagonal normalizada. Usa el paso de física para movimiento y aplica límites coherentes con la arena existente.
-4. Orienta al dragón hacia el punto del cursor proyectado sobre el plano jugable. Maneja rayos sin intersección y evita inclinaciones involuntarias.
-5. Añade cámara aérea oblicua que siga al jugador sin perderlo. El movimiento debe tener una relación clara con la pantalla; documenta la convención elegida.
-6. Configura Input Map para movimiento y muestra controles visibles. Ataques, Q/E y reinicio de fin de partida pertenecen a tareas posteriores: no anunciarlos como funcionales todavía.
-7. Mantén controlador, representación visual y parámetros simples de ajustar; evita construir sistemas de combate para completar T02.
-
-## Aceptación
-- Proyecto importa y escena principal arranca sin errores con la versión fijada.
-- Dragón reconocible y visible desde la cámara de juego.
-- WASD funciona y la velocidad diagonal no supera la axial.
-- El dragón permanece dentro de los límites, incluidas esquinas.
-- Apuntado estable con cursor en centro, bordes y cerca del dragón.
-- Cámara sigue al jugador sin saltos perceptibles ni pérdida del personaje.
-- Documentar resultados reales: las comprobaciones headless no prueban calidad visual o manejo interactivo.
-- Windows sigue pendiente hasta probarlo realmente; no bloquea por sí solo el avance del prototipo en Linux.
+## Criterios de aceptación
+- Importación y arranque sin errores con la versión fijada; regresión de movimiento, límites, orientación y cámara T02. Adaptar pruebas solo si cambian legítimamente las escenas, conservando sus comprobaciones de comportamiento.
+- Ataque respeta intervalo, dirección y facciones. Un impacto no duplica daño; salud nunca negativa; muerte única y sin nuevas acciones.
+- Probar persecución, entrada/salida de rango, límites y muerte del objetivo; proyectiles caducan y no quedan nodos acumulados.
+- Restauración completa repetida tres veces sin duplicar actores/conexiones y sin conservar daño, recargas o proyectiles anteriores.
+- Pruebas de integración de lógica crítica y colisión con física real; comprobación gráfica de combate, controles y cámara. Registrar comandos, salidas y limitaciones; no confundir headless con validación visual.
+- Si aparece regresión o fallo, corregirlo antes de ampliar alcance. Windows pendiente hasta ejecución real; no bloquea por sí solo T03 en Linux.
 
 ## Cierre
-Actualiza README y docs/ESTADO.md con controles, archivos, comandos reales, resultados, limitaciones y siguiente tarea T03. Adjunta captura si puedes obtenerla y referencia de commit/rama. Actualiza este encargo como completado solo tras cumplir la aceptación; no borres la evidencia de lo que queda sin comprobar.
+Actualizar README y ESTADO.md con archivos, decisiones, pruebas reales, evidencia, limitaciones y siguiente paso T04. Corregir la frase obsoleta de CONTEXTO_IA.md sobre versión pendiente, usando la versión ya fijada. Publicar rama y SHA de código y cierre. No es obligatorio crear PR para continuar si sigue Forbidden; documentar el bloqueo sin cambiar permisos ni hacer merge.
+
+## Alcance de la revisión de T02
+Se revisaron por GitHub el diff de código, las suites y el registro T02-linux.log: constan 34 comprobaciones headless y 22 gráficas con salida 0. Son resultados registrados por la entrega, no pruebas repetidas por esta revisión. Sin CI ni PR publicados. No se inspeccionaron nuevamente las imágenes ni se ejecutó Godot aquí. Windows, manejo humano prolongado y GPU física siguen sin probar.
