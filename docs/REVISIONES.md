@@ -27,3 +27,20 @@ Comparar ramas y cambios de código contra esta referencia o la última entrega 
   `gh` devuelve `Forbidden` en la API; el transporte Git sí permite publicar ramas.
 - **Windows pendiente**: no se exportó ni ejecutó un `.exe`. Manejo humano
   prolongado y GPU física pendientes. Siguiente incremento: T03.
+
+## Entrega de programación T03
+- Base exacta `f436099969a70df498ee46c92b3fba60d30c6ba9`; nueva rama
+  `feat/v0.1-t03-combate-y-enemigo`, sin merge ni force push.
+- Código `973e989096a602814c34d7fff4241f9ee0ab14c3`; cierre documental posterior.
+  Encargo recuperado de main en `54dba3b`, conservando código/estado T02.
+- Revisión independiente en copia sin caché: importación/arranque salida 0,
+  núcleo 51/0, integración entonces 51/0, regresión T02 34/0. Detectó un objetivo
+  vivo fuera del árbol aceptado por la IA: se reprodujo en una prueba persistente,
+  se añadió validación `is_inside_tree()` y el implementador repitió las suites.
+- Resultado final del implementador: núcleo 51/0, integración 52/0, T02 34/0;
+  ventana T03 34/0 y regresión gráfica T02 22/0. Sin errores de scripts; aviso
+  V-Sync del driver virtual documentado. Tres capturas de combate inspeccionadas.
+- Evidencia en `docs/validacion/T03-linux.log` y tres imágenes T03; comandos,
+  decisiones y defectos corregidos en ESTADO.md. Sin revisión remota repetida,
+  PR ni CI nuevas. No se modificaron permisos para sortear el bloqueo API previo.
+- **Windows pendiente**, junto a GPU física y manejo humano prolongado. Siguiente: T04.

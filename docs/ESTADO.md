@@ -1,10 +1,11 @@
 # Estado del proyecto
 
-## Situación actual — 16 de noviembre de 2026 (America/Bogota)
-T01 conservada y sincronizada; **T02 implementada y comprobada en Linux** con
-Godot 4.6.3 estable. La arena incluye dragón provisional propio, movimiento WASD,
-orientación hacia el cursor, límites y cámara de seguimiento. La siguiente tarea
-es T03: todavía no hay combate ni ciclo de victoria/derrota/reinicio.
+## Situación actual — entrega T03
+**T03 implementada y comprobada en Linux**, conservando T01/T02 y Godot 4.6.3
+Compatibility. Hay salud, facciones, ataque básico con recarga, proyectiles con
+barrido físico, enemigo que persigue/ataca y restauración completa con R.
+La siguiente tarea es T04 (dos habilidades); la interfaz completa de fin de partida
+y sus estados siguen siendo T05. No se implementaron Q/E ni servicios online.
 La validación nativa de Windows sigue **pendiente**.
 
 ## Lectura
@@ -18,17 +19,17 @@ La validación nativa de Windows sigue **pendiente**.
 | --- | --- | --- |
 | T01 Proyecto ejecutable | Terminada (Linux) | Importación y arranque headless con salida 0; renderizado Compatibility e imagen inspeccionada, ver registro abajo |
 | T02 Dragón y cámara | Terminada (Linux) | 34 comprobaciones headless y 22 de ventana; capturas de inicio/esquina inspeccionadas |
-| T03 Combate y enemigo | Pendiente | Sin ejecución registrada |
+| T03 Combate y enemigo | Terminada (Linux) | Núcleo 51/0, integración 52/0, gráfica T03 34/0; regresión T02 34/0 y 22/0; importación/arranque sin errores |
 | T04 Habilidades | Pendiente | Sin ejecución registrada |
 | T05 Ciclo e interfaz | Pendiente | Sin ejecución registrada |
 | T06 Validación y entrega | Pendiente | Sin ejecución registrada |
 
 ## Próxima acción
-Implementar **T03 — Combate y enemigo**, tras leer los documentos y verificar el
-árbol real. Reutilizar el dragón y la cámara de T02. Añadir salud, facciones,
-proyectil básico con recarga y enemigo que persigue/ataca según IMPLEMENTACION.md.
-Probar daño único, salud no negativa, muerte y restauración de entidades. No
-implementar aún habilidades ni servicios online. Windows continúa pendiente.
+Implementar **T04 — Dos habilidades**, tras leer los documentos y verificar la
+rama y el código reales. Reutilizar salud, facciones, armas y limpieza de T03:
+Q proyectil potente y E pulso de área con recargas propias y datos configurables,
+según IMPLEMENTACION.md. Probar daño válido, bloqueo durante recarga y efectos
+temporales sin acumulación, manteniendo la regresión T02/T03. Windows continúa pendiente.
 
 ## Registro del incremento T01
 
@@ -157,6 +158,96 @@ sin caché durante la revisión independiente.
 La revisión final aprobó T02 sin hallazgos funcionales ni bloqueantes. Se
 actualizaron las casillas de avance del plan señaladas durante la revisión.
 
+## Registro del incremento T03
+
+### Base, rama y conservación
+- Base exacta: `f436099969a70df498ee46c92b3fba60d30c6ba9`, entrega T02 publicada.
+- Nueva rama: `feat/v0.1-t03-combate-y-enemigo`.
+- Código de T03: `973e989096a602814c34d7fff4241f9ee0ab14c3`; el cierre documental es un commit posterior.
+- Encargo leído y recuperado mediante `git show origin/main:docs/SIGUIENTE_TAREA.md`,
+  desde `main` en `54dba3bf4aebca80343175faf6c5cf962d3cb504`. No se sustituyó el
+  ESTADO de T02 ni se hizo merge, rebase o force push. T02 permanece en su rama.
+- No se modificaron permisos ni se exigió PR: la entrega anterior registró
+  `Forbidden` en la API de GitHub; este incremento se publica mediante Git.
+
+### Archivos y decisiones provisionales
+- `game/scripts/combat_actor.gd`: raíz CharacterBody3D compartida para salud y
+  facciones; salud limitada a [0,máxima], máximo mínimo 1, rechazo de daño negativo,
+  cero, aliado o posterior a muerte. Señal de muerte única incluso con daño
+  reentrante desde una señal. Cambiar el máximo no cura ni revive.
+- `game/scripts/weapon.gd`: parámetros exportados y recarga física. Solo dispara
+  con propietario vivo, dirección XZ válida y contenedor activo.
+- `game/scripts/projectile.gd` y `game/scenes/projectile.tscn`: esfera luminosa
+  propia y rayquery continuo del tramo físico. El primer barrido incluye actor→hocico;
+  excluye RID del emisor, aliados y muertos, y daña solo al primer hostil válido.
+  Vida restante limita el último desplazamiento; impacto o caducidad eliminan el nodo.
+- `game/scripts/enemy_controller.gd` y `game/scenes/enemy.tscn`: enemigo cian propio,
+  objetivo jugador, persecución XZ sin sobrepasar alcance, altura/límites y recarga;
+  sin acciones si él o su objetivo son muertos, inválidos o aliados.
+- `game/scripts/dragon_controller.gd`/`game/scenes/dragon.tscn`: conservan
+  movimiento, Facing y cámara T02; incorporan salud, collider central y arma.
+  Clic izquierdo mantenido dispara hacia -Z de Facing; un jugador muerto no actúa.
+- `game/scripts/arena.gd`, `arena.tscn`, `project.godot`: composición, contenedor
+  Projectiles, HUD mínimo de salud/recarga y acción física R para recargar escena.
+  R restablece actores, posiciones, orientación, vida, recargas y objetivo, sin
+  conservar proyectiles ni conexiones del árbol anterior. Sin pantalla final T05.
+- Balance exportado: salud jugador/enemigo 100/80, daño 20/10, recarga 0.4/1 s;
+  proyectil 28 unidades/s y 2 s de vida, origen visual a 1.9 unidades. IA velocidad
+  3 y alcance 7. Colisión central esférica de radio 0.8; alas/cola cosméticas.
+  Los actores pueden cruzarse: sus límites se controlan por posición, no por
+  bloqueo mutuo. Todos estos datos son provisionales, no hechos del juego original.
+- `game/tests/test_combat_core.gd`, `test_t03.gd`, `test_t03_window.gd`: pruebas
+  reales sin mocks; UID versionados. Las suites T02 solo añaden una pausa de la IA
+  en su montaje; no se retiró ni relajó ninguna de sus aserciones de comportamiento.
+- README actualizado y frase obsoleta de versión pendiente corregida en CONTEXTO_IA.
+  Geometría, materiales y capturas propios, sin arte original ni descargas externas.
+
+### Comprobaciones y resultados
+Godot `4.6.3.stable.official.7d41c59c4`, desde `/workspace/The-Dragons-and-titans`.
+Directorios XDG escribibles en `/tmp/dragons-t03/{cache,data,config}`; para gráficos,
+Xorg temporal `:93` con driver dummy y OpenGL 4.5 Compatibility, Mesa llvmpipe.
+
+| Prueba | Comando real | Resultado final |
+| --- | --- | --- |
+| Importación | `godot --headless --path game --import` | Salida 0, sin errores de scripts/recursos |
+| Núcleo | `godot --headless --path game --script res://tests/test_combat_core.gd` | Salida 0; 51 comprobaciones, 0 fallos |
+| Integración | `godot --headless --path game --script res://tests/test_t03.gd` | Salida 0; 52 comprobaciones, 0 fallos |
+| Regresión T02 | `godot --headless --path game --script res://tests/test_t02.gd` | Salida 0; 34 comprobaciones, 0 fallos |
+| Arranque | `godot --headless --path game --quit-after 120` | Salida 0, sin errores |
+| Regresión gráfica | `DISPLAY=:93 godot --path game --display-driver x11 --audio-driver Dummy --script res://tests/test_t02_window.gd -- --output-dir=/tmp/dragons-t03/graphics` | Salida 0; 22 comprobaciones, 0 fallos |
+| Combate gráfico | `DISPLAY=:93 godot --path game --display-driver x11 --audio-driver Dummy --script res://tests/test_t03_window.gd -- --output-dir=/tmp/dragons-t03/graphics` | Salida 0; 34 comprobaciones, 0 fallos |
+| Higiene | `git diff --check`; revisión de historial desde `f436099` | Sin errores de espacios ni merges nuevos; `.godot/` excluido |
+
+Núcleo: impacto único a 600 unidades/s cruzando emisor, aliado y muerto; primer
+hostil y objetivo cercano dentro del tramo al hocico; caducidad fraccionaria y
+proyectil inmóvil; recarga real, salud/facciones y muerte única reentrante.
+Integración: entrada, daño en ambos sentidos, persecución en pasos reales,
+entrada/salida de alcance, límites/altura, objetivo nulo/aliado/muerto/retirado, actores
+muertos inmóviles y tres recargas completas comprobando salud, posiciones,
+recargas, eliminación de nodos antiguos y ausencia de conexiones heredadas.
+Gráficos: clic/cursor/R reales de ventana, cámara, daño, enemigo abatido,
+tres restauraciones mediante R y jugador caído por ataques reales de IA.
+
+Se inspeccionaron `docs/validacion/T03-combate-linux.png`,
+`T03-enemigo-abatido-linux.png` y `T03-jugador-caido-linux.png`: actor cian
+distinguible, disparo visible, cámara funcional y HUD legible con salud coherente.
+Transcripción final en `docs/validacion/T03-linux.log`. La prueba gráfica es
+automatizada y las capturas son estáticas; no equivalen a manejo humano prolongado.
+
+Antes del resultado final se reprodujeron y corrigieron cuatro defectos: muerte
+duplicada por daño reentrante, salto de objetivos entre actor y origen del disparo,
+acceso a viewport retirado al pulsar R y persecución de un objetivo vivo fuera del árbol. Se corrigió además el montaje de la
+prueba gráfica para pausar la IA tras `_ready` mediante `scene_changed`, evitando
+que disparase antes de comprobar la restauración limpia. Después se repitieron
+las pruebas afectadas: sin errores de script; único aviso gráfico de V-Sync no
+soportado por el driver virtual. No se cambiaron assertions para ocultar fallos.
+
+Revisión independiente en copia temporal sin caché: importación, núcleo 51/0,
+integración entonces 51/0, T02 34/0 y arranque sin errores. Identificó el objetivo
+vivo fuera del árbol; tras reproducirlo (52 comprobaciones, 1 fallo), se corrigió
+y la integración final pasó 52/0 junto a las demás suites headless. La corrección
+solo añade una condición de validez y no altera el recorrido gráfico ya comprobado.
+
 ## Limitaciones conocidas
 - **Windows pendiente:** no se ejecutó el editor ni se exportó/probó un `.exe` en
   Windows. Los comandos de Windows están documentados, no verificados en esta máquina Linux.
@@ -164,7 +255,8 @@ actualizaron las casillas de avance del plan señaladas durante la revisión.
   Linux, con inspección de capturas. No hubo sesión humana prolongada de manejo,
   prueba de GPU física ni interacción con el escritorio compartido. El seguimiento
   se verificó por fotograma; la sensación de manejo requiere evaluación del usuario.
-- Combate, daño, recargas, muerte y reinicio siguen sin implementar y sin probar.
+- Q/E y estados completos de victoria/derrota/reinicio T05 todavía no implementados.
+  T03 incluye combate y recarga mínima de escena, no la aceptación completa de V0.1.
 - Chat compartido no accesible durante la preparación inicial; no se presupone su contenido.
 - Wiki pendiente de investigar y contrastar.
 - Cinco capturas de referencia del usuario pendientes de incorporar al repositorio;
