@@ -1,7 +1,7 @@
 # Siguiente encargo para Codex — T02: Dragón y cámara
 
 ## Informe recibido y comprobación remota
-El usuario transmite una entrega de Codex: T01 implementada con Godot 4.6.3 Compatibility, importación, arranque y renderizado comprobados en Linux; docs/ESTADO.md actualizado localmente. Windows pendiente. La versión específica comunicada por el usuario es Godot 4.6.3; comprobarla contra los archivos locales antes de fijarla como hecho del repositorio.
+El usuario transmite una entrega de Codex: T01 implementada con Godot 4, importación, arranque y renderizado comprobados en Linux; docs/ESTADO.md actualizado localmente. Windows pendiente. Comprobar versión y resultados contra los archivos locales antes de fijarlos como hechos del repositorio.
 
 IMPORTANTE: en la revisión remota que originó este encargo, GitHub solo devolvió la rama main y docs/ESTADO.md todavía mostraba T01 pendiente. No se pudo contrastar el informe local ni sus pruebas. No se declara T01 validada independientemente.
 
