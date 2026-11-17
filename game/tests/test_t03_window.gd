@@ -52,13 +52,15 @@ func until(condition: Callable, limit: int) -> bool:
 
 
 func pause_fixture() -> void:
-	# scene_changed ocurre después de _ready y antes del primer tick de IA.
+	# Aislar actores del cierre T05 tras _ready, antes del primer tick de IA.
 	if is_instance_valid(current_scene) and current_scene.has_node("Enemy"):
+		current_scene.set_physics_process(false)
 		current_scene.get_node("Enemy").set_physics_process(false)
 
 
 func bind_scene() -> void:
 	arena = current_scene
+	arena.set_physics_process(false)
 	player = arena.get_node("Dragon")
 	enemy = arena.get_node("Enemy")
 	enemy.set_physics_process(false)
@@ -98,6 +100,7 @@ func _run() -> void:
 	scene_changed.connect(pause_fixture)
 	arena = load("res://scenes/arena.tscn").instantiate()
 	root.add_child(arena)
+	arena.set_physics_process(false)
 	current_scene = arena
 	bind_scene()
 	await ticks(3)

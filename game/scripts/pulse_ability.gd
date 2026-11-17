@@ -24,7 +24,7 @@ func try_activate() -> bool:
 	if not is_inside_tree() or is_queued_for_deletion() or _activating or cooldown_remaining > 0.0:
 		return false
 	var actor := get_parent() as COMBAT_ACTOR
-	if actor == null or not actor.is_inside_tree() or actor.is_queued_for_deletion() or not actor.is_alive():
+	if actor == null or not actor.can_act():
 		return false
 	if not is_instance_valid(effects_parent) or not effects_parent.is_inside_tree() or effects_parent.is_queued_for_deletion():
 		return false

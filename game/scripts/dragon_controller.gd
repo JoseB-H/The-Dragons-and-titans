@@ -15,16 +15,26 @@ extends "res://scripts/combat_actor.gd"
 
 var _q_held := false
 var _e_held := false
+var _held_at_start: Array[StringName] = []
+
+const ENTRY_ACTIONS := [&"move_left", &"move_right", &"move_forward", &"move_back", &"attack", &"ability_q", &"ability_e", &"restore_arena", &"ui_accept"]
 
 
 func _ready() -> void:
 	super._ready()
+	for action: StringName in ENTRY_ACTIONS:
+		if Input.is_action_pressed(action):
+			_held_at_start.append(action)
+	_q_held = Input.is_action_pressed("ability_q")
+	_e_held = Input.is_action_pressed("ability_e")
 	_constrain_position()
 	reset_physics_interpolation()
 
 
 func _physics_process(delta: float) -> void:
-	if not is_alive():
+	_refresh_input_release()
+	velocity = Vector3.ZERO
+	if not can_act() or waiting_for_release():
 		return
 	var input := Input.get_vector("move_left", "move_right", "move_forward", "move_back")
 	var right := camera.global_basis.x
@@ -39,7 +49,13 @@ func _physics_process(delta: float) -> void:
 		weapon.try_fire(-facing.global_basis.z)
 
 
+func _input(_event: InputEvent) -> void:
+	# También observar releases que consume el botón antes de unhandled_input.
+	_refresh_input_release()
+
+
 func _unhandled_input(event: InputEvent) -> void:
+	_refresh_input_release()
 	if not event is InputEventKey:
 		return
 	if event.is_action("ability_q"):
@@ -49,7 +65,7 @@ func _unhandled_input(event: InputEvent) -> void:
 			_q_held = false
 		elif not event.echo and not _q_held:
 			_q_held = true
-			if is_alive():
+			if can_act() and not waiting_for_release():
 				power_weapon.try_fire(-facing.global_basis.z)
 	elif event.is_action("ability_e"):
 		get_viewport().set_input_as_handled()
@@ -57,8 +73,18 @@ func _unhandled_input(event: InputEvent) -> void:
 			_e_held = false
 		elif not event.echo and not _e_held:
 			_e_held = true
-			if is_alive():
+			if can_act() and not waiting_for_release():
 				pulse_ability.try_activate()
+
+
+func waiting_for_release() -> bool:
+	return not _held_at_start.is_empty()
+
+
+func _refresh_input_release() -> void:
+	for index in range(_held_at_start.size() - 1, -1, -1):
+		if not Input.is_action_pressed(_held_at_start[index]):
+			_held_at_start.remove_at(index)
 
 
 func _notification(what: int) -> void:

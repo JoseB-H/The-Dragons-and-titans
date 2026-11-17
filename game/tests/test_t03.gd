@@ -31,6 +31,8 @@ func clear_projectiles(arena: Node) -> void:
 func _run() -> void:
 	var arena: Node3D = load("res://scenes/arena.tscn").instantiate()
 	root.add_child(arena)
+	# Aislar actores: estas regresiones continúan tras muerte sin cerrar partida T05.
+	arena.set_physics_process(false)
 	current_scene = arena
 	var enemy: Node3D = arena.get_node_or_null("Enemy")
 	expect(enemy != null, "T03 añade enemigo a la arena T02 conservada")
@@ -116,6 +118,7 @@ func _run() -> void:
 			arena.restore_arena()
 			await scene_changed
 			arena = current_scene
+			arena.set_physics_process(false)
 			player = arena.get_node("Dragon")
 			enemy = arena.get_node("Enemy")
 			enemy.set_physics_process(false)
@@ -131,6 +134,7 @@ func _run() -> void:
 		expect(arena.restore_arena() == OK, "Restauración %d aceptada" % (iteration + 1))
 		await scene_changed
 		arena = current_scene
+		arena.set_physics_process(false)
 		player = arena.get_node("Dragon")
 		enemy = arena.get_node("Enemy")
 		enemy.set_physics_process(false)

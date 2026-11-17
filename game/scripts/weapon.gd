@@ -21,8 +21,10 @@ func _physics_process(delta: float) -> void:
 
 
 func try_fire(direction: Vector3) -> bool:
+	if not is_inside_tree() or is_queued_for_deletion():
+		return false
 	var actor := get_parent() as CharacterBody3D
-	if actor == null or not actor.has_method("is_alive") or not actor.is_alive():
+	if actor == null or not actor.has_method("can_act") or not actor.can_act():
 		return false
 	if not is_instance_valid(projectile_parent) or not projectile_parent.is_inside_tree() or projectile_parent.is_queued_for_deletion():
 		return false

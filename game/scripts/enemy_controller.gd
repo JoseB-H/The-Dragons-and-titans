@@ -22,7 +22,7 @@ func _ready() -> void:
 
 func _physics_process(delta: float) -> void:
 	velocity = Vector3.ZERO
-	if not is_alive() or not _has_valid_target():
+	if not can_act() or not _has_valid_target():
 		return
 	_constrain_position()
 	var direction := target.global_position - global_position
@@ -55,8 +55,8 @@ func _has_valid_target() -> bool:
 		and target.is_inside_tree()
 		and not target.is_queued_for_deletion()
 		and target != self
-		and target.has_method("is_alive")
-		and target.is_alive()
+		and target.has_method("can_act")
+		and target.can_act()
 		and target.get("faction") != faction
 	)
 

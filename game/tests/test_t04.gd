@@ -36,6 +36,8 @@ func key(code: int, pressed: bool, echo: bool = false) -> void:
 func _run() -> void:
 	var arena: Node3D = load("res://scenes/arena.tscn").instantiate()
 	root.add_child(arena)
+	# Aislar habilidades y muerte del actor respecto al cierre de partida T05.
+	arena.set_physics_process(false)
 	current_scene = arena
 	var player: Node3D = arena.get_node("Dragon")
 	expect(player.has_node("PowerWeapon") and player.has_node("PulseAbility"), "T04 compone Q/E en el jugador conservado")
@@ -117,6 +119,7 @@ func _run() -> void:
 		arena.restore_arena()
 		await scene_changed
 		arena = current_scene
+		arena.set_physics_process(false)
 		arena.get_node("Enemy").set_physics_process(false)
 		player = arena.get_node("Dragon")
 		basic = player.get_node("Weapon")
@@ -144,6 +147,7 @@ func _run() -> void:
 	arena.restore_arena()
 	await scene_changed
 	arena = current_scene
+	arena.set_physics_process(false)
 	arena.get_node("Enemy").set_physics_process(false)
 	expect(arena.get_node("Effects").get_child_count() == 0 and arena.get_node("Projectiles").get_child_count() == 0, "Última restauración elimina todos los efectos/proyectiles")
 	arena.free()
