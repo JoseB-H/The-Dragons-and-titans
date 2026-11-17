@@ -23,3 +23,12 @@ Comparar ramas y cambios de código contra esta referencia o la última entrega 
 - PR: ninguno; Forbidden reportado por Codex. GitHub Actions: ninguna ejecución. No hay validación CI independiente.
 - No probado aquí: ejecución Godot, interacción, imágenes. Windows y GPU física pendientes según entrega.
 - Nuevo encargo T03 en docs/SIGUIENTE_TAREA.md de main. Continuar desde cierre T02, no desde main. Commits documentales de esta revisión no cuentan como avance de programación.
+
+## Entrega T03 — 17 de noviembre de 2026
+- Rama revisada: `feat/v0.1-t03-combate-y-enemigo`.
+- SHA código: `973e989096a602814c34d7fff4241f9ee0ab14c3`; cierre: `b9da1e4ddaa3b138b41275961d2144c8de72a5a9`.
+- Comparación con f436099: dos commits por delante, base preservada. Salud, armas, proyectiles, IA y restauración incorporados.
+- Revisados instrucciones, contexto, plan, estado, comparación de archivos, salud/arma/proyectil y log T03. No se detectó bloqueo en esos archivos; revisión estática parcial, no validación integral del juego.
+- Log publicado: núcleo 51/0, integración 52/0, gráfica 34/0 y regresión T02 34/0 + 22/0. Gráfica anterior a última guardia de objetivo fuera del árbol; headless repetido después según log. No se repitieron pruebas ni inspección de imágenes aquí. Windows y manejo humano pendientes.
+- Encargo T04 actualizado en main: partir del cierre T03. Conservar revisión como referencia; los cambios de planificación no son avance de código.
+- Objetivo añadido por usuario: avisar al completar V0.1 jugable/legible y preparar prueba descargable para laptop Windows en T06.
