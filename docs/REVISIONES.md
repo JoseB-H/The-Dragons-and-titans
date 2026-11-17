@@ -45,3 +45,10 @@ Comparar ramas y cambios de código contra esta referencia o la última entrega 
 - Comparación con cierre T04: dos commits, base conservada. Revisados listado de cambios, ESTADO, arena.gd y T05-linux.log; revisión estática parcial sin bloqueo detectado en lo revisado.
 - Evidencia publicada: estados51/0, gráfica145/0 y regresiones T02–T04 aprobadas. No ejecutadas nuevamente ni capturas reinspeccionadas aquí. Windows y manejo humano siguen pendientes.
 - Encargo T06 publicado en main: validación, exportación y paquete descargable para laptop; distinguir candidato exportado de prueba Windows nativa. Cambios documentales de seguimiento no son avances de código.
+
+## Candidato T06 — 17 de noviembre de 2026
+- Rama revisada: feat/v0.1-t06-entrega-windows; código exportado e40276a5cb769e53794cd1f64832796772ec060f.
+- Comparación contra 036553c: dos commits por delante y base conservada; lógica/escenas sin cambios listados. Revisados ESTADO, continuidad y reporte T06-paquete.json.
+- Evidencia publicada: lógica365/0, gráfica fuentes250/0 y PCK Linux145/0; exportación/ZIP/extracción/hashes aprobados según entrega. No repetidos aquí, sin inspección directa del ZIP ni capturas.
+- SHA256 ZIP aded62eaf281846fba54e2cd5437d3df8911b4cf1b34589b409e6f33a3adacda, 35977332 bytes. Windows nativo y prueba humana pendientes; release bloqueada por Forbidden reportado.
+- Encargo actualizado en main para completar publicación y prueba; no iniciar V0.2. Estos cambios documentales no constituyen avance de programación.
