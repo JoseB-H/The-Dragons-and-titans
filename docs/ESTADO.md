@@ -1,13 +1,14 @@
 # Estado del proyecto
 
-## Situación actual — entrega T05 (17 de noviembre de 2026)
-**T05 implementada y comprobada en Linux**, conservando T01–T04 y Godot 4.6.3
-Compatibility. La partida tiene estados jugando/victoria/derrota, bloquea a ambos
-actores y el daño al terminar, y permite reiniciar con R o botón mediante ratón y
-teclado. HUD y panel final comprobados en ventanas nativas de 1280×720 y 960×540.
-La siguiente tarea es **T06: validación integral y entrega para laptop**. T05
-completa el ciclo offline, pero V0.1 aún no tiene un paquete Windows comprobable.
-La validación nativa de Windows sigue **pendiente**.
+## Situación actual — candidato T06 (17 de noviembre de 2026)
+**T01–T05 conservadas y regresiones repetidas en Linux** con Godot 4.6.3
+Compatibility. T06 prepara un candidato **V0.1 RC1 Windows x86_64**, exportado
+realmente en release desde un commit identificado, con ZIP íntegro y guía española.
+El PCK exportado también pasó el ciclo gráfico completo en Godot Linux.
+**Windows nativo y manejo humano/laptop siguen pendientes**; T06 no está validada
+íntegramente. La release preliminar está bloqueada por `Forbidden` en la API:
+el ZIP se conserva en el entorno y se entrega mediante enlace de archivo del chat,
+sin URL estable de release verificada. Rama de código publicada, sin merge.
 
 ## Lectura
 - AGENTS.md: instrucciones para agentes.
@@ -23,15 +24,15 @@ La validación nativa de Windows sigue **pendiente**.
 | T03 Combate y enemigo | Terminada (Linux) | Núcleo 51/0, integración 52/0, gráfica T03 34/0; regresión T02 34/0 y 22/0; importación/arranque sin errores |
 | T04 Habilidades | Terminada (Linux) | Q 57/0, E 78/0, integración 42/0, ventana 49/0; regresión T02/T03 y arranque sin errores |
 | T05 Ciclo e interfaz | Terminada (Linux) | Estados 51/0, ventana 145/0 en dos tamaños; regresiones T02–T04 sin fallos y seis capturas inspeccionadas |
-| T06 Validación y entrega | Pendiente | Sin ejecución registrada |
+| T06 Validación y entrega | Candidato preparado; cierre parcial | Lógica Linux 365/0, gráfica de fuentes 250/0; exportación Windows/ZIP verificados; PCK en Linux 145/0. Windows nativo y release alojada pendientes |
 
 ## Próxima acción
-Implementar **T06 — Validación y entrega**, tras leer el encargo vigente de main,
-los documentos y el código real. Base de continuidad: rama T05 y sus commits de
-código/cierre, sin perder T01–T04. Validar el hito y preparar un paquete Windows
-descargable con instrucciones para la laptop, distinguiendo exportación desde
-Linux de ejecución nativa. Avisar al usuario cuando esa entrega sea jugable y
-visualmente clara; T05 no acredita esa entrega ni la validación de Windows.
+Completar **T06** antes de V0.2: probar el candidato en Windows nativo/laptop con
+la guía incluida y registrar sistema/GPU, resultados y capturas. Si aparece un
+fallo, corregirlo antes de ampliar mecánicas. Publicar el mismo ZIP y sidecar en
+una release preliminar ligada a `e40276a` cuando el acceso a GitHub API lo permita;
+descargar ese artefacto y comparar el SHA256. No se hizo merge ni se modificó la
+configuración de red para sortear el bloqueo. Conservar T01–T05 y esta rama T06.
 
 ## Registro del incremento T01
 
@@ -441,17 +442,155 @@ prolongado ni prueba Windows. `git diff --check` limpio y caché Godot excluida.
 La revisión documental final no encontró contradicciones entre alcance, pruebas,
 referencias SHA y pendientes de T06/Windows.
 
+## Registro del incremento T06 — candidato Windows
+
+### Referencias y conservación
+- Base exacta: `036553c7a9bd364f2e6d865a3d17b3ce46254ab1`, cierre T05 conservado.
+  Nueva rama: `feat/v0.1-t06-entrega-windows`, publicada mediante Git sin merge,
+  rebase ni force push. T01–T05 no tienen cambios de lógica, escenas ni balance.
+- Código/configuración exportados: `e40276a5cb769e53794cd1f64832796772ec060f`.
+  El cierre documental es un commit posterior; **el ZIP identifica e40276a**,
+  no el commit documental. `git diff 036553c..e40276a` confirma que scripts,
+  escenas y project.godot del juego están intactos.
+- Encargo leído de main en `a19f7d0255c7ca997099d59cfc913d564339db6d` mediante
+  `git show origin/main:docs/SIGUIENTE_TAREA.md`, conservando ESTADO de T05.
+
+### Exportación y paquete
+- `game/export_presets.cfg`: preset **Windows x86_64**, release, Compatibility,
+  EXE/PCK externos, `tests/*` excluidos. Sin firma ni modificación de recursos EXE.
+- `tools/package_windows.py`: Python 3.12+, biblioteca estándar; exporta un
+  `git archive` del SHA indicado con XDG/caché temporales, sin cambios locales.
+  Comprueba versión exacta de Godot y plantillas, incluye guía/licencias/manifiesto,
+  verifica PE x86_64, PCK, CRC y extracción limpia con SHA256 de los archivos.
+  Genera ZIP, sidecar SHA256, reporte JSON y log, sin reemplazar un ZIP existente.
+- `docs/entrega/LEEME-WINDOWS.txt`: extracción completa, EXE sin instalar Godot,
+  controles/objetivo, dos tamaños, ganar/perder/bloqueo y tres reinicios R/botón,
+  entradas retenidas y reporte con Windows/GPU/captura/log/SHA. No recomienda
+  desactivar protecciones del sistema ni promete rendimiento/requisitos medidos.
+- `docs/entrega/LICENCIAS-GODOT.txt`: copia completa de COPYRIGHT.txt oficial de
+  Godot `4.6.3-stable`, incluidos motor y terceros. SHA256:
+  `b3330849267d56ddd3d62a513817506606c2195034411fe05859f0140bff9d8a`.
+  Fuente: `https://raw.githubusercontent.com/godotengine/godot/4.6.3-stable/COPYRIGHT.txt`.
+- Plantillas estándar oficiales de `godotengine/godot-builds`, versión4.6.3:
+  `Godot_v4.6.3-stable_export_templates.tpz`, verificado contra SHA512 publicado:
+  `da606b61c10157844f8300172df374472665f95015495cb1a7cd132c40ede404faa96cc1016a4b9662db9909ddea69632c4948b2cd11163438dad4808881fb68`.
+  Solo se extrajeron `version.txt` y `windows_release_x86_64.exe`. ZIP/TPZ, EXE,
+  PCK y cachés no se versionan; quedan bajo builds/ ignorado o /tmp.
+- Comando final real, desde la raíz del repositorio:
+  `python3 tools/package_windows.py --ref HEAD --templates /tmp/dragons-t06/templates --output-dir builds/t06`
+  ejecutado cuando HEAD era `e40276a5cb769e53794cd1f64832796772ec060f`, salida0.
+  El script ejecutó importación y `godot --headless --path <copia>/game --export-release "Windows x86_64" <paquete>/DragonsAndTitans.exe`, sin errores ni avisos de exportación.
+  README contiene reproducción completa con SHA explícito y comprobación de plantillas.
+  Se reproduce el proceso, sin prometer ZIP idéntico bit a bit por marcas temporales.
+
+**Artefacto:** `builds/t06/DragonsAndTitans-v0.1-rc1-windows-x86_64-e40276a.zip`,
+**35 977 332 bytes** (34.31 MiB).
+SHA256: `aded62eaf281846fba54e2cd5437d3df8911b4cf1b34589b409e6f33a3adacda`.
+Sidecar: mismo nombre con sufijo `.sha256`. Enlace de archivo entregado en el chat;
+no hay todavía URL estable de GitHub Release. Los fuentes de la rama no incluyen
+el binario y no deben ofrecerse como sustituto de esa descarga.
+
+| Archivo dentro de la carpeta del ZIP | Bytes |
+| --- | ---: |
+| DragonsAndTitans.exe | 104 659 456 |
+| DragonsAndTitans.pck | 65 124 |
+| LEEME.txt | 4 314 |
+| LICENCIAS-GODOT.txt | 99 790 |
+| VERSION.json | 551 |
+| SHA256SUMS.txt | 415 |
+
+VERSION.json identifica SHA exportado, versión exacta, release, arquitectura,
+Compatibility y hashes de preset/plantilla. Declara `native_windows_tested=false`
+y `human_laptop_tested=false`. Integridad: ZIP CRC correcto, seis archivos exactos,
+cinco hashes internos distintos/correctos y extracción en carpeta vacía.
+
+### Validación Linux repetida desde copias limpias
+Godot `4.6.3.stable.official.7d41c59c4`, Python3.12.14, Linux x86_64.
+Dos copias creadas mediante `git archive` del SHA base036553c, inicialmente sin
+`.godot`; los 81 archivos tracked coinciden antes y después. Ese código de juego
+es idéntico al exportado en e40276a. Variables XDG propias en /tmp para cada copia.
+Gráficos: Xorg1.21.1.16 dummy temporal `:94`, Compatibility OpenGL4.5, Mesa25.0.7
+llvmpipe. Todas las suites finalizaron con salida0, sin errores de scripts.
+
+| Suite/comprobación | Resultado |
+| --- | --- |
+| `godot --headless --path game --import` y `--quit-after 120` | Importación y arranque limpios |
+| `test_t02.gd` | 34/0 |
+| `test_combat_core.gd` | 51/0 |
+| `test_t03.gd` | 52/0 |
+| `test_power_projectile.gd` | 57/0 |
+| `test_pulse.gd` | 78/0 |
+| `test_t04.gd` | 42/0 |
+| `test_match_state.gd` | 51/0 |
+| Total lógica | **365 comprobaciones, 0 fallos** |
+| `test_t02_window.gd` | 22/0 |
+| `test_t03_window.gd` | 34/0 |
+| `test_t04_window.gd` | 49/0 |
+| `test_t05_window.gd` | 145/0 |
+| Total gráfica de fuentes | **250 comprobaciones, 0 fallos** |
+
+Comandos headless: `godot --headless --path game --script res://tests/<suite>.gd`.
+Ventana: `DISPLAY=:94 godot --path game --display-driver x11 --audio-driver Dummy --script res://tests/<suite>.gd -- --output-dir=/tmp/dragons-t06-graphics/capturas`.
+Comandos, versiones y salidas conservados en `docs/validacion/T06-headless-linux.log`
+y `T06-graficas-linux.log`. Único aviso Godot gráfico: V-Sync no soportado por
+driver virtual; Xorg también registró ausencia del bus D-Bus. Servidores temporales
+propios detenidos al terminar. No se cambiaron ni relajaron aserciones.
+
+### Comprobación del contenido exportado y revisión independiente
+- PCK final extraído del ZIP: SHA256
+  `9d51e43f92bb8645fbb1271cdfdc16564f14f2b154182e080e4d4f47508c4dfd`.
+  Inspección de 37 entradas, formato3/Godot4.6.3, rangos y MD5 internos correctos;
+  arena presente y sin tests, preset, docs, caché del editor ni rutas del desarrollador.
+  Los remaps/recursos internos `.godot` del paquete son datos de ejecución necesarios.
+- Carga del PCK final fuera del proyecto con
+  `godot --headless --main-pack <extraído>/DragonsAndTitans.pck --quit-after 120`:
+  salida0 sin errores. **Godot Linux cargando datos exportados, no el EXE Windows**.
+- Se ejecutó además `test_t05_window.gd` como script externo al PCK final, con
+  `--main-pack`, servidor X11 y los dos tamaños: **145/0**, salida0. Comprueba
+  victoria/derrota, bloqueo, foco/botón/R y tres reinicios por tamaño sobre los
+  recursos exportados. Hash PCK intacto antes/después. Registro específico en
+  `docs/validacion/T06-pck-graficas-linux.log`; tampoco acredita Windows nativo.
+- Se inspeccionaron seis capturas nativas del PCK en 1280×720 y 960×540, jugando,
+  victoria y derrota: HUD legible/sin recorte, jugador visible, resultado y botón
+  enfocado claros. Evidencia propia `docs/validacion/T06-pck-*-linux.png`.
+  Entrada automatizada e inspección estática, sin sesión humana prolongada.
+- Revisión independiente de script/preset/guía y ZIP final: sin hallazgos.
+  Verificó extracción propia, PE32+ AMD64 idéntico a plantilla, hashes/tamaños,
+  VERSION/LEEME/licencias/preset frente a `git show e40276a`, y PCK internamente.
+  No ejecutó Windows ni repitió las suites; agentes separados ejecutaron lógica
+  y gráficos. Reporte del paquete en `docs/validacion/T06-paquete.json`.
+- Revisión documental final sin contradicciones entre artefacto, SHA/hash,
+  resultados y pendientes. `git diff --check` limpio, caché y binarios excluidos.
+
+### Publicación y pendientes de T06
+- Rama publicada por Git con código e40276a. El intento concreto fue:
+  `gh release create v0.1-rc1-t06 <ZIP> <ZIP.sha256> --repo JoseB-H/The-Dragons-and-titans --target e40276a5cb769e53794cd1f64832796772ec060f --prerelease --title <título> --notes-file <notas>`.
+- Salida1 antes de crear/adjuntar:
+  `error checking for existing release: Head "https://api.github.com/repos/JoseB-H/The-Dragons-and-titans/releases/tags/v0.1-rc1-t06": Forbidden`.
+  Una comprobación HTTPS directa también recibió `CONNECT tunnel failed, response 403`.
+  La política de red observada no incluye `api.github.com` ni `uploads.github.com`;
+  no se acredita permiso del servicio ni se modifica la política para eludirlo.
+  `git ls-remote --tags origin v0.1-rc1-t06` no devolvió un tag nuevo.
+- ZIP/sidecar conservados y enlazados desde el chat. **Publicación estable y
+  comprobación de descarga remota/hash pendientes**. Registro exacto en
+  `docs/validacion/T06-publicacion.log`; no se inventa URL ni se adjunta binario a Git.
+- **Windows nativo pendiente:** no hay entorno Windows disponible; este es Linux,
+  no se ejecutó el EXE, ni con Wine ni en Windows. **Prueba humana en laptop pendiente**.
+  Candidato listo para que el usuario descargue/extraiga y pruebe con LEEME;
+  no declarar T06 validada íntegramente ni V0.1 aceptada hasta registrar esa prueba.
+
 ## Limitaciones conocidas
-- **Windows pendiente:** no se ejecutó el editor ni se exportó/probó un `.exe` en
-  Windows. Los comandos de Windows están documentados, no verificados en esta máquina Linux.
+- **Windows nativo pendiente:** se exportó un `.exe` release desde Linux, pero no
+  se ejecutó en Windows. Editor, GPU/controladores Windows y guía de PowerShell
+  siguen sin verificación nativa; exportación no equivale a compatibilidad probada.
 - Validación gráfica mediante renderizado por software y entrada automatizada en
   Linux, con inspección de capturas. No hubo sesión humana prolongada de manejo,
   prueba de GPU física ni interacción con el escritorio compartido. El seguimiento
   se verificó por fotograma; la sensación de manejo requiere evaluación del usuario.
-- T05 completa el ciclo offline comprobado en Linux. La aceptación integral y
-  entrega de V0.1 siguen pendientes de T06.
-- La prueba en laptop y paquete Windows descargable se prepararán en T06.
-  No se exportó ni ejecutó Windows en T05; no se declara listo el hito completo.
+- T05 completa el ciclo offline; T06 aporta un candidato exportado, con ZIP y
+  datos comprobados en Linux. La aceptación integral de V0.1 sigue pendiente.
+- La prueba en laptop y Windows nativo siguen pendientes; release alojada
+  bloqueada por acceso API. El ZIP local se entrega en el chat y no está en Git.
 - Chat compartido no accesible durante la preparación inicial; no se presupone su contenido.
 - Wiki pendiente de investigar y contrastar.
 - Cinco capturas de referencia del usuario pendientes de incorporar al repositorio;

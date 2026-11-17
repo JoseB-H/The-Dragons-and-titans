@@ -1,0 +1,150 @@
+T06 — Exportación real de candidato Windows desde Linux
+Código: e40276a5cb769e53794cd1f64832796772ec060f
+Comando: python3 tools/package_windows.py --ref HEAD --templates /tmp/dragons-t06/templates --output-dir builds/t06
+HEAD en ese momento: e40276a5cb769e53794cd1f64832796772ec060f
+Salida del script: 0. Godot4.6.3, Python3.12.14, Linux x86_64.
+Plantillas oficiales verificadas contra SHA512 publicado antes de extraer.
+No se ejecutó EXE Windows ni se acredita validación nativa.
+
+$ /usr/local/bin/godot --headless --path /tmp/dragons-windows-_huclfw0/source/game --import
+Godot Engine v4.6.3.stable.official.7d41c59c4 - https://godotengine.org
+
+[   0% ] first_scan_filesystem | Started Project initialization (5 steps)
+[   0% ] first_scan_filesystem | Scanning file structure...
+[  16% ] first_scan_filesystem | Loading global class names...
+[  33% ] first_scan_filesystem | Verifying GDExtensions...
+[  50% ] first_scan_filesystem | Creating autoload scripts...
+[  66% ] first_scan_filesystem | Initializing plugins...
+[  83% ] first_scan_filesystem | Starting file scan...
+[ DONE ] first_scan_filesystem
+
+[   0% ] update_scripts_classes | Started Registering global classes... (20 steps)
+[   0% ] update_scripts_classes | 
+[   4% ] update_scripts_classes | 
+[   9% ] update_scripts_classes | 
+[  14% ] update_scripts_classes | 
+[  19% ] update_scripts_classes | 
+[  23% ] update_scripts_classes | 
+[  28% ] update_scripts_classes | 
+[  33% ] update_scripts_classes | 
+[  38% ] update_scripts_classes | 
+[  42% ] update_scripts_classes | 
+[  47% ] update_scripts_classes | 
+[  52% ] update_scripts_classes | 
+[  57% ] update_scripts_classes | 
+[  61% ] update_scripts_classes | 
+[  66% ] update_scripts_classes | 
+[  71% ] update_scripts_classes | 
+[  76% ] update_scripts_classes | 
+[  80% ] update_scripts_classes | 
+[  85% ] update_scripts_classes | 
+[  90% ] update_scripts_classes | 
+[ DONE ] update_scripts_classes
+
+[   0% ] loading_editor_layout | Started Loading editor (5 steps)
+[   0% ] loading_editor_layout | Loading editor layout...
+[  16% ] loading_editor_layout | Loading docks...
+[ DONE ] loading_editor_layout
+
+$ /usr/local/bin/godot --headless --path /tmp/dragons-windows-_huclfw0/source/game --export-release Windows x86_64 /tmp/dragons-windows-_huclfw0/DragonsAndTitans-v0.1-rc1-windows-x86_64-e40276a/DragonsAndTitans.exe
+Godot Engine v4.6.3.stable.official.7d41c59c4 - https://godotengine.org
+
+[   0% ] first_scan_filesystem | Started Project initialization (5 steps)
+[   0% ] first_scan_filesystem | Scanning file structure...
+[  16% ] first_scan_filesystem | Loading global class names...
+[  33% ] first_scan_filesystem | Verifying GDExtensions...
+[  50% ] first_scan_filesystem | Creating autoload scripts...
+[  66% ] first_scan_filesystem | Initializing plugins...
+[  83% ] first_scan_filesystem | Starting file scan...
+[ DONE ] first_scan_filesystem
+
+[   0% ] savepack | Started Packing (102 steps)
+[   1% ] savepack | Storing File: res://.godot/exported/133200997/export-a4de5e1f3ea5bccc0e835cc4a2e40ae5-arena.scn
+[   6% ] savepack | Storing File: res://.godot/exported/133200997/export-a3608239ca84a5c7481d34892e68360d-dragon.scn
+[  12% ] savepack | Storing File: res://.godot/exported/133200997/export-410904a97c0728cf5788b9968f2c8d49-dragon_visual.scn
+[  18% ] savepack | Storing File: res://.godot/exported/133200997/export-a930820ec0ab16db6719aff4daa500f9-enemy.scn
+[  24% ] savepack | Storing File: res://.godot/exported/133200997/export-38bf74ff262409a94a41206b2b776d33-hud.scn
+[  30% ] savepack | Storing File: res://.godot/exported/133200997/export-f88cca9649118425ca358bb338f1dee3-power_projectile.scn
+[  35% ] savepack | Storing File: res://.godot/exported/133200997/export-a882d3c243bffac1c7822c1c45b18505-projectile.scn
+[  41% ] savepack | Storing File: res://.godot/exported/133200997/export-198f5c27242f66a60ed572bd0e9f1323-pulse_effect.scn
+[  47% ] savepack | Storing File: res://scripts/arena.gdc
+[  52% ] savepack | Storing File: res://scripts/combat_actor.gdc
+[  58% ] savepack | Storing File: res://scripts/dragon_controller.gdc
+[  64% ] savepack | Storing File: res://scripts/enemy_controller.gdc
+[  69% ] savepack | Storing File: res://scripts/hud.gdc
+[  75% ] savepack | Storing File: res://scripts/projectile.gdc
+[  81% ] savepack | Storing File: res://scripts/pulse_ability.gdc
+[  87% ] savepack | Storing File: res://scripts/pulse_effect.gdc
+[  93% ] savepack | Storing File: res://scripts/weapon.gdc
+[  93% ] savepack | Storing File: res://scenes/arena.tscn.remap
+[  93% ] savepack | Storing File: res://scenes/dragon.tscn.remap
+[  93% ] savepack | Storing File: res://scenes/dragon_visual.tscn.remap
+[  93% ] savepack | Storing File: res://scenes/enemy.tscn.remap
+[  93% ] savepack | Storing File: res://scenes/hud.tscn.remap
+[  93% ] savepack | Storing File: res://scenes/power_projectile.tscn.remap
+[  93% ] savepack | Storing File: res://scenes/projectile.tscn.remap
+[  93% ] savepack | Storing File: res://scenes/pulse_effect.tscn.remap
+[  93% ] savepack | Storing File: res://scripts/arena.gd.remap
+[  93% ] savepack | Storing File: res://scripts/combat_actor.gd.remap
+[  93% ] savepack | Storing File: res://scripts/dragon_controller.gd.remap
+[  93% ] savepack | Storing File: res://scripts/enemy_controller.gd.remap
+[  93% ] savepack | Storing File: res://scripts/hud.gd.remap
+[  93% ] savepack | Storing File: res://scripts/projectile.gd.remap
+[  93% ] savepack | Storing File: res://scripts/pulse_ability.gd.remap
+[  93% ] savepack | Storing File: res://scripts/pulse_effect.gd.remap
+[  93% ] savepack | Storing File: res://scripts/weapon.gd.remap
+[  93% ] savepack | Storing File: res://.godot/global_script_class_cache.cfg
+[  93% ] savepack | Storing File: res://.godot/uid_cache.bin
+[  93% ] savepack | Storing File: res://project.binary
+[ DONE ] savepack
+
+
+[exit 0]
+
+Inspección del PCK final con Godot Linux fuera del proyecto:
+Godot Engine v4.6.3.stable.official.7d41c59c4 - https://godotengine.org
+
+res://.godot/exported/133200997/export-198f5c27242f66a60ed572bd0e9f1323-pulse_effect.scn
+res://.godot/exported/133200997/export-38bf74ff262409a94a41206b2b776d33-hud.scn
+res://.godot/exported/133200997/export-410904a97c0728cf5788b9968f2c8d49-dragon_visual.scn
+res://.godot/exported/133200997/export-a3608239ca84a5c7481d34892e68360d-dragon.scn
+res://.godot/exported/133200997/export-a4de5e1f3ea5bccc0e835cc4a2e40ae5-arena.scn
+res://.godot/exported/133200997/export-a882d3c243bffac1c7822c1c45b18505-projectile.scn
+res://.godot/exported/133200997/export-a930820ec0ab16db6719aff4daa500f9-enemy.scn
+res://.godot/exported/133200997/export-f88cca9649118425ca358bb338f1dee3-power_projectile.scn
+res://.godot/global_script_class_cache.cfg
+res://.godot/uid_cache.bin
+res://project.binary
+res://scenes/arena.tscn.remap
+res://scenes/dragon.tscn.remap
+res://scenes/dragon_visual.tscn.remap
+res://scenes/enemy.tscn.remap
+res://scenes/hud.tscn.remap
+res://scenes/power_projectile.tscn.remap
+res://scenes/projectile.tscn.remap
+res://scenes/pulse_effect.tscn.remap
+res://scripts/arena.gd.remap
+res://scripts/arena.gdc
+res://scripts/combat_actor.gd.remap
+res://scripts/combat_actor.gdc
+res://scripts/dragon_controller.gd.remap
+res://scripts/dragon_controller.gdc
+res://scripts/enemy_controller.gd.remap
+res://scripts/enemy_controller.gdc
+res://scripts/hud.gd.remap
+res://scripts/hud.gdc
+res://scripts/projectile.gd.remap
+res://scripts/projectile.gdc
+res://scripts/pulse_ability.gd.remap
+res://scripts/pulse_ability.gdc
+res://scripts/pulse_effect.gd.remap
+res://scripts/pulse_effect.gdc
+res://scripts/weapon.gd.remap
+res://scripts/weapon.gdc
+PCK: 37 archivos; arena presente; tests/cache editor excluidos: true
+[exit 0]
+
+Arranque del PCK final con Godot Linux, --quit-after 120:
+Godot Engine v4.6.3.stable.official.7d41c59c4 - https://godotengine.org
+
+[exit 0]

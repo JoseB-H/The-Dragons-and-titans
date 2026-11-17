@@ -81,3 +81,26 @@ Comparar ramas y cambios de código contra esta referencia o la última entrega 
 - Sin permisos nuevos ni PR/merge. **Windows, GPU física y manejo humano
   prolongado pendientes**. Siguiente T06: validación integral y entrega comprobable
   para laptop; T05 no acredita el paquete ni V0.1 completa.
+
+## Entrega candidata T06 — 17 de noviembre de 2026
+- Base `036553c7a9bd364f2e6d865a3d17b3ce46254ab1`; rama publicada
+  `feat/v0.1-t06-entrega-windows`, sin merge ni force push. Encargo main `a19f7d0`.
+  Código/configuración exportados `e40276a5cb769e53794cd1f64832796772ec060f`;
+  cierre documental posterior. No cambian scripts/escenas/project.godot de T01–T05.
+- Agentes de validación: copias limpias git archive, importación/arranque limpios,
+  lógica365/0 y gráfica de fuentes250/0. Godot4.6.3 Compatibility en Linux.
+- Exportación real release Windows x86_64 con plantilla oficial4.6.3 verificada
+  contra SHA512. ZIP35 977 332bytes; SHA256
+  `aded62eaf281846fba54e2cd5437d3df8911b4cf1b34589b409e6f33a3adacda`.
+- Revisión independiente de preset/script/guía/paquete: sin hallazgos. Extracción
+  propia, CRC/hashes/manifest correctos; PE32+ AMD64 idéntico a plantilla; PCK37
+  entradas con rangos y MD5 correctos, sin tests ni archivos innecesarios.
+- Prueba adicional del PCK exportado con Godot Linux: arranque120 y ventana
+  T05 145/0 en ambos tamaños. Seis capturas inspeccionadas; hash PCK intacto.
+  **No se ejecutó el EXE ni Windows nativo**; no hubo manejo humano/laptop.
+- Publicación Git aprobada; release preliminar bloqueada por API `Forbidden`
+  en consulta HEAD previa a crear/adjuntar. No tag nuevo ni URL remota de ZIP
+  verificados. Artefacto/sidecar conservados en builds/t06 y entregados por chat;
+  sin binarios grandes en Git ni cambios de permisos/red para eludir el bloqueo.
+- **T06 parcial:** Windows nativo, laptop, release alojada y descarga remota/hash
+  pendientes. Corregir fallos de esa prueba antes de V0.2; no declarar V0.1 aceptada.

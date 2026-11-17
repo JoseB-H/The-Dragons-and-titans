@@ -2,16 +2,39 @@
 
 Recreación independiente y progresiva. El primer hito es una arena offline;
 el estado actual incorpora **T01–T05**: arena offline con dragón, combate,
-dos habilidades y ciclo de juego, victoria/derrota y reinicio. La entrega
-comprobable y el paquete para laptop (T06) siguen pendientes.
+dos habilidades y ciclo de juego, victoria/derrota y reinicio. T06 añade un
+**candidato Windows x86_64 exportado desde Linux**; su ejecución nativa y la
+prueba humana en laptop siguen pendientes.
+
+## Candidato Windows para la laptop
+
+Archivo: `DragonsAndTitans-v0.1-rc1-windows-x86_64-e40276a.zip` (35 977 332 bytes).
+Se entrega como archivo descargable del chat y se conserva en `builds/t06/` del
+entorno. La publicación de una release preliminar en GitHub está **bloqueada**:
+la consulta API previa a crearla devuelve `Forbidden`. No hay URL de release
+verificada; descargar el código de esta rama no descarga el ejecutable.
+
+Extraer **todo** el ZIP y abrir `DragonsAndTitans.exe`, manteniendo el PCK en la
+misma carpeta. No requiere instalar Godot ni iniciar sesión. Leer `LEEME.txt`,
+también disponible en [docs/entrega/LEEME-WINDOWS.txt](docs/entrega/LEEME-WINDOWS.txt).
+WASD mueve, el ratón orienta, clic dispara, Q/E activan habilidades y R o el botón
+final reinician. El paquete es candidato para prueba; no tiene rendimiento ni
+requisitos mínimos medidos y **no está probado en Windows nativo**.
+
+Código exportado: `e40276a5cb769e53794cd1f64832796772ec060f`.
+SHA256 del ZIP: `aded62eaf281846fba54e2cd5437d3df8911b4cf1b34589b409e6f33a3adacda`.
+El ZIP incluye VERSION.json, licencias y hashes de sus archivos. El sidecar
+`.zip.sha256` permite comprobar la descarga con `Get-FileHash -Algorithm SHA256`.
 
 ## Requisitos
 
 - **Godot 4.6.3 estable**, edición estándar con GDScript (no hace falta .NET).
   Versión usada: `4.6.3.stable.official.7d41c59c4`.
 - Renderizador **Compatibility** (`gl_compatibility`), configurado en el proyecto.
-- Plataforma objetivo: PC Windows. Las comprobaciones de esta entrega se realizan
-  en Linux; no hay exportación ni ejecución nativa en Windows verificada todavía.
+- Plataforma objetivo: PC Windows. Exportación release Windows verificada desde
+  Linux; ejecución nativa en Windows pendiente. La lógica y los gráficos se
+  comprobaron en Linux. Los requisitos anteriores son para abrir el proyecto;
+  el ZIP candidato contiene su motor y no requiere instalar Godot.
 
 Descargar la edición correspondiente al sistema desde la
 [publicación oficial de Godot 4.6.3](https://github.com/godotengine/godot/releases/tag/4.6.3-stable).
@@ -42,7 +65,8 @@ $Godot = 'C:\Herramientas\Godot_v4.6.3-stable_win64.exe'
 & $Godot --path .\game
 ```
 
-Cerrar la ventana para terminar. No se ha generado un ejecutable Windows.
+Cerrar la ventana para terminar. Los comandos del editor en Windows aún no se
+han ejecutado en ese sistema; el candidato descargable se exportó desde Linux.
 
 ## Controles provisionales de T02–T05
 
@@ -132,8 +156,8 @@ configuración inválida no crean efectos ni consumen recarga. El HUD muestra
 `Q: LISTA`/`E: LISTA`, segundos restantes o `BLOQUEADA` al terminar la partida.
 **R** también elimina efectos de E/proyectiles de Q y restaura sus recargas.
 Todos los valores, materiales y geometrías son provisionales y propios.
-Las habilidades ya forman parte del ciclo T05. Falta T06 antes de entregar un
-paquete comprobable para laptop. La ejecución nativa de Windows continúa pendiente.
+Las habilidades ya forman parte del ciclo T05 y del candidato T06 exportado.
+La ejecución nativa de Windows y la aceptación humana en laptop siguen pendientes.
 
 ## Ciclo de partida T05
 
@@ -156,8 +180,8 @@ y las solicitudes rápidas no deben producir acciones ni escenas duplicadas.
 El HUD se comprueba en ventana de **1280×720** y **960×540**, con escalado de Godot:
 objetivo/controles/vida/recargas arriba, resultado y botón abajo, jugador visible
 al centro. Son recursos provisionales propios. Esto completa el ciclo offline,
-pero aún falta T06, el paquete Windows y la comprobación en laptop; no se ha
-validado ejecución nativa Windows ni manejo humano prolongado.
+pero la aceptación integral T06 sigue pendiente: el paquete Windows es un
+candidato exportado, sin ejecución nativa Windows ni manejo humano prolongado.
 
 ## Comprobaciones reproducibles
 
@@ -251,6 +275,35 @@ export XDG_CACHE_HOME=/tmp/dragons-t01/cache
 export XDG_DATA_HOME=/tmp/dragons-t01/data
 export XDG_CONFIG_HOME=/tmp/dragons-t01/config
 ```
+
+## Reproducir la exportación Windows T06
+
+En Linux, con Python 3.12+, Godot exacto `4.6.3.stable.official.7d41c59c4`, curl y
+unzip, descargar las plantillas oficiales estándar (no .NET). Guardarlas fuera de
+Git y verificar su SHA512 publicado antes de extraer:
+
+```bash
+mkdir -p builds/godot-templates
+curl -fL https://github.com/godotengine/godot-builds/releases/download/4.6.3-stable/Godot_v4.6.3-stable_export_templates.tpz -o builds/Godot_v4.6.3-stable_export_templates.tpz
+printf '%s  %s\n' da606b61c10157844f8300172df374472665f95015495cb1a7cd132c40ede404faa96cc1016a4b9662db9909ddea69632c4948b2cd11163438dad4808881fb68 builds/Godot_v4.6.3-stable_export_templates.tpz | sha512sum --check
+unzip -j builds/Godot_v4.6.3-stable_export_templates.tpz templates/windows_release_x86_64.exe templates/version.txt -d builds/godot-templates
+python3 tools/package_windows.py --ref e40276a5cb769e53794cd1f64832796772ec060f --templates builds/godot-templates --output-dir builds/t06-reproduccion
+```
+
+El preset `game/export_presets.cfg` genera release x86_64 con EXE y PCK externos,
+sin firma ni modificación de recursos Windows. Excluye `tests/*`. El script usa
+`git archive` del SHA resuelto, importación y exportación en directorios temporales
+con XDG propios: no incorpora cambios sin commit ni necesita la caché del checkout.
+Incluye guía/licencias, VERSION.json con el SHA exacto y hashes de preset/plantilla,
+y SHA256SUMS.txt; verifica PE x86_64, PCK, CRC, extracción limpia y hashes. Conserva
+ZIP, sidecar, reporte JSON y log en el directorio elegido; no reemplaza un ZIP existente.
+Reproducir el proceso puede producir otro hash ZIP por marcas temporales del motor
+y del contenedor: comprobar el manifiesto y el nuevo sidecar, no prometer igualdad binaria.
+
+La inspección independiente del candidato encontró 37 entradas PCK válidas,
+sin tests ni cachés del editor. La carga de ese PCK con Godot Linux comprueba los
+datos exportados y se distingue de ejecutar `DragonsAndTitans.exe` en Windows.
+Los resultados, evidencia y pendientes están en [docs/ESTADO.md](docs/ESTADO.md).
 
 ## Estructura y recursos
 

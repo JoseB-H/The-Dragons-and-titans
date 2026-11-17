@@ -1,41 +1,41 @@
-# Encargo T05 completado — continuidad hacia T06
+# Continuidad T06 — candidato preparado, validación nativa pendiente
 
-T05 implementada y comprobada en Linux en `feat/v0.1-t05-ciclo-partida`.
-Código: `a9be6e5e31d0d6fe8c2c7acfb85264f72393f44d`; cierre documental posterior.
-Estados51/0, ventana145/0 en 1280×720 y 960×540, regresiones T02–T04 sin fallos.
-Comandos, capturas y límites en ESTADO.md y `docs/validacion/T05-linux.log`.
-Sin merge. **Windows nativo sigue pendiente**.
+Rama `feat/v0.1-t06-entrega-windows`, desde `036553c`, sin merge.
+Código exportado `e40276a5cb769e53794cd1f64832796772ec060f`; cierre documental posterior.
+ZIP local entregado en el chat: `builds/t06/DragonsAndTitans-v0.1-rc1-windows-x86_64-e40276a.zip`.
+SHA256 `aded62eaf281846fba54e2cd5437d3df8911b4cf1b34589b409e6f33a3adacda`.
+Lógica Linux365/0, gráfica de fuentes250/0 y PCK final en Linux145/0; exportación,
+ZIP, extracción y hashes aprobados. Windows nativo y manejo humano/laptop pendientes.
+Release preliminar bloqueada antes de crearla: API GitHub `Forbidden`.
 
-Siguiente tarea: **T06 — Validación y entrega** según IMPLEMENTACION.md y el
-próximo encargo de main. Conservar esta rama/código y T01–T04. Falta preparar y
-comprobar el paquete descargable para laptop; exportar desde Linux no acredita
-ejecución nativa Windows ni una sesión humana. No declarar V0.1 entregada todavía.
+## Próximo trabajo
+Completar T06: probar ese candidato en Windows nativo/laptop con LEEME, registrar
+Windows/GPU/resultados/capturas y corregir cualquier fallo antes de V0.2. Cuando
+se permita acceso a GitHub API, publicar ZIP+sidecar en release preliminar ligada
+al SHA exportado, comprobar descarga y hash y registrar URL. No sustituirlo por
+un enlace a fuentes ni declarar T06 íntegramente validada por exportar desde Linux.
+Conservar código, evidencia y T01–T05. Detalles en ESTADO.md.
 
-Se conserva debajo el encargo T05 leído de main en `a5ea2f1`, como referencia de
-aceptación; ya no es una tarea pendiente.
+Se conserva el encargo original de main `a19f7d0` como referencia:
 
-## Encargo original — T05: Ciclo e interfaz de partida
+## Encargo original — T06: validación y entrega para laptop
 
-## Base
-Partir de `37e1ee96e41023bb28965dcd87c90abdf0e706e8` en `feat/v0.1-t04-habilidades`, código `c0a02d1e2bf9b78d78164d764918c34bdaeaf0a0`, creando rama descriptiva. Conservar T01–T04. Leer este encargo de main sin sustituir ESTADO ni código recientes. Sin merge ni force push.
-Leer AGENTS.md y documentos obligatorios, README, arena.gd/arena.tscn, controladores, combat_actor.gd, weapon.gd, projectile.gd, pulse_ability.gd y suites T02–T04. Mantener Godot 4.6.3 Compatibility.
+## Base y contexto
+Crear rama descriptiva desde `036553c7a9bd364f2e6d865a3d17b3ce46254ab1` de `feat/v0.1-t05-ciclo-partida` (código T05 `a9be6e5e31d0d6fe8c2c7acfb85264f72393f44d`). Conservar T01–T05; sin merge ni force push. Leer este documento de main sin reemplazar ESTADO reciente. Leer AGENTS y documentos obligatorios, README, scripts/escenas de arena y HUD, suites T02–T05 y docs/validacion/T05-linux.log. Mantener Godot 4.6.3 Compatibility y recursos propios.
 
-## Implementación concreta
-1. Estados explícitos jugando, victoria y derrota. Vencer al enemigo gana; morir pierde. Definir resultado determinista si ambos mueren en el mismo tick y documentarlo como regla provisional; una transición final no se revierte ni duplica señales.
-2. Al terminar bloquear movimiento/combate de jugador e IA, básico/Q/E y cualquier daño pendiente. Retirar o neutralizar proyectiles activos para que no cambien salud/resultado tras el cierre. Mantener interfaz operativa y efectos sin acumulación. Evitar pausa global que impida reiniciar o deje entradas atascadas.
-3. HUD legible con objetivo, salud, controles y recargas; pantalla o panel final inequívoco de victoria/derrota y botón Reiniciar accesible mediante ratón y teclado. R reinicia desde final; conservar restauración durante juego si resulta útil y documentarla.
-4. Reutilizar recarga completa de escena: salud, posiciones, objetivo, recargas, efectos, proyectiles, estados e indicadores quedan iniciales. Gestionar teclas mantenidas, eco y clic del botón para no lanzar acciones accidentales al volver.
-5. Interfaz ajustada a ventana de laptop: comprobar 1280×720 y una ventana menor, sin texto cortado ni superposición que tape al jugador. Recursos provisionales propios; sin ampliar arte, catálogo ni sistemas online.
+## Trabajo concreto
+1. Repetir importación y suites críticas T02–T05 desde copia limpia; registrar comandos, versión y resultados. Corregir fallos antes de empaquetar, sin ampliar mecánicas ni arte.
+2. Preparar preset reproducible Windows x86_64 con plantillas de la misma versión. Excluir pruebas y archivos innecesarios del paquete. No versionar cachés, credenciales ni binarios grandes en Git.
+3. Exportar realmente una versión release y crear ZIP autocontenido (exe y PCK si es externo), instrucciones LEEME en español y SHA256. Registrar SHA exacto del código exportado, comando, versión, archivos y tamaño. Comprobar integridad/listado y extracción limpia; no depender de rutas del desarrollador.
+4. Ejecutar el paquete en Windows si existe entorno disponible: arranque, WASD/ratón, límites, básico/Q/E/recargas, victoria/derrota, bloqueo y tres reinicios con R/botón. Comprobar 1280×720 y 960×540, foco y teclas retenidas. Registrar sistema/GPU y evidencia real. Wine o exportación Linux no sustituyen ejecución Windows nativa.
+5. Si no hay Windows, entregar el paquete como candidato para prueba, con pendiente explícito y guía breve para el usuario: descargar, extraer todo, abrir exe, controles, ganar/perder/reiniciar y cómo reportar error/captura. No bloquear la preparación por falta de Windows ni declarar T06 validada íntegramente.
+6. Publicar un enlace descargable estable al ZIP, preferentemente mediante release preliminar ligada al SHA de la rama, sin merge. Verificar disponibilidad y hash del artefacto descargado cuando sea posible. Si permisos impiden adjuntarlo, conservar paquete/evidencia e informar el bloqueo exacto; un enlace al código fuente no equivale a ejecutable descargable.
 
-## Aceptación
-- Importación/arranque sin errores y regresiones T02–T04. Adaptar montajes que antes permitían combate después de muerte a los nuevos estados, sin retirar cobertura relevante; conservar pruebas aisladas de salud/proyectil/habilidades.
-- Ganar y perder mediante combate real; comprobar transición única, resultado definido en caso simultáneo y ausencia de daño/ataques/movimiento tras cierre, incluidos proyectiles en vuelo y Q/E pulsados.
-- Tres reinicios consecutivos alternando victoria y derrota, por R y botón: estado inicial completo, sin nodos/conexiones duplicados ni entradas pegadas. Probar varias pulsaciones rápidas de reinicio.
-- Validación gráfica de juego/victoria/derrota, foco y botón con teclado/ratón; capturas propias en resoluciones indicadas. Separar automatización, revisión visual y manejo humano.
-- Registrar comandos, resultados y limitaciones reales; priorizar corrección de fallos antes de T06. Windows sigue pendiente hasta ejecución nativa.
+## Aceptación y cierre
+- Regresiones aprobadas y sin errores de importación; evidencia de exportación real y paquete completo, reproducible e identificado por SHA/hash.
+- README y ESTADO distinguen: lógica Linux, revisión gráfica, exportación Windows, ejecución Windows nativa y manejo humano. No prometer rendimiento ni requisitos mínimos no medidos.
+- Entrega breve con enlace ZIP, controles, limitaciones y lista para prueba en laptop. V0.1 puede quedar como candidato jugable mientras Windows/usuario estén pendientes; no inventar resultados.
+- Actualizar ESTADO y continuidad; publicar rama, SHA código/cierre y URL del artefacto, sin merge. Si falla una prueba, el siguiente encargo es corregir ese fallo antes de V0.2.
 
-## Cierre
-Actualizar README y ESTADO.md, publicar rama y SHA de código/cierre, sin merge. Siguiente T06: validación integral y paquete Windows descargable con instrucciones para laptop. No afirmar compatibilidad nativa por exportar desde Linux. El usuario desea aviso cuando esté jugable y visualmente accesible: T05 completa el ciclo, pero aún falta la entrega comprobable T06.
-
-## Evidencia de base revisada
-Comparación remota T03→T04: dos commits, base conservada. Revisados estado, log y código de pulso/HUD; revisión estática parcial sin ejecutar Godot ni reinspeccionar imágenes. Log publicado: Q57/0, E78/0, integración42/0, gráfica49/0 y regresiones aprobadas. No constituyen pruebas repetidas por este seguimiento.
+## Revisión de base
+T05 conserva cierre T04 y añade dos commits. Revisados remotamente listado de cambios, ESTADO, arena.gd y log: estados51/0, gráfica145/0 y regresiones publicadas sin fallos. Revisión estática parcial; no se ejecutó Godot ni se reinspeccionaron capturas en este seguimiento. Windows y manejo humano pendientes.
