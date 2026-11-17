@@ -32,3 +32,10 @@ Comparar ramas y cambios de código contra esta referencia o la última entrega 
 - Log publicado: núcleo 51/0, integración 52/0, gráfica 34/0 y regresión T02 34/0 + 22/0. Gráfica anterior a última guardia de objetivo fuera del árbol; headless repetido después según log. No se repitieron pruebas ni inspección de imágenes aquí. Windows y manejo humano pendientes.
 - Encargo T04 actualizado en main: partir del cierre T03. Conservar revisión como referencia; los cambios de planificación no son avance de código.
 - Objetivo añadido por usuario: avisar al completar V0.1 jugable/legible y preparar prueba descargable para laptop Windows en T06.
+
+## Entrega T04 — 17 de noviembre de 2026
+- Rama: `feat/v0.1-t04-habilidades`; código `c0a02d1e2bf9b78d78164d764918c34bdaeaf0a0`; cierre `37e1ee96e41023bb28965dcd87c90abdf0e706e8`.
+- Comparación contra cierre T03: dos commits por delante, base conservada. Habilidades, efectos, entradas e indicadores incorporados.
+- Revisión remota parcial: AGENTS, ESTADO, listado comparativo, pulse_ability.gd, arena.gd y T04-linux.log. Sin bloqueo detectado en lo revisado; no equivale a auditoría completa.
+- Evidencia publicada: Q57/0, E78/0, integración42/0, gráfica49/0; regresiones T02 34/0+22/0 y T03 núcleo51/0, integración52/0, gráfica34/0. No se ejecutó Godot ni se reinspeccionaron imágenes aquí. Windows/manejo humano siguen pendientes.
+- Encargo T05 publicado en main; partir de cierre T04. Este cambio documental no es una nueva entrega de código. V0.1 aún requiere T05/T06 y paquete para laptop.
