@@ -117,3 +117,28 @@ Comparar ramas y cambios de código contra esta referencia o la última entrega 
 - Registro Windows/laptop preparado con campos pendientes y guía vigente. Sin
   Windows accesible ni informe nativo incorporado: no se declara prueba ejecutada
   o V0.1 aceptada. Esperar resultados reales y corregir fallos antes de V0.2.
+
+## Entrega V0.2 T01 — 17 de noviembre de 2026
+- Usuario reportó prueba del prototipo en laptop y valoración «decente». No indicó
+  OS/GPU, SHA o resultados individuales: no se marcan comprobaciones como aprobadas.
+  La misma petición autoriza V0.2 y prevalece sobre el encargo anterior de main.
+- Base `b42ceef776ce81b6af704466afb842f4959acd80`, rama nueva
+  `feat/v0.2-t01-seleccion-dragones`, sin merge ni force push. Código
+  `bc22940449b532d53789b29720237549a2de835c`; cierre documental posterior.
+  Rama/candidato V0.1 conservados; ZIP e40276a y sidecar con hash original intacto.
+- Implementador: importación/arranque limpios, perfiles 93/0, selector 64/0,
+  partida 46/0; regresiones headless 365/0. Ventana V0.2 777/0 en ambos tamaños,
+  dieciséis resultados y doce reinicios; regresiones gráficas 250/0.
+- Revisión independiente en copia de fuentes sin caché: importación y tres
+  suites nuevas 93/0, 64/0, 46/0. Revisión estática final de producción y pruebas
+  aprobada sin hallazgos. Datos separados, Cobre preservado, materiales/estado
+  aislados y navegación/reinicio por perfil comprobados.
+- Corregidos dos fallos reproducidos con cobertura: señal inicial transitoria de
+  salud al aplicar Jade y foco diferido sobre un botón retirado al navegar rápido.
+  Suites finales sin errores. No se retiraron aserciones ni se cambiaron tests heredados.
+- Revisión visual independiente de las dieciséis capturas nativas: sin hallazgos,
+  1280×720/960×540 correctos, selector/HUD/dragones/finales y botones legibles.
+  No ejecutó gráficos; inspeccionó imágenes de automatización Linux.
+- Evidencia en `docs/validacion/V02-T01-*` y capturas V02. No se exportó ni probó
+  V0.2 en Windows; la valoración general anterior no se atribuye al selector nuevo.
+  Selección de arma y ampliaciones quedan para otro incremento autorizado.

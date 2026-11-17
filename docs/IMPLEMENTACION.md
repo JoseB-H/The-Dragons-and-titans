@@ -27,6 +27,19 @@ Aceptación: se puede ganar, perder y reiniciar repetidamente. La victoria por l
 Documentar instalación, versión, importación y ejecución en Windows. Comprobar arranque, movimiento, orientación, límites, daño, recargas, victoria, derrota y tres reinicios consecutivos. Usar pruebas automatizadas para lógica crítica cuando aporten cobertura real; revisión visual para cámara, legibilidad y controles.
 Aceptación: registrar resultados reales y limitaciones. No generar ejecutables supuestamente probados si no se exportaron y ejecutaron.
 
+## V0.2 — primer incremento autorizado
+
+### T01 — Selección entre dos dragones y datos de balance
+Selector previo al combate con Cobre (balance V0.1) y Jade (más velocidad, menos
+salud/daño por impacto y recargas menores). Datos autoritativos en recursos
+separados de controladores y UI; materiales locales y geometría propia existente.
+Reiniciar conserva elección; al terminar se puede volver al selector y cambiar.
+Aceptación: selección con ratón/teclado, valores reales de salud/movimiento/daño/
+recargas, aislamiento de instancias, combate y reinicio por perfil, navegación
+única y regresiones V0.1; interfaz legible en1280×720 y960×540. Registrar pruebas
+y límites en ESTADO. Los nombres y cifras son provisionales, no datos originales.
+Armas elegibles, más dragones, guardado y ampliaciones requieren otro incremento.
+
 ## Arquitectura mínima sugerida
 - Arena: composición de escena y ciclo de partida.
 - DragonController: entrada y movimiento.

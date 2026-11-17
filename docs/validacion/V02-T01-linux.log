@@ -1,0 +1,150 @@
+V0.2 T01 — comprobaciones finales Linux, 17 de noviembre de 2026
+Rama: feat/v0.2-t01-seleccion-dragones
+Base: b42ceef776ce81b6af704466afb842f4959acd80
+Código comprobado: bc22940449b532d53789b29720237549a2de835c
+Godot4.6.3.stable.official.7d41c59c4, Compatibility, Linux x86_64.
+Directorio: /workspace/The-Dragons-and-titans
+XDG_CACHE_HOME/DATA_HOME/CONFIG_HOME propios bajo /tmp/dragons-v02/headless/ y window/.
+Gráficos: DISPLAY=:94, Xorg dummy temporal, OpenGL4.5, Mesa llvmpipe.
+Se conservan salidas finales sin secuencias ANSI; códigos finales0.
+Se recuperó una pausa del entorno y se repitieron solo las regresiones gráficas
+para registrar sus códigos de salida. No se repitió implementación.
+
+
+$ godot --headless --path game --import
+Godot Engine v4.6.3.stable.official.7d41c59c4 - https://godotengine.org
+
+[   0% ] first_scan_filesystem | Started Project initialization (5 steps)
+[   0% ] first_scan_filesystem | Scanning file structure...
+[  16% ] first_scan_filesystem | Loading global class names...
+[  33% ] first_scan_filesystem | Verifying GDExtensions...
+[  50% ] first_scan_filesystem | Creating autoload scripts...
+[  66% ] first_scan_filesystem | Initializing plugins...
+[  83% ] first_scan_filesystem | Starting file scan...
+[ DONE ] first_scan_filesystem
+
+[   0% ] update_scripts_classes | Started Registering global classes... (3 steps)
+[   0% ] update_scripts_classes | 
+[  25% ] update_scripts_classes | 
+[  50% ] update_scripts_classes | 
+[ DONE ] update_scripts_classes
+
+[   0% ] loading_editor_layout | Started Loading editor (5 steps)
+[   0% ] loading_editor_layout | Loading editor layout...
+[  16% ] loading_editor_layout | Loading docks...
+[ DONE ] loading_editor_layout
+[exit 0]
+
+$ godot --headless --path game --script res://tests/test_dragon_profiles.gd
+Godot Engine v4.6.3.stable.official.7d41c59c4 - https://godotengine.org
+
+V0.2 perfiles: 93 comprobaciones, 0 fallos
+[exit 0]
+
+$ godot --headless --path game --script res://tests/test_dragon_selection.gd
+Godot Engine v4.6.3.stable.official.7d41c59c4 - https://godotengine.org
+
+V0.2 selector: 64 comprobaciones, 0 fallos
+[exit 0]
+
+$ godot --headless --path game --script res://tests/test_v02_match.gd
+Godot Engine v4.6.3.stable.official.7d41c59c4 - https://godotengine.org
+
+V0.2 partida: 46 comprobaciones, 0 fallos
+[exit 0]
+
+$ godot --headless --path game --script res://tests/test_t02.gd
+Godot Engine v4.6.3.stable.official.7d41c59c4 - https://godotengine.org
+
+T02: 34 comprobaciones, 0 fallos
+[exit 0]
+
+$ godot --headless --path game --script res://tests/test_combat_core.gd
+Godot Engine v4.6.3.stable.official.7d41c59c4 - https://godotengine.org
+
+T03 núcleo: 51 comprobaciones, 0 fallos
+[exit 0]
+
+$ godot --headless --path game --script res://tests/test_t03.gd
+Godot Engine v4.6.3.stable.official.7d41c59c4 - https://godotengine.org
+
+T03 integración: 52 comprobaciones, 0 fallos
+[exit 0]
+
+$ godot --headless --path game --script res://tests/test_power_projectile.gd
+Godot Engine v4.6.3.stable.official.7d41c59c4 - https://godotengine.org
+
+T04 Q: 57 comprobaciones, 0 fallos
+[exit 0]
+
+$ godot --headless --path game --script res://tests/test_pulse.gd
+Godot Engine v4.6.3.stable.official.7d41c59c4 - https://godotengine.org
+
+T04 pulso: 78 comprobaciones, 0 fallos
+[exit 0]
+
+$ godot --headless --path game --script res://tests/test_t04.gd
+Godot Engine v4.6.3.stable.official.7d41c59c4 - https://godotengine.org
+
+T04 integración: 42 comprobaciones, 0 fallos
+[exit 0]
+
+$ godot --headless --path game --script res://tests/test_match_state.gd
+Godot Engine v4.6.3.stable.official.7d41c59c4 - https://godotengine.org
+
+T05 estado: 51 comprobaciones, 0 fallos
+[exit 0]
+
+$ godot --headless --path game --quit-after 120
+Godot Engine v4.6.3.stable.official.7d41c59c4 - https://godotengine.org
+[exit 0]
+
+$ DISPLAY=:94 godot --path game --display-driver x11 --audio-driver Dummy --script res://tests/test_v02_window.gd -- --output-dir=/tmp/dragons-v02/graphics
+Godot Engine v4.6.3.stable.official.7d41c59c4 - https://godotengine.org
+WARNING: Could not set V-Sync mode, as changing V-Sync mode is not supported by the graphics driver.
+     at: set_use_vsync (platform/linuxbsd/x11/gl_manager_x11.cpp:364)
+OpenGL API 4.5 (Core Profile) Mesa 25.0.7-2+deb13u1 - Compatibility - Using Device: Mesa - llvmpipe (LLVM 19.1.7, 256 bits)
+
+V0.2 ventana: 777 comprobaciones, 0 fallos; capturas en /tmp/dragons-v02/graphics
+[exit 0]
+
+$ DISPLAY=:94 godot --path game --display-driver x11 --audio-driver Dummy --script res://tests/test_t02_window.gd -- --output-dir=/tmp/dragons-v02/graphics
+Godot Engine v4.6.3.stable.official.7d41c59c4 - https://godotengine.org
+WARNING: Could not set V-Sync mode, as changing V-Sync mode is not supported by the graphics driver.
+     at: set_use_vsync (platform/linuxbsd/x11/gl_manager_x11.cpp:364)
+OpenGL API 4.5 (Core Profile) Mesa 25.0.7-2+deb13u1 - Compatibility - Using Device: Mesa - llvmpipe (LLVM 19.1.7, 256 bits)
+
+T02 ventana: 22 comprobaciones, 0 fallos; capturas en /tmp/dragons-v02/graphics
+[exit 0]
+
+$ DISPLAY=:94 godot --path game --display-driver x11 --audio-driver Dummy --script res://tests/test_t03_window.gd -- --output-dir=/tmp/dragons-v02/graphics
+Godot Engine v4.6.3.stable.official.7d41c59c4 - https://godotengine.org
+WARNING: Could not set V-Sync mode, as changing V-Sync mode is not supported by the graphics driver.
+     at: set_use_vsync (platform/linuxbsd/x11/gl_manager_x11.cpp:364)
+OpenGL API 4.5 (Core Profile) Mesa 25.0.7-2+deb13u1 - Compatibility - Using Device: Mesa - llvmpipe (LLVM 19.1.7, 256 bits)
+
+T03 ventana: 34 comprobaciones, 0 fallos; capturas en /tmp/dragons-v02/graphics
+[exit 0]
+
+$ DISPLAY=:94 godot --path game --display-driver x11 --audio-driver Dummy --script res://tests/test_t04_window.gd -- --output-dir=/tmp/dragons-v02/graphics
+Godot Engine v4.6.3.stable.official.7d41c59c4 - https://godotengine.org
+WARNING: Could not set V-Sync mode, as changing V-Sync mode is not supported by the graphics driver.
+     at: set_use_vsync (platform/linuxbsd/x11/gl_manager_x11.cpp:364)
+OpenGL API 4.5 (Core Profile) Mesa 25.0.7-2+deb13u1 - Compatibility - Using Device: Mesa - llvmpipe (LLVM 19.1.7, 256 bits)
+
+T04 ventana: 49 comprobaciones, 0 fallos; salida 0; capturas en /tmp/dragons-v02/graphics
+[exit 0]
+
+$ DISPLAY=:94 godot --path game --display-driver x11 --audio-driver Dummy --script res://tests/test_t05_window.gd -- --output-dir=/tmp/dragons-v02/graphics
+Godot Engine v4.6.3.stable.official.7d41c59c4 - https://godotengine.org
+WARNING: Could not set V-Sync mode, as changing V-Sync mode is not supported by the graphics driver.
+     at: set_use_vsync (platform/linuxbsd/x11/gl_manager_x11.cpp:364)
+OpenGL API 4.5 (Core Profile) Mesa 25.0.7-2+deb13u1 - Compatibility - Using Device: Mesa - llvmpipe (LLVM 19.1.7, 256 bits)
+
+T05 ventana: 145 comprobaciones, 0 fallos; capturas en /tmp/dragons-v02/graphics
+[exit 0]
+
+Higiene: git diff --check sin errores; cachés y builds excluidos.
+ZIP V0.1 e40276a conservado; SHA256 aded62eaf281846fba54e2cd5437d3df8911b4cf1b34589b409e6f33a3adacda verificado.
+No exportación Windows V0.2, prueba humana nueva ni ejecución Windows nativa.
+Usuario reportó prueba general anterior en laptop: «decente»; no casos individuales.

@@ -2,7 +2,10 @@
 
 **Estado: PENDIENTE.** Este documento prepara la recogida de resultados; ninguna
 fila acredita una prueba ejecutada. El entorno de desarrollo disponible es Linux.
-No hay todavía un informe de ejecución Windows nativa o manejo humano incorporado.
+El usuario informó el 17 de noviembre de 2026 que probó el prototipo en su laptop
+y lo consideró «decente». Es una valoración humana general; no especificó sistema
+operativo/GPU, SHA ni casos individuales. No se marcan filas como aprobadas.
+El informe detallado de ejecución Windows nativa sigue pendiente.
 
 ## Candidato que debe probarse
 
@@ -66,7 +69,8 @@ personales. Una IA puede ayudar a analizar la evidencia; no debe inventarla.
 
 ## Decisión de continuidad
 
-**Pendiente:** no se acepta íntegramente T06/V0.1 ni se inicia V0.2 con este
-registro vacío. Corregir cualquier fallo reproducido antes de ampliar el juego.
+**Pendiente:** no se acepta íntegramente T06/V0.1 con esta valoración general.
+El usuario autorizó expresamente iniciar V0.2 en la petición posterior; las filas
+no reportadas siguen pendientes. Corregir cualquier fallo reproducido.
 Si cambia el código, identificar y exportar un candidato nuevo con su propio hash
 y repetir las pruebas afectadas; no atribuirle resultados de e40276a.

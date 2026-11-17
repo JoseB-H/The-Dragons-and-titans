@@ -1,18 +1,33 @@
 # Estado del proyecto
 
-## Situación actual — candidato T06 (17 de noviembre de 2026)
+## Situación actual — entrega V0.2 T01 (17 de noviembre de 2026)
+**Selección de dos dragones implementada y validada en Linux** con Godot4.6.3
+Compatibility: Cobre conserva V0.1; Jade tiene menos salud/daño por impacto y más
+velocidad/menor recarga. Balance en recursos separados, selector previo, reinicio
+con la elección actual y retorno al selector tras victoria/derrota.
+
+El usuario informó que **probó el prototipo en su laptop y lo consideró «decente»**.
+Se registra como valoración humana general. No reportó sistema operativo, GPU,
+SHA ni resultados de controles, combate, resoluciones o reinicios individuales;
+esas comprobaciones permanecen pendientes. No equivale a aceptación integral T06.
+La petición actual autoriza el primer incremento V0.2, aunque el encargo antiguo
+de main sigue indicando completar T06. Rama nueva `feat/v0.2-t01-seleccion-dragones`,
+desde `b42ceef`, conservando V0.1 y su candidato exportado e40276a.
+
+### Continuidad V0.1 conservada
 **T01–T05 conservadas y regresiones repetidas en Linux** con Godot 4.6.3
 Compatibility. T06 prepara un candidato **V0.1 RC1 Windows x86_64**, exportado
 realmente en release desde un commit identificado, con ZIP íntegro y guía española.
 El PCK exportado también pasó el ciclo gráfico completo en Godot Linux.
-**Windows nativo y manejo humano/laptop siguen pendientes**; T06 no está validada
-íntegramente. La release preliminar está bloqueada por `Forbidden` en la API:
+**Los casos individuales de Windows/laptop siguen pendientes**; existe la valoración
+general del usuario, pero T06 no está validada íntegramente. La release preliminar
+está bloqueada por `Forbidden` en la API:
 el ZIP se conserva en el entorno y se entrega mediante enlace de archivo del chat,
 sin URL estable de release verificada. Rama de código publicada, sin merge.
 Continuidad del encargo main `c33bad1`: candidato e40276a/ZIP conservados,
 integridad comprobada de nuevo y una única consulta API todavía `Forbidden`.
 Registro Windows preparado en `docs/validacion/T06-prueba-windows.md`, pendiente
-de resultados nativos del usuario; no se ha reexportado ni iniciado V0.2.
+de resultados individuales. No se ha reexportado el candidato V0.1.
 
 ## Lectura
 - AGENTS.md: instrucciones para agentes.
@@ -28,15 +43,23 @@ de resultados nativos del usuario; no se ha reexportado ni iniciado V0.2.
 | T03 Combate y enemigo | Terminada (Linux) | Núcleo 51/0, integración 52/0, gráfica T03 34/0; regresión T02 34/0 y 22/0; importación/arranque sin errores |
 | T04 Habilidades | Terminada (Linux) | Q 57/0, E 78/0, integración 42/0, ventana 49/0; regresión T02/T03 y arranque sin errores |
 | T05 Ciclo e interfaz | Terminada (Linux) | Estados 51/0, ventana 145/0 en dos tamaños; regresiones T02–T04 sin fallos y seis capturas inspeccionadas |
-| T06 Validación y entrega | Candidato preparado; cierre parcial | Lógica Linux 365/0, gráfica de fuentes 250/0; exportación Windows/ZIP verificados; PCK en Linux 145/0. Windows nativo y release alojada pendientes |
+| T06 Validación y entrega | Candidato conservado; valoración general recibida | Pruebas Linux/exportación previas conservadas. Usuario: probado en laptop, «decente». Casos individuales/datos Windows y release alojada pendientes |
+
+## Seguimiento V0.2
+| Incremento | Estado | Evidencia |
+| --- | --- | --- |
+| T01 Selección de dos dragones y balance | Terminado (Linux) | Perfiles93/0, selector64/0, partida46/0; ventana777/0; regresiones V0.1 y revisión independiente |
 
 ## Próxima acción
-Completar **T06** antes de V0.2: probar el candidato en Windows nativo/laptop con
-la guía incluida y registrar sistema/GPU, resultados y capturas. Si aparece un
-fallo, corregirlo antes de ampliar mecánicas. Publicar el mismo ZIP y sidecar en
+Recoger observaciones del usuario sobre la selección y diferencias entre perfiles;
+corregir cualquier fallo reproducido. El siguiente incremento propuesto de V0.2
+es selección de arma y sus datos; requiere su encargo antes de implementarlo.
+Mantener los casos individuales no reportados pendientes. Conservar como
+pendientes de T06 el informe Windows detallado y la publicación del mismo ZIP/sidecar en
 una release preliminar ligada a `e40276a` cuando el acceso a GitHub API lo permita;
 descargar ese artefacto y comparar el SHA256. No se hizo merge ni se modificó la
-configuración de red para sortear el bloqueo. Conservar T01–T05 y esta rama T06.
+configuración de red para sortear el bloqueo. Conservar la rama/candidato V0.1
+y la nueva rama `feat/v0.2-t01-seleccion-dragones`.
 
 ## Registro del incremento T01
 
@@ -612,18 +635,128 @@ propios detenidos al terminar. No se cambiaron ni relajaron aserciones.
   código, exportar un candidato nuevo con SHA/hash propios y repetir lo afectado.
   T06/V0.1 continúan sin aceptación integral.
 
+## Registro del incremento V0.2 T01 — selección de dragones
+
+### Base y autorización
+- Rama nueva: `feat/v0.2-t01-seleccion-dragones`, desde
+  `b42ceef776ce81b6af704466afb842f4959acd80`, conservando la entrega T06 y T01–T05.
+- Código: `bc22940449b532d53789b29720237549a2de835c`; cierre documental posterior.
+  Sin merge, rebase ni force push. La instrucción actual del usuario autoriza
+  V0.2 y prevalece sobre el encargo antiguo T06 de main `c33bad1`.
+- El usuario indicó que probó el prototipo en su laptop y lo consideró «decente».
+  Es una valoración general reportada; no especificó OS/GPU, SHA ni casos. No se
+  marcan aprobadas las filas de `T06-prueba-windows.md` ni se extrapola a V0.2.
+- Candidato V0.1 e40276a, ZIP y sidecar conservados. SHA256 comprobado de nuevo:
+  `aded62eaf281846fba54e2cd5437d3df8911b4cf1b34589b409e6f33a3adacda`.
+  No se reexportó ni se modificó ese paquete. No se reiteraron llamadas API.
+
+### Comportamiento, datos y recursos propios
+- `game/scripts/dragon_profile.gd` y `game/data/dragons/{cobre,jade}.tres`:
+  identidad, descripción, salud, velocidad, daños/recargas de básico/Q/E,
+  velocidades/vida/origen de proyectiles, radio/duración del pulso y colores.
+  El controlador aplica el recurso sin ramas de balance por nombre. La salud
+  actual, las recargas y los materiales de cada instancia no mutan esos recursos.
+- **Valores provisionales propios:** Cobre conserva salud100/velocidad6,
+  básico20 cada0.4s, Q45 cada2.5s, E30/radio4/cada4s. Jade usa salud70/velocidad8,
+  básico15 cada0.3s, Q35 cada2s y E20/radio3.5/cada3s. Jade cambia resistencia,
+  velocidad y daño por golpe; no se afirma equilibrio final ni fidelidad original.
+- `dragon_roster.gd`, autoload en `project.godot`: elección solo en memoria,
+  Cobre inicial, rechazo de id desconocido sin cambiar selección. Sin guardado
+  en disco, selección de armas, cuentas ni ampliación de catálogo.
+- `dragon_selection.gd`/`dragon_selection.tscn`: nueva escena principal, tarjetas
+  comparables con valores leídos del recurso y botón Jugar. Clic o Tab/flechas y
+  Enter/Espacio; resaltado y foco visibles. Una sola navegación ante peticiones
+  rápidas. Al regresar enfoca la elección anterior y no inicia combate por eco.
+- `dragon_controller.gd`: aplica salud máxima al entrar en el árbol y el resto
+  del perfil antes del ready heredado. Conserva movimiento, cámara, límites,
+  bloqueo y snapshot de entradas retenidas de V0.1. Cobre conserva paleta original;
+  Jade usa materiales locales verdes sobre la misma geometría propia. Ojos/cuernos,
+  enemigo cian y otros dragones no se recolorean por compartir meshes.
+- `arena.gd`, `hud.gd`/`hud.tscn`: HUD identifica el perfil. R/Reiniciar recargan
+  Arena y conservan elección; el nuevo botón final Elegir dragón vuelve al selector.
+  No se cambia durante combate. Guardia común impide duplicar escenas/conexiones.
+  Los dos botones comparten fila sin agrandar el panel sobre el jugador.
+
+### Pruebas realizadas y resultados
+Godot `4.6.3.stable.official.7d41c59c4`, Compatibility, Linux x86_64. Directorio
+del repositorio `/workspace/The-Dragons-and-titans`; XDG propios bajo
+`/tmp/dragons-v02/headless/{cache,data,config}` y `window/{cache,data,config}`.
+Todos los comandos finales terminaron con salida0, sin errores de scripts/recursos.
+
+| Prueba | Comando o suite real | Resultado |
+| --- | --- | --- |
+| Importación | `godot --headless --path game --import` | Sin errores |
+| Perfiles y aislamiento | `test_dragon_profiles.gd` | 93/0 |
+| Selector e inputs | `test_dragon_selection.gd` | 64/0 |
+| Selección/combate/reinicio/retorno | `test_v02_match.gd` | 46/0 |
+| Regresión movimiento | `test_t02.gd` | 34/0 |
+| Regresión núcleo | `test_combat_core.gd` | 51/0 |
+| Regresión combate | `test_t03.gd` | 52/0 |
+| Regresión Q | `test_power_projectile.gd` | 57/0 |
+| Regresión E | `test_pulse.gd` | 78/0 |
+| Regresión habilidades | `test_t04.gd` | 42/0 |
+| Regresión estados | `test_match_state.gd` | 51/0 |
+| Arranque del selector | `godot --headless --path game --quit-after 120` | Sin errores |
+| Ventana V0.2 | `test_v02_window.gd` | 777/0 |
+| Ventana T02/T03/T04/T05 | Suites heredadas `*_window.gd` | 22/0, 34/0, 49/0, 145/0 |
+
+Cada suite headless usa `godot --headless --path game --script res://tests/<suite>.gd`.
+Las gráficas usan `DISPLAY=:94 godot --path game --display-driver x11 --audio-driver Dummy --script res://tests/<suite>.gd -- --output-dir=/tmp/dragons-v02/graphics`.
+Xorg temporal dummy, OpenGL4.5 Compatibility Mesa llvmpipe. Único aviso Godot
+gráfico: V-Sync no soportado por el driver virtual. No se cambiaron las aserciones
+ni montajes heredados para este incremento. Totales: nuevas headless203/0,
+heredadas365/0; ventana nueva777/0 y heredadas250/0.
+
+Perfiles prueba salud desde primera señal, movimiento real, impactos de básico/Q,
+frontera del pulso, recargas y aislamiento de recursos/materiales/actores.
+Selector prueba selección válida/inválida, texto de datos, mouse/Tab/Enter/Espacio,
+foco y navegación única. Partida prueba daño real según ambos perfiles, victoria,
+derrota, bloqueo, restauración completa, elección conservada y cambio posterior.
+Ventana recorre dieciséis resultados reales y doce reinicios, ambas elecciones por
+ratón/teclado, inputs retenidos/eco, vuelta al selector y cambio de perfil en los
+dos tamaños nativos. Comprueba posiciones/salud/recargas y ausencia de acumulación.
+
+### Evidencia, correcciones y revisión
+- Pruebas escritas antes de producción: catálogo RED1/1→GREEN11/0; perfiles
+  RED93/21→GREEN93/0; selector RED por escena ausente; integración RED por retorno
+  ausente. Las cuentas crecieron al añadir cobertura, sin retirar aserciones.
+- Se reprodujo una señal inicial transitoria de salud0/70 al aplicar Jade en
+  ready (93/1). Preparar salud máxima en `_enter_tree` dejó primera señal70/70
+  y suite93/0. Se reprodujo además foco diferido en un botón ya retirado al
+  navegar inmediatamente (selector64/1 y ERROR de Godot); foco directo en ready
+  corrigió el caso: selector64/0 y partida46/0, sin errores.
+- Revisión independiente en copia completa de fuentes sin `.godot/builds`:
+  importación y tres suites nuevas93/0,64/0,46/0. La revisión estática final del
+  código y las cuatro suites nuevas no encontró defectos concretos. No repitió
+  gráficos ni acredita Windows o manejo humano del selector.
+- Dieciséis capturas nativas `docs/validacion/V02-*-linux.png`, ocho por tamaño,
+  revisadas sin hallazgos: tarjetas, HUD, ambos dragones, finales y botones legibles,
+  sin recortes ni paneles sobre el jugador. Informe visual independiente en
+  `V02-T01-revision-visual.txt`. Es inspección estática de automatización Linux.
+- Transcripción final `docs/validacion/V02-T01-linux.log`; metadatos/hashes de
+  capturas y comprobaciones en `V02-T01-evidencia.json`. La pausa del entorno
+  preservó los archivos; se recuperaron resultados y se registraron de nuevo los
+  códigos de las regresiones gráficas antes del cierre, sin repetir implementación.
+- No se exportó ni probó Windows de V0.2. La valoración de la laptop corresponde
+  al prototipo anterior; no se atribuye a estos perfiles o a sus pruebas nuevas.
+- Revisión documental final: se aclaró que el balance del jugador se modifica
+  en `.tres`, mientras los nodos lo ejecutan. Sin contradicciones restantes entre
+  resultados, código, evidencia y límites reportados.
+
 ## Limitaciones conocidas
 - **Windows nativo pendiente:** se exportó un `.exe` release desde Linux, pero no
-  se ejecutó en Windows. Editor, GPU/controladores Windows y guía de PowerShell
+  se han reportado casos individuales de Windows. Editor, GPU/controladores y guía de PowerShell
   siguen sin verificación nativa; exportación no equivale a compatibilidad probada.
 - Validación gráfica mediante renderizado por software y entrada automatizada en
-  Linux, con inspección de capturas. No hubo sesión humana prolongada de manejo,
-  prueba de GPU física ni interacción con el escritorio compartido. El seguimiento
-  se verificó por fotograma; la sensación de manejo requiere evaluación del usuario.
+  Linux, con inspección de capturas. El usuario reportó una prueba en laptop y
+  valoración «decente» del prototipo anterior; no detalló duración, GPU, plataforma
+  o casos. No hay prueba humana del nuevo selector reportada. No se acredita una
+  sesión prolongada, rendimiento en GPU física ni comprobaciones individuales.
 - T05 completa el ciclo offline; T06 aporta un candidato exportado, con ZIP y
   datos comprobados en Linux. La aceptación integral de V0.1 sigue pendiente.
-- La prueba en laptop y Windows nativo siguen pendientes; release alojada
-  bloqueada por acceso API. El ZIP local se entrega en el chat y no está en Git.
+- La prueba detallada Windows/laptop sigue pendiente; la valoración general sí
+  está registrada. Release alojada bloqueada por acceso API. ZIP V0.1 conservado,
+  fuera de Git; no se exportó un ZIP de V0.2 ni se le atribuye la prueba anterior.
 - Chat compartido no accesible durante la preparación inicial; no se presupone su contenido.
 - Wiki pendiente de investigar y contrastar.
 - Cinco capturas de referencia del usuario pendientes de incorporar al repositorio;

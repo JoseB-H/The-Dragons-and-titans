@@ -1,0 +1,521 @@
+{
+  "branch": "feat/v0.2-t01-seleccion-dragones",
+  "base_commit": "b42ceef776ce81b6af704466afb842f4959acd80",
+  "code_commit": "bc22940449b532d53789b29720237549a2de835c",
+  "godot": "4.6.3.stable.official.7d41c59c4",
+  "platform": "Linux",
+  "renderer": "Compatibility",
+  "headless_new_checks": 203,
+  "headless_legacy_checks": 365,
+  "window_new_checks": 777,
+  "window_legacy_checks": 250,
+  "all_failures": 0,
+  "runs": [
+    {
+      "command": "godot --headless --path game --import",
+      "checks": null,
+      "failures": null,
+      "exit_code": 0,
+      "source_log": "headless/import.log"
+    },
+    {
+      "command": "godot --headless --path game --script res://tests/test_dragon_profiles.gd",
+      "checks": 93,
+      "failures": 0,
+      "exit_code": 0,
+      "source_log": "headless/test_dragon_profiles.log"
+    },
+    {
+      "command": "godot --headless --path game --script res://tests/test_dragon_selection.gd",
+      "checks": 64,
+      "failures": 0,
+      "exit_code": 0,
+      "source_log": "headless/test_dragon_selection.log"
+    },
+    {
+      "command": "godot --headless --path game --script res://tests/test_v02_match.gd",
+      "checks": 46,
+      "failures": 0,
+      "exit_code": 0,
+      "source_log": "headless/test_v02_match.log"
+    },
+    {
+      "command": "godot --headless --path game --script res://tests/test_t02.gd",
+      "checks": 34,
+      "failures": 0,
+      "exit_code": 0,
+      "source_log": "headless/test_t02.log"
+    },
+    {
+      "command": "godot --headless --path game --script res://tests/test_combat_core.gd",
+      "checks": 51,
+      "failures": 0,
+      "exit_code": 0,
+      "source_log": "headless/test_combat_core.log"
+    },
+    {
+      "command": "godot --headless --path game --script res://tests/test_t03.gd",
+      "checks": 52,
+      "failures": 0,
+      "exit_code": 0,
+      "source_log": "headless/test_t03.log"
+    },
+    {
+      "command": "godot --headless --path game --script res://tests/test_power_projectile.gd",
+      "checks": 57,
+      "failures": 0,
+      "exit_code": 0,
+      "source_log": "headless/test_power_projectile.log"
+    },
+    {
+      "command": "godot --headless --path game --script res://tests/test_pulse.gd",
+      "checks": 78,
+      "failures": 0,
+      "exit_code": 0,
+      "source_log": "headless/test_pulse.log"
+    },
+    {
+      "command": "godot --headless --path game --script res://tests/test_t04.gd",
+      "checks": 42,
+      "failures": 0,
+      "exit_code": 0,
+      "source_log": "headless/test_t04.log"
+    },
+    {
+      "command": "godot --headless --path game --script res://tests/test_match_state.gd",
+      "checks": 51,
+      "failures": 0,
+      "exit_code": 0,
+      "source_log": "headless/test_match_state.log"
+    },
+    {
+      "command": "godot --headless --path game --quit-after 120",
+      "checks": null,
+      "failures": null,
+      "exit_code": 0,
+      "source_log": "headless/startup.log"
+    },
+    {
+      "command": "DISPLAY=:94 godot --path game --display-driver x11 --audio-driver Dummy --script res://tests/test_v02_window.gd -- --output-dir=/tmp/dragons-v02/graphics",
+      "checks": 777,
+      "failures": 0,
+      "exit_code": 0,
+      "source_log": "window/v02.log"
+    },
+    {
+      "command": "DISPLAY=:94 godot --path game --display-driver x11 --audio-driver Dummy --script res://tests/test_t02_window.gd -- --output-dir=/tmp/dragons-v02/graphics",
+      "checks": 22,
+      "failures": 0,
+      "exit_code": 0,
+      "source_log": "window/test_t02_window.log"
+    },
+    {
+      "command": "DISPLAY=:94 godot --path game --display-driver x11 --audio-driver Dummy --script res://tests/test_t03_window.gd -- --output-dir=/tmp/dragons-v02/graphics",
+      "checks": 34,
+      "failures": 0,
+      "exit_code": 0,
+      "source_log": "window/test_t03_window.log"
+    },
+    {
+      "command": "DISPLAY=:94 godot --path game --display-driver x11 --audio-driver Dummy --script res://tests/test_t04_window.gd -- --output-dir=/tmp/dragons-v02/graphics",
+      "checks": 49,
+      "failures": 0,
+      "exit_code": 0,
+      "source_log": "window/test_t04_window.log"
+    },
+    {
+      "command": "DISPLAY=:94 godot --path game --display-driver x11 --audio-driver Dummy --script res://tests/test_t05_window.gd -- --output-dir=/tmp/dragons-v02/graphics",
+      "checks": 145,
+      "failures": 0,
+      "exit_code": 0,
+      "source_log": "window/test_t05_window.log"
+    }
+  ],
+  "images": [
+    {
+      "file": "V02-cobre-derrota-1280x720-linux.png",
+      "bytes": 80605,
+      "width": 1280,
+      "height": 720,
+      "sha256": "aca50917719ea326ef7acb2f93e937373bf5fd7abb6a039771f654be0a683d6c"
+    },
+    {
+      "file": "V02-cobre-derrota-960x540-linux.png",
+      "bytes": 80835,
+      "width": 960,
+      "height": 540,
+      "sha256": "e3f839ed05209babee05a3ba0fbfa1a379d56919d7ae547ddbe9b408ec4888ad"
+    },
+    {
+      "file": "V02-cobre-jugando-1280x720-linux.png",
+      "bytes": 57642,
+      "width": 1280,
+      "height": 720,
+      "sha256": "97115a164474299c15ad667d58e269e683f8c9e1306a7a8ba6e594952114d97c"
+    },
+    {
+      "file": "V02-cobre-jugando-960x540-linux.png",
+      "bytes": 55139,
+      "width": 960,
+      "height": 540,
+      "sha256": "3f53b8900a4b2be54adf7bd4dd7c4020e41c09f88cc8b3cd1fdc7123585d20c5"
+    },
+    {
+      "file": "V02-cobre-victoria-1280x720-linux.png",
+      "bytes": 81588,
+      "width": 1280,
+      "height": 720,
+      "sha256": "4ed50cc8fd46cc0bc174c6143ef83930a3e3b97f32e6e98a86f2e67ee887f8ae"
+    },
+    {
+      "file": "V02-cobre-victoria-960x540-linux.png",
+      "bytes": 80912,
+      "width": 960,
+      "height": 540,
+      "sha256": "887e4edbce55af191aeef5a0a5db2f2b8809b792aff8a10d889160217274d650"
+    },
+    {
+      "file": "V02-jade-derrota-1280x720-linux.png",
+      "bytes": 80364,
+      "width": 1280,
+      "height": 720,
+      "sha256": "240829097c69c9ea6c41ef3f3268e1bff0580e391db169ff61de31f18b499dd7"
+    },
+    {
+      "file": "V02-jade-derrota-960x540-linux.png",
+      "bytes": 80196,
+      "width": 960,
+      "height": 540,
+      "sha256": "7c7e9c373891e10e048e5e1b4bd0aff235c35aca7c96087b635eec9ba139eda0"
+    },
+    {
+      "file": "V02-jade-jugando-1280x720-linux.png",
+      "bytes": 58068,
+      "width": 1280,
+      "height": 720,
+      "sha256": "e94aef0223aca3abdb19a7b22be21a000973d044b97e7da906bb676e08760999"
+    },
+    {
+      "file": "V02-jade-jugando-960x540-linux.png",
+      "bytes": 55066,
+      "width": 960,
+      "height": 540,
+      "sha256": "01de74c0f31114f31caf96df8907113f675fa9db25d404cbf0c097ff13aa2ec0"
+    },
+    {
+      "file": "V02-jade-victoria-1280x720-linux.png",
+      "bytes": 80738,
+      "width": 1280,
+      "height": 720,
+      "sha256": "82b341f49c7dbc0fbf0c2317b09f2bf14d324500045234891b16c0296b1b354e"
+    },
+    {
+      "file": "V02-jade-victoria-960x540-linux.png",
+      "bytes": 79925,
+      "width": 960,
+      "height": 540,
+      "sha256": "6875a4a5d29c5ac6fdbc51b572ea80062785dea4840231241b179ea6f209ec00"
+    },
+    {
+      "file": "V02-selector-cobre-1280x720-linux.png",
+      "bytes": 106308,
+      "width": 1280,
+      "height": 720,
+      "sha256": "95e4f93238be6bbb621206c79874859ed810fca25b5a866e9aac576e8fbef6ff"
+    },
+    {
+      "file": "V02-selector-cobre-960x540-linux.png",
+      "bytes": 120854,
+      "width": 960,
+      "height": 540,
+      "sha256": "bee19255e4e3f26c87356c6e5f9012f7913e21a9e6d56b134702f5a8246e8153"
+    },
+    {
+      "file": "V02-selector-jade-1280x720-linux.png",
+      "bytes": 105169,
+      "width": 1280,
+      "height": 720,
+      "sha256": "70deaa9b60c1704ded7744d3f35ed5159d133f0e4a35a0b3d4558384c2696cd5"
+    },
+    {
+      "file": "V02-selector-jade-960x540-linux.png",
+      "bytes": 120562,
+      "width": 960,
+      "height": 540,
+      "sha256": "0ecf73ff743f64d45f746ab576ebe182e776372392345e66217920567bde6728"
+    }
+  ],
+  "source_game_files": [
+    {
+      "file": "game/data/dragons/cobre.tres",
+      "sha256": "3303b3a1bc0b6ffc0faa557692be7917a83877eb67c677c7b82737ebbeb9c5a8"
+    },
+    {
+      "file": "game/data/dragons/jade.tres",
+      "sha256": "a2937a965a24d22903903edf8039b6a59c43f8aa0e6682515a6736763f54ed96"
+    },
+    {
+      "file": "game/export_presets.cfg",
+      "sha256": "d93c8597d8129be245af91ff7d6b2a720ccde37f057f590271f1c8d47e213600"
+    },
+    {
+      "file": "game/project.godot",
+      "sha256": "492dbfaf421e0f093675b0b82ab04204389b9a1ec3e3eed692f0f656fd82f88e"
+    },
+    {
+      "file": "game/scenes/arena.tscn",
+      "sha256": "5267119d8ecc4c1246ea473d33986101d704acc6a78197e63cf2e9dc194eee74"
+    },
+    {
+      "file": "game/scenes/dragon.tscn",
+      "sha256": "c108bef9a6cbd11cf08b53c6d099570f9cf772d8c45401b4af9cd94cac7d48c5"
+    },
+    {
+      "file": "game/scenes/dragon_selection.tscn",
+      "sha256": "186d9cc094a1929d25db64d0deca407b03fea7d8ae532ef3d2e9301d5296702d"
+    },
+    {
+      "file": "game/scenes/dragon_visual.tscn",
+      "sha256": "fedd38f0dfc5c44de332a76cae463d7612ff3cad6337ceb88af9710250cfc244"
+    },
+    {
+      "file": "game/scenes/enemy.tscn",
+      "sha256": "bf468acc1a60e3eaeda69bc919fd91cdf0555d01dc4e5a39b14eacb12c0d5aa7"
+    },
+    {
+      "file": "game/scenes/hud.tscn",
+      "sha256": "6e2e98501cb47c659763143a1c2f5d48273237b140d8b858b10616e5f8e52e8b"
+    },
+    {
+      "file": "game/scenes/power_projectile.tscn",
+      "sha256": "e562387ef31a90839b3ea7f00c82cade3bb2bf586b35e97f12ff3d72b80fb810"
+    },
+    {
+      "file": "game/scenes/projectile.tscn",
+      "sha256": "127df212c48b6bd632b1f316b867bbf61c07c08694c6979e2ffb1d0fa1847324"
+    },
+    {
+      "file": "game/scenes/pulse_effect.tscn",
+      "sha256": "8921a8040c241f6531183f446fcd42717b1e6985bf810196b975c3fe88a94843"
+    },
+    {
+      "file": "game/scripts/arena.gd",
+      "sha256": "3379b06736af1a6f3f2d0d96d107c889c29f11d61f1a91adb686faaf34cd8b01"
+    },
+    {
+      "file": "game/scripts/arena.gd.uid",
+      "sha256": "36217dfec9272d14f9c2e2c1d292340444504c28b3fcfa9220c5a154c0d33269"
+    },
+    {
+      "file": "game/scripts/combat_actor.gd",
+      "sha256": "d81a1f4ef20daf48cbdf4a8d9ae7ad74149d92ca8b5d106755dfe8cb3fdd5de5"
+    },
+    {
+      "file": "game/scripts/combat_actor.gd.uid",
+      "sha256": "37b73b07f7868dfd881ba2927d544147794e70c4ee56887b1da793e7f7a77e42"
+    },
+    {
+      "file": "game/scripts/dragon_controller.gd",
+      "sha256": "8a2d9151bfffc66e32e0cdef5e7ffdc34766e8001be8f36b896bc1ce598765f6"
+    },
+    {
+      "file": "game/scripts/dragon_controller.gd.uid",
+      "sha256": "a18e53469471b65dc0f2c291b0d49eeb5d531030b45c2719739a7ceae8402ac9"
+    },
+    {
+      "file": "game/scripts/dragon_profile.gd",
+      "sha256": "5c18616aee910a442b35cf5009c95f9ee0777bf185d92d5f14a7755d01f568d3"
+    },
+    {
+      "file": "game/scripts/dragon_profile.gd.uid",
+      "sha256": "ef3f9672fed8f22b4cb7c311152a36f9927aab0c00f7a84a6eea8414e87a4e6d"
+    },
+    {
+      "file": "game/scripts/dragon_roster.gd",
+      "sha256": "8d95f1ddff9c589ffc29f8b379db4cdf22df46f9fd1911e6279a4456f5790274"
+    },
+    {
+      "file": "game/scripts/dragon_roster.gd.uid",
+      "sha256": "fdf5d24c678c84c13a2c810eebdbc60979e765917791b01bb2d82df8e5c013fb"
+    },
+    {
+      "file": "game/scripts/dragon_selection.gd",
+      "sha256": "e578b6e0e79fe98781fb7a01bc0f5bc66bd0663457be4f5f24d8a28e7bcbde44"
+    },
+    {
+      "file": "game/scripts/dragon_selection.gd.uid",
+      "sha256": "bd7ee835942d72ff442303d6db3484c6565c3ccd3d3753073a525854dff038cd"
+    },
+    {
+      "file": "game/scripts/enemy_controller.gd",
+      "sha256": "0c3f28799f9328627489d5e45ceb9d5a778c8a17ce6323b3090319c92bacd1d6"
+    },
+    {
+      "file": "game/scripts/enemy_controller.gd.uid",
+      "sha256": "d03a224633f26c29f440ec7ab1faa9fa554d556df5940a47102b4e3bdc6f2c17"
+    },
+    {
+      "file": "game/scripts/hud.gd",
+      "sha256": "5c5532eb31ef3c5e1e12a38c5c643cbe48ace537b696f1d98df559e93b8171a2"
+    },
+    {
+      "file": "game/scripts/hud.gd.uid",
+      "sha256": "df556b1ceaf3a0758a9129cd5c2252f2c60ac2e5cce5bd88d0edff9c7d6ba85e"
+    },
+    {
+      "file": "game/scripts/projectile.gd",
+      "sha256": "103e1e5031cf4b1de70535a79f2aa375ce54d1c211542c24dad49f21ada72c54"
+    },
+    {
+      "file": "game/scripts/projectile.gd.uid",
+      "sha256": "a133da87e12688e65effcee8be379058d2543d9ef71bc68f12f40aa1d726a347"
+    },
+    {
+      "file": "game/scripts/pulse_ability.gd",
+      "sha256": "b23735c51e29b15f27d4919dda85ca5f8fbe4099e35edb2ff2bd71b3ebce3167"
+    },
+    {
+      "file": "game/scripts/pulse_ability.gd.uid",
+      "sha256": "ce5bcbc992f8d3fd3617594c60c07007017ca78b5f0065a4fe4a4f2ab53c395b"
+    },
+    {
+      "file": "game/scripts/pulse_effect.gd",
+      "sha256": "aee298753df7edac35bcff6ee4623ad385ac07303d471cd4754aa921a5d72016"
+    },
+    {
+      "file": "game/scripts/pulse_effect.gd.uid",
+      "sha256": "d5c77bafedbaff362fd6d9496e00c1122c7a9742e4461f78d485eb7458e9349b"
+    },
+    {
+      "file": "game/scripts/weapon.gd",
+      "sha256": "11abc3561a9cd103a3afc20d9ef207454ea19b59d29e5b61a1dabee65df2f4e8"
+    },
+    {
+      "file": "game/scripts/weapon.gd.uid",
+      "sha256": "a6e1e9d8e366fc43a3e2bc2579b6e8272bb3c0ae15e64aa09a9db28340a5c80d"
+    },
+    {
+      "file": "game/tests/test_combat_core.gd",
+      "sha256": "42409d7e72378e91f4f98d27ab869055450a7e52f3fe706a82b4bb65397bb5fa"
+    },
+    {
+      "file": "game/tests/test_combat_core.gd.uid",
+      "sha256": "d0c3c36b859119e025f83066a3bab9e95fabd9202392b24ca32981e812345d23"
+    },
+    {
+      "file": "game/tests/test_dragon_profiles.gd",
+      "sha256": "415fa09721a3e294711a0856c3dbc3d1ec354cb77e9101f09ac65d8914b16f0e"
+    },
+    {
+      "file": "game/tests/test_dragon_profiles.gd.uid",
+      "sha256": "2c04445e07c21ea84841910df65acdff2a323054899e2d63afd64c9df2493e8e"
+    },
+    {
+      "file": "game/tests/test_dragon_selection.gd",
+      "sha256": "0ba9b250e7b238706d5e2b5f59e60eb10f3dbd5480b9e21648c172d9e5657f6d"
+    },
+    {
+      "file": "game/tests/test_dragon_selection.gd.uid",
+      "sha256": "d26fe50743eada35756c3cc0870c8e6e8cdd9612d3a78ec3727d4d449914039d"
+    },
+    {
+      "file": "game/tests/test_match_state.gd",
+      "sha256": "17dabad4ea697477c48cb3d08859436499c3004f8ce6996b6e04eac2630dc2a3"
+    },
+    {
+      "file": "game/tests/test_match_state.gd.uid",
+      "sha256": "1f1d17f5517063990699d0f80bd20e29cb1058135d73dec0fd6fa25d651b3d2e"
+    },
+    {
+      "file": "game/tests/test_power_projectile.gd",
+      "sha256": "4f02c6f27a3abebe15889ed2b625223cf92de17b0a876cb546593ac889a2091a"
+    },
+    {
+      "file": "game/tests/test_power_projectile.gd.uid",
+      "sha256": "a0b6fa093a8252519543ad9fb4743f5a6468aa496704c4622d98de87bc7f1b61"
+    },
+    {
+      "file": "game/tests/test_pulse.gd",
+      "sha256": "dd55efa1614cedfb25f1b4905a6718829bc9028169d5ce3b596aea11d804d059"
+    },
+    {
+      "file": "game/tests/test_pulse.gd.uid",
+      "sha256": "cbe3af1b2d55ebebe58fe520740c431a4c7744c8ac0629b05463e78dd04519dc"
+    },
+    {
+      "file": "game/tests/test_t02.gd",
+      "sha256": "2ff561ea98b583f1aa55f68fd0d3afbc24bc14a42dd030cbaf0c5f41d8c46707"
+    },
+    {
+      "file": "game/tests/test_t02.gd.uid",
+      "sha256": "2ad3431f82eb5ffa02093f137814da4b8f5a6d2c01e66f6e991c675ad9fb000a"
+    },
+    {
+      "file": "game/tests/test_t02_window.gd",
+      "sha256": "e24fe637d11e456b4066473f794e0e18ccbb402d0beececfc623ad906eef9331"
+    },
+    {
+      "file": "game/tests/test_t02_window.gd.uid",
+      "sha256": "52f280a558f7074fea15e262f7d79d37ac2ab04b7347dce0d9bdec10b4a3dab4"
+    },
+    {
+      "file": "game/tests/test_t03.gd",
+      "sha256": "69d130961bfff5df397d33145e81cdc9447892361058756dfc0bb72f4279bde4"
+    },
+    {
+      "file": "game/tests/test_t03.gd.uid",
+      "sha256": "e379fd5340fab255913fda36a8128da26116e566975e6021f16eba96f27db140"
+    },
+    {
+      "file": "game/tests/test_t03_window.gd",
+      "sha256": "74213480547f23c656989fd15ba4d4515473cebd0ed6735fbe1406150be81887"
+    },
+    {
+      "file": "game/tests/test_t03_window.gd.uid",
+      "sha256": "c5119fbc255d70c5b6665701843e125f1c4284333b29df5446ed6483c6351399"
+    },
+    {
+      "file": "game/tests/test_t04.gd",
+      "sha256": "a489297b86a31c51b3ae478e910a0d5f5a0125788ef55e0108d5179ef971175c"
+    },
+    {
+      "file": "game/tests/test_t04.gd.uid",
+      "sha256": "47478c085c9d4d7c579537755585701f98db90b5516c7eef7863798c677dcbe3"
+    },
+    {
+      "file": "game/tests/test_t04_window.gd",
+      "sha256": "0d95defd2c2cf5f08ee5614538da79aef521049a1758fb0fbf9f83de7e3c07bb"
+    },
+    {
+      "file": "game/tests/test_t04_window.gd.uid",
+      "sha256": "f19644676d4096a5981cd155fa11a838161d3ec68942ae8c62cc9aee60d3bc70"
+    },
+    {
+      "file": "game/tests/test_t05_window.gd",
+      "sha256": "f0341d1adf9c5c5cae7f9334a00afc33bf6d406666b2c756b27b6e5bc67a338d"
+    },
+    {
+      "file": "game/tests/test_t05_window.gd.uid",
+      "sha256": "a236353adb5081b3923890209216d589c211746775065ef6e72bbf5159544fd4"
+    },
+    {
+      "file": "game/tests/test_v02_match.gd",
+      "sha256": "6599c32feb4ffb647d22f55cb91a9e68eca974979a0a6613b6bfbd839ad7cf40"
+    },
+    {
+      "file": "game/tests/test_v02_match.gd.uid",
+      "sha256": "e7f1a94dddfe03fcce895bb724d02244d3546b78de696da50c60bfc3edf8f1b3"
+    },
+    {
+      "file": "game/tests/test_v02_window.gd",
+      "sha256": "dfd6e652b6a5dedc447325e211e1d23caea5e6262d112524b867f13e381ee8e2"
+    },
+    {
+      "file": "game/tests/test_v02_window.gd.uid",
+      "sha256": "c6d845225aee539a533ccf55dcfc83621e2600b1b4132a1f3650970b172e1469"
+    }
+  ],
+  "native_windows_v02_tested": false,
+  "human_v02_tested": false,
+  "human_previous_prototype_report": "El usuario probó el prototipo en su laptop y lo consideró decente; sin casos individuales reportados."
+}
