@@ -1,5 +1,16 @@
 # Siguiente encargo para Codex — T02: Dragón y cámara
 
+## Estado del encargo — completado en Linux
+T01 conservada y publicada en `feat/v0.1-t01-proyecto-ejecutable` (código
+`dba0564`, punta sincronizada `35954f2`). T02 implementada en
+`feat/v0.1-t02-dragon-y-camara`, commit de código
+`66815e5f1d9ccd899baea84f76bce0ef9f5301b9`.
+Importación/arranque sin errores, 34 comprobaciones headless y 22 de ventana
+aprobadas; capturas inspeccionadas. Véanse README y ESTADO.md para comandos,
+resultados y límites de la prueba. **Windows sigue pendiente**. No hay combate.
+La próxima tarea es **T03** de IMPLEMENTACION.md. El texto siguiente se conserva
+como historial del encargo recibido; su observación remota precede a esta entrega.
+
 ## Informe recibido y comprobación remota
 El usuario transmite una entrega de Codex: T01 implementada con Godot 4, importación, arranque y renderizado comprobados en Linux; docs/ESTADO.md actualizado localmente. Windows pendiente. Comprobar versión y resultados contra los archivos locales antes de fijarlos como hechos del repositorio.
 
