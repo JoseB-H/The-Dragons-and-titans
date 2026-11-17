@@ -104,3 +104,16 @@ Comparar ramas y cambios de código contra esta referencia o la última entrega 
   sin binarios grandes en Git ni cambios de permisos/red para eludir el bloqueo.
 - **T06 parcial:** Windows nativo, laptop, release alojada y descarga remota/hash
   pendientes. Corregir fallos de esa prueba antes de V0.2; no declarar V0.1 aceptada.
+
+## Continuidad T06 — 17 de noviembre de 2026
+- Encargo main `c33bad1`; misma rama T06 desde `d1cc1ac`. Cambios de documentación
+  únicamente; e40276a y ZIP originales conservados. Sin merge ni reexportación.
+- Verificación independiente del candidato: tamaño/SHA256/sidecar exactos, CRC 6/6,
+  VERSION y cinco hashes internos correctos; T01–T05 intactas. Sin hallazgos.
+  Las suites previas no se repitieron ni se acreditó ejecución nueva de Godot.
+- Una única consulta API `gh api .../releases/tags/v0.1-rc1-t06`: salida 1,
+  `Get "https://api.github.com/repos/JoseB-H/The-Dragons-and-titans/releases/tags/v0.1-rc1-t06": Forbidden`.
+  Sin nuevos intentos de adjuntar ni URL inventada; release/descarga remota bloqueadas.
+- Registro Windows/laptop preparado con campos pendientes y guía vigente. Sin
+  Windows accesible ni informe nativo incorporado: no se declara prueba ejecutada
+  o V0.1 aceptada. Esperar resultados reales y corregir fallos antes de V0.2.

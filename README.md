@@ -13,6 +13,8 @@ Se entrega como archivo descargable del chat y se conserva en `builds/t06/` del
 entorno. La publicación de una release preliminar en GitHub está **bloqueada**:
 la consulta API previa a crearla devuelve `Forbidden`. No hay URL de release
 verificada; descargar el código de esta rama no descarga el ejecutable.
+La comprobación de continuidad del 17 de noviembre de 2026 sigue recibiendo
+`Forbidden`; se conserva el mismo ZIP y no se repite la exportación.
 
 Extraer **todo** el ZIP y abrir `DragonsAndTitans.exe`, manteniendo el PCK en la
 misma carpeta. No requiere instalar Godot ni iniciar sesión. Leer `LEEME.txt`,
@@ -20,6 +22,9 @@ también disponible en [docs/entrega/LEEME-WINDOWS.txt](docs/entrega/LEEME-WINDO
 WASD mueve, el ratón orienta, clic dispara, Q/E activan habilidades y R o el botón
 final reinician. El paquete es candidato para prueba; no tiene rendimiento ni
 requisitos mínimos medidos y **no está probado en Windows nativo**.
+Para registrar la prueba real, completar
+[T06-prueba-windows.md](docs/validacion/T06-prueba-windows.md); sus filas siguen
+pendientes y no acreditan ejecución. La guía incluida en el ZIP sigue vigente.
 
 Código exportado: `e40276a5cb769e53794cd1f64832796772ec060f`.
 SHA256 del ZIP: `aded62eaf281846fba54e2cd5437d3df8911b4cf1b34589b409e6f33a3adacda`.

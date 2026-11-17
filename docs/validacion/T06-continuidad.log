@@ -1,0 +1,34 @@
+T06 — Continuidad del candidato, 17 de noviembre de 2026
+Rama conservada: feat/v0.1-t06-entrega-windows
+Punta anterior: d1cc1acfbcf29031398e4ece6ca3a0acf2838083
+Código exportado: e40276a5cb769e53794cd1f64832796772ec060f
+Encargo leído de main: c33bad1b072a7138d06f86a2c6cc38279893b003
+No merge, force push, cambios de juego ni reexportación.
+
+Verificación actual del ZIP original:
+DragonsAndTitans-v0.1-rc1-windows-x86_64-e40276a.zip
+Bytes: 35977332
+SHA256: aded62eaf281846fba54e2cd5437d3df8911b4cf1b34589b409e6f33a3adacda
+CRC 6/6, seis archivos, VERSION.source_commit y cinco hashes internos: correctos.
+Sidecar y reporte T06-paquete.json coinciden (también verificados por agente independiente).
+Ningún fallo reproducible del artefacto. No se repitieron Godot ni suites previas.
+git diff --exit-code e40276a..HEAD -- game tools docs/entrega: salida 0.
+git diff --exit-code -- game tools docs/entrega: salida 0.
+git merge-base --is-ancestor e40276a HEAD: salida 0.
+git log --merges --oneline 036553c..HEAD: sin commits de merge.
+
+Política del entorno observada y aplicada: restricted; api.github.com y
+uploads.github.com no figuran en effective_allowed_hosts. No se modificó la red.
+Única consulta API de esta continuación:
+gh api repos/JoseB-H/The-Dragons-and-titans/releases/tags/v0.1-rc1-t06
+Get "https://api.github.com/repos/JoseB-H/The-Dragons-and-titans/releases/tags/v0.1-rc1-t06": Forbidden
+[exit 1]
+No se reiteran intentos ni se intenta crear/adjuntar tras Forbidden.
+No hay URL estable verificada ni descarga remota/hash nuevos.
+ZIP/sidecar conservados en builds/t06 y enlazados como archivos del chat.
+
+Plataforma actual: Linux 6.18.57 x86_64, sin Windows nativo accesible.
+No se ejecutó EXE en Windows ni se incorporó un informe humano/nativo.
+Registro de recogida de resultados: docs/validacion/T06-prueba-windows.md,
+todos sus campos de ejecución y aceptación permanecen pendientes.
+T06/V0.1 no se declara validada íntegramente; V0.2 no iniciada.

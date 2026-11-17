@@ -9,6 +9,10 @@ El PCK exportado también pasó el ciclo gráfico completo en Godot Linux.
 íntegramente. La release preliminar está bloqueada por `Forbidden` en la API:
 el ZIP se conserva en el entorno y se entrega mediante enlace de archivo del chat,
 sin URL estable de release verificada. Rama de código publicada, sin merge.
+Continuidad del encargo main `c33bad1`: candidato e40276a/ZIP conservados,
+integridad comprobada de nuevo y una única consulta API todavía `Forbidden`.
+Registro Windows preparado en `docs/validacion/T06-prueba-windows.md`, pendiente
+de resultados nativos del usuario; no se ha reexportado ni iniciado V0.2.
 
 ## Lectura
 - AGENTS.md: instrucciones para agentes.
@@ -578,6 +582,35 @@ propios detenidos al terminar. No se cambiaron ni relajaron aserciones.
   no se ejecutó el EXE, ni con Wine ni en Windows. **Prueba humana en laptop pendiente**.
   Candidato listo para que el usuario descargue/extraiga y pruebe con LEEME;
   no declarar T06 validada íntegramente ni V0.1 aceptada hasta registrar esa prueba.
+
+### Continuación del encargo de main c33bad1 — 17 de noviembre de 2026
+- Leído `origin/main:docs/SIGUIENTE_TAREA.md` en
+  `c33bad1b072a7138d06f86a2c6cc38279893b003`. Se continúa sobre la misma rama
+  `feat/v0.1-t06-entrega-windows`, desde su cierre documental `d1cc1ac`, sin
+  volver a T05, merge, force push ni cambios de juego o V0.2.
+- Código exportado e40276a y artefacto original conservados. Nueva comprobación
+  de tamaño 35 977 332 bytes, SHA256
+  `aded62eaf281846fba54e2cd5437d3df8911b4cf1b34589b409e6f33a3adacda`,
+  sidecar, CRC 6/6, VERSION.source_commit y cinco hashes internos: correctos.
+  Verificación independiente sin hallazgos; no se reexportó ni se sustituyó ZIP.
+  Los resultados Linux 365/0 y 250/0, y PCK 145/0 anteriores se conservan como evidencia
+  histórica: no se repitieron suites ni se ejecutó Godot en esta continuación.
+- Política actual observada y aplicada: restringida: `api.github.com` y
+  `uploads.github.com` siguen fuera de la lista efectiva. Una sola consulta de
+  disponibilidad: `gh api repos/JoseB-H/The-Dragons-and-titans/releases/tags/v0.1-rc1-t06`,
+  salida 1: `Get "https://api.github.com/repos/JoseB-H/The-Dragons-and-titans/releases/tags/v0.1-rc1-t06": Forbidden`.
+  No se repiten llamadas API ni intentos de crear/adjuntar; publicación, URL
+  estable y verificación de descarga remota/hash siguen bloqueadas. No se cambió
+  la configuración de red ni se inventó URL. Evidencia en `T06-continuidad.log`.
+- Entorno disponible: Linux 6.18.57 x86_64; sin Windows nativo accesible ni informe
+  humano incorporado. Se solicitó al usuario Windows/GPU y resultados concretos.
+  `docs/validacion/T06-prueba-windows.md` prepara metadatos, comandos y matriz de
+  controles/combate/final/reinicio en ambos tamaños, todos **pendientes**. No es
+  un informe de prueba ejecutada y no cambia las instrucciones del ZIP existente.
+- README y encargo actualizados para facilitar la prueba humana del mismo ZIP.
+  Cualquier fallo real debe reproducirse y corregirse antes de V0.2; si cambia
+  código, exportar un candidato nuevo con SHA/hash propios y repetir lo afectado.
+  T06/V0.1 continúan sin aceptación integral.
 
 ## Limitaciones conocidas
 - **Windows nativo pendiente:** se exportó un `.exe` release desde Linux, pero no
