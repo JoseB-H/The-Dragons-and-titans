@@ -1,11 +1,12 @@
 # Estado del proyecto
 
-## Situación actual — entrega T03
-**T03 implementada y comprobada en Linux**, conservando T01/T02 y Godot 4.6.3
-Compatibility. Hay salud, facciones, ataque básico con recarga, proyectiles con
-barrido físico, enemigo que persigue/ataca y restauración completa con R.
-La siguiente tarea es T04 (dos habilidades); la interfaz completa de fin de partida
-y sus estados siguen siendo T05. No se implementaron Q/E ni servicios online.
+## Situación actual — entrega T04 (17 de noviembre de 2026)
+**T04 implementada y comprobada en Linux**, conservando T01–T03 y Godot 4.6.3
+Compatibility. Q dispara un proyectil potente; E aplica un pulso instantáneo con
+anillo temporal. Ambos tienen recargas independientes, activación por pulsación
+e indicadores visibles. R también limpia habilidades y efectos.
+La siguiente tarea es T05: ciclo e interfaz de partida. V0.1 todavía no está
+completa ni lista para declarar una prueba validada en la laptop del usuario.
 La validación nativa de Windows sigue **pendiente**.
 
 ## Lectura
@@ -20,16 +21,19 @@ La validación nativa de Windows sigue **pendiente**.
 | T01 Proyecto ejecutable | Terminada (Linux) | Importación y arranque headless con salida 0; renderizado Compatibility e imagen inspeccionada, ver registro abajo |
 | T02 Dragón y cámara | Terminada (Linux) | 34 comprobaciones headless y 22 de ventana; capturas de inicio/esquina inspeccionadas |
 | T03 Combate y enemigo | Terminada (Linux) | Núcleo 51/0, integración 52/0, gráfica T03 34/0; regresión T02 34/0 y 22/0; importación/arranque sin errores |
-| T04 Habilidades | Pendiente | Sin ejecución registrada |
+| T04 Habilidades | Terminada (Linux) | Q 57/0, E 78/0, integración 42/0, ventana 49/0; regresión T02/T03 y arranque sin errores |
 | T05 Ciclo e interfaz | Pendiente | Sin ejecución registrada |
 | T06 Validación y entrega | Pendiente | Sin ejecución registrada |
 
 ## Próxima acción
-Implementar **T04 — Dos habilidades**, tras leer los documentos y verificar la
-rama y el código reales. Reutilizar salud, facciones, armas y limpieza de T03:
-Q proyectil potente y E pulso de área con recargas propias y datos configurables,
-según IMPLEMENTACION.md. Probar daño válido, bloqueo durante recarga y efectos
-temporales sin acumulación, manteniendo la regresión T02/T03. Windows continúa pendiente.
+Implementar **T05 — Ciclo de partida e interfaz**, tras leer los documentos y
+verificar la rama y el código reales. Añadir estados jugando/victoria/derrota,
+bloqueo de combate al terminar y reinicio completo según IMPLEMENTACION.md.
+Reutilizar salud, recargas, indicadores y recarga de escena existentes, manteniendo
+regresión T02–T04. Después, T06: validar el hito y preparar un paquete Windows
+descargable e instrucciones para la laptop, distinguiendo exportación de ejecución
+nativa. Avisar al usuario cuando esa entrega sea jugable y visualmente clara;
+no dar por cumplido ese objetivo en T04. Windows sigue pendiente.
 
 ## Registro del incremento T01
 
@@ -248,6 +252,93 @@ vivo fuera del árbol; tras reproducirlo (52 comprobaciones, 1 fallo), se corrig
 y la integración final pasó 52/0 junto a las demás suites headless. La corrección
 solo añade una condición de validez y no altera el recorrido gráfico ya comprobado.
 
+## Registro del incremento T04
+
+### Base y archivos
+- Base exacta: `b9da1e4ddaa3b138b41275961d2144c8de72a5a9`, conservada en la rama T03.
+  Nueva rama: `feat/v0.1-t04-habilidades`. Sin merge, rebase ni force push.
+- Código T04: `c0a02d1e2bf9b78d78164d764918c34bdaeaf0a0`; cierre documental posterior.
+- Encargo recuperado de `origin/main` en `27918fc8276b5900818d5768aa4b69879a0c2c18`
+  mediante `git show`, sin sustituir este ESTADO por el de main.
+- `weapon.gd`: PackedScene exportada, básica por defecto. `PowerWeapon` usa
+  `power_projectile.tscn` y el mismo `projectile.gd` de T03, sin modificar su barrido.
+  Escena nula/vacía/incompatible se rechaza sin efectos ni consumo de recarga.
+- `power_projectile.tscn`: esfera magenta propia, radio visual 0.3 frente a 0.15
+  amarilla del básico. Q exportada: daño45, velocidad36, vida2s, recarga2.5s.
+- `pulse_ability.gd`: daño instantáneo, radio4 inclusivo por centros XZ
+  (**d² <= radio²**, sin usar altura Y), daño30, recarga4s y efecto0.5s.
+  Excluye emisor, aliados, muertos, retirados, encolados y otros nodos inválidos.
+  Revalida cada objetivo después de callbacks; reserva la activación para impedir
+  reentrada incluso con recarga configurada a cero. E sin objetivos es válida.
+- `pulse_effect.gd`/`pulse_effect.tscn`: anillo propio cian verde, radio visual
+  coincidente con el daño y duración configurada. No tiene autoridad de daño:
+  permanecer en él no causa impactos repetidos; se elimina al terminar.
+- `combat_actor.gd`: registra actores en `combat_actors`. `dragon.tscn` compone
+  PowerWeapon/PulseAbility; `dragon_controller.gd` recibe Q/E físicos por pulsación,
+  ignora eco y mantiene latch hasta soltar. Pérdida de foco limpia el latch.
+- `arena.gd`/`arena.tscn`: conecta contenedores Projectiles/Effects y HUD de
+  disponibilidad, segundos restantes y bloqueo por muerte. R recarga todo el árbol,
+  restaurando salud, posiciones, armas, habilidades y efectos sin acumulación.
+- `project.godot`: acciones `ability_q` (Q físico) y `ability_e` (E físico).
+- Pruebas nuevas: `test_power_projectile.gd`, `test_pulse.gd`, `test_t04.gd`,
+  `test_t04_window.gd`, con UID versionados. No se modificaron las aserciones ni
+  montajes de las suites T02/T03 respecto a la base de este incremento.
+- Balance, materiales y geometría son propios y provisionales, no datos originales.
+  Sin dependencias nuevas, servicios online ni implementación de T05/T06.
+
+### Comprobaciones reales
+Godot `4.6.3.stable.official.7d41c59c4`, desde `/workspace/The-Dragons-and-titans`.
+XDG_CACHE_HOME/DATA_HOME/CONFIG_HOME apuntaron a directorios escribibles bajo
+`/tmp/dragons-t04/`; gráficos con Xorg temporal `:93`, OpenGL 4.5 Compatibility
+por Mesa llvmpipe. Estas son comprobaciones Linux, no ejecución Windows.
+
+| Suite/comando | Resultado final |
+| --- | --- |
+| `godot --headless --path game --import` | Salida 0, sin errores |
+| `godot --headless --path game --script res://tests/test_power_projectile.gd` | 57 comprobaciones, 0 fallos, salida 0 |
+| `godot --headless --path game --script res://tests/test_pulse.gd` | 78 comprobaciones, 0 fallos, salida 0 |
+| `godot --headless --path game --script res://tests/test_t04.gd` | 42 comprobaciones, 0 fallos, salida 0 |
+| `godot --headless --path game --script res://tests/test_t02.gd` | 34 comprobaciones, 0 fallos, salida 0 |
+| `godot --headless --path game --script res://tests/test_combat_core.gd` | 51 comprobaciones, 0 fallos, salida 0 |
+| `godot --headless --path game --script res://tests/test_t03.gd` | 52 comprobaciones, 0 fallos, salida 0 |
+| `godot --headless --path game --quit-after 120` | Salida 0, sin errores |
+
+Cada suite de ventana se ejecutó con:
+`DISPLAY=:93 godot --path game --display-driver x11 --audio-driver Dummy --script res://tests/<suite>.gd -- --output-dir=/tmp/dragons-t04/graphics`.
+
+| Suite gráfica | Resultado final |
+| --- | --- |
+| `test_t04_window` | 49 comprobaciones, 0 fallos, salida 0 |
+| `test_t02_window` | 22 comprobaciones, 0 fallos, salida 0 |
+| `test_t03_window` | 34 comprobaciones, 0 fallos, salida 0 |
+
+Q verifica dirección, datos, recarga, escenas rechazadas, facciones, impacto único,
+objetivo cercano y barrido a 600 unidades/s, caducidad y visual distinto. E verifica
+varios hostiles, frontera exacta, fuera del radio, otra altura, aliado, muerto,
+candidatos invalidados por callbacks, daño instantáneo sin repetición, recarga,
+rechazos sin consumo y eliminación del VFX. La integración usa entradas físicas,
+independencia entre básico/Q/E, eco, hold tras terminar CD, nueva pulsación,
+foco simulado, muerte y tres reinicios con estado activo.
+
+La ventana usa teclas Q/E/R y cursor reales de la ventana con entrada automatizada;
+IA pausada solo en el montaje de T04. Q impacta al enemigo inicialmente en Z=-7;
+para E se coloca en Z=-3. Se acortan esperas de recarga únicamente en la prueba
+de hold, sin modificar datos de producción. La regresión T03 ejercita IA activa.
+Se inspeccionaron las capturas propias `docs/validacion/T04-proyectil-potente-linux.png`
+y `T04-pulso-y-recargas-linux.png`: Q magenta distinguible, anillo visible y HUD
+legible con salud/tiempos coherentes. Transcripción: `docs/validacion/T04-linux.log`.
+
+La primera ventana dio 49 comprobaciones/1 fallo al leer el HUD antes de
+`Arena._process`; la captura posterior ya mostraba los tiempos correctos. Se
+corrigió solo la sincronización del montaje con `frame_post_draw` y se reforzó
+la comprobación de ambos segundos. Repetición: 49/0 y regresiones gráficas 22/0,
+34/0, sin errores de script. Único aviso: V-Sync no soportado por el driver virtual.
+
+Revisión independiente de código e integración: sin hallazgos de aceptación.
+En copia temporal sin caché se repitieron importación, Q57/0, E78/0, integración42/0,
+T02 34/0, núcleo51/0, T03 52/0 y arranque, todos con salida 0. Esa revisión no
+repitió gráficos. `git diff --check` limpio; sin merges nuevos desde `b9da1e4`.
+
 ## Limitaciones conocidas
 - **Windows pendiente:** no se ejecutó el editor ni se exportó/probó un `.exe` en
   Windows. Los comandos de Windows están documentados, no verificados en esta máquina Linux.
@@ -255,8 +346,10 @@ solo añade una condición de validez y no altera el recorrido gráfico ya compr
   Linux, con inspección de capturas. No hubo sesión humana prolongada de manejo,
   prueba de GPU física ni interacción con el escritorio compartido. El seguimiento
   se verificó por fotograma; la sensación de manejo requiere evaluación del usuario.
-- Q/E y estados completos de victoria/derrota/reinicio T05 todavía no implementados.
-  T03 incluye combate y recarga mínima de escena, no la aceptación completa de V0.1.
+- Los estados completos de victoria/derrota/reinicio T05 siguen pendientes.
+  T04 incluye habilidades y restauración mínima, no la aceptación completa de V0.1.
+- La prueba en laptop y paquete Windows descargable se prepararán en T06.
+  No se exportó ni ejecutó Windows en T04; no se declara listo el hito completo.
 - Chat compartido no accesible durante la preparación inicial; no se presupone su contenido.
 - Wiki pendiente de investigar y contrastar.
 - Cinco capturas de referencia del usuario pendientes de incorporar al repositorio;

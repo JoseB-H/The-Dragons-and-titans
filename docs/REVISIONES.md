@@ -44,3 +44,18 @@ Comparar ramas y cambios de código contra esta referencia o la última entrega 
   decisiones y defectos corregidos en ESTADO.md. Sin revisión remota repetida,
   PR ni CI nuevas. No se modificaron permisos para sortear el bloqueo API previo.
 - **Windows pendiente**, junto a GPU física y manejo humano prolongado. Siguiente: T04.
+
+## Entrega de programación T04 — 17 de noviembre de 2026
+- Base exacta `b9da1e4ddaa3b138b41275961d2144c8de72a5a9`; nueva rama
+  `feat/v0.1-t04-habilidades`, sin merge ni force push. Encargo de main `27918fc`.
+- Código `c0a02d1e2bf9b78d78164d764918c34bdaeaf0a0`; cierre documental posterior.
+- Revisión independiente en copia temporal sin caché, Godot4.6.3: importación y
+  arranque limpios; Q57/0, E78/0, integración42/0, T02 34/0, núcleo51/0 y T03 52/0.
+  Sin hallazgos de aceptación en juego/input/recargas/selección/limpieza. No gráficos repetidos por el revisor.
+- Implementador: gráficas T04 49/0, T02 22/0 y T03 34/0. Inspección de dos
+  capturas Q/E y HUD; transcripción en `docs/validacion/T04-linux.log`.
+- Primera gráfica T04: 49/1 por leer HUD antes de `_process`. Sincronizado el
+  montaje con `frame_post_draw`, manteniendo y reforzando la comprobación de segundos.
+  Repetición sin errores de script; solo aviso V-Sync del driver virtual.
+- No CI ni PR nuevas ni cambios de permisos. **Windows, GPU física y manejo humano
+  prolongado pendientes**. V0.1 aún requiere T05/T06 y entrega para laptop.
