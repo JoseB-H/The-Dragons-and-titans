@@ -24,3 +24,26 @@ func select_dragon(id: StringName) -> bool:
 			selected_id = id
 			return true
 	return false
+
+const EMBER := preload("res://data/weapons/ascua.tres")
+const HAMMER := preload("res://data/weapons/martillo.tres")
+var selected_weapon_id: StringName = &"ascua"
+
+func get_weapons() -> Array[Resource]:
+	return [EMBER, HAMMER]
+
+func selected_weapon() -> Resource:
+	for item: Resource in get_weapons():
+		if item.id == selected_weapon_id:
+			return item
+	return EMBER
+
+func select_weapon(id: StringName) -> bool:
+	# Solo el selector permite equipar. El combate utiliza una instantánea.
+	if get_tree().current_scene != null and get_tree().current_scene.scene_file_path == "res://scenes/arena.tscn":
+		return false
+	for item: Resource in get_weapons():
+		if item.id == id:
+			selected_weapon_id = id
+			return true
+	return false

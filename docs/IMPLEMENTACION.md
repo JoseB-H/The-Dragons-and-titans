@@ -58,3 +58,11 @@ Multijugador: diseñar autoridad del servidor, sincronización y desconexiones a
 
 ## Prompt de inicio
 Lee AGENTS.md y los documentos indicados. Verifica el código y la rama actuales. Implementa la primera tarea pendiente de V0.1 con recursos provisionales propios, ejecuta las comprobaciones disponibles y actualiza docs/ESTADO.md. Continúa con el siguiente incremento si el anterior queda validado; informa con precisión lo no probado. No dependas del chat compartido.
+
+## V0.2 T02 — Armas y equipamiento reimplementados
+Dos recursos de arma independientes: Ascua (multiplicadores 1/1) y Martillo astral
+(1.8 daño/2 recarga). Resultado calculado desde el perfil del dragón, sin mutarlo.
+Selector, HUD, marca geométrica, proyectil e impacto propios.
+Código y pruebas de lógica implementados; validación gráfica, entradas físicas,
+revisión de foco en ventana, exportación y Windows pendientes en esta entrega.
+No iniciar T03 antes del cierre de esas comprobaciones.

@@ -402,3 +402,12 @@ no contienen arte del juego original ni recursos de terceros.
 Las dimensiones, colores y cámara son decisiones **provisionales** del prototipo,
 no datos verificados de Dragons and Titans. Los recursos adicionales se añadirán
 cuando las siguientes tareas los necesiten.
+
+## V0.2 T02 — Equipamiento (reimplementación)
+En el selector elige Cobre/Jade y Ascua/Martillo astral, con ratón o Tab y Enter.
+Ascua conserva el básico previo; Martillo aplica ×1.8 al daño (redondeo al entero
+más cercano, mínimo 1) y ×2 a la recarga. Salud, movimiento y Q/E pertenecen al
+dragón. Reiniciar conserva ambas elecciones en memoria; al terminar puedes volver
+al selector. Nombres, cifras, geometría y materiales propios provisionales.
+Validación lógica Linux registrada en docs/validacion/V02-T02-reimplementacion.log.
+Validación gráfica y Windows de esta entrega pendientes; no hay ZIP nuevo.

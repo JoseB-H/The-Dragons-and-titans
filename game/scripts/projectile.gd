@@ -11,11 +11,21 @@ var source_rid: RID = RID()
 # Vector3 global opcional: el primer barrido incluye actor → origen visual.
 var launch_origin: Variant = null
 
+var visual_tint: Color = Color.WHITE
+var visual_scale: float = 1.0
+
 var _remaining_lifetime: float = 0.0
 var _spent := false
 
 
 func _ready() -> void:
+	for child in get_children():
+		if child is MeshInstance3D:
+			child.scale *= visual_scale
+			if visual_tint != Color.WHITE:
+				var material := StandardMaterial3D.new()
+				material.albedo_color = visual_tint
+				child.material_override = material
 	direction = Vector3(direction.x, 0.0, direction.z).normalized()
 	_remaining_lifetime = maxf(lifetime, 0.0)
 
@@ -48,6 +58,7 @@ func _physics_process(delta: float) -> void:
 			var actor := hit["collider"] as Node
 			if actor != null and actor.has_method("is_alive") and actor.has_method("take_damage"):
 				if actor.is_alive() and actor.faction != source_faction:
+					_show_impact(hit["position"], actor)
 					actor.take_damage(damage, source_faction)
 					_retire()
 					return
@@ -63,3 +74,22 @@ func _physics_process(delta: float) -> void:
 func _retire() -> void:
 	_spent = true
 	queue_free()
+
+func _show_impact(point: Vector3, actor: Node) -> void:
+	if visual_tint == Color.WHITE:
+		return
+	var flash := MeshInstance3D.new()
+	var sphere := SphereMesh.new()
+	sphere.radius = 0.22
+	sphere.height = 0.44
+	flash.mesh = sphere
+	var material := StandardMaterial3D.new()
+	material.shading_mode = BaseMaterial3D.SHADING_MODE_UNSHADED
+	material.albedo_color = visual_tint if visual_tint != Color.WHITE else Color(1, 0.8, 0.35)
+	flash.material_override = material
+	actor.add_child(flash)
+	flash.add_to_group("equipment_impacts")
+	flash.global_position = point
+	var tween := flash.create_tween()
+	tween.tween_property(flash, "scale", Vector3.ONE * 0.05, 0.12)
+	tween.tween_callback(flash.queue_free)

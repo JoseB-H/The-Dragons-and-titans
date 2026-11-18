@@ -184,13 +184,13 @@ anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 theme_override_constants/margin_left = 52
-theme_override_constants/margin_top = 32
+theme_override_constants/margin_top = 20
 theme_override_constants/margin_right = 52
-theme_override_constants/margin_bottom = 28
+theme_override_constants/margin_bottom = 20
 
 [node name="Content" type="VBoxContainer" parent="Margin"]
 layout_mode = 2
-theme_override_constants/separation = 18
+theme_override_constants/separation = 10
 
 [node name="Eyebrow" type="Label" parent="Margin/Content"]
 layout_mode = 2
@@ -201,7 +201,7 @@ text = "DRAGONS AND TITANS  /  PROTOTIPO OFFLINE"
 [node name="Title" type="Label" parent="Margin/Content"]
 layout_mode = 2
 theme_override_colors/font_color = Color(0.96, 0.96, 0.93, 1)
-theme_override_font_sizes/font_size = 36
+theme_override_font_sizes/font_size = 28
 text = "Elige tu dragón"
 
 [node name="Intro" type="Label" parent="Margin/Content"]
@@ -217,7 +217,7 @@ size_flags_vertical = 3
 theme_override_constants/separation = 24
 
 [node name="CopperButton" type="Button" parent="Margin/Content/Cards"]
-custom_minimum_size = Vector2(0, 310)
+custom_minimum_size = Vector2(0, 240)
 layout_mode = 2
 size_flags_horizontal = 3
 focus_neighbor_left = NodePath("../JadeButton")
@@ -229,7 +229,7 @@ focus_previous = NodePath("../../Footer/PlayButton")
 theme_override_colors/font_color = Color(1, 0.88, 0.73, 1)
 theme_override_colors/font_pressed_color = Color(1, 0.94, 0.84, 1)
 theme_override_colors/font_hover_color = Color(1, 0.94, 0.84, 1)
-theme_override_font_sizes/font_size = 20
+theme_override_font_sizes/font_size = 18
 theme_override_styles/normal = SubResource("StyleBoxFlat_copper")
 theme_override_styles/hover = SubResource("StyleBoxFlat_copper_hover")
 theme_override_styles/pressed = SubResource("StyleBoxFlat_copper_selected")
@@ -241,7 +241,7 @@ alignment = 0
 autowrap_mode = 3
 
 [node name="JadeButton" type="Button" parent="Margin/Content/Cards"]
-custom_minimum_size = Vector2(0, 310)
+custom_minimum_size = Vector2(0, 240)
 layout_mode = 2
 size_flags_horizontal = 3
 focus_neighbor_left = NodePath("../CopperButton")
@@ -253,7 +253,7 @@ focus_previous = NodePath("../CopperButton")
 theme_override_colors/font_color = Color(0.76, 0.94, 0.84, 1)
 theme_override_colors/font_pressed_color = Color(0.86, 1, 0.91, 1)
 theme_override_colors/font_hover_color = Color(0.86, 1, 0.91, 1)
-theme_override_font_sizes/font_size = 20
+theme_override_font_sizes/font_size = 18
 theme_override_styles/normal = SubResource("StyleBoxFlat_jade")
 theme_override_styles/hover = SubResource("StyleBoxFlat_jade_hover")
 theme_override_styles/pressed = SubResource("StyleBoxFlat_jade_selected")
@@ -272,7 +272,7 @@ theme_override_constants/separation = 28
 layout_mode = 2
 size_flags_horizontal = 3
 theme_override_colors/font_color = Color(0.84, 0.88, 0.9, 1)
-theme_override_font_sizes/font_size = 20
+theme_override_font_sizes/font_size = 18
 autowrap_mode = 3
 
 [node name="PlayButton" type="Button" parent="Margin/Content/Footer"]

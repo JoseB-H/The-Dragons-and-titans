@@ -15,6 +15,8 @@ extends "res://scripts/combat_actor.gd"
 
 var profile_id: StringName
 var profile_name: String
+var equipment_name: String
+var equipment_id: StringName
 
 var _q_held := false
 var _e_held := false
@@ -60,6 +62,22 @@ func _apply_profile(profile: Resource) -> void:
 	pulse_ability.radius = profile.pulse_radius
 	pulse_ability.cooldown = profile.pulse_cooldown
 	pulse_ability.effect_duration = profile.pulse_effect_duration
+	var equipment: Resource = get_node("/root/DragonRoster").selected_weapon()
+	equipment_name = equipment.display_name
+	equipment_id = equipment.id
+	weapon.damage = equipment.damage_for(profile)
+	weapon.cooldown = equipment.cooldown_for(profile)
+	weapon.projectile_tint = equipment.tint
+	weapon.projectile_scale = equipment.visual_scale
+	var marker := MeshInstance3D.new()
+	var mesh := PrismMesh.new()
+	mesh.size = Vector3(0.3, 0.35, 0.8) * equipment.visual_scale
+	marker.mesh = mesh
+	var material := StandardMaterial3D.new()
+	material.albedo_color = equipment.tint
+	marker.material_override = material
+	marker.position = Vector3(0, 0.55, -0.7)
+	facing.add_child(marker)
 	_apply_palette(profile)
 
 

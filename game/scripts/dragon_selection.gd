@@ -10,6 +10,7 @@ const ARENA_PATH := "res://scenes/arena.tscn"
 @onready var _roster: Node = get_node("/root/DragonRoster")
 
 var _navigating := false
+var weapon_buttons: Array[Button] = []
 
 
 func _ready() -> void:
@@ -20,6 +21,25 @@ func _ready() -> void:
 		var card := _button_for(profile.id)
 		if card != null:
 			card.text = _profile_text(profile)
+	var row := HBoxContainer.new()
+	$Margin/Content.add_child(row)
+	$Margin/Content.move_child(row, $Margin/Content/Footer.get_index())
+	for item: Resource in _roster.get_weapons():
+		var button := Button.new()
+		button.text = item.display_name
+		button.toggle_mode = true
+		button.size_flags_horizontal = Control.SIZE_EXPAND_FILL
+		button.pressed.connect(func(): select_weapon(item.id))
+		row.add_child(button)
+		weapon_buttons.append(button)
+	var chain: Array[Button] = [copper_button, jade_button]
+	chain.append_array(weapon_buttons)
+	chain.append(play_button)
+	for i in range(chain.size()):
+		chain[i].focus_next = chain[i].get_path_to(chain[(i + 1) % chain.size()])
+		chain[i].focus_previous = chain[i].get_path_to(chain[(i - 1 + chain.size()) % chain.size()])
+		chain[i].focus_neighbor_bottom = chain[i].focus_next
+		chain[i].focus_neighbor_top = chain[i].focus_previous
 	_refresh_selection()
 	# Volver al menú enfoca la elección actual; Enter repetido no inicia Arena.
 	# _ready ya está dentro del árbol; el foco no debe sobrevivir a una salida rápida.
@@ -73,5 +93,15 @@ func _refresh_selection() -> void:
 	var profile: Resource = _roster.selected_profile()
 	copper_button.set_pressed_no_signal(profile.id == &"cobre")
 	jade_button.set_pressed_no_signal(profile.id == &"jade")
+	var equipment: Resource = _roster.selected_weapon()
+	for i in range(weapon_buttons.size()):
+		weapon_buttons[i].set_pressed_no_signal(_roster.get_weapons()[i].id == equipment.id)
 	details.text = "Elegido: %s\nBalance provisional · La elección se conserva al reiniciar." % profile.display_name
+	details.text = "%s / %s · Básico: %d daño · %.2f s\nQ/E del dragón · Balance provisional" % [profile.display_name, equipment.display_name, equipment.damage_for(profile), equipment.cooldown_for(profile)]
 	play_button.text = "Jugar con %s" % profile.display_name
+
+func select_weapon(id: StringName) -> bool:
+	if _navigating or not _roster.select_weapon(id):
+		return false
+	_refresh_selection()
+	return true

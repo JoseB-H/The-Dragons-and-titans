@@ -764,3 +764,40 @@ dos tamaños nativos. Comprueba posiciones/salud/recargas y ausencia de acumulac
 
 ## Formato de actualización
 Por cada incremento registrar: tarea, cambio, archivos, comprobaciones y resultados, limitaciones, decisiones provisionales y siguiente paso. Actualizar las filas de seguimiento sin borrar limitaciones aún vigentes.
+
+## V0.2 T02 — Reimplementación desde respaldo publicado
+El entorno de la entrega anterior quedó inaccesible según el usuario. No se
+recuperó ni verificó su commit 5a1f54a ni su ZIP. Durante esta recuperación se clonó
+el remoto y no se encontró una rama T02 publicada. Se partió de 95337f2 en una
+rama nueva; no se borró ni modificó el entorno anterior, main o entregas previas.
+
+Implementados Ascua/Martillo astral, cuatro combinaciones, balance separado,
+selector de armas con Tab/Enter y ratón, estadísticas combinadas, HUD, marca
+geométrica sobre el dragón, proyectiles diferenciados e impacto temporal propio.
+Ascua conserva básico anterior; Martillo multiplica daño ×1.8 y recarga ×2.
+Q/E, salud y movimiento permanecen en los perfiles de dragón. Reinicios conservan
+ambas elecciones y la arena impide cambiar de arma. No hay guardado en disco.
+
+Validación: Godot 4.6.3 estable instalado. Importación headless aprobada. Las diez
+suites heredadas de lógica aprobaron 568 comprobaciones antes del impacto visual.
+La nueva suite test_equipment.gd aprobó inicialmente 225 comprobaciones: cuatro
+combinaciones, impactos/recargas reales, finales alternados, tres reinicios por
+combinación, vuelta al selector y aislamiento. Registro final de las once suites
+en docs/validacion/V02-T02-reimplementacion.log, incluyendo los efectos finales.
+
+Limitaciones: el servidor gráfico no pudo abrir sockets; no se ejecutaron suites
+gráficas ni se inspeccionaron capturas en esta entrega. No se acredita foco real,
+entradas físicas ni legibilidad en ventana. No hay plantillas Windows instaladas
+ni se exportó ZIP nuevo. Windows nativo pendiente. T02 NO se declara cerrada:
+siguiente paso validar gráficos a 1280×720/960×540, entradas retenidas y exportar.
+Sin merge ni T03. El git push HTTPS local carecía de credenciales; se utiliza
+el conector GitHub para publicar el respaldo si el acceso lo permite.
+
+Se detectó durante regresión que los destellos contaban como efectos de habilidad
+y alteraban las comprobaciones T04. Se corrigió su ubicación: ahora son hijos
+visuales temporales del objetivo y se retiran también al terminar. No se modificó
+ninguna aserción heredada.
+
+Resultado final: once suites, 793 comprobaciones aprobadas (568 heredadas + 225
+nuevas), cero fallos y sin errores de scripts en el registro final. Importación
+final y git diff --check aprobados. Validación gráfica/exportación pendientes.

@@ -82,6 +82,8 @@ func _finish_match(result: MatchState) -> void:
 			# No ejecutar otro paso mientras queue_free espera a liberar el nodo.
 			transient.process_mode = Node.PROCESS_MODE_DISABLED
 			transient.queue_free()
+	for flash in get_tree().get_nodes_in_group("equipment_impacts"):
+		flash.queue_free()
 	_update_hud()
 	match_finished.emit(state)
 
@@ -95,7 +97,7 @@ func _update_hud() -> void:
 	var release_hint := ""
 	if player.waiting_for_release():
 		release_hint = "\nSuelta las teclas y el clic mantenidos para jugar."
-	var text := "%s · Objetivo: vencer al enemigo · Valores provisionales\nWASD: mover · Ratón: orientar · Clic izq.: disparar\nQ: proyectil potente · E: pulso · R: reiniciar\nJugador: %d / %d · Enemigo: %d / %d%s\n%s · %s · %s%s" % [player.profile_name, player.current_health, player.max_health, enemy.current_health, enemy.max_health, status, _basic_status(player.get_node("Weapon").cooldown_remaining), _ability_status("Q", player.get_node("PowerWeapon").cooldown_remaining), _ability_status("E", player.get_node("PulseAbility").cooldown_remaining), release_hint]
+	var text := "%s · Objetivo: vencer al enemigo · Valores provisionales\nWASD: mover · Ratón: orientar · Clic izq.: disparar\nQ: proyectil potente · E: pulso · R: reiniciar\nJugador: %d / %d · Enemigo: %d / %d%s\n%s · %s · %s%s" % [player.profile_name + " / " + player.equipment_name, player.current_health, player.max_health, enemy.current_health, enemy.max_health, status, _basic_status(player.get_node("Weapon").cooldown_remaining), _ability_status("Q", player.get_node("PowerWeapon").cooldown_remaining), _ability_status("E", player.get_node("PulseAbility").cooldown_remaining), release_hint]
 	hud.update_view(text, state)
 
 

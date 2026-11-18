@@ -12,6 +12,9 @@ const PROJECTILE_SCRIPT := preload("res://scripts/projectile.gd")
 @export_range(0.0, 30.0, 0.01, "or_greater") var cooldown: float = 0.4
 @export_range(0.0, 10.0, 0.1, "or_greater") var spawn_distance: float = 1.9
 
+var projectile_tint: Color = Color.WHITE
+var projectile_scale: float = 1.0
+
 var cooldown_remaining: float = 0.0
 var projectile_parent: Node3D
 
@@ -38,6 +41,8 @@ func try_fire(direction: Vector3) -> bool:
 	if not projectile is PROJECTILE_SCRIPT:
 		projectile.free()
 		return false
+	projectile.visual_tint = projectile_tint
+	projectile.visual_scale = projectile_scale
 	projectile.direction = flat_direction
 	projectile.damage = damage
 	projectile.speed = projectile_speed
