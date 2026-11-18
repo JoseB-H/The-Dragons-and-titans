@@ -24,11 +24,22 @@ func run() -> void:
 	var visual := player.get_node("Facing")
 	expect(visual.enabled and visual.get_node_or_null("CobreDetails/SculptedMuzzle") != null, "Cobre tiene modelo enriquecido")
 	expect(visual.details.get_child_count() >= 40, "Placas, dientes, garras y cuernos propios presentes")
+	var membrane: MeshInstance3D = visual.get_node("LeftWingMembrane")
+	var wing_bone: MeshInstance3D = visual.get_node("LeftWingBone1")
+	expect(not visual.get_node("LeftWing").visible and not visual.get_node("RightWing").visible, "Cobre oculta membranas CSG anteriores")
+	expect(membrane.mesh.get_aabb().size.z > 1.4, "Membrana nueva cubre abanico completo")
+	var bone_rest: Transform3D = wing_bone.transform
+	var membrane_rest: Transform3D = membrane.transform
+	var decoration := current_scene.get_node("ArenaPresentation")
+	expect(decoration.find_children("*", "CollisionObject3D", true, false).is_empty(), "Decoración no agrega obstáculos físicos")
 	var origin: Vector3 = player.position
 	var shape: Shape3D = player.get_node("CollisionShape3D").shape
 	var wing: Transform3D = visual.get_node("LeftWing").transform
 	await ticks(15)
 	expect(not visual.get_node("LeftWing").transform.is_equal_approx(wing), "Alas animadas con tiempo real")
+	var bone_motion: Transform3D = wing_bone.transform * bone_rest.affine_inverse()
+	var membrane_motion: Transform3D = membrane.transform * membrane_rest.affine_inverse()
+	expect(bone_motion.is_equal_approx(membrane_motion), "Membrana y nervadura comparten pivote durante aleteo")
 	expect(player.position == origin and player.get_node("CollisionShape3D").shape == shape, "Animación no desplaza actor ni cambia colisión")
 	var weapon := player.get_node("Weapon")
 	expect(weapon.try_fire(Vector3.RIGHT) and visual.attack_time > 0, "Disparo real activa animación")
@@ -43,12 +54,12 @@ func run() -> void:
 			root.size = size
 			await ticks(3)
 			await RenderingServer.frame_post_draw
-			root.get_texture().get_image().save_png("/tmp/T03-cobre-%dx%d.png" % [size.x,size.y])
+			root.get_texture().get_image().save_png("/tmp/T04-cobre-%dx%d.png" % [size.x,size.y])
 		player.get_node("Camera").size = 6
 		visual.look_at(player.get_node("Camera").global_position * Vector3(1, 0, 1) + Vector3(0, visual.global_position.y, 0))
 		await ticks(3)
 		await RenderingServer.frame_post_draw
-		root.get_texture().get_image().save_png("/tmp/T03-cobre-detalle.png")
+		root.get_texture().get_image().save_png("/tmp/T04-cobre-detalle.png")
 	player.take_damage(player.max_health, enemy.faction)
 	await ticks(45)
 	expect(visual.death_amount >= 0.99 and not player.can_act(), "Muerte pliega alas sin habilitar combate")

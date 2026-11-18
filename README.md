@@ -1,3 +1,12 @@
+## V0.2 T04 — Alas y arena
+
+Cobre incorpora membranas curvas de doble cara con nervaduras sincronizadas y
+placas cervicales. La arena tiene losas, roseta central, borde de orientación,
+ruinas y rocas exteriores sin colisiones. Combate y balance conservados.
+
+[Descargar candidato Windows T04](https://chatgpt.com/library?file_id=libfile_9b4a6cb377708191a86326a22825eb68&account_id=personal): extraer todo y abrir
+`DragonsAndTitans.exe`. Windows nativo y rendimiento en laptop pendientes.
+
 ## V0.2 T03 — Primer incremento visual de Cobre
 
 Cobre incorpora hocico facetado, placas dorsales, escamas, cuernos, dientes,

@@ -925,3 +925,43 @@ avanzados, rig y clips importados no forman parte de este incremento. Siguiente:
 publicar rama tras autorización y recoger la valoración visual del usuario en
 laptop; después refinar anatomía/membranas y avanzar con arena/Jade. No iniciar
 multijugador ni sustituir entregas anteriores.
+
+## V0.2 T04 — Membranas y arena de piedra
+
+T03 quedó publicada tras autorización del usuario: cb26867 en
+feat/v0.2-t03-cobre-animado, contenido idéntico al árbol local d3793b2.
+En esta continuación se crea feat/v0.2-t04-alas-y-arena, sin merge.
+
+Cobre: membranas SurfaceTool dobles con borde cóncavo y comba; nervaduras
+construidas con los mismos puntos y animadas con el mismo pivote. Se ocultan
+las alas CSG anteriores solo en Cobre; cuatro placas conectan pecho/cuello.
+Arena: juntas, roseta, marca +/-10 para centros, cuatro ruinas y rocas exteriores.
+No se añaden colisiones, luces ni dependencias; arte original procedural.
+Jade y enemigo conservan sus modelos, balance y controles intactos.
+
+Godot 4.6.3 Compatibility/Linux: importación correcta; 810 comprobaciones
+lógicas (793 heredadas + presentación ampliada 17), todas aprobadas.
+Ventana X11/llvmpipe: presentación 17/0, equipamiento 1745/0 con cuatro
+combinaciones, 1280x720 y 960x540, victoria/derrota y reinicios. 32 capturas y
+las vistas cercana/jugables revisadas; sin recortes del HUD observados.
+PCK exportado con script externo de equipamiento: 225/0 en Godot Linux.
+Comandos: godot --headless --path game --script res://tests/<suite>.gd;
+DISPLAY=127.0.0.1:97 godot --path game --display-driver x11 --audio-driver Dummy
+--script res://tests/test_equipment_window.gd -- --output-dir=/tmp/dragons-t04-graphics.
+Xorg dummy debe iniciarse y estar listo en la misma sesión. Los primeros
+intentos X11 fallaron antes del arranque por disponibilidad del display;
+se resolvió esperando su inicio. Aviso de V-Sync no soportado por llvmpipe.
+
+Código local exportado: 2b4510b. ZIP Windows real preparado con
+python tools/package_windows.py --ref 2b4510b --version-label 0.2-t04-rc1
+--templates <plantillas-oficiales-4.6.3> --output-dir builds/v02-t04.
+DragonsAndTitans-v0.2-t04-rc1-windows-x86_64-2b4510b.zip: 36000777 bytes;
+SHA256 01bf3b6e4352dfff6f660d3075e4b40e0ba59c9143a7d229de71103743549b51.
+CRC, extracción limpia, hashes y PE x86_64 verificados por empaquetador.
+El ZIP está enlazado en README; conserva candidatos anteriores.
+Evidencia: docs/validacion/V02-T04. Publicación por API (Git HTTPS sin
+credenciales): commit remoto distinto, árbol de contenido idéntico al local.
+
+Limitaciones: Windows nativo, valoración humana T04, GPU física y rendimiento
+prolongado pendientes. No es arte final: geometría procedural sin rig importado
+ni texturas. Próximo incremento visual: Jade; recoger feedback de laptop.

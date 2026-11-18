@@ -24,3 +24,13 @@ del arte original. Las vistas cercanas sirven para inspección, no sustituyen
 la revisión a tamaño jugable. No se han medido GPU física, FPS de laptop,
 consumo energético ni Windows nativo. Próximo trabajo visual: refinar membranas,
 cuello y articulación, validar con el usuario antes de llevar ese nivel a Jade.
+
+## Segundo incremento — V0.2 T04
+Membranas de doble cara creadas con SurfaceTool, borde cóncavo entre dedos y
+comba leve. Huesos y membranas comparten coordenadas y pivote; la geometría CSG
+anterior se oculta solo en Cobre. Se añaden cuatro placas cervicales.
+La arena incorpora juntas de losas, roseta, marca de límite de centros (+/-10),
+ruinas exteriores y rocas facetadas deterministas. Son decoración sin colisiones,
+sin texturas externas, partículas ni luces adicionales. Procedencia: código
+original en arena_presentation.gd; sin nuevos servicios ni dependencias.
+Jade y el enemigo conservan sus modelos. Sigue siendo arte procedural provisional.

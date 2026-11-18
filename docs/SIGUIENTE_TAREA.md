@@ -1,17 +1,16 @@
-# Continuidad tras primer incremento visual V0.2 T03
+# Continuidad tras V0.2 T04 — Alas y arena
 
-Leer AGENTS.md y la situación actual de ESTADO.md. Conservar T02 publicado y
-los commits LOCALES de feat/v0.2-t03-cobre-animado. Código exportado f5a5dcc.
+Leer AGENTS.md y docs/ESTADO.md. Conservar las entregas previas.
+T03 se publicó tras autorización: rama feat/v0.2-t03-cobre-animado,
+commit cb26867, árbol idéntico al cierre local d3793b2.
 
-1. La revisión automática rechazó el push por autorización insuficiente.
-   No intentar otro canal para eludirlo. Pedir autorización para publicar esta
-   rama en JoseB-H/The-Dragons-and-titans; después verificar remoto y publicar
-   sin force, sin merge y sin tocar main.
-2. Recoger prueba nativa Windows y valoración visual de Cobre con el ZIP T03.
-   No atribuir resultados de casos concretos hasta que el usuario los reporte.
-3. Refinar el arte a partir de esa valoración: anatomía/cuello/membranas,
-   articulación, luego Jade y arena. Este primer incremento es procedural y
-   estilizado; no declarar calidad final ni fidelidad al arte original.
-4. Mantener selección, cuatro combinaciones, balance, combate y reinicios.
-   No rehacer T02 ni borrar el entorno antiguo. Mantener recursos propios y
-   costo cero. Registrar evidencia y limitaciones en cada incremento.
+T04 refina las membranas de Cobre y añade arena de piedra sin modificar balance.
+El código fuente exportado es 2b4510b; la publicación mediante API conserva
+su árbol de contenido aunque genera otro identificador de commit.
+
+Pendiente: recoger prueba Windows y valoración humana del candidato T04;
+no atribuir aprobación individual ni rendimiento hasta tener evidencia.
+Siguiente incremento visual: mejorar silueta y animación propia de Jade,
+conservar sus diferencias jugables y las cuatro combinaciones. Revisar primero
+el estado publicado y el feedback disponible. Mantener costo cero y arte propio.
+No iniciar multijugador ni sustituir paquetes anteriores. No hacer merge.

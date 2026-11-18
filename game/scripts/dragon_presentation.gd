@@ -105,21 +105,56 @@ func _build_details() -> void:
 			for claw in range(3):
 				var talon := _spike("Claw%s_%s_%d" % [sign_value, leg_z, claw], Vector3(sign_value * (0.22 + claw * 0.06), -0.35, leg_z - 0.18), 0.16, 0.035)
 				talon.rotation.x = -PI / 2.0
-	# Membranas existentes siguen siendo propias; nervaduras adicionales legibles.
-	for sign_value in [-1.0, 1.0]:
-		for finger in range(3):
-			var start := Vector3(sign_value * 0.65, 0.25, -0.6)
-			var end := Vector3(sign_value * (1.6 - finger * 0.33), 0.25, 0.35 + finger * 0.15)
+	_build_wings()
+	# Placas del cuello siguen su pendiente y conectan pecho con cabeza.
+	for index in range(4):
+		var collar := _mesh("NeckPlate%d" % index, plate, Vector3(0, 0.02 + index * 0.06, -0.55 - index * 0.13), Vector3(0.42 - index * 0.035, 0.12, 0.23), material_plate)
+		collar.rotation.x = 0.35
+
+func _build_wings() -> void:
+	var membrane := StandardMaterial3D.new()
+	membrane.albedo_color = Color(0.39, 0.12, 0.065)
+	membrane.roughness = 0.94
+	membrane.cull_mode = BaseMaterial3D.CULL_DISABLED
+	# Un mismo abanico de vértices para membrana y dedos evita nervaduras flotantes.
+	for side in [-1.0, 1.0]:
+		var prefix := "Left" if side < 0 else "Right"
+		for part in get_children():
+			if str(part.name).begins_with(prefix + "Wing"):
+				part.visible = false
+		var wrist := Vector3(side * 0.77, 0.38, -0.68)
+		var edge: Array[Vector3] = [Vector3(side * 1.91, 0.18, -0.72), Vector3(side * 1.72, 0.09, 0.12), Vector3(side * 1.3, 0.13, 0.64), Vector3(side * 0.78, 0.2, 0.83), Vector3(side * 0.33, 0.19, 0.4)]
+		var surface := SurfaceTool.new()
+		surface.begin(Mesh.PRIMITIVE_TRIANGLES)
+		for panel in range(edge.size() - 1):
+			var start: Vector3 = edge[panel]
+			var end: Vector3 = edge[panel + 1]
+			# Arco cóncavo entre dedos, con comba leve bajo el plano de los huesos.
+			for step in range(6):
+				var triangle: Array[Vector3] = [wrist]
+				for t in [float(step) / 6.0, float(step + 1) / 6.0]:
+					var point := start.lerp(end, t).lerp(wrist, sin(t * PI) * 0.16)
+					point.y -= sin(t * PI) * 0.08
+					triangle.append(point)
+				if side > 0:
+					triangle.reverse()
+				for vertex in triangle:
+					surface.add_vertex(vertex)
+		surface.generate_normals()
+		var wing := _mesh(prefix + "WingMembrane", surface.commit(), Vector3.ZERO, Vector3.ONE, membrane)
+		wing.reparent(self, false)
+		var roots: Array[Vector3] = [Vector3(side * 0.3, 0.19, -0.48)]
+		roots.append_array(edge)
+		for index in range(roots.size()):
+			var start: Vector3 = roots[index]
 			var bone := CylinderMesh.new()
-			bone.top_radius = 0.018
-			bone.bottom_radius = 0.035
-			bone.height = start.distance_to(end)
-			bone.radial_segments = 5
-			var rib := _mesh("WingRib%s_%d" % [sign_value, finger], bone, (start + end) / 2.0, Vector3.ONE, material_plate)
-			rib.quaternion = Quaternion(Vector3.UP, (end - start).normalized())
-			# Mantener nervaduras en el mismo espacio que las alas animadas.
-			details.remove_child(rib)
-			add_child(rib)
+			bone.top_radius = 0.022 if index > 0 else 0.055
+			bone.bottom_radius = 0.04 if index > 0 else 0.065
+			bone.height = start.distance_to(wrist)
+			bone.radial_segments = 6
+			var rib := _mesh(prefix + "WingBone%d" % index, bone, (start + wrist) / 2.0, Vector3.ONE, material_skin)
+			rib.quaternion = Quaternion(Vector3.UP, (wrist - start).normalized())
+			rib.reparent(self, false)
 
 func _on_attack() -> void:
 	attack_time = 0.24
