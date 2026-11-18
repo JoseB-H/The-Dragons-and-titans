@@ -1,6 +1,16 @@
 # Estado del proyecto
 
-## Situación actual — entrega V0.2 T01 (17 de noviembre de 2026)
+## Situación actual — V0.2 T02, candidato Windows preparado
+Rama `feat/v0.2-t02-armas-equipamiento-reimplementacion`. Código exportado:
+`daa8a1bdbd9e597f919ef04111ce89f068142b01`. Armas y cuatro combinaciones
+validadas en Linux, con revisión gráfica y paquete Windows comprobable.
+Windows nativo y prueba humana V0.2 siguen pendientes. Sin merge ni T03.
+La sección de reimplementación registra el bloqueo gráfico inicial; el cierre
+posterior de este documento lo resuelve. Los reportes previos son históricos.
+
+[Descargar candidato Windows V0.2 T02](https://chatgpt.com/library?file_id=libfile_6075c6e6f5888191af9a8cba50e5ff3c&account_id=personal).
+
+## Histórico — entrega V0.2 T01 (17 de noviembre de 2026)
 **Selección de dos dragones implementada y validada en Linux** con Godot4.6.3
 Compatibility: Cobre conserva V0.1; Jade tiene menos salud/daño por impacto y más
 velocidad/menor recarga. Balance en recursos separados, selector previo, reinicio
@@ -801,3 +811,54 @@ ninguna aserción heredada.
 Resultado final: once suites, 793 comprobaciones aprobadas (568 heredadas + 225
 nuevas), cero fallos y sin errores de scripts en el registro final. Importación
 final y git diff --check aprobados. Validación gráfica/exportación pendientes.
+
+## V0.2 T02 — Cierre gráfico y candidato para laptop
+
+### Evidencia final
+- Código del juego sin cambios respecto a daa8a1b; solo se añadieron pruebas y
+  documentación. Se conserva la evidencia de 793 comprobaciones de lógica.
+- Se resolvió la indisponibilidad de pantalla ejecutando Xorg dummy y Godot en
+  una misma sesión de comandos, mediante conexión TCP de loopback. OpenGL 4.5,
+  Compatibility, Mesa llvmpipe; aviso esperado de V-Sync sin soporte.
+- Regresiones gráficas: T02 22/0, T03 34/0, T04 49/0, T05 145/0 y V0.2 T01
+  817/0. Las 40 comprobaciones extra de T01 provienen de sus inspecciones
+  genéricas al encontrar los dos botones nuevos, sin cambiar aserciones.
+  Total heredadas gráficas: **1067/0**, registro V02-T02-graficos.log.
+- Nueva test_equipment_window.gd: **1745/0**, las cuatro combinaciones en
+  1280×720 y 960×540; selección por ratón/Tab/Enter, datos combinados, impactos,
+  recargas, bloqueo final, entradas mantenidas, tres reinicios por combinación
+  y resolución, retorno y cambio posterior. 32 finales únicos por combate real.
+  Reutiliza las comprobaciones previas y adapta salud/básico al recurso de arma;
+  no cambia ni retira cobertura heredada.
+- 32 capturas de selector, juego, victoria y derrota; todas inspeccionadas en
+  cuatro láminas V02-T02-*-revision.png. Sin recortes, paneles sobre jugador o
+  defectos visuales bloqueantes. Imágenes originales identificadas mediante
+  tamaño y SHA256 en V02-T02-capturas.json. El arte sigue siendo provisional.
+- Exportación release Windows x86_64 real con plantillas oficiales 4.6.3.
+  V02-T02-exportacion.log. El PCK exportado pasó **225/0** de equipamiento en
+  Godot Linux mediante --main-pack, con script externo (V02-T02-pck.log).
+  El binario de plantilla Linux rechaza --main-pack; no se presenta como
+  validado con esa plantilla, ni como ejecución Windows.
+
+### Comandos reproducibles
+Godot `4.6.3.stable.official.7d41c59c4`. Cada suite gráfica:
+`DISPLAY=127.0.0.1:98 godot --path game --display-driver x11 --audio-driver Dummy --script res://tests/<suite>.gd -- --output-dir=/tmp/dragons-t02-graphics`.
+Xorg dummy debe estar vivo en la misma sesión y aceptar TCP loopback. La suite
+nueva utilizó display 99. El servidor y Godot deben compartir la sesión de red.
+Exportación: `godot --headless --path game --export-release 'Windows x86_64' ../builds/v02-t02/windows/DragonsAndTitans.exe`.
+PCK: `godot --headless --main-pack builds/v02-t02/windows/DragonsAndTitans.pck --script <ruta-absoluta>/game/tests/test_equipment.gd`.
+
+### Paquete y límites
+ZIP: `DragonsAndTitans-v0.2-t02-rc1-windows-x86_64-daa8a1b.zip`,
+35 989 183 bytes; SHA256:
+`0c67ede60e76449ed8026d5e93a01ff0bd12a859e1070d0ea5bf0a9cbf5872b7`.
+PE x86_64, cabecera PCK, CRC ZIP, extracción limpia y hashes de cinco archivos
+verificados con verify_package de tools/package_windows.py. Incluye EXE, PCK,
+LEEME, VERSION.json, licencias Godot y SHA256SUMS.txt. Informe V02-T02-paquete.json.
+
+La descarga del candidato está enlazada en el resumen actual y README. No es
+una release de GitHub. Se conserva el paquete V0.1. No se han ejecutado pruebas
+nativas Windows, sesión humana V0.2, GPU física ni rendimiento prolongado.
+La aceptación de laptop sigue pendiente. Preparado V02-T02-prueba-windows.md.
+Próximo hito acordado: T03 visual (primer dragón propio más detallado/animado).
+No se inició en este cierre ni se hizo merge.

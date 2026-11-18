@@ -63,6 +63,7 @@ Lee AGENTS.md y los documentos indicados. Verifica el código y la rama actuales
 Dos recursos de arma independientes: Ascua (multiplicadores 1/1) y Martillo astral
 (1.8 daño/2 recarga). Resultado calculado desde el perfil del dragón, sin mutarlo.
 Selector, HUD, marca geométrica, proyectil e impacto propios.
-Código y pruebas de lógica implementados; validación gráfica, entradas físicas,
-revisión de foco en ventana, exportación y Windows pendientes en esta entrega.
-No iniciar T03 antes del cierre de esas comprobaciones.
+Código, lógica, foco/entrada automatizada en ventana y exportación Windows
+completados. 793 comprobaciones lógicas, 2812 gráficas y 225 sobre el PCK.
+Capturas inspeccionadas. Windows nativo y prueba humana V0.2 pendientes.
+Siguiente hito acordado: T03 visual; no implementado en este cierre.

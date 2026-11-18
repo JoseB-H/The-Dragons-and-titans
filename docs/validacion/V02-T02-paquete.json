@@ -1,0 +1,56 @@
+{
+  "zip": "DragonsAndTitans-v0.2-t02-rc1-windows-x86_64-daa8a1b.zip",
+  "bytes": 35989183,
+  "sha256": "0c67ede60e76449ed8026d5e93a01ff0bd12a859e1070d0ea5bf0a9cbf5872b7",
+  "manifest": {
+    "version": "0.2-t02-rc1",
+    "source_commit": "daa8a1bdbd9e597f919ef04111ce89f068142b01",
+    "godot": "4.6.3.stable.official.7d41c59c4",
+    "platform": "Windows",
+    "architecture": "x86_64",
+    "configuration": "release",
+    "renderer": "gl_compatibility",
+    "exported_on": "Linux",
+    "native_windows_tested": false,
+    "human_laptop_tested": false,
+    "template_sha256": "91724f15024a3a545e28ccd83134403d31ce2323a38e51c95e4dfa282f732ab6"
+  },
+  "checks": {
+    "pe_x86_64": true,
+    "pck_magic": true,
+    "zip_crc": true,
+    "extracted_hashes": true
+  },
+  "files": [
+    {
+      "name": "DragonsAndTitans.exe",
+      "bytes": 104659456,
+      "sha256": "91724f15024a3a545e28ccd83134403d31ce2323a38e51c95e4dfa282f732ab6"
+    },
+    {
+      "name": "DragonsAndTitans.pck",
+      "bytes": 88844,
+      "sha256": "ffac0a19d277c59c60f51cedb3a8a4cfb144cfa3879344633ac0dc64c05252c9"
+    },
+    {
+      "name": "LEEME.txt",
+      "bytes": 1422,
+      "sha256": "d0bdd6278c6eb551ccec8352920ce9dc413b134d26ae9640aab24fd92efac5dd"
+    },
+    {
+      "name": "LICENCIAS-GODOT.txt",
+      "bytes": 99790,
+      "sha256": "b3330849267d56ddd3d62a513817506606c2195034411fe05859f0140bff9d8a"
+    },
+    {
+      "name": "SHA256SUMS.txt",
+      "bytes": 415,
+      "sha256": "b9d2678e0bc2dbfa8e7c8a8b0138229f1dd166c5102609f83cbfdba723b9402d"
+    },
+    {
+      "name": "VERSION.json",
+      "bytes": 438,
+      "sha256": "b0b9f2d965d2ba94a9a770e9414f07b3f9b958f5d911f0bcfff3aef9ac8d3be0"
+    }
+  ]
+}

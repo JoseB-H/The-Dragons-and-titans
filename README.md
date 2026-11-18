@@ -1,12 +1,11 @@
 # DRAGONS AND TITANS
 
-Recreación independiente y progresiva. **V0.2 T01** incorpora selección entre
-Cobre y Jade, con diferencias de salud, velocidad y ataques definidas en recursos
-de balance. Conserva combate, dos habilidades y victoria/derrota/reinicio de V0.1.
-El usuario probó el prototipo anterior en su laptop y lo consideró «decente»;
-no reportó resultados individuales ni datos de sistema. El candidato Windows
-V0.1 sigue disponible; esta selección nueva está validada en Linux y aún no se
-ha exportado ni probado en Windows.
+Recreación independiente y progresiva. **V0.2 T02** incorpora Cobre/Jade y
+Ascua/Martillo astral: cuatro combinaciones, balance en recursos separados y
+selección previa. Conserva combate, Q/E, victoria/derrota y reinicio de V0.1.
+Validado en Linux con revisión gráfica; candidato Windows exportado y descargable
+al final de esta página. **Windows nativo y prueba humana V0.2 pendientes**.
+La valoración «decente» del usuario corresponde al prototipo anterior.
 
 ## Selección de dragón — V0.2 T01
 
@@ -410,4 +409,10 @@ más cercano, mínimo 1) y ×2 a la recarga. Salud, movimiento y Q/E pertenecen 
 dragón. Reiniciar conserva ambas elecciones en memoria; al terminar puedes volver
 al selector. Nombres, cifras, geometría y materiales propios provisionales.
 Validación lógica Linux registrada en docs/validacion/V02-T02-reimplementacion.log.
-Validación gráfica y Windows de esta entrega pendientes; no hay ZIP nuevo.
+Validación gráfica Linux completada: 2812 comprobaciones aprobadas.
+Windows nativo y prueba humana V0.2 pendientes.
+
+[Descargar candidato Windows V0.2 T02](https://chatgpt.com/library?file_id=libfile_6075c6e6f5888191af9a8cba50e5ff3c&account_id=personal) (34,3 MiB).
+Extrae todo y abre DragonsAndTitans.exe. Conserva el PCK junto al EXE.
+Guía: docs/entrega/V02-T02-LEEME-WINDOWS.txt.
+Trazabilidad y hashes: docs/validacion/V02-T02-paquete.json.

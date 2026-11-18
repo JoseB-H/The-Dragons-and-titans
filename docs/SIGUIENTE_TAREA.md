@@ -1,11 +1,14 @@
-# Continuidad V0.2 T02 — Cierre de reimplementación
+# Continuidad tras V0.2 T02
 
-Trabajar en feat/v0.2-t02-armas-equipamiento-reimplementacion. Leer AGENTS.md,
-README, IMPLEMENTACION y ESTADO. Conservar esta entrega y el entorno anterior.
-No reconstruir otra vez lo ya implementado. Verificar las once suites lógicas
-registradas en V02-T02-reimplementacion.log. Ejecutar regresiones gráficas y
-validar las cuatro combinaciones, foco/ratón/Tab/Enter, entradas retenidas,
-finales y tres reinicios a 1280×720 y 960×540; corregir hallazgos sin retirar
-cobertura. Revisar capturas reales. Preparar ZIP Windows separado si existen
-plantillas 4.6.3; registrar tamaño y SHA256. Exportar no acredita Windows nativo.
-Actualizar ESTADO con evidencia y publicar cierre, sin merge ni T03.
+T02 implementada y validada en Linux; exportación y ZIP Windows disponibles.
+Leer AGENTS.md y resumen actual de ESTADO.md. Conservar rama de reimplementación,
+código daa8a1b, V0.1 y sus candidatos. No volver a reconstruir T02.
+
+1. Recoger resultados reales de laptop en V02-T02-prueba-windows.md y corregir
+   cualquier fallo reproducible, sin marcar pruebas humanas no realizadas.
+2. Próximo hito acordado T03: presentación visual, empezando por un primer dragón
+   propio más detallado y animado, con silueta legible desde cámara aérea. Recursos
+   propios o licencia compatible, sin servicios de pago. Conservar selección,
+   equipamiento, combate, cámara y reinicio. Registrar métricas y límites reales.
+3. Validar el incremento y publicar en rama nueva sin merge. Windows nativo sigue
+   pendiente hasta evidencia. Este cierre de T02 no implementa T03.
