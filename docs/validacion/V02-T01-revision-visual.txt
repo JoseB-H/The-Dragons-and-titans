@@ -1,0 +1,30 @@
+Revisión visual independiente V0.2 T01 — 2026-11-17
+
+Alcance: inspección estática con view_image de las 16 capturas V02-*-linux.png, en ocho lotes de dos imágenes. Dimensiones leídas del encabezado IHDR de cada PNG. Sin ejecutar Godot, repetir suites, usar DISPLAY ni modificar imágenes/repositorio.
+
+Resultado: sin hallazgos visuales en las capturas revisadas.
+- Selector Cobre/Jade: nombres, descripciones, salud, velocidad y básico/Q/E legibles; resaltado de la elección, texto Elegido y botón Jugar con el nombre correspondiente completos en ambos tamaños.
+- Jugando: HUD identifica correctamente Cobre (100/100) y Jade (70/70); objetivo, controles, salud y recargas se leen sin recorte. Modelos naranja/verde distinguibles, jugador completo y separado del HUD.
+- Victoria/derrota de ambos: resultado inequívoco, salud y bloqueo legibles; jugador completo visible. Reiniciar y Elegir dragón completos y dentro de la ventana; foco amarillo visible en Reiniciar. Sin solapamiento de esos paneles con el jugador.
+
+Dimensiones por archivo:
+V02-cobre-derrota-1280x720-linux.png: 1280x720
+V02-cobre-derrota-960x540-linux.png: 960x540
+V02-cobre-jugando-1280x720-linux.png: 1280x720
+V02-cobre-jugando-960x540-linux.png: 960x540
+V02-cobre-victoria-1280x720-linux.png: 1280x720
+V02-cobre-victoria-960x540-linux.png: 960x540
+V02-jade-derrota-1280x720-linux.png: 1280x720
+V02-jade-derrota-960x540-linux.png: 960x540
+V02-jade-jugando-1280x720-linux.png: 1280x720
+V02-jade-jugando-960x540-linux.png: 960x540
+V02-jade-victoria-1280x720-linux.png: 1280x720
+V02-jade-victoria-960x540-linux.png: 960x540
+V02-selector-cobre-1280x720-linux.png: 1280x720
+V02-selector-cobre-960x540-linux.png: 960x540
+V02-selector-jade-1280x720-linux.png: 1280x720
+V02-selector-jade-960x540-linux.png: 960x540
+
+Cobertura: 8 PNG de 1280x720 y 8 de 960x540, coincidentes con los nombres. Cuatro selectores y doce estados de partida (jugando/victoria/derrota × ambos dragones × ambos tamaños).
+
+Límite: evidencia visual de automatización Linux; no acredita manejo humano, rendimiento, comportamiento temporal ni ejecución Windows.

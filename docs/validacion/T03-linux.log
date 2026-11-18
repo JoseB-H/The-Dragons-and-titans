@@ -1,0 +1,77 @@
+T03 — validación Linux
+Código: 973e989096a602814c34d7fff4241f9ee0ab14c3
+Base: f436099969a70df498ee46c92b3fba60d30c6ba9
+Rama: feat/v0.1-t03-combate-y-enemigo
+Windows: pendiente
+Directorio: /workspace/The-Dragons-and-titans
+XDG: /tmp/dragons-t03/cache, data, config
+
+$ godot --headless --path game --import
+Godot Engine v4.6.3.stable.official.7d41c59c4 - https://godotengine.org
+
+[   0% ] first_scan_filesystem | Started Project initialization (5 steps)
+[   0% ] first_scan_filesystem | Scanning file structure...
+[  16% ] first_scan_filesystem | Loading global class names...
+[  33% ] first_scan_filesystem | Verifying GDExtensions...
+[  50% ] first_scan_filesystem | Creating autoload scripts...
+[  66% ] first_scan_filesystem | Initializing plugins...
+[  83% ] first_scan_filesystem | Starting file scan...
+[ DONE ] first_scan_filesystem
+
+[   0% ] update_scripts_classes | Started Registering global classes... (3 steps)
+[   0% ] update_scripts_classes | 
+[  25% ] update_scripts_classes | 
+[  50% ] update_scripts_classes | 
+[ DONE ] update_scripts_classes
+
+[   0% ] loading_editor_layout | Started Loading editor (5 steps)
+[   0% ] loading_editor_layout | Loading editor layout...
+[  16% ] loading_editor_layout | Loading docks...
+[ DONE ] loading_editor_layout
+
+Código de salida observado: 0
+
+$ godot --headless --path game --script res://tests/test_combat_core.gd
+Godot Engine v4.6.3.stable.official.7d41c59c4 - https://godotengine.org
+
+T03 núcleo: 51 comprobaciones, 0 fallos
+Código de salida observado: 0
+
+$ godot --headless --path game --script res://tests/test_t03.gd
+Godot Engine v4.6.3.stable.official.7d41c59c4 - https://godotengine.org
+
+T03 integración: 52 comprobaciones, 0 fallos
+Código de salida observado: 0
+
+$ godot --headless --path game --script res://tests/test_t02.gd
+Godot Engine v4.6.3.stable.official.7d41c59c4 - https://godotengine.org
+
+T02: 34 comprobaciones, 0 fallos
+Código de salida observado: 0
+
+$ godot --headless --path game --quit-after 120
+Godot Engine v4.6.3.stable.official.7d41c59c4 - https://godotengine.org
+
+Código de salida observado: 0
+
+$ DISPLAY=:93 godot --path game --display-driver x11 --audio-driver Dummy --script res://tests/test_t02_window.gd -- --output-dir=/tmp/dragons-t03/graphics
+Godot Engine v4.6.3.stable.official.7d41c59c4 - https://godotengine.org
+WARNING: Could not set V-Sync mode, as changing V-Sync mode is not supported by the graphics driver.
+     at: set_use_vsync (platform/linuxbsd/x11/gl_manager_x11.cpp:364)
+OpenGL API 4.5 (Core Profile) Mesa 25.0.7-2+deb13u1 - Compatibility - Using Device: Mesa - llvmpipe (LLVM 19.1.7, 256 bits)
+
+T02 ventana: 22 comprobaciones, 0 fallos; capturas en /tmp/dragons-t03/graphics
+Código de salida observado: 0
+
+$ DISPLAY=:93 godot --path game --display-driver x11 --audio-driver Dummy --script res://tests/test_t03_window.gd -- --output-dir=/tmp/dragons-t03/graphics
+Godot Engine v4.6.3.stable.official.7d41c59c4 - https://godotengine.org
+WARNING: Could not set V-Sync mode, as changing V-Sync mode is not supported by the graphics driver.
+     at: set_use_vsync (platform/linuxbsd/x11/gl_manager_x11.cpp:364)
+OpenGL API 4.5 (Core Profile) Mesa 25.0.7-2+deb13u1 - Compatibility - Using Device: Mesa - llvmpipe (LLVM 19.1.7, 256 bits)
+
+T03 ventana: 34 comprobaciones, 0 fallos; capturas en /tmp/dragons-t03/graphics
+Código de salida observado: 0
+
+La ventana se comprobó antes de añadir la guardia para objetivos fuera del árbol;
+tras ella se repitieron importación, núcleo, integración, T02 headless y arranque.
+No cambia el caso gráfico: los actores permanecen dentro del árbol.

@@ -1,0 +1,28 @@
+[gd_resource type="Resource" load_steps=2 format=3]
+
+[ext_resource type="Script" path="res://scripts/dragon_profile.gd" id="1_profile"]
+
+[resource]
+script = ExtResource("1_profile")
+id = &"cobre"
+display_name = "Cobre"
+description = "Resistente y contundente. Conserva el balance de la primera arena. Valores provisionales."
+max_health = 100
+movement_speed = 6.0
+basic_damage = 20
+basic_cooldown = 0.4
+basic_projectile_speed = 28.0
+basic_projectile_lifetime = 2.0
+basic_spawn_distance = 1.9
+power_damage = 45
+power_cooldown = 2.5
+power_projectile_speed = 36.0
+power_projectile_lifetime = 2.0
+power_spawn_distance = 1.9
+pulse_damage = 30
+pulse_radius = 4.0
+pulse_cooldown = 4.0
+pulse_effect_duration = 0.5
+body_color = Color(0.76, 0.31, 0.095, 1)
+accent_color = Color(1, 0.61, 0.21, 1)
+wing_color = Color(0.29, 0.085, 0.055, 1)

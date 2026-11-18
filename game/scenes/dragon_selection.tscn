@@ -1,0 +1,301 @@
+[gd_scene load_steps=12 format=3]
+
+[ext_resource type="Script" path="res://scripts/dragon_selection.gd" id="1_selection"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_copper"]
+resource_local_to_scene = true
+content_margin_left = 26.0
+content_margin_top = 22.0
+content_margin_right = 26.0
+content_margin_bottom = 22.0
+bg_color = Color(0.12, 0.075, 0.055, 1)
+border_width_left = 2
+border_width_top = 2
+border_width_right = 2
+border_width_bottom = 2
+border_color = Color(0.58, 0.29, 0.13, 1)
+corner_radius_top_left = 12
+corner_radius_top_right = 12
+corner_radius_bottom_right = 12
+corner_radius_bottom_left = 12
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_copper_hover"]
+resource_local_to_scene = true
+content_margin_left = 26.0
+content_margin_top = 22.0
+content_margin_right = 26.0
+content_margin_bottom = 22.0
+bg_color = Color(0.2, 0.12, 0.07, 1)
+border_width_left = 2
+border_width_top = 2
+border_width_right = 2
+border_width_bottom = 2
+border_color = Color(0.94, 0.56, 0.27, 1)
+corner_radius_top_left = 12
+corner_radius_top_right = 12
+corner_radius_bottom_right = 12
+corner_radius_bottom_left = 12
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_copper_selected"]
+resource_local_to_scene = true
+content_margin_left = 26.0
+content_margin_top = 22.0
+content_margin_right = 26.0
+content_margin_bottom = 22.0
+bg_color = Color(0.24, 0.13, 0.065, 1)
+border_width_left = 3
+border_width_top = 3
+border_width_right = 3
+border_width_bottom = 3
+border_color = Color(1, 0.66, 0.32, 1)
+corner_radius_top_left = 12
+corner_radius_top_right = 12
+corner_radius_bottom_right = 12
+corner_radius_bottom_left = 12
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_jade"]
+resource_local_to_scene = true
+content_margin_left = 26.0
+content_margin_top = 22.0
+content_margin_right = 26.0
+content_margin_bottom = 22.0
+bg_color = Color(0.045, 0.12, 0.09, 1)
+border_width_left = 2
+border_width_top = 2
+border_width_right = 2
+border_width_bottom = 2
+border_color = Color(0.17, 0.46, 0.32, 1)
+corner_radius_top_left = 12
+corner_radius_top_right = 12
+corner_radius_bottom_right = 12
+corner_radius_bottom_left = 12
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_jade_hover"]
+resource_local_to_scene = true
+content_margin_left = 26.0
+content_margin_top = 22.0
+content_margin_right = 26.0
+content_margin_bottom = 22.0
+bg_color = Color(0.07, 0.2, 0.14, 1)
+border_width_left = 2
+border_width_top = 2
+border_width_right = 2
+border_width_bottom = 2
+border_color = Color(0.35, 0.82, 0.57, 1)
+corner_radius_top_left = 12
+corner_radius_top_right = 12
+corner_radius_bottom_right = 12
+corner_radius_bottom_left = 12
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_jade_selected"]
+resource_local_to_scene = true
+content_margin_left = 26.0
+content_margin_top = 22.0
+content_margin_right = 26.0
+content_margin_bottom = 22.0
+bg_color = Color(0.07, 0.24, 0.155, 1)
+border_width_left = 3
+border_width_top = 3
+border_width_right = 3
+border_width_bottom = 3
+border_color = Color(0.48, 0.97, 0.68, 1)
+corner_radius_top_left = 12
+corner_radius_top_right = 12
+corner_radius_bottom_right = 12
+corner_radius_bottom_left = 12
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_focus"]
+resource_local_to_scene = true
+bg_color = Color(0, 0, 0, 0)
+border_width_left = 3
+border_width_top = 3
+border_width_right = 3
+border_width_bottom = 3
+border_color = Color(1, 0.93, 0.64, 1)
+expand_margin_left = 5.0
+expand_margin_top = 5.0
+expand_margin_right = 5.0
+expand_margin_bottom = 5.0
+corner_radius_top_left = 16
+corner_radius_top_right = 16
+corner_radius_bottom_right = 16
+corner_radius_bottom_left = 16
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_play"]
+resource_local_to_scene = true
+content_margin_left = 30.0
+content_margin_top = 18.0
+content_margin_right = 30.0
+content_margin_bottom = 18.0
+bg_color = Color(0.75, 0.43, 0.18, 1)
+corner_radius_top_left = 8
+corner_radius_top_right = 8
+corner_radius_bottom_right = 8
+corner_radius_bottom_left = 8
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_play_hover"]
+resource_local_to_scene = true
+content_margin_left = 30.0
+content_margin_top = 18.0
+content_margin_right = 30.0
+content_margin_bottom = 18.0
+bg_color = Color(1, 0.66, 0.32, 1)
+corner_radius_top_left = 8
+corner_radius_top_right = 8
+corner_radius_bottom_right = 8
+corner_radius_bottom_left = 8
+
+[sub_resource type="ButtonGroup" id="ButtonGroup_dragons"]
+resource_local_to_scene = true
+
+[node name="DragonSelection" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_selection")
+
+[node name="Background" type="ColorRect" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+color = Color(0.025, 0.04, 0.06, 1)
+
+[node name="TopAccent" type="ColorRect" parent="."]
+layout_mode = 1
+anchors_preset = 10
+anchor_right = 1.0
+offset_bottom = 5.0
+grow_horizontal = 2
+mouse_filter = 2
+color = Color(0.78, 0.44, 0.19, 1)
+
+[node name="Margin" type="MarginContainer" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_constants/margin_left = 52
+theme_override_constants/margin_top = 20
+theme_override_constants/margin_right = 52
+theme_override_constants/margin_bottom = 20
+
+[node name="Content" type="VBoxContainer" parent="Margin"]
+layout_mode = 2
+theme_override_constants/separation = 10
+
+[node name="Eyebrow" type="Label" parent="Margin/Content"]
+layout_mode = 2
+theme_override_colors/font_color = Color(0.76, 0.66, 0.48, 1)
+theme_override_font_sizes/font_size = 16
+text = "DRAGONS AND TITANS  /  PROTOTIPO OFFLINE"
+
+[node name="Title" type="Label" parent="Margin/Content"]
+layout_mode = 2
+theme_override_colors/font_color = Color(0.96, 0.96, 0.93, 1)
+theme_override_font_sizes/font_size = 28
+text = "Elige tu dragón"
+
+[node name="Intro" type="Label" parent="Margin/Content"]
+layout_mode = 2
+theme_override_colors/font_color = Color(0.72, 0.79, 0.82, 1)
+theme_override_font_sizes/font_size = 18
+text = "Compara sus atributos y entra en la arena. Arte y balance propios, provisionales."
+autowrap_mode = 3
+
+[node name="Cards" type="HBoxContainer" parent="Margin/Content"]
+layout_mode = 2
+size_flags_vertical = 3
+theme_override_constants/separation = 24
+
+[node name="CopperButton" type="Button" parent="Margin/Content/Cards"]
+custom_minimum_size = Vector2(0, 240)
+layout_mode = 2
+size_flags_horizontal = 3
+focus_neighbor_left = NodePath("../JadeButton")
+focus_neighbor_top = NodePath("../../Footer/PlayButton")
+focus_neighbor_right = NodePath("../JadeButton")
+focus_neighbor_bottom = NodePath("../../Footer/PlayButton")
+focus_next = NodePath("../JadeButton")
+focus_previous = NodePath("../../Footer/PlayButton")
+theme_override_colors/font_color = Color(1, 0.88, 0.73, 1)
+theme_override_colors/font_pressed_color = Color(1, 0.94, 0.84, 1)
+theme_override_colors/font_hover_color = Color(1, 0.94, 0.84, 1)
+theme_override_font_sizes/font_size = 18
+theme_override_styles/normal = SubResource("StyleBoxFlat_copper")
+theme_override_styles/hover = SubResource("StyleBoxFlat_copper_hover")
+theme_override_styles/pressed = SubResource("StyleBoxFlat_copper_selected")
+theme_override_styles/hover_pressed = SubResource("StyleBoxFlat_copper_selected")
+theme_override_styles/focus = SubResource("StyleBoxFlat_focus")
+toggle_mode = true
+button_group = SubResource("ButtonGroup_dragons")
+alignment = 0
+autowrap_mode = 3
+
+[node name="JadeButton" type="Button" parent="Margin/Content/Cards"]
+custom_minimum_size = Vector2(0, 240)
+layout_mode = 2
+size_flags_horizontal = 3
+focus_neighbor_left = NodePath("../CopperButton")
+focus_neighbor_top = NodePath("../../Footer/PlayButton")
+focus_neighbor_right = NodePath("../CopperButton")
+focus_neighbor_bottom = NodePath("../../Footer/PlayButton")
+focus_next = NodePath("../../Footer/PlayButton")
+focus_previous = NodePath("../CopperButton")
+theme_override_colors/font_color = Color(0.76, 0.94, 0.84, 1)
+theme_override_colors/font_pressed_color = Color(0.86, 1, 0.91, 1)
+theme_override_colors/font_hover_color = Color(0.86, 1, 0.91, 1)
+theme_override_font_sizes/font_size = 18
+theme_override_styles/normal = SubResource("StyleBoxFlat_jade")
+theme_override_styles/hover = SubResource("StyleBoxFlat_jade_hover")
+theme_override_styles/pressed = SubResource("StyleBoxFlat_jade_selected")
+theme_override_styles/hover_pressed = SubResource("StyleBoxFlat_jade_selected")
+theme_override_styles/focus = SubResource("StyleBoxFlat_focus")
+toggle_mode = true
+button_group = SubResource("ButtonGroup_dragons")
+alignment = 0
+autowrap_mode = 3
+
+[node name="Footer" type="HBoxContainer" parent="Margin/Content"]
+layout_mode = 2
+theme_override_constants/separation = 28
+
+[node name="Details" type="Label" parent="Margin/Content/Footer"]
+layout_mode = 2
+size_flags_horizontal = 3
+theme_override_colors/font_color = Color(0.84, 0.88, 0.9, 1)
+theme_override_font_sizes/font_size = 18
+autowrap_mode = 3
+
+[node name="PlayButton" type="Button" parent="Margin/Content/Footer"]
+custom_minimum_size = Vector2(265, 66)
+layout_mode = 2
+focus_neighbor_left = NodePath("../../Cards/JadeButton")
+focus_neighbor_top = NodePath("../../Cards/CopperButton")
+focus_neighbor_right = NodePath("../../Cards/CopperButton")
+focus_neighbor_bottom = NodePath("../../Cards/CopperButton")
+focus_next = NodePath("../../Cards/CopperButton")
+focus_previous = NodePath("../../Cards/JadeButton")
+theme_override_colors/font_color = Color(0.06, 0.045, 0.025, 1)
+theme_override_colors/font_hover_color = Color(0.06, 0.045, 0.025, 1)
+theme_override_colors/font_pressed_color = Color(0.06, 0.045, 0.025, 1)
+theme_override_font_sizes/font_size = 22
+theme_override_styles/normal = SubResource("StyleBoxFlat_play")
+theme_override_styles/hover = SubResource("StyleBoxFlat_play_hover")
+theme_override_styles/pressed = SubResource("StyleBoxFlat_play_hover")
+theme_override_styles/focus = SubResource("StyleBoxFlat_focus")
+
+[node name="Help" type="Label" parent="Margin/Content"]
+layout_mode = 2
+theme_override_colors/font_color = Color(0.64, 0.72, 0.77, 1)
+theme_override_font_sizes/font_size = 16
+text = "Ratón: elegir y jugar  ·  Tab: cambiar foco  ·  Enter / Espacio: activar"
+autowrap_mode = 3

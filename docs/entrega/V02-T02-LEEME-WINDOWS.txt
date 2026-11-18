@@ -1,0 +1,26 @@
+DRAGONS AND TITANS — V0.2 T02 candidato Windows x86_64
+Código: daa8a1bdbd9e597f919ef04111ce89f068142b01
+Godot 4.6.3 estable / Compatibility. Exportado desde Linux.
+
+1. Extrae TODO el ZIP en una carpeta.
+2. Conserva DragonsAndTitans.exe y DragonsAndTitans.pck juntos.
+3. Abre DragonsAndTitans.exe. No requiere instalar Godot.
+4. Elige Cobre o Jade, y Ascua o Martillo astral. Pulsa Jugar.
+
+Ratón: seleccionar; Tab y Enter/Espacio: navegar/activar.
+WASD: mover. Ratón: apuntar. Clic izquierdo: ataque básico.
+Q: proyectil potente. E: pulso. R/botón: reiniciar.
+Al terminar, Elegir dragón vuelve a equipamiento. Reiniciar conserva ambos.
+Ascua conserva el básico. Martillo astral aplica ×1.8 daño / ×2 recarga.
+Salud, movimiento y Q/E corresponden al dragón. Balance y arte provisionales.
+
+PRUEBA EN TU LAPTOP
+Prueba las cuatro combinaciones, movimiento, ataques, Q/E, victoria/derrota y
+al menos tres reinicios. Indica Windows, GPU, resolución y cualquier error.
+Puedes generar un registro desde PowerShell en esta carpeta:
+.\DragonsAndTitans.exe --resolution 1280x720 --log-file .\prueba-windows.log
+
+Validación automatizada Linux y capturas revisadas. El ejecutable Windows
+NO se ha ejecutado en Windows nativo ni se acredita prueba humana de V0.2.
+Es un candidato de prueba. Se conserva V0.1; no hay multijugador ni arte final.
+Consulta VERSION.json y SHA256SUMS.txt para identificar y verificar archivos.
