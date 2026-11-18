@@ -1,4 +1,6 @@
-[gd_scene load_steps=13 format=3]
+[gd_scene load_steps=14 format=3]
+
+[ext_resource type="Script" path="res://scripts/dragon_presentation.gd" id="1_presentation"]
 
 [sub_resource type="StandardMaterial3D" id="Material_copper"]
 albedo_color = Color(0.76, 0.31, 0.095, 1)
@@ -70,6 +72,7 @@ height = 0.3
 radial_segments = 6
 
 [node name="DragonVisual" type="Node3D"]
+script = ExtResource("1_presentation")
 metadata/provenance = "Geometría y materiales provisionales propios; creados con primitivas de Godot, sin recursos externos."
 metadata/forward_axis = "-Z"
 

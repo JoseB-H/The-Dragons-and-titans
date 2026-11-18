@@ -1,4 +1,4 @@
-DRAGONS AND TITANS — Prototipo offline V0.1
+DRAGONS AND TITANS — Prototipo offline V0.2 — presentación Cobre
 Candidato para prueba en Windows x86_64
 
 ESTADO DE ESTA ENTREGA
@@ -28,7 +28,9 @@ usa Get-FileHash seguido del nombre del ZIP y -Algorithm SHA256. Compara
 el resultado con el SHA256 publicado para esa descarga.
 
 CONTROLES Y OBJETIVO
-Tu dragón es cobrizo; el enemigo es cian. Vence al enemigo sin morir.
+Elige Cobre o Jade y Ascua o Martillo astral antes de empezar.
+Cobre tiene el primer incremento de detalle y animación; Jade conserva su
+representación provisional. El enemigo es cian. Vence al enemigo sin morir.
   W / A / S / D       Mover arriba / izquierda / abajo / derecha en pantalla.
   Ratón               Orientar el hocico hacia el cursor.
   Clic izquierdo      Mantener para disparar el ataque básico.

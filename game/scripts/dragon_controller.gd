@@ -34,6 +34,8 @@ func _enter_tree() -> void:
 func _ready() -> void:
 	_apply_profile(get_node("/root/DragonRoster").selected_profile())
 	super._ready()
+	if profile_id == &"cobre":
+		facing.configure(self)
 	for action: StringName in ENTRY_ACTIONS:
 		if Input.is_action_pressed(action):
 			_held_at_start.append(action)
@@ -71,12 +73,12 @@ func _apply_profile(profile: Resource) -> void:
 	weapon.projectile_scale = equipment.visual_scale
 	var marker := MeshInstance3D.new()
 	var mesh := PrismMesh.new()
-	mesh.size = Vector3(0.3, 0.35, 0.8) * equipment.visual_scale
+	mesh.size = Vector3(0.18, 0.18, 0.45) * equipment.visual_scale
 	marker.mesh = mesh
 	var material := StandardMaterial3D.new()
 	material.albedo_color = equipment.tint
 	marker.material_override = material
-	marker.position = Vector3(0, 0.55, -0.7)
+	marker.position = Vector3(0.46, 0.22, -0.2)
 	facing.add_child(marker)
 	_apply_palette(profile)
 

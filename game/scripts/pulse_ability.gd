@@ -3,6 +3,8 @@ extends Node3D
 ## Hijo directo de CombatActor; Arena asigna effects_parent.
 ## E sin hostiles también consume recarga y crea el efecto. Balance provisional.
 
+signal activated()
+
 const COMBAT_ACTOR := preload("res://scripts/combat_actor.gd")
 const EFFECT_SCENE := preload("res://scenes/pulse_effect.tscn")
 
@@ -61,4 +63,5 @@ func try_activate() -> bool:
 			candidate.take_damage(pulse_damage, source_faction)
 	if is_instance_valid(self):
 		_activating = false
+		activated.emit()
 	return true

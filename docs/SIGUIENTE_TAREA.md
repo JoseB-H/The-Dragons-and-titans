@@ -1,14 +1,17 @@
-# Continuidad tras V0.2 T02
+# Continuidad tras primer incremento visual V0.2 T03
 
-T02 implementada y validada en Linux; exportación y ZIP Windows disponibles.
-Leer AGENTS.md y resumen actual de ESTADO.md. Conservar rama de reimplementación,
-código daa8a1b, V0.1 y sus candidatos. No volver a reconstruir T02.
+Leer AGENTS.md y la situación actual de ESTADO.md. Conservar T02 publicado y
+los commits LOCALES de feat/v0.2-t03-cobre-animado. Código exportado f5a5dcc.
 
-1. Recoger resultados reales de laptop en V02-T02-prueba-windows.md y corregir
-   cualquier fallo reproducible, sin marcar pruebas humanas no realizadas.
-2. Próximo hito acordado T03: presentación visual, empezando por un primer dragón
-   propio más detallado y animado, con silueta legible desde cámara aérea. Recursos
-   propios o licencia compatible, sin servicios de pago. Conservar selección,
-   equipamiento, combate, cámara y reinicio. Registrar métricas y límites reales.
-3. Validar el incremento y publicar en rama nueva sin merge. Windows nativo sigue
-   pendiente hasta evidencia. Este cierre de T02 no implementa T03.
+1. La revisión automática rechazó el push por autorización insuficiente.
+   No intentar otro canal para eludirlo. Pedir autorización para publicar esta
+   rama en JoseB-H/The-Dragons-and-titans; después verificar remoto y publicar
+   sin force, sin merge y sin tocar main.
+2. Recoger prueba nativa Windows y valoración visual de Cobre con el ZIP T03.
+   No atribuir resultados de casos concretos hasta que el usuario los reporte.
+3. Refinar el arte a partir de esa valoración: anatomía/cuello/membranas,
+   articulación, luego Jade y arena. Este primer incremento es procedural y
+   estilizado; no declarar calidad final ni fidelidad al arte original.
+4. Mantener selección, cuatro combinaciones, balance, combate y reinicios.
+   No rehacer T02 ni borrar el entorno antiguo. Mantener recursos propios y
+   costo cero. Registrar evidencia y limitaciones en cada incremento.

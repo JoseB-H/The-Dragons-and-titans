@@ -1,3 +1,19 @@
+## V0.2 T03 — Primer incremento visual de Cobre
+
+Cobre incorpora hocico facetado, placas dorsales, escamas, cuernos, dientes,
+garras y nervaduras propias; vuelo con aleteo, cola, mandíbula al atacar,
+reacción al daño y pliegue al morir. Se conserva el balance de T02, las cuatro
+combinaciones y el reinicio. Jade y el enemigo mantienen su geometría previa.
+Es una primera mejora estilizada procedural, no arte final ni modelo esculpido.
+
+[Descargar candidato Windows T03](https://chatgpt.com/library?file_id=libfile_dfab7f1a5ecc81918d65d854f1b25c94&account_id=personal) — extraer todo y abrir
+`DragonsAndTitans.exe`. Ejecución nativa Windows pendiente.
+
+Para verlo: Godot 4.6.3 Standard → importar `game/project.godot` → F5 → Cobre.
+No requiere Blender ni dependencias adicionales. El código fuente del arte está
+en `game/scripts/dragon_presentation.gd`; procedencia y límites en
+`docs/arte/COBRE.md`. Windows nativo continúa pendiente.
+
 # DRAGONS AND TITANS
 
 Recreación independiente y progresiva. **V0.2 T02** incorpora Cobre/Jade y

@@ -52,6 +52,7 @@ def verify_package(folder):
 
 def main():
     parser = argparse.ArgumentParser(description=__doc__)
+    parser.add_argument("--version-label", default="0.1-rc1", help="Versión incluida en nombre y manifiesto")
     parser.add_argument("--ref", required=True, help="Commit a exportar (se resuelve a SHA completo)")
     parser.add_argument("--templates", required=True, type=Path,
                         help="Directorio oficial con version.txt y windows_release_x86_64.exe")
@@ -70,7 +71,9 @@ def main():
         parser.error("Se requieren plantillas oficiales 4.6.3.stable para Windows release x86_64")
     output = args.output_dir.resolve()
     output.mkdir(parents=True, exist_ok=True)
-    name = "DragonsAndTitans-v0.1-rc1-windows-x86_64-" + commit[:7]
+    if not args.version_label or any(c not in "abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789.-" for c in args.version_label):
+        parser.error("Etiqueta de versión inválida")
+    name = "DragonsAndTitans-v" + args.version_label + "-windows-x86_64-" + commit[:7]
     archive_path = output / (name + ".zip")
     if archive_path.exists():
         parser.error("El ZIP ya existe; usa un directorio nuevo para no reemplazarlo")
@@ -107,7 +110,7 @@ def main():
                 run(command, env=env, stdout=log, stderr=subprocess.STDOUT)
         shutil.copyfile(source / "docs/entrega/LEEME-WINDOWS.txt", package / "LEEME.txt")
         shutil.copyfile(source / "docs/entrega/LICENCIAS-GODOT.txt", package / "LICENCIAS-GODOT.txt")
-        manifest = {"version": "0.1-rc1", "source_commit": commit,
+        manifest = {"version": args.version_label, "source_commit": commit,
                     "godot": version, "platform": "Windows", "architecture": "x86_64",
                     "configuration": "release", "renderer": "gl_compatibility", "preset": PRESET,
                     "preset_sha256": sha256(game / "export_presets.cfg"),

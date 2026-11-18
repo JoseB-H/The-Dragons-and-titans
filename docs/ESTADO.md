@@ -1,6 +1,18 @@
 # Estado del proyecto
 
-## Situación actual — V0.2 T02, candidato Windows preparado
+## Situación actual — V0.2 T03, primer incremento visual de Cobre
+
+Rama local `feat/v0.2-t03-cobre-animado`, creada desde la entrega publicada T02
+`38c9fa5d76b799841cf8d6673cbf8ee0c3d76f42`. Código exportado `f5a5dcc`.
+Cobre con detalle y animación propios; Jade conserva su modelo previo.
+La publicación GitHub fue rechazada por revisión automática por considerar
+insuficiente la autorización de publicación de estos cambios. No se usó otro
+canal para evitar ese rechazo. Rama y commits T03 son LOCALES, sin merge.
+La descarga del candidato sí está disponible para el usuario.
+
+[Descargar candidato Windows T03](https://chatgpt.com/library?file_id=libfile_dfab7f1a5ecc81918d65d854f1b25c94&account_id=personal).
+
+## Histórico — V0.2 T02, candidato Windows preparado
 Rama `feat/v0.2-t02-armas-equipamiento-reimplementacion`. Código exportado:
 `daa8a1bdbd9e597f919ef04111ce89f068142b01`. Armas y cuatro combinaciones
 validadas en Linux, con revisión gráfica y paquete Windows comprobable.
@@ -862,3 +874,54 @@ nativas Windows, sesión humana V0.2, GPU física ni rendimiento prolongado.
 La aceptación de laptop sigue pendiente. Preparado V02-T02-prueba-windows.md.
 Próximo hito acordado: T03 visual (primer dragón propio más detallado/animado).
 No se inició en este cierre ni se hizo merge.
+
+## V0.2 T03 — Presentación Cobre: evidencia y límites
+
+Primer incremento propio y estilizado, no arte final: hocico facetado, placas,
+escamas, cuernos, dientes, garras y nervaduras. Aleteo, cola, flotación, mandíbula
+al atacar, impacto y pliegue/descenso visual al morir. Datos de balance y
+colisiones intactos. Indicador de arma reducido y colocado al flanco. Fuente y
+procedencia en docs/arte/COBRE.md. Sin dependencias nuevas ni servicios de pago.
+
+Durante regresión se detectó que animar la raíz Facing introducía pitch al
+apuntar. Se corrigió transformando exclusivamente sus hijos; test_t02 volvió
+a aprobar sus 34 comprobaciones sin cambiar aserciones.
+
+Pruebas Godot 4.6.3 Compatibility/Linux:
+- Importación final sin errores de scripts.
+- Once suites lógicas heredadas, 793/0; nueva test_presentation.gd 13/0.
+  Total lógico 806/0. Registro docs/validacion/V02-T03/logica.log.
+- Equipamiento en ventana: 1745/0. Cuatro combinaciones, dos resoluciones,
+  controles de selección, daño, recargas, resultados, entradas y reinicios.
+- Presentación en ventana: 13/0, incluida comprobación final tras cerrar la
+  punta del hocico. Capturas de cámara normal en 1280×720 y 960×540 y vista
+  cercana de inspección. Lámina de 32 capturas de integración inspeccionada:
+  sin recortes visibles de HUD ni paneles que tapen al jugador.
+- PCK del ZIP exportado: 225/0 de equipamiento mediante Godot Linux.
+  Esto no prueba el ejecutable Windows. Registro pck.log.
+- Métrica de geometría de Cobre: 80 MeshInstance3D visibles y 7998 triángulos
+  en sus mallas, EXCLUYENDO CSG de membranas. 46 hijos adicionales en
+  CobreDetails y seis nervaduras adicionales; radio físico medido 0.8.
+  No equivale a draw calls, total GPU ni presupuesto final de polígonos.
+- Mesa llvmpipe/OpenGL 4.5, Xorg dummy TCP. Aviso de V-Sync sin soporte.
+  No se midieron FPS de GPU física, consumo ni rendimiento prolongado.
+
+Comandos: `godot --headless --path game --script res://tests/test_presentation.gd`;
+misma forma para suites heredadas. Para ventana, Xorg con configuración dummy
+previa y `DISPLAY=127.0.0.1:94 godot --path game --display-driver x11
+--audio-driver Dummy --script res://tests/test_equipment_window.gd --
+--output-dir=/tmp/dragons-t03-graphics`. Evidencia en docs/validacion/V02-T03/.
+
+Exportación real Windows x86_64 release con plantillas oficiales 4.6.3:
+`python tools/package_windows.py --ref f5a5dcc --version-label 0.2-t03-rc1
+--templates <directorio-plantillas-4.6.3> --output-dir builds/v02-t03`.
+Paquete DragonsAndTitans-v0.2-t03-rc1-windows-x86_64-f5a5dcc.zip,
+35 997 208 bytes; SHA256
+`404c14e6c8e46cbfc3e1e72ce2e78767c84068e58ad4ce5bf362c41e3a47acb8`.
+CRC, extracción, hashes, cabecera PE x86_64 y PCK comprobados.
+
+Windows nativo y prueba humana de T03 pendientes. El escenario, Jade, materiales
+avanzados, rig y clips importados no forman parte de este incremento. Siguiente:
+publicar rama tras autorización y recoger la valoración visual del usuario en
+laptop; después refinar anatomía/membranas y avanzar con arena/Jade. No iniciar
+multijugador ni sustituir entregas anteriores.

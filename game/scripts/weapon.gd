@@ -2,6 +2,8 @@ extends Node3D
 ## Arma sin entrada: jugador e IA solicitan el mismo ataque direccional.
 ## Debe ser hija directa de un CombatActor; Arena asigna projectile_parent.
 
+signal fired()
+
 const PROJECTILE_SCENE := preload("res://scenes/projectile.tscn")
 const PROJECTILE_SCRIPT := preload("res://scripts/projectile.gd")
 
@@ -54,4 +56,5 @@ func try_fire(direction: Vector3) -> bool:
 	projectile.global_position = actor.global_position + flat_direction * spawn_distance
 	projectile.reset_physics_interpolation()
 	cooldown_remaining = maxf(cooldown, 0.0)
+	fired.emit()
 	return true
