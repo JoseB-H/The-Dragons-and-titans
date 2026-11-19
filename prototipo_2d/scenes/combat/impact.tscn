@@ -1,0 +1,8 @@
+[gd_scene format=3]
+[ext_resource type="Script" path="res://scripts/combat/impact.gd" id="s"]
+[node name="Impact" type="Node2D"]
+script = ExtResource("s")
+z_index = 4
+[node name="Flash" type="Polygon2D" parent="."]
+polygon = PackedVector2Array(1.0, 0.0, 0.924, 0.383, 0.707, 0.707, 0.383, 0.924, 0.0, 1.0, -0.383, 0.924, -0.707, 0.707, -0.924, 0.383, -1.0, 0.0, -0.924, -0.383, -0.707, -0.707, -0.383, -0.924, -0.0, -1.0, 0.383, -0.924, 0.707, -0.707, 0.924, -0.383)
+color = Color(1,0.78,0.08,1)
