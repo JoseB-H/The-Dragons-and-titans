@@ -1,3 +1,28 @@
+# Dragons and Titans v0.7.1 · Vuelo
+
+Abre `game/project.godot` en Godot **4.6.3 estable** (Compatibility) y pulsa **F5**. El juego empieza en el atlas. Pulsa un marcador para consultar el objetivo y usa el botón de entrada. **Dragones y equipo** permite elegir Cobre o Jade y su arma. El códice y la galería están disponibles desde el atlas y el selector, respectivamente.
+
+| Destinos | Qué se juega |
+| --- | --- |
+| Frontera de Ceniza · El Pacto | MOBA 5v5 con bots. En Frontera se derriban tres torres y un núcleo. El Pacto añade tesoros, santuarios y el Titán del Caos. |
+| Nethergate · Cinco bastiones · Halvalas | Asedio 5v5 con runas y titanes, captura de cinco puntos y ARAM de un carril, respectivamente. |
+| Arena de vuelo · Santuario · La Caldera | Duelo contra el Sentinela, captura de dos balizas y asedio 2v2 con bots. |
+| Mire Bog · Proving Grounds · Práctica de vuelo | Misión de rescate, tutorial de defensa del obelisco y laboratorio de movimiento. |
+| Las Agujas | Duelo LAN 1v1. Crea la sala en un PC y únete desde el otro con la IP del anfitrión (UDP 27940). |
+
+## Windows y pruebas
+
+Extrae el ZIP completo y abre `DragonsAndTitans.exe` junto a `DragonsAndTitans.pck`. La build x86_64 se exportó en Linux. Esta versión carece de audio y queda pendiente probarla en Windows.
+
+En Linux, desde la raíz del repositorio, ejecuta `tools/run_all_tests.sh`. Requiere Bash, GNU timeout, Godot 4.6.3 en PATH y una pantalla gráfica que admita ventanas de 1280×720. Con Xvfb puedes usar `xvfb-run -a -s "-screen 0 1600x900x24" tools/run_all_tests.sh`. El script importa los recursos, prueba las ventanas con OpenGL y ejecuta anfitrión e invitado en procesos independientes.
+
+Validación de Fase 0 en Linux con Godot 4.6.3 y pantalla X11 virtual: **27 de 27 pruebas pasaron**. El duelo LAN por 127.0.0.1 registró movimiento y daño en ambos procesos, derrota del anfitrión y victoria del invitado.
+
+**Siguiente tarea:** Fase 1 en Nethergate. El historial de implementación y las validaciones previas se conservan en [Estado del proyecto](docs/ESTADO.md).
+
+<details>
+<summary>Historial de versiones anteriores</summary>
+
 ## V0.6 — Códice y modos del atlas
 
 Extrae el ZIP, importa `game/project.godot` en Godot 4.6.3 y pulsa F5. El Códice de los jinetes ofrece búsqueda por sección. El Pacto, Cinco bastiones, Halvalas y Mire Bog se seleccionan directamente en el mapa. Las cantidades de oro, tiempos y balance son provisionales.
@@ -575,3 +600,5 @@ Guía: docs/entrega/V02-T02-LEEME-WINDOWS.txt.
 Trazabilidad y hashes: docs/validacion/V02-T02-paquete.json.
 
 Para probar solo el movimiento en Godot 4.6.3, importa `game/project.godot`, pulsa F5 y elige **Práctica de vuelo** en el atlas. El árbol de nodos y los ajustes de cámara están en [Práctica de vuelo](docs/obsidian/Práctica%20de%20vuelo.md).
+
+</details>

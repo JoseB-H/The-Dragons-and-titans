@@ -46,8 +46,9 @@ func _run() -> void:
 	DirAccess.make_dir_recursive_absolute(ProjectSettings.globalize_path(output_dir))
 	roster = root.get_node("DragonRoster")
 	scene_changed.connect(pause_new_enemy)
-	change_scene_to_file(SELECTION_SCENE)
-	await scene_changed
+	if not await open_equipment_from_atlas():
+		quit(1)
+		return
 	for size in [Vector2i(1280, 720), Vector2i(960, 540)]:
 		root.size = size
 		await ticks(3)

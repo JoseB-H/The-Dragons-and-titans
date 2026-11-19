@@ -1,6 +1,18 @@
 # Estado del proyecto
 
-## Situación actual — V0.2 T03, primer incremento visual de Cobre
+## v0.7.1 · Fase 0 · 19 de noviembre de 2026
+
+Base de entrega `release/v0.7.1` en `ff4ec9e`. Rama de mantenimiento `chore/v0.7.1-fase0`. El atlas reúne doce destinos, incluidos Nethergate, Proving Grounds, el laboratorio de vuelo y Las Agujas (1v1 LAN). La tabla del [README](../README.md) describe cada modo.
+
+Las pruebas `test_v02_window` y `test_equipment_window` entran desde el atlas al selector y a la arena. `test_presentation` comprueba la conexión de ataque en ambos dragones y la llamarada adicional en Cobre después de reiniciar. `tools/run_all_tests.sh` prueba todos los scripts y separa host y join en el duelo LAN.
+
+Validación de Fase 0 en Linux con Godot 4.6.3 y pantalla X11 virtual: **27 de 27 pruebas pasaron**. El duelo LAN por 127.0.0.1 registró movimiento y daño en ambos procesos, derrota del anfitrión y victoria del invitado.
+
+Windows x86_64 exportado desde Linux con Godot 4.6.3 Compatibility. Se verificaron el formato PE, el paquete PCK, la extracción del ZIP y las huellas SHA-256. Pendientes la ejecución nativa en Windows y la prueba entre dos PC. La versión carece de audio.
+
+**Siguiente tarea:** Fase 1 en Nethergate.
+
+## Histórico — V0.2 T03, primer incremento visual de Cobre
 
 Rama local `feat/v0.2-t03-cobre-animado`, creada desde la entrega publicada T02
 `38c9fa5d76b799841cf8d6673cbf8ee0c3d76f42`. Código exportado `f5a5dcc`.
@@ -72,7 +84,7 @@ de resultados individuales. No se ha reexportado el candidato V0.1.
 | --- | --- | --- |
 | T01 Selección de dos dragones y balance | Terminado (Linux) | Perfiles93/0, selector64/0, partida46/0; ventana777/0; regresiones V0.1 y revisión independiente |
 
-## Próxima acción
+## Próxima acción registrada en V0.2
 Recoger observaciones del usuario sobre la selección y diferencias entre perfiles;
 corregir cualquier fallo reproducido. El siguiente incremento propuesto de V0.2
 es selección de arma y sus datos; requiere su encargo antes de implementarlo.

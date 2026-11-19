@@ -2,6 +2,7 @@ extends SceneTree
 ## V0.2: selección, combate y navegación reales en dos ventanas nativas.
 ## La IA solo se pausa al preparar cada arena; los resultados son combate real.
 
+const ATLAS_SCENE := "res://scenes/world_menu.tscn"
 const SELECTION_SCENE := "res://scenes/dragon_selection.tscn"
 const ARENA_SCENE := "res://scenes/arena.tscn"
 const PROFILES := {
@@ -104,7 +105,7 @@ func click_button(button: Button) -> void:
 
 func focus_with_tab(button: Button) -> bool:
 	# Recorrer el orden de foco real también detecta tarjetas inaccesibles.
-	for step in range(8):
+	for step in range(current_scene.find_children("*", "Button", true, false).size() + 1):
 		if button.has_focus():
 			return true
 		await press_key(KEY_TAB)
@@ -115,7 +116,7 @@ func focus_with_tab(button: Button) -> bool:
 func active_game_scene_count() -> int:
 	var count := 0
 	for child: Node in root.get_children():
-		if child.scene_file_path in [SELECTION_SCENE, ARENA_SCENE]:
+		if child.scene_file_path in [ATLAS_SCENE, SELECTION_SCENE, ARENA_SCENE]:
 			count += 1
 	return count
 
@@ -371,6 +372,23 @@ func return_to_menu(profile_id: StringName, method: String) -> bool:
 	return true
 
 
+func open_equipment_from_atlas() -> bool:
+	var entry: String = ProjectSettings.get_setting("application/run/main_scene")
+	expect(entry == ATLAS_SCENE, "La escena inicial es el atlas")
+	if entry != ATLAS_SCENE or change_scene_to_file(entry) != OK:
+		return false
+	await scene_changed
+	await ticks(3)
+	for button: Button in current_scene.find_children("*", "Button", true, false):
+		if button.text == "Dragones y equipo":
+			await click_button(button)
+			var opened := await until(func(): return is_instance_valid(current_scene) and current_scene.scene_file_path == SELECTION_SCENE)
+			expect(opened, "Dragones y equipo abre el selector desde el atlas")
+			return opened
+	expect(false, "El atlas ofrece Dragones y equipo")
+	return false
+
+
 func _run() -> void:
 	# Esta precondición permite observar RED sin un servidor gráfico previo.
 	expect(ResourceLoader.exists(SELECTION_SCENE), "V0.2 requiere una escena de selección antes del combate")
@@ -390,15 +408,9 @@ func _run() -> void:
 	if roster == null:
 		quit(1)
 		return
-	expect(ProjectSettings.get_setting("application/run/main_scene") == SELECTION_SCENE, "Escena principal es el selector")
 	expect(roster.selected_id == &"cobre", "Sesión nueva comienza con Cobre")
 	scene_changed.connect(pause_new_enemy)
-	if change_scene_to_file(SELECTION_SCENE) != OK:
-		expect(false, "Carga inicial del selector")
-		quit(1)
-		return
-	if not await until(func(): return is_instance_valid(current_scene) and current_scene.scene_file_path == SELECTION_SCENE):
-		expect(false, "Selector inicial entra en escena")
+	if not await open_equipment_from_atlas():
 		quit(1)
 		return
 	for size in [Vector2i(1280, 720), Vector2i(960, 540)]:

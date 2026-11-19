@@ -1,83 +1,13 @@
-DRAGONS AND TITANS — Prototipo offline V0.2 — dragones 3D modelados y animados
-Candidato para prueba en Windows x86_64
+Dragons and Titans v0.7.1 · Vuelo
+Windows x86_64 | Godot 4.6.3 Compatibility
 
-ESTADO DE ESTA ENTREGA
-Motor: Godot 4.6.3 estable, renderizador Compatibility.
-El ejecutable se ha exportado desde Linux. La ejecución nativa en Windows y
-la prueba humana en laptop están pendientes. No hay requisitos mínimos ni
-rendimiento medidos. Los controles, reglas y recursos son provisionales y
-propios de esta recreación independiente.
+1. Extrae todo el ZIP.
+2. Mantén DragonsAndTitans.exe y DragonsAndTitans.pck en la misma carpeta.
+3. Abre DragonsAndTitans.exe. El atlas permite elegir entre doce destinos.
+   En «Dragones y equipo» puedes cambiar de dragón y arma.
+4. Para un duelo entre dos PC en la misma red, abre Las Agujas. Un jugador
+   crea la sala y el otro introduce la IP del anfitrión. El puerto es UDP 27940.
 
-DESCARGAR Y ABRIR
-1. Descarga el ZIP de la entrega y el archivo SHA256 publicado junto a él.
-2. En el Explorador de Windows, pulsa «Extraer todo» sobre el ZIP. Conserva
-   juntos todos los archivos extraídos; no abras el ejecutable dentro del ZIP.
-3. Abre DragonsAndTitans.exe. No necesitas instalar Godot ni iniciar sesión.
-4. Cierra la ventana para salir.
-
-La carpeta contiene:
-  DragonsAndTitans.exe   Juego para Windows de 64 bits.
-  DragonsAndTitans.pck   Datos del juego; debe acompañar al ejecutable.
-  LEEME.txt              Estas instrucciones.
-  VERSION.json          Versión, SHA exacto del código y datos de exportación.
-  LICENCIAS-GODOT.txt    Licencias del motor y sus componentes.
-  SHA256SUMS.txt         Huellas SHA256 de los archivos del paquete.
-
-Para comprobar el ZIP, abre PowerShell en la carpeta donde lo descargaste y
-usa Get-FileHash seguido del nombre del ZIP y -Algorithm SHA256. Compara
-el resultado con el SHA256 publicado para esa descarga.
-
-GALERÍA DE DRAGONES
-En el selector, abre «Ver dragones 3D». Puedes ver Cobre, Jade y Sentinela,
-probar Vuelo/Ataque/Impacto/Muerte, girar arrastrando y acercarte con la rueda.
-Pulsa Volver o Esc para regresar; conserva tu dragón y arma elegidos.
-
-CONTROLES Y OBJETIVO
-Elige Cobre o Jade y Ascua o Martillo astral antes de empezar.
-Cobre tiene el primer incremento de detalle y animación; Jade conserva su
-representación provisional. El enemigo es cian. Vence al enemigo sin morir.
-  W / A / S / D       Mover arriba / izquierda / abajo / derecha en pantalla.
-  Ratón               Orientar el hocico hacia el cursor.
-  Clic izquierdo      Mantener para disparar el ataque básico.
-  Q                   Pulsar y soltar: proyectil potente hacia el hocico.
-  E                   Pulsar y soltar: pulso alrededor del jugador.
-  R                   Reiniciar durante la partida o al terminar.
-  Botón Reiniciar     Al terminar: clic, o Enter/Espacio con el botón enfocado.
-
-El panel muestra la salud y las recargas. Q y E tienen recargas independientes:
-cuando vuelvan a estar listas, suelta y pulsa otra vez para activarlas.
-La altura es fija; el movimiento termina en los límites de la arena.
-Al vencer aparece VICTORIA; al morir, DERROTA. Si ambos mueren en el mismo
-paso de resolución, cuenta como derrota: esta regla es provisional.
-Tras el final, movimiento y combate de ambos actores quedan bloqueados,
-incluido el ganador. La interfaz permite reiniciar.
-Después de cada reinicio, suelta las teclas y el clic que mantenías pulsados
-antes de volver a jugar. Se restauran salud, posiciones y recargas.
-
-PRUEBA BREVE EN LA LAPTOP
-Comprueba arranque, WASD, orientación, límites, básico, Q/E y sus recargas.
-Gana una partida y deja que el enemigo te derrote en otra. Comprueba el
-bloqueo tras ambos resultados y que el botón final tenga foco visible.
-Haz tres reinicios consecutivos alternando R y el botón (clic y Enter/Espacio).
-Comprueba que no quedan disparos, efectos ni acciones mantenidas del intento
-anterior y que puedes volver a jugar al soltar y pulsar las entradas.
-
-Repite en ventanas de 1280x720 y 960x540. Para elegir el tamaño exacto, abre
-PowerShell en la carpeta extraída y ejecuta uno de estos comandos cada vez,
-cerrando antes la ventana anterior:
-  .\DragonsAndTitans.exe --resolution 1280x720
-  .\DragonsAndTitans.exe --resolution 960x540
-Revisa que objetivo, controles, salud, recargas, resultado y botón sean legibles
-y no queden cortados. Registra cualquier problema real de manejo o imagen.
-
-SI ALGO FALLA
-Anota los pasos para reproducirlo, el resultado esperado y lo que ocurrió.
-Incluye versión de Windows, modelo de GPU, tamaño de ventana y una captura
-del error o del juego. Adjunta VERSION.json o copia su versión y SHA del código.
-Para generar un registro, abre PowerShell en la carpeta extraída y ejecuta:
-  .\DragonsAndTitans.exe --log-file .\DragonsAndTitans.log
-Tras cerrar el juego, adjunta DragonsAndTitans.log si se ha generado. Si falla
-antes de crear el registro, indica que no existe y copia el mensaje de Windows.
-Revisa capturas y registros antes de compartirlos: no incluyas credenciales
-ni información personal. Si Windows bloquea el arranque, conserva el texto
-del aviso y repórtalo junto con los datos de versión.
+El juego carece de audio. Esta exportación se generó en Linux y queda
+pendiente probarla en Windows. VERSION.json identifica el commit del juego.
+SHA256SUMS.txt contiene las huellas SHA-256 de los archivos del paquete.

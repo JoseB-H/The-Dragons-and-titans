@@ -83,7 +83,11 @@ func run() -> void:
 		player = current_scene.get_node("Dragon")
 		visual = player.get_node("Facing")
 		expect(visual.kind == id and visual.death_amount == 0 and visual.hit_time == 0, "Reinicio conserva modelo y limpia reacciones")
-		expect(player.get_node("Weapon").fired.get_connections().size() == 1, "Reinicio no duplica conexiones")
+		var fired: Signal = player.get_node("Weapon").fired
+		expect(fired.is_connected(Callable(visual, "_on_attack")), "El disparo activa la animación tras reiniciar")
+		if id == &"cobre":
+			expect(fired.is_connected(Callable(visual.breath, "restart")), "Cobre conserva la llamarada tras reiniciar")
+		expect(fired.get_connections().size() == (2 if id == &"cobre" else 1), "Cada perfil conserva exactamente sus conexiones")
 		var foe_visual := current_scene.get_node("Enemy/Facing")
 		current_scene.get_node("Enemy").take_damage(80, player.faction)
 		await ticks(3)
