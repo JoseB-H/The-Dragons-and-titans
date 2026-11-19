@@ -20,6 +20,7 @@ func _physics_process(delta: float) -> void:
 		burst_left = burst_interval
 
 func launch(burst: bool) -> bool:
+	if pilot.get_node("HealthComponent").current_health == 0: return false
 	# Congelar la dirección y el destino evita que el proyectil persiga al cursor.
 	var span: Vector2 = pilot.aim_point-pilot.global_position
 	if span.length() < 2.4: return false

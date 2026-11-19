@@ -4,6 +4,9 @@
 [ext_resource type="Script" path="res://scripts/combat/impact_feedback.gd" id="fb"]
 [ext_resource type="Script" path="res://scripts/combat/dragon_weapon.gd" id="weapon"]
 [ext_resource type="PackedScene" path="res://scenes/combat/target.tscn" id="target"]
+[ext_resource type="Script" path="res://scripts/combat/health_component.gd" id="hp"]
+[ext_resource type="Script" path="res://scripts/ui/player_health.gd" id="hud"]
+[ext_resource type="Script" path="res://scripts/combat/practice_turret.gd" id="turret"]
 [sub_resource type="CircleShape2D" id="pilot"]
 radius = 19.2
 [node name="TestLevel" type="Node2D"]
@@ -126,11 +129,15 @@ color = Color(0.14,0.21,0.23,1)
 [node name="GridV18" type="Polygon2D" parent="Ground"]
 polygon = PackedVector2Array(864, -900, 865, -900, 865, 900, 864, 900)
 color = Color(0.14,0.21,0.23,1)
-[node name="Player" type="CharacterBody2D" parent="." node_paths=PackedStringArray("aim_marker")]
+[node name="Spawn" type="Marker2D" parent="."]
+[node name="Player" type="CharacterBody2D" parent="." node_paths=PackedStringArray("aim_marker","spawn_point")]
 script = ExtResource("player")
 aim_marker = NodePath("../AimMarker")
+spawn_point = NodePath("../Spawn")
 collision_mask = 0
 motion_mode = 1
+[node name="HealthComponent" type="Node" parent="Player"]
+script = ExtResource("hp")
 [node name="Collider" type="CollisionShape2D" parent="Player"]
 shape = SubResource("pilot")
 [node name="Model" type="Node2D" parent="Player"]
@@ -148,7 +155,7 @@ target = NodePath("../Player")
 position_smoothing_enabled = true
 position_smoothing_speed = 6.0
 process_callback = 0
-[node name="ImpactFeedback" type="Node" parent="." node_paths=PackedStringArray("camera")]
+[node name="ImpactFeedback" type="Node" parent="." groups=["impact_feedback"] node_paths=PackedStringArray("camera")]
 script = ExtResource("fb")
 camera = NodePath("../Camera")
 [node name="Targets" type="Node2D" parent="."]
@@ -170,3 +177,32 @@ theme_override_constants/outline_size = 4
 polygon = PackedVector2Array(-5,0,0,-5,5,0,0,5)
 color = Color(0.35,1,0.68,0.88)
 z_index = 9
+
+[node name="Aura" type="Line2D" parent="Player"]
+visible = false
+width = 3
+default_color = Color(0.2,0.8,1,0.9)
+points = PackedVector2Array(36.0, 0.0, 35.31, 7.02, 33.26, 13.78, 29.93, 20.0, 25.46, 25.46, 20.0, 29.93, 13.78, 33.26, 7.02, 35.31, 0.0, 36.0, -7.02, 35.31, -13.78, 33.26, -20.0, 29.93, -25.46, 25.46, -29.93, 20.0, -33.26, 13.78, -35.31, 7.02, -36.0, 0.0, -35.31, -7.02, -33.26, -13.78, -29.93, -20.0, -25.46, -25.46, -20.0, -29.93, -13.78, -33.26, -7.02, -35.31, -0.0, -36.0, 7.02, -35.31, 13.78, -33.26, 20.0, -29.93, 25.46, -25.46, 29.93, -20.0, 33.26, -13.78, 35.31, -7.02, 36.0, -0.0)
+
+[node name="Turret" parent="." node_paths=PackedStringArray("player") instance=ExtResource("target")]
+position = Vector2(335, 90)
+script = ExtResource("turret")
+player = NodePath("../Player")
+[node name="Barrel" type="Polygon2D" parent="Turret"]
+polygon = PackedVector2Array(0,-4,28,-4,28,4,0,4)
+color = Color(0.96,0.7,0.3,1)
+[node name="HealthBar" type="ProgressBar" parent="UI" node_paths=PackedStringArray("health")]
+offset_left = 18
+offset_top = 48
+offset_right = 218
+offset_bottom = 74
+show_percentage = false
+mouse_filter = 2
+script = ExtResource("hud")
+health = NodePath("../../Player/HealthComponent")
+[node name="Text" type="Label" parent="UI/HealthBar"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+horizontal_alignment = 1
+vertical_alignment = 1
+theme_override_constants/outline_size = 4

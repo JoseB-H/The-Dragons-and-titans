@@ -63,4 +63,27 @@ godot --headless --editor --import
 godot --headless --fixed-fps 60 --script res://tests/test_step2.gd
 ```
 
-El paso 3 de vida y reaparición continúa pendiente.
+## Paso 3 · Vida, muerte y reaparición
+
+Cada actor lleva un nodo HealthComponent con max_health, current_health, invulnerable, take_damage(amount), health_changed(actual, maximum) y died. El daño se limita a la vida restante. Al llegar a cero se emite died una vez por vida. Los impactos consultan el componente y avisan al grupo opcional impact_feedback cuando se aplica daño.
+
+### Nodos añadidos
+
+- TestLevel/Spawn (Marker2D) fija la posición de reaparición.
+- Player/HealthComponent (Node) y Player/Aura (Line2D) controlan la vida y señalan la protección.
+- Cada blanco de Targets/ incorpora HealthComponent y HealthBar (ProgressBar).
+- TestLevel/Turret usa la escena del blanco y añade Barrel (Polygon2D). Sus proyectiles solo impactan en la capa del piloto.
+- UI (CanvasLayer) incorpora HealthBar (ProgressBar) con Text (Label).
+
+### Prueba manual
+
+1. Lanza Q sobre un blanco y observa su barra. Al agotar sus 100 puntos desaparece con un destello y vuelve tras 3 s con vida completa. Los contadores de daño empiezan otra vez en cero.
+2. Vuela hacia la derecha del punto de inicio. La torreta está en (335, 90) y abre fuego a 220 px. Quédate en su alcance: cuatro disparos de 25 agotan la barra del HUD.
+3. El dragón desaparece, queda sin movimiento ni disparo y reaparece en Spawn tras 3 s. El anillo azul indica 2 s de invulnerabilidad. Puedes volar y disparar desde que reapareces.
+4. Ajusta max_health en HealthComponent, respawn_time y protection_time en Player; en cada blanco, respawn_time. En Turret están shot_damage, shot_interval, attack_range y shot_speed. Los valores son locales al prototipo.
+5. Ejecuta tests/test_step2.gd con el comando anterior. Ahora incluye las regresiones de vuelo, los dos intervalos de reaparición, daño real de la torreta, aura, HUD, impactos opcionales y transparencia. Q sigue detonando en la mira.
+
+### Archivos de esta entrega
+
+Nuevos: scripts/combat/health_component.gd, scripts/combat/practice_turret.gd y scripts/ui/player_health.gd.
+Modificados: LEEME.md, scenes/combat/target.tscn, scenes/levels/test_level.tscn, scripts/combat/bolt.gd, scripts/combat/dragon_weapon.gd, scripts/combat/impact.gd, scripts/combat/practice_target.gd, scripts/player/dragon_player.gd y tests/test_step2.gd.
