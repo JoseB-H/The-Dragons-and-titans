@@ -7,6 +7,15 @@
 [ext_resource type="Script" path="res://scripts/combat/health_component.gd" id="hp"]
 [ext_resource type="Script" path="res://scripts/ui/player_health.gd" id="hud"]
 [ext_resource type="Script" path="res://scripts/combat/practice_turret.gd" id="turret"]
+[ext_resource type="PackedScene" path="res://scenes/waves/minion.tscn" id="minion"]
+[ext_resource type="Script" path="res://scripts/waves/wave_spawner.gd" id="waves"]
+[ext_resource type="NavigationPolygon" path="res://scenes/waves/defense_navigation.tres" id="nav"]
+[sub_resource type="StyleBoxFlat" id="panel"]
+bg_color = Color(0.045,0.08,0.10,0.94)
+content_margin_left = 10.0
+content_margin_top = 6.0
+content_margin_right = 10.0
+content_margin_bottom = 6.0
 [sub_resource type="CircleShape2D" id="pilot"]
 radius = 19.2
 [node name="TestLevel" type="Node2D"]
@@ -188,6 +197,12 @@ points = PackedVector2Array(36.0, 0.0, 35.31, 7.02, 33.26, 13.78, 29.93, 20.0, 2
 position = Vector2(335, 90)
 script = ExtResource("turret")
 player = NodePath("../Player")
+[node name="ArmoredBase" type="Polygon2D" parent="Turret"]
+polygon = PackedVector2Array(-24,-20,-9,-17,0,-25,9,-17,24,-20,17,0,24,20,8,17,0,24,-8,17,-24,20,-17,0)
+color = Color(0.57,0.16,0.78,1)
+[node name="Hub" type="Polygon2D" parent="Turret"]
+polygon = PackedVector2Array(-14,-10,14,-10,14,10,-14,10)
+color = Color(0.2,0.08,0.26,1)
 [node name="Barrel" type="Polygon2D" parent="Turret"]
 polygon = PackedVector2Array(0,-4,28,-4,28,4,0,4)
 color = Color(0.96,0.7,0.3,1)
@@ -206,3 +221,48 @@ anchor_bottom = 1.0
 horizontal_alignment = 1
 vertical_alignment = 1
 theme_override_constants/outline_size = 4
+
+[node name="NavigationRegion" type="NavigationRegion2D" parent="."]
+navigation_polygon = ExtResource("nav")
+[node name="Obelisk" type="Node2D" parent="."]
+position = Vector2(-185, 40)
+[node name="Crystal" type="Polygon2D" parent="Obelisk"]
+polygon = PackedVector2Array(0,-37,17,3,12,21,0,27,-12,21,-17,3)
+color = Color(0.21,0.78,0.94,1)
+[node name="Facet" type="Polygon2D" parent="Obelisk"]
+polygon = PackedVector2Array(0,-37,17,3,0,27)
+color = Color(0.09,0.45,0.71,1)
+[node name="HealthComponent" type="Node" parent="Obelisk"]
+script = ExtResource("hp")
+max_health = 180
+[node name="HealthBar" type="ProgressBar" parent="Obelisk" node_paths=PackedStringArray("health")]
+script = ExtResource("hud")
+health = NodePath("../HealthComponent")
+offset_left = -32
+offset_right = 32
+offset_top = -51
+offset_bottom = -42
+show_percentage = false
+mouse_filter = 2
+[node name="WaveSpawner" type="Node2D" parent="." node_paths=PackedStringArray("obelisk","player","objective")]
+script = ExtResource("waves")
+minion_scene = ExtResource("minion")
+obelisk = NodePath("../Obelisk")
+player = NodePath("../Player")
+objective = NodePath("../UI/Objective/Text")
+[node name="North" type="Marker2D" parent="WaveSpawner"]
+position = Vector2(-380,-235)
+[node name="West" type="Marker2D" parent="WaveSpawner"]
+position = Vector2(-480,50)
+[node name="South" type="Marker2D" parent="WaveSpawner"]
+position = Vector2(-365,225)
+[node name="Objective" type="PanelContainer" parent="UI"]
+anchor_left = 1.0
+anchor_right = 1.0
+offset_left = -437
+offset_right = -14
+offset_top = 12
+theme_override_styles/panel = SubResource("panel")
+mouse_filter = 2
+[node name="Text" type="Label" parent="UI/Objective"]
+horizontal_alignment = 1

@@ -12,8 +12,13 @@ extends CharacterBody2D
 @export_range(0, 10) var protection_time := 2.0
 var aim_point := Vector2.ZERO
 
+var previous_hp: int
+var flash: Tween
+
 func _ready() -> void:
 	global_position = spawn_point.global_position
+	previous_hp = $HealthComponent.current_health
+	$HealthComponent.health_changed.connect(_on_health_changed)
 	$HealthComponent.died.connect(_die)
 
 func _die() -> void:
@@ -54,3 +59,13 @@ func _physics_process(delta: float) -> void:
 		rotation = lerp_angle(rotation,aim.angle(),minf(1,turn_speed*delta))
 	var lateral := velocity.rotated(-rotation).y/max_speed
 	$Model.skew = lerpf($Model.skew,-lateral*bank_amount,minf(1,bank_speed*delta))
+
+func _on_health_changed(hp: int, _maximum: int) -> void:
+	var damage := previous_hp-hp
+	previous_hp = hp
+	if damage <= 0: return
+	preload("res://scripts/ui/damage_number.gd").show_at(get_parent(),global_position,damage,Color.SALMON)
+	if flash: flash.kill()
+	$Model.modulate = Color(1,0.12,0.12)
+	flash = create_tween()
+	flash.tween_property($Model,"modulate",Color.WHITE,0.18)

@@ -17,6 +17,9 @@ func ticks(n: int) -> void:
 func run() -> void:
 	# Instanciar el nivel de F5 directamente funciona en Godot 4.3.
 	var level = load(ProjectSettings.get_setting("application/run/main_scene")).instantiate()
+	var spawner = level.get_node("WaveSpawner")
+	# Aislar las regresiones del campo de tiro antes de activar la defensa.
+	spawner.wave_pause = 1000.0
 	root.add_child(level)
 	current_scene = level
 	await ticks(2)
@@ -120,5 +123,64 @@ func run() -> void:
 	check(flash_alpha<1 and smoke_alpha<1,"Destello y humo translúcidos desde el primer cuadro")
 	await ticks(10)
 	check(flash.modulate.a<flash_alpha and smoke.modulate.a<smoke_alpha,"Ambas capas se desvanecen")
-	print("Pasos 1 a 3 en 2D: %d comprobaciones, %d fallos" % [checks,failures])
+	var bar = level.get_node("UI/HealthBar")
+	pilot_health.take_damage(pilot_health.current_health-30)
+	check(bar.fill.bg_color==bar.GREEN,"El 30 % sigue verde")
+	pilot_health.take_damage(1)
+	check(bar.fill.bg_color==bar.RED and target.get_node("HealthBar").fill.bg_color==bar.GREEN,"Rojo por debajo del 30 % e independencia entre barras")
+	check(pilot.get_node("Model").modulate.g<0.5,"Destello al recibir daño")
+	await ticks(16)
+	check(pilot.get_node("Model").modulate.is_equal_approx(Color.WHITE),"Fin del destello")
+	pilot_health.revive()
+	var objective = level.get_node("UI/Objective/Text")
+	var obelisk = level.get_node("Obelisk")
+	var ob_hp = obelisk.get_node("HealthComponent")
+	var region = level.get_node("NavigationRegion")
+	check(region.navigation_polygon.get_polygon_count()>0,"Malla navegable incluida")
+	spawner.wave_sizes = PackedInt32Array([2,1])
+	spawner.wave_pause = 0.5
+	spawner.wait_left = 0
+	await ticks(4)
+	var enemies := get_nodes_in_group("minions")
+	check(enemies.size()==2 and spawner.wave==1 and objective.text.ends_with("restantes 2"),"Primera oleada y panel")
+	var unit = enemies[0]
+	var start: Vector2 = unit.global_position
+	await ticks(24)
+	check(unit.target==obelisk and unit.global_position.distance_to(obelisk.global_position)<start.distance_to(obelisk.global_position),"Ruta al obelisco")
+	pilot.global_position = unit.global_position+Vector2(15,0)
+	await ticks(3)
+	check(unit.target==pilot and unit.state==unit.State.ATACAR and pilot_health.current_health<100,"Aggro y ataque cuerpo a cuerpo")
+	var after_hit: int = pilot_health.current_health
+	await ticks(12)
+	check(pilot_health.current_health==after_hit,"Intervalo entre golpes")
+	pilot.global_position = Vector2.ZERO
+	await ticks(4)
+	check(unit.target==obelisk and unit.state==unit.State.MOVER,"Regresa al objetivo al alejarse el piloto")
+	await ticks(330)
+	check(ob_hp.current_health<ob_hp.max_health,"Minions llegan y dañan el obelisco")
+	for actor in enemies: actor.get_node("HealthComponent").take_damage(999)
+	check(spawner.remaining==0 and get_nodes_in_group("minions").is_empty(),"Una baja por minion")
+	await ticks(12)
+	check(spawner.wave==1,"Pausa real entre oleadas")
+	await ticks(25)
+	check(spawner.wave==2 and spawner.remaining==1,"Segunda oleada")
+	get_nodes_in_group("minions")[0].get_node("HealthComponent").take_damage(999)
+	check(objective.text.begins_with("Victoria") and paused,"Victoria final")
+	await restart_with_r()
+	var fresh = current_scene
+	check(fresh!=null and fresh.get_node("WaveSpawner").wave==0 and not paused,"R reinicia después de victoria")
+	fresh.get_node("Obelisk/HealthComponent").take_damage(999)
+	check(paused and fresh.get_node("UI/Objective/Text").text.begins_with("Derrota"),"Derrota al caer el obelisco")
+	await restart_with_r()
+	check(not paused and current_scene.get_node("Obelisk/HealthComponent").current_health==180,"R reinicia después de derrota")
+	print("Pasos 1 a 4 en 2D: %d comprobaciones, %d fallos" % [checks,failures])
 	quit(1 if failures else 0)
+
+func restart_with_r() -> void:
+	var key := InputEventKey.new()
+	key.physical_keycode = KEY_R
+	key.pressed = true
+	root.push_input(key)
+	await ticks(4)
+	key.pressed = false
+	root.push_input(key)

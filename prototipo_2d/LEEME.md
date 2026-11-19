@@ -36,7 +36,7 @@ Durante el disparo aparecen Bolt (Area2D → Spark, Polygon2D) e Impact (Node2D 
 - scripts/combat/practice_target.gd registra el daño y crea cifras flotantes.
 - scripts/combat/impact.gd anima el destello y el humo independientemente del daño.
 - scripts/combat/impact_feedback.gd aplica la pausa y el temblor mediante Camera2D.offset.
-- tests/test_step2.gd ejecuta las comprobaciones de vuelo y combate.
+- tests/test_prototipo.gd ejecuta las comprobaciones de vuelo y combate.
 
 ## Inspector y equivalencia
 
@@ -60,7 +60,7 @@ Con el ejecutable de Godot en el PATH, desde esta carpeta:
 
 ```sh
 godot --headless --editor --import
-godot --headless --fixed-fps 60 --script res://tests/test_step2.gd
+godot --headless --fixed-fps 60 --script res://tests/test_prototipo.gd
 ```
 
 ## Paso 3 · Vida, muerte y reaparición
@@ -81,9 +81,35 @@ Cada actor lleva un nodo HealthComponent con max_health, current_health, invulne
 2. Vuela hacia la derecha del punto de inicio. La torreta está en (335, 90) y abre fuego a 220 px. Quédate en su alcance: cuatro disparos de 25 agotan la barra del HUD.
 3. El dragón desaparece, queda sin movimiento ni disparo y reaparece en Spawn tras 3 s. El anillo azul indica 2 s de invulnerabilidad. Puedes volar y disparar desde que reapareces.
 4. Ajusta max_health en HealthComponent, respawn_time y protection_time en Player; en cada blanco, respawn_time. En Turret están shot_damage, shot_interval, attack_range y shot_speed. Los valores son locales al prototipo.
-5. Ejecuta tests/test_step2.gd con el comando anterior. Ahora incluye las regresiones de vuelo, los dos intervalos de reaparición, daño real de la torreta, aura, HUD, impactos opcionales y transparencia. Q sigue detonando en la mira.
+5. Ejecuta tests/test_prototipo.gd con el comando anterior. Ahora incluye las regresiones de vuelo, los dos intervalos de reaparición, daño real de la torreta, aura, HUD, impactos opcionales y transparencia. Q sigue detonando en la mira.
 
 ### Archivos de esta entrega
 
 Nuevos: scripts/combat/health_component.gd, scripts/combat/practice_turret.gd y scripts/ui/player_health.gd.
-Modificados: LEEME.md, scenes/combat/target.tscn, scenes/levels/test_level.tscn, scripts/combat/bolt.gd, scripts/combat/dragon_weapon.gd, scripts/combat/impact.gd, scripts/combat/practice_target.gd, scripts/player/dragon_player.gd y tests/test_step2.gd.
+Modificados: LEEME.md, scenes/combat/target.tscn, scenes/levels/test_level.tscn, scripts/combat/bolt.gd, scripts/combat/dragon_weapon.gd, scripts/combat/impact.gd, scripts/combat/practice_target.gd, scripts/player/dragon_player.gd y tests/test_prototipo.gd.
+
+## Paso 4 · Defensa del obelisco
+
+Desde F5, busca el cristal azul a la izquierda del punto inicial. Protege sus 180 puntos de vida durante tres oleadas de 3, 4 y 5 minions. Puedes atraerlos acercándote, retroceder y disparar hacia el grupo. Al alejarte o caer, los supervivientes vuelven al obelisco. El panel superior derecho cuenta los enemigos vivos de la oleada actual. Al acabar la última oleada aparece Victoria. La caída del cristal produce Derrota. Pulsa R en cualquiera de esos dos estados para empezar una partida nueva.
+
+### Árbol añadido a TestLevel
+
+- NavigationRegion (NavigationRegion2D) contiene el recurso horneado defense_navigation.tres.
+- Obelisk (Node2D) incluye Crystal y Facet (Polygon2D), HealthComponent y HealthBar (ProgressBar).
+- WaveSpawner (Node2D) usa los Marker2D North, West y South. Distribuye el tamaño indicado en wave_sizes entre los puntos. Para añadir entradas al mapa añade más hijos Marker2D.
+- Cada Minion (CharacterBody2D, grupo minions) tiene Body, Collider, HealthComponent y Agent (NavigationAgent2D).
+- UI/Objective (PanelContainer) contiene Text (Label). La barra de cada actor usa fondo oscuro, relleno verde y rojo por debajo del 30 %. El daño al piloto provoca un destello rojo en Model y cifras flotantes en el mundo. La torreta enemiga lleva una base violeta dentada y un cañón dorado.
+
+### Inspector
+
+En WaveSpawner ajusta minion_scene, wave_sizes y wave_pause (3 s al inicio y entre oleadas). En la escena minion.tscn ajusta velocidad (68 px/s), aggro_range (115 px), melee_range (32 px), damage (6) y attack_interval (1,1 s). HealthComponent controla los 36 puntos de vida del minion y los 180 del obelisco.
+
+### Cómo volver a hornear la navegación
+
+1. Abre scenes/levels/test_level.tscn en el editor 2D y selecciona NavigationRegion. En Navigation Polygon puedes editar el contorno del área transitable. Mantén los tres marcadores y el obelisco dentro del contorno.
+2. Si añades paredes, colócalas como StaticBody2D bajo NavigationRegion, con una CollisionShape2D o CollisionPolygon2D y la capa de colisión **3** habilitada. El horneado lee la máscara 4 (el bit de la capa 3). Los actores móviles se excluyen de esa máscara.
+3. Con la región seleccionada, pulsa **Bake NavigationPolygon** en la barra del editor 2D. Guarda la escena y el recurso scenes/waves/defense_navigation.tres. Activa la visualización de navegación y prueba F5 para comprobar que los minions rodean las paredes.
+
+### Verificación
+
+La prueba unificada en tests/test_prototipo.gd conserva las comprobaciones anteriores y valida barras al 30 % y por debajo, reacción al daño, navegación, aggro, cadencia, espera entre oleadas, conteo de bajas y reinicio de ambos resultados. Ejecuta los comandos de la sección de prueba del editor.

@@ -1,6 +1,7 @@
 [gd_scene format=3]
 [ext_resource type="Script" path="res://scripts/combat/practice_target.gd" id="s"]
 [ext_resource type="Script" path="res://scripts/combat/health_component.gd" id="hp"]
+[ext_resource type="Script" path="res://scripts/ui/player_health.gd" id="bar"]
 [sub_resource type="CircleShape2D" id="shape"]
 radius = 15.6
 [node name="Target" type="StaticBody2D"]
@@ -26,7 +27,7 @@ z_index = 8
 
 [node name="HealthComponent" type="Node" parent="."]
 script = ExtResource("hp")
-[node name="HealthBar" type="ProgressBar" parent="."]
+[node name="HealthBar" type="ProgressBar" parent="." node_paths=PackedStringArray("health")]
 offset_left = -20
 offset_top = -27
 offset_right = 20
@@ -34,3 +35,5 @@ offset_bottom = -19
 show_percentage = false
 mouse_filter = 2
 z_index = 10
+script = ExtResource("bar")
+health = NodePath("../HealthComponent")
