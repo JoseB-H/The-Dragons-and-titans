@@ -1,0 +1,21 @@
+[gd_scene format=3]
+
+[ext_resource type="Script" path="res://scripts/proving_grounds.gd" id="1"]
+[ext_resource type="PackedScene" path="res://scenes/dragon.tscn" id="2"]
+[ext_resource type="Script" path="res://scripts/frontier_landscape.gd" id="3"]
+
+[node name="ProvingGrounds" type="Node3D"]
+script = ExtResource("1")
+
+[node name="Paisaje" type="Node3D" parent="."]
+script = ExtResource("3")
+
+[node name="Sun" type="DirectionalLight3D" parent="."]
+rotation = Vector3(-1.1,-0.6,0)
+shadow_enabled = true
+
+[node name="Dragon" parent="." instance=ExtResource("2")]
+position = Vector3(-40,1.5,0)
+arena_half_size = Vector2(48,22)
+
+[node name="Effects" type="Node3D" parent="."]

@@ -1,0 +1,14 @@
+{
+  "alwaysUpdateLinks": true,
+  "newLinkFormat": "shortest",
+  "useMarkdownLinks": false,
+  "attachmentFolderPath": "Assets",
+  "showLineNumber": true,
+  "readableLineLength": true,
+  "livePreview": true,
+  "defaultViewMode": "preview",
+  "spellcheck": true,
+  "spellcheckLanguages": [
+    "es"
+  ]
+}

@@ -1,0 +1,72 @@
+[gd_scene load_steps=9 format=3]
+
+[ext_resource type="PackedScene" path="res://scenes/arena.tscn" id="1"]
+[ext_resource type="Script" path="res://scripts/siege_arena.gd" id="2"]
+[ext_resource type="PackedScene" path="res://scenes/enemy.tscn" id="3"]
+[ext_resource type="Script" path="res://scripts/siege_core.gd" id="4"]
+[ext_resource type="Script" path="res://scripts/caldera.gd" id="5"]
+[ext_resource type="Shader" path="res://assets/caldera.gdshader" id="6"]
+
+[ext_resource type="PackedScene" path="res://scenes/siege_tower.tscn" id="7"]
+
+[sub_resource type="CylinderShape3D" id="CoreShape"]
+height = 2.6
+radius = 1.15
+
+[node name="Caldera" instance=ExtResource("1")]
+script = ExtResource("2")
+
+[node name="Dragon" parent="." index="3"]
+position = Vector3(-2, 1.5, 5)
+
+[node name="Enemy" parent="." index="4"]
+position = Vector3(2, 1.5, -5)
+attack_range = 5.6
+
+[node name="Ally" parent="." index="9" instance=ExtResource("3")]
+position = Vector3(2, 1.5, 5)
+faction = 1
+max_health = 95
+model_id = &"jade"
+attack_range = 5.6
+
+[node name="Raider" parent="." index="10" instance=ExtResource("3")]
+position = Vector3(-2, 1.5, -5)
+max_health = 75
+model_id = &"cobre"
+attack_range = 5.6
+
+[node name="HomeCore" type="CharacterBody3D" parent="." index="11"]
+position = Vector3(0, 1.5, 9)
+collision_mask = 0
+script = ExtResource("4")
+max_health = 240
+faction = 1
+team_color = Color(0.3, 0.83, 1, 1)
+
+[node name="Shape" type="CollisionShape3D" parent="HomeCore"]
+shape = SubResource("CoreShape")
+
+[node name="RivalCore" type="CharacterBody3D" parent="." index="12"]
+position = Vector3(0, 1.5, -9)
+collision_mask = 0
+script = ExtResource("4")
+max_health = 240
+faction = 2
+team_color = Color(1, 0.38, 0.24, 1)
+
+[node name="Shape" type="CollisionShape3D" parent="RivalCore"]
+shape = SubResource("CoreShape")
+
+[node name="CalderaArt" type="Node3D" parent="." index="13"]
+script = ExtResource("5")
+ground_shader = ExtResource("6")
+
+[node name="HomeTower" parent="." index="14" instance=ExtResource("7")]
+position = Vector3(-2.8, 1.5, 5.9)
+team_color = Color(0.3, 0.83, 1, 1)
+
+[node name="RivalTower" parent="." index="15" instance=ExtResource("7")]
+position = Vector3(2.8, 1.5, -5.9)
+faction = 2
+team_color = Color(1, 0.38, 0.24, 1)

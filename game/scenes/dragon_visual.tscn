@@ -1,0 +1,8 @@
+[gd_scene load_steps=2 format=3]
+
+[ext_resource type="Script" path="res://scripts/dragon_presentation.gd" id="1"]
+
+[node name="DragonVisual" type="Node3D"]
+script = ExtResource("1")
+metadata/provenance = "GLB originales con texturas propias, esqueleto de 16 huesos y clips importados. Fuente: tools/art/build_dragons.py."
+metadata/forward_axis = "-Z"

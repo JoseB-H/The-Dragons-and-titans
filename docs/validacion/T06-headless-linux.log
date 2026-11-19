@@ -1,0 +1,108 @@
+T06 — Regresiones Linux headless en copia limpia
+Código comprobado: 036553c7a9bd364f2e6d865a3d17b3ce46254ab1
+Godot: 4.6.3.stable.official.7d41c59c4
+Copia: /tmp/dragons-t06-regressions/source
+Creación de copia: git archive --format=tar 036553c7a9bd364f2e6d865a3d17b3ce46254ab1
+SHA256 del TAR: b097ecb20dda7b2aaa1e132ebe2ad83f7ef2acaf71975e2b82279ce6a98275ee
+Caché game/.godot inexistente antes de importar.
+DISPLAY y WAYLAND_DISPLAY eliminados del entorno.
+XDG_CACHE_HOME=/tmp/dragons-t06-regressions/xdg/cache
+XDG_DATA_HOME=/tmp/dragons-t06-regressions/xdg/data
+XDG_CONFIG_HOME=/tmp/dragons-t06-regressions/xdg/config
+GODOT_SILENCE_ROOT_WARNING=1
+
+$ /usr/local/bin/godot --version
+4.6.3.stable.official.7d41c59c4
+[exit 0]
+
+$ /usr/local/bin/godot --headless --path game --import
+Godot Engine v4.6.3.stable.official.7d41c59c4 - https://godotengine.org
+
+[   0% ] first_scan_filesystem | Started Project initialization (5 steps)
+[   0% ] first_scan_filesystem | Scanning file structure...
+[  16% ] first_scan_filesystem | Loading global class names...
+[  33% ] first_scan_filesystem | Verifying GDExtensions...
+[  50% ] first_scan_filesystem | Creating autoload scripts...
+[  66% ] first_scan_filesystem | Initializing plugins...
+[  83% ] first_scan_filesystem | Starting file scan...
+[ DONE ] first_scan_filesystem
+
+[   0% ] update_scripts_classes | Started Registering global classes... (20 steps)
+[   0% ] update_scripts_classes | 
+[   4% ] update_scripts_classes | 
+[   9% ] update_scripts_classes | 
+[  14% ] update_scripts_classes | 
+[  19% ] update_scripts_classes | 
+[  23% ] update_scripts_classes | 
+[  28% ] update_scripts_classes | 
+[  33% ] update_scripts_classes | 
+[  38% ] update_scripts_classes | 
+[  42% ] update_scripts_classes | 
+[  47% ] update_scripts_classes | 
+[  52% ] update_scripts_classes | 
+[  57% ] update_scripts_classes | 
+[  61% ] update_scripts_classes | 
+[  66% ] update_scripts_classes | 
+[  71% ] update_scripts_classes | 
+[  76% ] update_scripts_classes | 
+[  80% ] update_scripts_classes | 
+[  85% ] update_scripts_classes | 
+[  90% ] update_scripts_classes | 
+[ DONE ] update_scripts_classes
+
+[   0% ] loading_editor_layout | Started Loading editor (5 steps)
+[   0% ] loading_editor_layout | Loading editor layout...
+[  16% ] loading_editor_layout | Loading docks...
+[ DONE ] loading_editor_layout
+
+[exit 0]
+
+$ /usr/local/bin/godot --headless --path game --script res://tests/test_t02.gd
+Godot Engine v4.6.3.stable.official.7d41c59c4 - https://godotengine.org
+
+T02: 34 comprobaciones, 0 fallos
+[exit 0]
+
+$ /usr/local/bin/godot --headless --path game --script res://tests/test_combat_core.gd
+Godot Engine v4.6.3.stable.official.7d41c59c4 - https://godotengine.org
+
+T03 núcleo: 51 comprobaciones, 0 fallos
+[exit 0]
+
+$ /usr/local/bin/godot --headless --path game --script res://tests/test_t03.gd
+Godot Engine v4.6.3.stable.official.7d41c59c4 - https://godotengine.org
+
+T03 integración: 52 comprobaciones, 0 fallos
+[exit 0]
+
+$ /usr/local/bin/godot --headless --path game --script res://tests/test_power_projectile.gd
+Godot Engine v4.6.3.stable.official.7d41c59c4 - https://godotengine.org
+
+T04 Q: 57 comprobaciones, 0 fallos
+[exit 0]
+
+$ /usr/local/bin/godot --headless --path game --script res://tests/test_pulse.gd
+Godot Engine v4.6.3.stable.official.7d41c59c4 - https://godotengine.org
+
+T04 pulso: 78 comprobaciones, 0 fallos
+[exit 0]
+
+$ /usr/local/bin/godot --headless --path game --script res://tests/test_t04.gd
+Godot Engine v4.6.3.stable.official.7d41c59c4 - https://godotengine.org
+
+T04 integración: 42 comprobaciones, 0 fallos
+[exit 0]
+
+$ /usr/local/bin/godot --headless --path game --script res://tests/test_match_state.gd
+Godot Engine v4.6.3.stable.official.7d41c59c4 - https://godotengine.org
+
+T05 estado: 51 comprobaciones, 0 fallos
+[exit 0]
+
+$ /usr/local/bin/godot --headless --path game --quit-after 120
+Godot Engine v4.6.3.stable.official.7d41c59c4 - https://godotengine.org
+[exit 0]
+
+Total: 365 comprobaciones, 0 fallos.
+Archivos tracked modificados por las pruebas: []
+Sin revisión gráfica, Windows nativo ni manejo humano.

@@ -1,0 +1,258 @@
+[
+  {
+    "file": "T02-selector-cobre-ascua-1280x720.png",
+    "size": [
+      1280,
+      720
+    ],
+    "sha256": "62c629ef1c24fbafe3833e807e4b68847af0e1d00f1657162f992e9dbbf68638"
+  },
+  {
+    "file": "T02-selector-cobre-ascua-960x540.png",
+    "size": [
+      960,
+      540
+    ],
+    "sha256": "c26f5415197f60eeaa9e2d7c1ae2b42ecb86d03c1bfe01e697d6513ce04f8c16"
+  },
+  {
+    "file": "T02-selector-cobre-martillo-1280x720.png",
+    "size": [
+      1280,
+      720
+    ],
+    "sha256": "f911aa75fbba5347a4cfb88d1890f191a4baf8fe2bb0741f0631f33348743bdf"
+  },
+  {
+    "file": "T02-selector-cobre-martillo-960x540.png",
+    "size": [
+      960,
+      540
+    ],
+    "sha256": "2be18dfa3c356c2ed82adf46399b197f2ede5ad85d7e6e0a241b51145945bcfb"
+  },
+  {
+    "file": "T02-selector-jade-ascua-1280x720.png",
+    "size": [
+      1280,
+      720
+    ],
+    "sha256": "b3a5f97dfaefbb8b34704bef46727ad1c44203a2df2f92f52ae413f55b9faf0c"
+  },
+  {
+    "file": "T02-selector-jade-ascua-960x540.png",
+    "size": [
+      960,
+      540
+    ],
+    "sha256": "6a1d8dadbb665d7f16cccd208cf5d552a6d15240a9850a0d5c484f60132fbcde"
+  },
+  {
+    "file": "T02-selector-jade-martillo-1280x720.png",
+    "size": [
+      1280,
+      720
+    ],
+    "sha256": "909407973864a45ef6b533837c82ac9bfd746d6b33c4bc25da5a3979d7d9f3f0"
+  },
+  {
+    "file": "T02-selector-jade-martillo-960x540.png",
+    "size": [
+      960,
+      540
+    ],
+    "sha256": "7e31da6799a344503bc495a4b21d348817dc6bd6dc602cf8040b470b4e3a7088"
+  },
+  {
+    "file": "T02-arena-cobre-ascua-1280x720.png",
+    "size": [
+      1280,
+      720
+    ],
+    "sha256": "4bb4b343858d3d63665210f35b6aedf7efa001172dad2403069d37c7b1b6badb"
+  },
+  {
+    "file": "T02-arena-cobre-ascua-960x540.png",
+    "size": [
+      960,
+      540
+    ],
+    "sha256": "83f246cb2426d7c5ef1ff55a44220cf708bda74d8a29b581b989267d8a33e0a4"
+  },
+  {
+    "file": "T02-arena-cobre-martillo-1280x720.png",
+    "size": [
+      1280,
+      720
+    ],
+    "sha256": "b50a9c67ec09b45ed6b894622d0a95f68832b5c19afa4ff6cedc9b9a41d9ac01"
+  },
+  {
+    "file": "T02-arena-cobre-martillo-960x540.png",
+    "size": [
+      960,
+      540
+    ],
+    "sha256": "f0b3e456af55f09e88dffbf7b9d943e72a1064f42c3b0c801b9f1af93cade54f"
+  },
+  {
+    "file": "T02-arena-jade-ascua-1280x720.png",
+    "size": [
+      1280,
+      720
+    ],
+    "sha256": "5db3ad2ad8efca4667e912b79c92fd112843949fd3d499c0d8ed7db71724475f"
+  },
+  {
+    "file": "T02-arena-jade-ascua-960x540.png",
+    "size": [
+      960,
+      540
+    ],
+    "sha256": "efc73dc2bd0a48bbd47251661d36e7c35ced00945985813dd95316ee8375687b"
+  },
+  {
+    "file": "T02-arena-jade-martillo-1280x720.png",
+    "size": [
+      1280,
+      720
+    ],
+    "sha256": "aeda7f39d6a66a676218874312a41a5c4f9c4e5a6c2f743dab3e04e7c3406f02"
+  },
+  {
+    "file": "T02-arena-jade-martillo-960x540.png",
+    "size": [
+      960,
+      540
+    ],
+    "sha256": "d519d1e8e44a8d66cdac9cd9e2d8bc91729986f6352b3767d9aabf8227948181"
+  },
+  {
+    "file": "T02-victoria-cobre-ascua-1280x720.png",
+    "size": [
+      1280,
+      720
+    ],
+    "sha256": "d14a24740a3fee8bbb65ca1e16d653ae9edcd116d9cd7333a94deadc3a64cc23"
+  },
+  {
+    "file": "T02-victoria-cobre-ascua-960x540.png",
+    "size": [
+      960,
+      540
+    ],
+    "sha256": "77a15f90f0fb9552b825611fe32ff53d7220bacf94e7fd2379bdfecd9a15003c"
+  },
+  {
+    "file": "T02-victoria-cobre-martillo-1280x720.png",
+    "size": [
+      1280,
+      720
+    ],
+    "sha256": "3f31690caa3c573c61bb1d32b613966b493534aafa4ecead6c0476ff153c2e30"
+  },
+  {
+    "file": "T02-victoria-cobre-martillo-960x540.png",
+    "size": [
+      960,
+      540
+    ],
+    "sha256": "10139e919d9cc1f0d80f1c10c1d84d7c2cb9f9aefe9a5fa3225db201335173a7"
+  },
+  {
+    "file": "T02-victoria-jade-ascua-1280x720.png",
+    "size": [
+      1280,
+      720
+    ],
+    "sha256": "da2f7534dd070cf277609721962a8513d8fbd10f337ce3b6886ce68c1f3472ab"
+  },
+  {
+    "file": "T02-victoria-jade-ascua-960x540.png",
+    "size": [
+      960,
+      540
+    ],
+    "sha256": "743b31f75bf2236a06450b3d1377ed2b0f3ecd9dcb6294b346240041aacdc6b2"
+  },
+  {
+    "file": "T02-victoria-jade-martillo-1280x720.png",
+    "size": [
+      1280,
+      720
+    ],
+    "sha256": "a4b3f029ba978edb4acf5f297c6f7b74480388aa89a47c6305efbb8eef33efef"
+  },
+  {
+    "file": "T02-victoria-jade-martillo-960x540.png",
+    "size": [
+      960,
+      540
+    ],
+    "sha256": "f9fa5ece03573c891198b669638922e86226779e62d3bfad9f681e4e46335b50"
+  },
+  {
+    "file": "T02-derrota-cobre-ascua-1280x720.png",
+    "size": [
+      1280,
+      720
+    ],
+    "sha256": "0237af68efc8c0b8fad8619f083030843aedc0b2647202528a3d1dcf210216c2"
+  },
+  {
+    "file": "T02-derrota-cobre-ascua-960x540.png",
+    "size": [
+      960,
+      540
+    ],
+    "sha256": "d9f1f21d1d679896e9d531ec3a3056ecf6efb6f6e1ad8f3ce689c43cf180768a"
+  },
+  {
+    "file": "T02-derrota-cobre-martillo-1280x720.png",
+    "size": [
+      1280,
+      720
+    ],
+    "sha256": "08a988d71175a1ba88f83f7d3260f604ea844e0e4d06ed9a099bb9b66b4b5f07"
+  },
+  {
+    "file": "T02-derrota-cobre-martillo-960x540.png",
+    "size": [
+      960,
+      540
+    ],
+    "sha256": "5b2c19c570957013eba18b6a784461afeb9829e4b06f3bd539621ba16f13b355"
+  },
+  {
+    "file": "T02-derrota-jade-ascua-1280x720.png",
+    "size": [
+      1280,
+      720
+    ],
+    "sha256": "946dd50ce2e02d9a4361be5caa8c5dddeab06b187b53ee97f735eb61c5f6e64b"
+  },
+  {
+    "file": "T02-derrota-jade-ascua-960x540.png",
+    "size": [
+      960,
+      540
+    ],
+    "sha256": "61e2179c46b7d020112d7bfcdb1b909df29b44e2a90044f447fbf4f2391e0201"
+  },
+  {
+    "file": "T02-derrota-jade-martillo-1280x720.png",
+    "size": [
+      1280,
+      720
+    ],
+    "sha256": "ea5d5d08b326db23179a0c366ced586c5127dc0edd73e0e0e02481c2a37e6c0f"
+  },
+  {
+    "file": "T02-derrota-jade-martillo-960x540.png",
+    "size": [
+      960,
+      540
+    ],
+    "sha256": "4567d1fb156405d294ac2e5f9b7edfa3bc0cae562d2f61ca9b5f38352a9c80f3"
+  }
+]

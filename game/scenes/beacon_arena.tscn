@@ -1,0 +1,18 @@
+[gd_scene load_steps=4 format=3]
+
+[ext_resource type="PackedScene" path="res://scenes/arena.tscn" id="1_arena"]
+[ext_resource type="Script" path="res://scripts/beacon_arena.gd" id="2_mode"]
+[ext_resource type="Script" path="res://scripts/beacon.gd" id="3_beacon"]
+
+[node name="BeaconArena" instance=ExtResource("1_arena")]
+script = ExtResource("2_mode")
+
+[node name="WestBeacon" type="Node3D" parent="." index="9"]
+position = Vector3(-6, 0, 2)
+script = ExtResource("3_beacon")
+beacon_name = "Oeste"
+
+[node name="EastBeacon" type="Node3D" parent="." index="10"]
+position = Vector3(6, 0, -3)
+script = ExtResource("3_beacon")
+beacon_name = "Este"

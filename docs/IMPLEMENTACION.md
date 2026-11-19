@@ -27,6 +27,19 @@ Aceptación: se puede ganar, perder y reiniciar repetidamente. La victoria por l
 Documentar instalación, versión, importación y ejecución en Windows. Comprobar arranque, movimiento, orientación, límites, daño, recargas, victoria, derrota y tres reinicios consecutivos. Usar pruebas automatizadas para lógica crítica cuando aporten cobertura real; revisión visual para cámara, legibilidad y controles.
 Aceptación: registrar resultados reales y limitaciones. No generar ejecutables supuestamente probados si no se exportaron y ejecutaron.
 
+## V0.2 — primer incremento autorizado
+
+### T01 — Selección entre dos dragones y datos de balance
+Selector previo al combate con Cobre (balance V0.1) y Jade (más velocidad, menos
+salud/daño por impacto y recargas menores). Datos autoritativos en recursos
+separados de controladores y UI; materiales locales y geometría propia existente.
+Reiniciar conserva elección; al terminar se puede volver al selector y cambiar.
+Aceptación: selección con ratón/teclado, valores reales de salud/movimiento/daño/
+recargas, aislamiento de instancias, combate y reinicio por perfil, navegación
+única y regresiones V0.1; interfaz legible en1280×720 y960×540. Registrar pruebas
+y límites en ESTADO. Los nombres y cifras son provisionales, no datos originales.
+Armas elegibles, más dragones, guardado y ampliaciones requieren otro incremento.
+
 ## Arquitectura mínima sugerida
 - Arena: composición de escena y ciclo de partida.
 - DragonController: entrada y movimiento.
@@ -45,3 +58,12 @@ Multijugador: diseñar autoridad del servidor, sincronización y desconexiones a
 
 ## Prompt de inicio
 Lee AGENTS.md y los documentos indicados. Verifica el código y la rama actuales. Implementa la primera tarea pendiente de V0.1 con recursos provisionales propios, ejecuta las comprobaciones disponibles y actualiza docs/ESTADO.md. Continúa con el siguiente incremento si el anterior queda validado; informa con precisión lo no probado. No dependas del chat compartido.
+
+## V0.2 T02 — Armas y equipamiento reimplementados
+Dos recursos de arma independientes: Ascua (multiplicadores 1/1) y Martillo astral
+(1.8 daño/2 recarga). Resultado calculado desde el perfil del dragón, sin mutarlo.
+Selector, HUD, marca geométrica, proyectil e impacto propios.
+Código, lógica, foco/entrada automatizada en ventana y exportación Windows
+completados. 793 comprobaciones lógicas, 2812 gráficas y 225 sobre el PCK.
+Capturas inspeccionadas. Windows nativo y prueba humana V0.2 pendientes.
+Siguiente hito acordado: T03 visual; no implementado en este cierre.

@@ -1,0 +1,198 @@
+$ /usr/local/bin/godot --headless --path /tmp/dragons-windows-db3t81k3/source/game --import
+Godot Engine v4.6.3.stable.official.7d41c59c4 - https://godotengine.org
+
+[   0% ] [90m[1mfirst_scan_filesystem[22m | Started Project initialization (5 steps)[39m[0m
+[   0% ] [90m[1mfirst_scan_filesystem[22m | Scanning file structure...[39m[0m
+[  16% ] [90m[1mfirst_scan_filesystem[22m | Loading global class names...[39m[0m
+[  33% ] [90m[1mfirst_scan_filesystem[22m | Verifying GDExtensions...[39m[0m
+[  50% ] [90m[1mfirst_scan_filesystem[22m | Creating autoload scripts...[39m[0m
+[  66% ] [90m[1mfirst_scan_filesystem[22m | Initializing plugins...[39m[0m
+[  83% ] [90m[1mfirst_scan_filesystem[22m | Starting file scan...[39m[0m
+[92m[ DONE ][39m [1mfirst_scan_filesystem[22m
+[0m
+[   0% ] [90m[1mupdate_scripts_classes[22m | Started Registering global classes... (35 steps)[39m[0m
+[   0% ] [90m[1mupdate_scripts_classes[22m | [39m[0m
+[   2% ] [90m[1mupdate_scripts_classes[22m | [39m[0m
+[   5% ] [90m[1mupdate_scripts_classes[22m | [39m[0m
+[   8% ] [90m[1mupdate_scripts_classes[22m | [39m[0m
+[  11% ] [90m[1mupdate_scripts_classes[22m | [39m[0m
+[  13% ] [90m[1mupdate_scripts_classes[22m | [39m[0m
+[  16% ] [90m[1mupdate_scripts_classes[22m | [39m[0m
+[  19% ] [90m[1mupdate_scripts_classes[22m | [39m[0m
+[  22% ] [90m[1mupdate_scripts_classes[22m | [39m[0m
+[  25% ] [90m[1mupdate_scripts_classes[22m | [39m[0m
+[  27% ] [90m[1mupdate_scripts_classes[22m | [39m[0m
+[  30% ] [90m[1mupdate_scripts_classes[22m | [39m[0m
+[  33% ] [90m[1mupdate_scripts_classes[22m | [39m[0m
+[  36% ] [90m[1mupdate_scripts_classes[22m | [39m[0m
+[  38% ] [90m[1mupdate_scripts_classes[22m | [39m[0m
+[  41% ] [90m[1mupdate_scripts_classes[22m | [39m[0m
+[  44% ] [90m[1mupdate_scripts_classes[22m | [39m[0m
+[  47% ] [90m[1mupdate_scripts_classes[22m | [39m[0m
+[  50% ] [90m[1mupdate_scripts_classes[22m | [39m[0m
+[  52% ] [90m[1mupdate_scripts_classes[22m | [39m[0m
+[  55% ] [90m[1mupdate_scripts_classes[22m | [39m[0m
+[  58% ] [90m[1mupdate_scripts_classes[22m | [39m[0m
+[  61% ] [90m[1mupdate_scripts_classes[22m | [39m[0m
+[  63% ] [90m[1mupdate_scripts_classes[22m | [39m[0m
+[  66% ] [90m[1mupdate_scripts_classes[22m | [39m[0m
+[  69% ] [90m[1mupdate_scripts_classes[22m | [39m[0m
+[  72% ] [90m[1mupdate_scripts_classes[22m | [39m[0m
+[  75% ] [90m[1mupdate_scripts_classes[22m | [39m[0m
+[  77% ] [90m[1mupdate_scripts_classes[22m | [39m[0m
+[  80% ] [90m[1mupdate_scripts_classes[22m | [39m[0m
+[  83% ] [90m[1mupdate_scripts_classes[22m | [39m[0m
+[  86% ] [90m[1mupdate_scripts_classes[22m | [39m[0m
+[  88% ] [90m[1mupdate_scripts_classes[22m | [39m[0m
+[  91% ] [90m[1mupdate_scripts_classes[22m | [39m[0m
+[  94% ] [90m[1mupdate_scripts_classes[22m | [39m[0m
+[92m[ DONE ][39m [1mupdate_scripts_classes[22m
+[0m
+[   0% ] [90m[1m_update_scan_actions[22m | Started Scanning actions... (6 steps)[39m[0m
+[   0% ] [90m[1m_update_scan_actions[22m | cobre.glb[39m[0m
+[  14% ] [90m[1m_update_scan_actions[22m | cobre_Skin_Scales.png[39m[0m
+[  28% ] [90m[1m_update_scan_actions[22m | jade.glb[39m[0m
+[  42% ] [90m[1m_update_scan_actions[22m | jade_Skin.png[39m[0m
+[  57% ] [90m[1m_update_scan_actions[22m | sentinela.glb[39m[0m
+[  71% ] [90m[1m_update_scan_actions[22m | sentinela_Skin.png[39m[0m
+[92m[ DONE ][39m [1m_update_scan_actions[22m
+[0m
+[   0% ] [90m[1mreimport[22m | Started (Re)Importing Assets (6 steps)[39m[0m
+[   0% ] [90m[1mreimport[22m | Preparing files to reimport...[39m[0m
+[  14% ] [90m[1mreimport[22m | Preparing files to reimport...[39m[0m
+[  28% ] [90m[1mreimport[22m | Preparing files to reimport...[39m[0m
+[  42% ] [90m[1mreimport[22m | Preparing files to reimport...[39m[0m
+[  57% ] [90m[1mreimport[22m | Preparing files to reimport...[39m[0m
+[  71% ] [90m[1mreimport[22m | Preparing files to reimport...[39m[0m
+[   0% ] [90m[1mreimport[22m | Executing pre-reimport operations...[39m[0m
+[   0% ] [90m[1mpreload_reimporting_scene[22m | Started Preparing scenes for reload (1 steps)[39m[0m
+[   0% ] [90m[1mpreload_reimporting_scene[22m | Analyzing scene [empty][39m[0m
+[  50% ] [90m[1mpreload_reimporting_scene[22m | Preparation done.[39m[0m
+[92m[ DONE ][39m [1mpreload_reimporting_scene[22m
+[0m
+[   0% ] [90m[1mreimport[22m | cobre_Skin_Scales.png[39m[0m
+[  14% ] [90m[1mreimport[22m | jade_Skin.png[39m[0m
+[  28% ] [90m[1mreimport[22m | sentinela_Skin.png[39m[0m
+[  42% ] [90m[1mreimport[22m | cobre.glb[39m[0m
+[   0% ] [90m[1mimport[22m | Started Import Scene (104 steps)[39m[0m
+[   0% ] [90m[1mimport[22m | Importing Scene...[39m[0m
+[   1% ] [90m[1mimport[22m | Running Custom Script...[39m[0m
+[  99% ] [90m[1mimport[22m | Saving...[39m[0m
+[92m[ DONE ][39m [1mimport[22m
+[0m
+[  57% ] [90m[1mreimport[22m | jade.glb[39m[0m
+[   0% ] [90m[1mimport[22m | Started Import Scene (104 steps)[39m[0m
+[   0% ] [90m[1mimport[22m | Importing Scene...[39m[0m
+[   1% ] [90m[1mimport[22m | Running Custom Script...[39m[0m
+[  99% ] [90m[1mimport[22m | Saving...[39m[0m
+[92m[ DONE ][39m [1mimport[22m
+[0m
+[  71% ] [90m[1mreimport[22m | sentinela.glb[39m[0m
+[   0% ] [90m[1mimport[22m | Started Import Scene (104 steps)[39m[0m
+[   0% ] [90m[1mimport[22m | Importing Scene...[39m[0m
+[   1% ] [90m[1mimport[22m | Running Custom Script...[39m[0m
+[  99% ] [90m[1mimport[22m | Saving...[39m[0m
+[92m[ DONE ][39m [1mimport[22m
+[0m
+[  85% ] [90m[1mreimport[22m | Finalizing Asset Import...[39m[0m
+[92m[ DONE ][39m [1mreimport[22m
+[0m
+[   0% ] [90m[1mreimport[22m | Started (Re)Importing Assets (6 steps)[39m[0m
+[   0% ] [90m[1mreimport[22m | Executing post-reimport operations...[39m[0m
+[92m[ DONE ][39m [1mreimport[22m
+[0m
+[   0% ] [90m[1mloading_editor_layout[22m | Started Loading editor (5 steps)[39m[0m
+[   0% ] [90m[1mloading_editor_layout[22m | Loading editor layout...[39m[0m
+[  16% ] [90m[1mloading_editor_layout[22m | Loading docks...[39m[0m
+[92m[ DONE ][39m [1mloading_editor_layout[22m
+[0m
+$ /usr/local/bin/godot --headless --path /tmp/dragons-windows-db3t81k3/source/game --export-release Windows x86_64 /tmp/dragons-windows-db3t81k3/DragonsAndTitans-v0.2-t05-rc1-windows-x86_64-01646a3/DragonsAndTitans.exe
+Godot Engine v4.6.3.stable.official.7d41c59c4 - https://godotengine.org
+
+[   0% ] [90m[1mfirst_scan_filesystem[22m | Started Project initialization (5 steps)[39m[0m
+[   0% ] [90m[1mfirst_scan_filesystem[22m | Scanning file structure...[39m[0m
+[  16% ] [90m[1mfirst_scan_filesystem[22m | Loading global class names...[39m[0m
+[  33% ] [90m[1mfirst_scan_filesystem[22m | Verifying GDExtensions...[39m[0m
+[  50% ] [90m[1mfirst_scan_filesystem[22m | Creating autoload scripts...[39m[0m
+[  66% ] [90m[1mfirst_scan_filesystem[22m | Initializing plugins...[39m[0m
+[  83% ] [90m[1mfirst_scan_filesystem[22m | Starting file scan...[39m[0m
+[92m[ DONE ][39m [1mfirst_scan_filesystem[22m
+[0m
+[   0% ] [90m[1msavepack[22m | Started Packing (102 steps)[39m[0m
+[   1% ] [90m[1msavepack[22m | Storing File: res://.godot/imported/cobre.glb-c5d0792a765e688152484a64e07c33e5.scn[39m[0m
+[   1% ] [90m[1msavepack[22m | Storing File: res://assets/dragons/cobre.glb.import[39m[0m
+[   3% ] [90m[1msavepack[22m | Storing File: res://.godot/imported/cobre_Skin_Scales.png-52ff0a38fc3f1e35cae5d810e44e9e48.ctex[39m[0m
+[   3% ] [90m[1msavepack[22m | Storing File: res://assets/dragons/cobre_Skin_Scales.png.import[39m[0m
+[   6% ] [90m[1msavepack[22m | Storing File: res://.godot/imported/jade.glb-52fd8f53cc7762b8b8a0038909f9d5e1.scn[39m[0m
+[   6% ] [90m[1msavepack[22m | Storing File: res://assets/dragons/jade.glb.import[39m[0m
+[   9% ] [90m[1msavepack[22m | Storing File: res://.godot/imported/jade_Skin.png-955b1ea91e3c89f0dcb5a7df814fae63.ctex[39m[0m
+[   9% ] [90m[1msavepack[22m | Storing File: res://assets/dragons/jade_Skin.png.import[39m[0m
+[  12% ] [90m[1msavepack[22m | Storing File: res://.godot/imported/sentinela.glb-dc4cb31855cf0515cf5196557556f4ff.scn[39m[0m
+[  12% ] [90m[1msavepack[22m | Storing File: res://assets/dragons/sentinela.glb.import[39m[0m
+[  14% ] [90m[1msavepack[22m | Storing File: res://.godot/imported/sentinela_Skin.png-1e57e2e6b9aa7b8be4ef18649a404ef1.ctex[39m[0m
+[  14% ] [90m[1msavepack[22m | Storing File: res://assets/dragons/sentinela_Skin.png.import[39m[0m
+[  17% ] [90m[1msavepack[22m | Storing File: res://.godot/exported/133200997/export-a2af142f2d06341fa55be3dd89d1fc6d-cobre.res[39m[0m
+[  20% ] [90m[1msavepack[22m | Storing File: res://.godot/exported/133200997/export-812c321588158926336b69d3c380bba4-jade.res[39m[0m
+[  23% ] [90m[1msavepack[22m | Storing File: res://.godot/exported/133200997/export-4b9a25c4562a671e9119f778e927f13b-ascua.res[39m[0m
+[  26% ] [90m[1msavepack[22m | Storing File: res://.godot/exported/133200997/export-2b21854777a5e916dde653e93dfc072d-martillo.res[39m[0m
+[  28% ] [90m[1msavepack[22m | Storing File: res://.godot/exported/133200997/export-a4de5e1f3ea5bccc0e835cc4a2e40ae5-arena.scn[39m[0m
+[  31% ] [90m[1msavepack[22m | Storing File: res://.godot/exported/133200997/export-a3608239ca84a5c7481d34892e68360d-dragon.scn[39m[0m
+[  33% ] [90m[1msavepack[22m | Storing File: res://.godot/exported/133200997/export-37d80d196ab129c460d70c11dfc71366-dragon_selection.scn[39m[0m
+[  36% ] [90m[1msavepack[22m | Storing File: res://.godot/exported/133200997/export-410904a97c0728cf5788b9968f2c8d49-dragon_visual.scn[39m[0m
+[  38% ] [90m[1msavepack[22m | Storing File: res://.godot/exported/133200997/export-a930820ec0ab16db6719aff4daa500f9-enemy.scn[39m[0m
+[  41% ] [90m[1msavepack[22m | Storing File: res://.godot/exported/133200997/export-38bf74ff262409a94a41206b2b776d33-hud.scn[39m[0m
+[  44% ] [90m[1msavepack[22m | Storing File: res://.godot/exported/133200997/export-f6882097deaf386e7c5e6debe55b3c7e-model_gallery.scn[39m[0m
+[  47% ] [90m[1msavepack[22m | Storing File: res://.godot/exported/133200997/export-f88cca9649118425ca358bb338f1dee3-power_projectile.scn[39m[0m
+[  50% ] [90m[1msavepack[22m | Storing File: res://.godot/exported/133200997/export-a882d3c243bffac1c7822c1c45b18505-projectile.scn[39m[0m
+[  52% ] [90m[1msavepack[22m | Storing File: res://.godot/exported/133200997/export-198f5c27242f66a60ed572bd0e9f1323-pulse_effect.scn[39m[0m
+[  55% ] [90m[1msavepack[22m | Storing File: res://scripts/arena.gdc[39m[0m
+[  58% ] [90m[1msavepack[22m | Storing File: res://scripts/arena_presentation.gdc[39m[0m
+[  61% ] [90m[1msavepack[22m | Storing File: res://scripts/combat_actor.gdc[39m[0m
+[  63% ] [90m[1msavepack[22m | Storing File: res://scripts/dragon_controller.gdc[39m[0m
+[  66% ] [90m[1msavepack[22m | Storing File: res://scripts/dragon_presentation.gdc[39m[0m
+[  68% ] [90m[1msavepack[22m | Storing File: res://scripts/dragon_profile.gdc[39m[0m
+[  71% ] [90m[1msavepack[22m | Storing File: res://scripts/dragon_roster.gdc[39m[0m
+[  74% ] [90m[1msavepack[22m | Storing File: res://scripts/dragon_selection.gdc[39m[0m
+[  76% ] [90m[1msavepack[22m | Storing File: res://scripts/enemy_controller.gdc[39m[0m
+[  79% ] [90m[1msavepack[22m | Storing File: res://scripts/equipment_profile.gdc[39m[0m
+[  82% ] [90m[1msavepack[22m | Storing File: res://scripts/hud.gdc[39m[0m
+[  85% ] [90m[1msavepack[22m | Storing File: res://scripts/model_gallery.gdc[39m[0m
+[  87% ] [90m[1msavepack[22m | Storing File: res://scripts/projectile.gdc[39m[0m
+[  90% ] [90m[1msavepack[22m | Storing File: res://scripts/pulse_ability.gdc[39m[0m
+[  93% ] [90m[1msavepack[22m | Storing File: res://scripts/pulse_effect.gdc[39m[0m
+[  96% ] [90m[1msavepack[22m | Storing File: res://scripts/weapon.gdc[39m[0m
+[  96% ] [90m[1msavepack[22m | Storing File: res://data/dragons/cobre.tres.remap[39m[0m
+[  96% ] [90m[1msavepack[22m | Storing File: res://data/dragons/jade.tres.remap[39m[0m
+[  96% ] [90m[1msavepack[22m | Storing File: res://data/weapons/ascua.tres.remap[39m[0m
+[  96% ] [90m[1msavepack[22m | Storing File: res://data/weapons/martillo.tres.remap[39m[0m
+[  96% ] [90m[1msavepack[22m | Storing File: res://scenes/arena.tscn.remap[39m[0m
+[  96% ] [90m[1msavepack[22m | Storing File: res://scenes/dragon.tscn.remap[39m[0m
+[  96% ] [90m[1msavepack[22m | Storing File: res://scenes/dragon_selection.tscn.remap[39m[0m
+[  96% ] [90m[1msavepack[22m | Storing File: res://scenes/dragon_visual.tscn.remap[39m[0m
+[  96% ] [90m[1msavepack[22m | Storing File: res://scenes/enemy.tscn.remap[39m[0m
+[  96% ] [90m[1msavepack[22m | Storing File: res://scenes/hud.tscn.remap[39m[0m
+[  96% ] [90m[1msavepack[22m | Storing File: res://scenes/model_gallery.tscn.remap[39m[0m
+[  96% ] [90m[1msavepack[22m | Storing File: res://scenes/power_projectile.tscn.remap[39m[0m
+[  96% ] [90m[1msavepack[22m | Storing File: res://scenes/projectile.tscn.remap[39m[0m
+[  96% ] [90m[1msavepack[22m | Storing File: res://scenes/pulse_effect.tscn.remap[39m[0m
+[  96% ] [90m[1msavepack[22m | Storing File: res://scripts/arena.gd.remap[39m[0m
+[  96% ] [90m[1msavepack[22m | Storing File: res://scripts/arena_presentation.gd.remap[39m[0m
+[  96% ] [90m[1msavepack[22m | Storing File: res://scripts/combat_actor.gd.remap[39m[0m
+[  96% ] [90m[1msavepack[22m | Storing File: res://scripts/dragon_controller.gd.remap[39m[0m
+[  96% ] [90m[1msavepack[22m | Storing File: res://scripts/dragon_presentation.gd.remap[39m[0m
+[  96% ] [90m[1msavepack[22m | Storing File: res://scripts/dragon_profile.gd.remap[39m[0m
+[  96% ] [90m[1msavepack[22m | Storing File: res://scripts/dragon_roster.gd.remap[39m[0m
+[  96% ] [90m[1msavepack[22m | Storing File: res://scripts/dragon_selection.gd.remap[39m[0m
+[  96% ] [90m[1msavepack[22m | Storing File: res://scripts/enemy_controller.gd.remap[39m[0m
+[  96% ] [90m[1msavepack[22m | Storing File: res://scripts/equipment_profile.gd.remap[39m[0m
+[  96% ] [90m[1msavepack[22m | Storing File: res://scripts/hud.gd.remap[39m[0m
+[  96% ] [90m[1msavepack[22m | Storing File: res://scripts/model_gallery.gd.remap[39m[0m
+[  96% ] [90m[1msavepack[22m | Storing File: res://scripts/projectile.gd.remap[39m[0m
+[  96% ] [90m[1msavepack[22m | Storing File: res://scripts/pulse_ability.gd.remap[39m[0m
+[  96% ] [90m[1msavepack[22m | Storing File: res://scripts/pulse_effect.gd.remap[39m[0m
+[  96% ] [90m[1msavepack[22m | Storing File: res://scripts/weapon.gd.remap[39m[0m
+[  96% ] [90m[1msavepack[22m | Storing File: res://.godot/global_script_class_cache.cfg[39m[0m
+[  96% ] [90m[1msavepack[22m | Storing File: res://.godot/uid_cache.bin[39m[0m
+[  96% ] [90m[1msavepack[22m | Storing File: res://project.binary[39m[0m
+[92m[ DONE ][39m [1msavepack[22m
+[0m

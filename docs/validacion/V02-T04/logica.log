@@ -1,0 +1,59 @@
+test_combat_core.gd
+Godot Engine v4.6.3.stable.official.7d41c59c4 - https://godotengine.org
+
+T03 núcleo: 51 comprobaciones, 0 fallos
+
+test_dragon_profiles.gd
+Godot Engine v4.6.3.stable.official.7d41c59c4 - https://godotengine.org
+
+V0.2 perfiles: 93 comprobaciones, 0 fallos
+
+test_dragon_selection.gd
+Godot Engine v4.6.3.stable.official.7d41c59c4 - https://godotengine.org
+
+V0.2 selector: 64 comprobaciones, 0 fallos
+
+test_equipment.gd
+Godot Engine v4.6.3.stable.official.7d41c59c4 - https://godotengine.org
+
+Equipment checks: 225, failures: 0
+
+test_match_state.gd
+Godot Engine v4.6.3.stable.official.7d41c59c4 - https://godotengine.org
+
+T05 estado: 51 comprobaciones, 0 fallos
+
+test_power_projectile.gd
+Godot Engine v4.6.3.stable.official.7d41c59c4 - https://godotengine.org
+
+T04 Q: 57 comprobaciones, 0 fallos
+
+test_presentation.gd
+Godot Engine v4.6.3.stable.official.7d41c59c4 - https://godotengine.org
+
+T03 PRESENTACION: 17 checks, 0 failures
+
+test_pulse.gd
+Godot Engine v4.6.3.stable.official.7d41c59c4 - https://godotengine.org
+
+T04 pulso: 78 comprobaciones, 0 fallos
+
+test_t02.gd
+Godot Engine v4.6.3.stable.official.7d41c59c4 - https://godotengine.org
+
+T02: 34 comprobaciones, 0 fallos
+
+test_t03.gd
+Godot Engine v4.6.3.stable.official.7d41c59c4 - https://godotengine.org
+
+T03 integración: 52 comprobaciones, 0 fallos
+
+test_t04.gd
+Godot Engine v4.6.3.stable.official.7d41c59c4 - https://godotengine.org
+
+T04 integración: 42 comprobaciones, 0 fallos
+
+test_v02_match.gd
+Godot Engine v4.6.3.stable.official.7d41c59c4 - https://godotengine.org
+
+V0.2 partida: 46 comprobaciones, 0 fallos
