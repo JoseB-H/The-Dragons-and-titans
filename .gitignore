@@ -1,0 +1,13 @@
+# Caché local del editor Godot 4 (se regenera al importar).
+.godot/
+
+# Temporales del editor y del sistema.
+*.tmp
+*.temp
+*.bak
+*~
+.DS_Store
+Thumbs.db
+
+# Exportaciones locales, no fuentes del proyecto.
+/builds/

@@ -1,0 +1,24 @@
+[gd_scene load_steps=4 format=3]
+
+[ext_resource type="Script" path="res://scripts/pulse_effect.gd" id="1_effect"]
+
+[sub_resource type="StandardMaterial3D" id="Material_pulse"]
+shading_mode = 0
+albedo_color = Color(0.1, 1, 0.72, 1)
+emission_enabled = true
+emission = Color(0.05, 1, 0.65, 1)
+emission_energy_multiplier = 2.0
+
+[sub_resource type="TorusMesh" id="Mesh_pulse"]
+material = SubResource("Material_pulse")
+inner_radius = 3.9
+outer_radius = 4.0
+rings = 64
+ring_segments = 8
+
+[node name="PulseEffect" type="Node3D"]
+script = ExtResource("1_effect")
+metadata/provenance = "Anillo TorusMesh y material cian verde propios; sin recursos externos."
+
+[node name="Visual" type="MeshInstance3D" parent="."]
+mesh = SubResource("Mesh_pulse")

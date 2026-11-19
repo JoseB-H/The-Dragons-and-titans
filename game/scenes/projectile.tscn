@@ -1,0 +1,24 @@
+[gd_scene load_steps=4 format=3]
+
+[ext_resource type="Script" path="res://scripts/projectile.gd" id="1_projectile"]
+
+[sub_resource type="StandardMaterial3D" id="Material_projectile"]
+shading_mode = 0
+albedo_color = Color(1, 0.72, 0.16, 1)
+emission_enabled = true
+emission = Color(1, 0.4, 0.04, 1)
+emission_energy_multiplier = 2.0
+
+[sub_resource type="SphereMesh" id="Mesh_projectile"]
+material = SubResource("Material_projectile")
+radius = 0.15
+height = 0.3
+radial_segments = 12
+rings = 6
+
+[node name="Projectile" type="Node3D"]
+script = ExtResource("1_projectile")
+metadata/provenance = "Geometría y material provisionales propios; esfera de Godot sin recursos externos."
+
+[node name="Visual" type="MeshInstance3D" parent="."]
+mesh = SubResource("Mesh_projectile")

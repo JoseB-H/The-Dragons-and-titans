@@ -13,7 +13,7 @@ Todo el trabajo del proyecto se centraliza en https://github.com/JoseB-H/The-Dra
 La referencia visual busca fantasía 3D, dragones protagonistas y combate aéreo observado desde arriba. El primer prototipo usa geometría provisional propia; el arte final se desarrolla después de validar controles y combate.
 
 ## Alcance aprobado para comenzar
-Preparar una demo offline con un dragón, ataque básico, dos habilidades, un enemigo con IA, salud, daño y un ciclo completo de victoria/derrota/reinicio. Godot 4 y PC Windows son la base de trabajo propuesta y aceptada al continuar la planificación. La versión exacta sigue pendiente.
+Preparar una demo offline con un dragón, ataque básico, dos habilidades, un enemigo con IA, salud, daño y un ciclo completo de victoria/derrota/reinicio. Godot **4.6.3 estable**, edición estándar/GDScript con Compatibility, quedó fijado en T01. PC Windows sigue siendo la plataforma objetivo; su ejecución nativa permanece pendiente. Consultar ESTADO.md para distinguir los incrementos ya implementados del alcance completo del hito.
 
 ## Separación de objetivos
 El catálogo de más de 30 dragones y armas, la aventura y el 5v5 son visión posterior. No constituyen requisitos para aceptar la primera demo. Los valores del prototipo serán provisionales y no equivalen a estadísticas originales.

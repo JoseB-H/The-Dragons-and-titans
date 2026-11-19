@@ -1,0 +1,20 @@
+T06 — Publicación y bloqueo de release
+Rama: feat/v0.1-t06-entrega-windows
+Código: e40276a5cb769e53794cd1f64832796772ec060f
+Git push -u origin feat/v0.1-t06-entrega-windows: salida 0; rama nueva publicada.
+
+Intento real de release:
+gh release create v0.1-rc1-t06 builds/t06/DragonsAndTitans-v0.1-rc1-windows-x86_64-e40276a.zip builds/t06/DragonsAndTitans-v0.1-rc1-windows-x86_64-e40276a.zip.sha256 --repo JoseB-H/The-Dragons-and-titans --target e40276a5cb769e53794cd1f64832796772ec060f --prerelease --title 'V0.1 RC1 — candidato Windows para prueba' --notes-file /tmp/dragons-t06/release-notes.md
+error checking for existing release: Head "https://api.github.com/repos/JoseB-H/The-Dragons-and-titans/releases/tags/v0.1-rc1-t06": Forbidden
+[exit 1]
+
+Consulta directa HTTPS a api.github.com: curl exit56, CONNECT tunnel failed, response403.
+La política de red observada es restringida; api.github.com y uploads.github.com
+no figuran entre los dominios efectivos permitidos. No se alteró la red ni se
+intentó sortear el proxy. Tampoco se acreditó el permiso posterior del servicio.
+No se creó release ni se adjuntaron archivos.
+
+git ls-remote --tags origin v0.1-rc1-t06: salida0, sin refs.
+ZIP+sidecar quedan en builds/t06 y se enlazan como archivos descargables del chat.
+No hay URL estable de release ni descarga remota/hash verificados.
+La configuración/fuentes y la evidencia sí se publican en la rama, sin binarios.

@@ -1,0 +1,33 @@
+Validación adicional T06: T05 ventana con recursos del PCK release final.
+Esto es Godot Linux cargando recursos exportados. No ejecuta el EXE Windows y no acredita Windows nativo ni manejo humano.
+Godot: 4.6.3.stable.official.7d41c59c4.
+Renderizador solicitado: Compatibility del proyecto, servidor X11 dummy propio :94.
+Directorio de trabajo: /tmp/dragons-t06/final-extracted/DragonsAndTitans-v0.1-rc1-windows-x86_64-e40276a
+
+Xorg :94 -config /tmp/dragons-t01/xorg.conf -nolisten tcp -noreset -logfile /tmp/dragons-t06-pck-graphics/Xorg.94.log
+
+DISPLAY=:94 XDG_CACHE_HOME=/tmp/dragons-t06-pck-graphics/cache XDG_DATA_HOME=/tmp/dragons-t06-pck-graphics/data XDG_CONFIG_HOME=/tmp/dragons-t06-pck-graphics/config godot --main-pack /tmp/dragons-t06/final-extracted/DragonsAndTitans-v0.1-rc1-windows-x86_64-e40276a/DragonsAndTitans.pck --display-driver x11 --audio-driver Dummy --script /tmp/dragons-t06-graphics-src/game/tests/test_t05_window.gd -- --output-dir=/tmp/dragons-t06-pck-graphics/capturas
+
+SHA256 anteriores a ejecución:
+9d51e43f92bb8645fbb1271cdfdc16564f14f2b154182e080e4d4f47508c4dfd  /tmp/dragons-t06/final-extracted/DragonsAndTitans-v0.1-rc1-windows-x86_64-e40276a/DragonsAndTitans.pck
+f0341d1adf9c5c5cae7f9334a00afc33bf6d406666b2c756b27b6e5bc67a338d  /tmp/dragons-t06-graphics-src/game/tests/test_t05_window.gd
+
+Resultado: 145 comprobaciones, 0 fallos; exit=0.
+Godot Engine v4.6.3.stable.official.7d41c59c4 - https://godotengine.org
+WARNING: Could not set V-Sync mode, as changing V-Sync mode is not supported by the graphics driver.
+     at: set_use_vsync (platform/linuxbsd/x11/gl_manager_x11.cpp:364)
+OpenGL API 4.5 (Core Profile) Mesa 25.0.7-2+deb13u1 - Compatibility - Using Device: Mesa - llvmpipe (LLVM 19.1.7, 256 bits)
+
+T05 ventana: 145 comprobaciones, 0 fallos; capturas en /tmp/dragons-t06-pck-graphics/capturas
+
+Revisión estática de las seis capturas realizada en tres lotes de dos: objetivo/controles/salud/recargas legibles, sin texto cortado; paneles dentro de ambos tamaños nativos; jugador visible; VICTORIA/DERROTA y botón Reiniciar enfocado claros.
+El PCK y el script externo mantienen sus SHA256 anteriores después de ejecutar. No se alteró producción, ZIP ni repositorio.
+Único aviso de Godot: V-Sync no soportado por el driver virtual.
+Se ejecutó Godot Linux cargando el PCK exportado. No es ejecución del EXE Windows ni ejecución Windows nativa; no acredita manejo humano.
+
+T05-derrota-1280x720-linux.png: 1280×720, 76427 bytes
+T05-derrota-960x540-linux.png: 960×540, 76466 bytes
+T05-jugando-1280x720-linux.png: 1280×720, 56405 bytes
+T05-jugando-960x540-linux.png: 960×540, 54349 bytes
+T05-victoria-1280x720-linux.png: 1280×720, 77261 bytes
+T05-victoria-960x540-linux.png: 960×540, 76993 bytes

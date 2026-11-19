@@ -1,0 +1,13 @@
+Dragons and Titans v0.7.1 · Vuelo
+Windows x86_64 | Godot 4.6.3 Compatibility
+
+1. Extrae todo el ZIP.
+2. Mantén DragonsAndTitans.exe y DragonsAndTitans.pck en la misma carpeta.
+3. Abre DragonsAndTitans.exe. El atlas permite elegir entre doce destinos.
+   En «Dragones y equipo» puedes cambiar de dragón y arma.
+4. Para un duelo entre dos PC en la misma red, abre Las Agujas. Un jugador
+   crea la sala y el otro introduce la IP del anfitrión. El puerto es UDP 27940.
+
+El juego carece de audio. Esta exportación se generó en Linux y queda
+pendiente probarla en Windows. VERSION.json identifica el commit del juego.
+SHA256SUMS.txt contiene las huellas SHA-256 de los archivos del paquete.

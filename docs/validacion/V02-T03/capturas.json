@@ -1,0 +1,162 @@
+[
+  {
+    "file": "T02-arena-cobre-ascua-1280x720.png",
+    "sha256": "7372150931a9c7c711011cbc89bd32e6dddccd20aa6adb8e3855631d29117b3a",
+    "bytes": 63590
+  },
+  {
+    "file": "T02-arena-cobre-ascua-960x540.png",
+    "sha256": "8e0c9c5df6cdf6cba630c3c4d49fc0021c49b6492ebec4d67ccbdc39afabcc52",
+    "bytes": 59039
+  },
+  {
+    "file": "T02-arena-cobre-martillo-1280x720.png",
+    "sha256": "5c4a445470561102e91d3d7c8e438155fb8a451ef308f9a26cd2d019ca4460be",
+    "bytes": 63371
+  },
+  {
+    "file": "T02-arena-cobre-martillo-960x540.png",
+    "sha256": "230487fb53630e4c1424de26b4d2235645333c9e26c1098dd621e8d9a5e24724",
+    "bytes": 59991
+  },
+  {
+    "file": "T02-arena-jade-ascua-1280x720.png",
+    "sha256": "02d40214cbf063326acaa7bf70fbd1cddb61f8977f82d63049f73db8e485b9d0",
+    "bytes": 59479
+  },
+  {
+    "file": "T02-arena-jade-ascua-960x540.png",
+    "sha256": "8b55c1757d8e6cfa82c9355fe2a347632a826f999bd5832744904feaec60b4d3",
+    "bytes": 56548
+  },
+  {
+    "file": "T02-arena-jade-martillo-1280x720.png",
+    "sha256": "2283809b08dbcb30bd8138d91962a67cf129eec2e51ad19a95bf1a1140885d9d",
+    "bytes": 59928
+  },
+  {
+    "file": "T02-arena-jade-martillo-960x540.png",
+    "sha256": "97bba38b390d81da5efd0ec4fa7f03af0c7b07f50084cdad5f5e4a4d6e07fb83",
+    "bytes": 57615
+  },
+  {
+    "file": "T02-derrota-cobre-ascua-1280x720.png",
+    "sha256": "31a15cc9e03d376a6c0db0d8638456a677a23e07e6185e94016cb9bea78bf0fd",
+    "bytes": 84737
+  },
+  {
+    "file": "T02-derrota-cobre-ascua-960x540.png",
+    "sha256": "2186da292af35a1fc16df475629106e5d4abc3b46f6926381c2109d81023ff6d",
+    "bytes": 83633
+  },
+  {
+    "file": "T02-derrota-cobre-martillo-1280x720.png",
+    "sha256": "2965de5938440338636b90c9d252bfb06c3ebcec173a6876fa9cd9584ba5447a",
+    "bytes": 84831
+  },
+  {
+    "file": "T02-derrota-cobre-martillo-960x540.png",
+    "sha256": "68f08678bc93c40abb12bb827c91ad7e1349cdcddd03e9470f53f81d05ffc5ff",
+    "bytes": 84900
+  },
+  {
+    "file": "T02-derrota-jade-ascua-1280x720.png",
+    "sha256": "93b9eca8a6a59c40e40afa3c192447394242f5a5f37691d23738abf247df6123",
+    "bytes": 81387
+  },
+  {
+    "file": "T02-derrota-jade-ascua-960x540.png",
+    "sha256": "7e8dcb6b0b1cb81537497d5ec70ebbf8a853ae96358025c9b9321d5c67d14ec8",
+    "bytes": 81519
+  },
+  {
+    "file": "T02-derrota-jade-martillo-1280x720.png",
+    "sha256": "857c62cfb56715d5e342f74b254899076adcd44d1dfea358a0fc641fac171525",
+    "bytes": 82238
+  },
+  {
+    "file": "T02-derrota-jade-martillo-960x540.png",
+    "sha256": "1dd5676fb0663079b53b226d36ce6cc351718547372b4d287618fe5bc730615f",
+    "bytes": 82832
+  },
+  {
+    "file": "T02-selector-cobre-ascua-1280x720.png",
+    "sha256": "62c629ef1c24fbafe3833e807e4b68847af0e1d00f1657162f992e9dbbf68638",
+    "bytes": 103073
+  },
+  {
+    "file": "T02-selector-cobre-ascua-960x540.png",
+    "sha256": "c26f5415197f60eeaa9e2d7c1ae2b42ecb86d03c1bfe01e697d6513ce04f8c16",
+    "bytes": 115441
+  },
+  {
+    "file": "T02-selector-cobre-martillo-1280x720.png",
+    "sha256": "f911aa75fbba5347a4cfb88d1890f191a4baf8fe2bb0741f0631f33348743bdf",
+    "bytes": 103918
+  },
+  {
+    "file": "T02-selector-cobre-martillo-960x540.png",
+    "sha256": "2be18dfa3c356c2ed82adf46399b197f2ede5ad85d7e6e0a241b51145945bcfb",
+    "bytes": 116534
+  },
+  {
+    "file": "T02-selector-jade-ascua-1280x720.png",
+    "sha256": "b3a5f97dfaefbb8b34704bef46727ad1c44203a2df2f92f52ae413f55b9faf0c",
+    "bytes": 102765
+  },
+  {
+    "file": "T02-selector-jade-ascua-960x540.png",
+    "sha256": "6a1d8dadbb665d7f16cccd208cf5d552a6d15240a9850a0d5c484f60132fbcde",
+    "bytes": 115418
+  },
+  {
+    "file": "T02-selector-jade-martillo-1280x720.png",
+    "sha256": "909407973864a45ef6b533837c82ac9bfd746d6b33c4bc25da5a3979d7d9f3f0",
+    "bytes": 103358
+  },
+  {
+    "file": "T02-selector-jade-martillo-960x540.png",
+    "sha256": "7e31da6799a344503bc495a4b21d348817dc6bd6dc602cf8040b470b4e3a7088",
+    "bytes": 116628
+  },
+  {
+    "file": "T02-victoria-cobre-ascua-1280x720.png",
+    "sha256": "a9a727d879f227147626b97af8c3709c3848de9dce79a55cee3493e032577afa",
+    "bytes": 85182
+  },
+  {
+    "file": "T02-victoria-cobre-ascua-960x540.png",
+    "sha256": "52fbab1cf61ca0bbb2a7726790c7cc31da6da253ad9b9686d09a743f6b23e53b",
+    "bytes": 84239
+  },
+  {
+    "file": "T02-victoria-cobre-martillo-1280x720.png",
+    "sha256": "46d6e28e417e1397a9cec8372ec47298cd58608906f8dd76e21d7f6bbfdf8bdf",
+    "bytes": 85575
+  },
+  {
+    "file": "T02-victoria-cobre-martillo-960x540.png",
+    "sha256": "77c77ac500223afc547afc81129092d3d9b0f12b0fb46c982c0536117287ccf5",
+    "bytes": 85323
+  },
+  {
+    "file": "T02-victoria-jade-ascua-1280x720.png",
+    "sha256": "42d8860883aa2d94fd9fd26ea6ea810c5b061cdedffe856a37a84fda74086867",
+    "bytes": 82126
+  },
+  {
+    "file": "T02-victoria-jade-ascua-960x540.png",
+    "sha256": "0cd61da85333c3376dc247e103ea43b97edfd71e3edb695263473151aa493c1b",
+    "bytes": 81913
+  },
+  {
+    "file": "T02-victoria-jade-martillo-1280x720.png",
+    "sha256": "fc1b889f63cab71ef8c3530f36bc3c94d0ea12285471142a5422e7a4e37c1364",
+    "bytes": 83104
+  },
+  {
+    "file": "T02-victoria-jade-martillo-960x540.png",
+    "sha256": "fc9fdf1cd6c5edb9a62b2bc57c0d0c92fc78f8fc88695f64a48eb2c25a5b1052",
+    "bytes": 83384
+  }
+]

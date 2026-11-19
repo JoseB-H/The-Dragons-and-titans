@@ -1,0 +1,31 @@
+[gd_scene load_steps=5 format=3]
+
+[ext_resource type="Script" path="res://scripts/enemy_controller.gd" id="1_controller"]
+[ext_resource type="Script" path="res://scripts/weapon.gd" id="2_weapon"]
+
+[ext_resource type="PackedScene" path="res://scenes/dragon_visual.tscn" id="3_visual"]
+
+[sub_resource type="SphereShape3D" id="Shape_body"]
+radius = 0.8
+
+[node name="Enemy" type="CharacterBody3D"]
+collision_layer = 1
+collision_mask = 0
+script = ExtResource("1_controller")
+max_health = 80
+faction = 2
+metadata/provenance = "Sentinela original GLB animado; fuente en tools/art/build_dragons.py, sin recursos externos."
+metadata/balance = "Salud 80, facción 2, velocidad 3, alcance 7 y arma 10/1 s: decisiones provisionales del prototipo."
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="."]
+shape = SubResource("Shape_body")
+
+[node name="Facing" parent="." instance=ExtResource("3_visual")]
+
+[node name="Weapon" type="Node3D" parent="."]
+script = ExtResource("2_weapon")
+damage = 10
+cooldown = 1.0
+projectile_speed = 28.0
+projectile_lifetime = 2.0
+spawn_distance = 1.9

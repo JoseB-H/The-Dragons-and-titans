@@ -1,0 +1,35 @@
+[gd_scene format=3]
+[ext_resource type="Script" path="res://scripts/flight_pilot.gd" id="1"]
+[ext_resource type="Script" path="res://scripts/flight_camera.gd" id="2"]
+[sub_resource type="CapsuleMesh" id="Hull"]
+radius = 0.35
+height = 1.65
+[sub_resource type="StandardMaterial3D" id="Copper"]
+albedo_color = Color(0.93,0.36,0.12,1)
+[sub_resource type="PrismMesh" id="Wing"]
+size = Vector3(2.45,0.16,0.85)
+[sub_resource type="SphereMesh" id="Nose"]
+radius = 0.23
+height = 0.46
+[sub_resource type="StandardMaterial3D" id="Gold"]
+albedo_color = Color(1,0.86,0.38,1)
+[node name="FlightPilot" type="CharacterBody3D"]
+script = ExtResource("1")
+[node name="Facing" type="Node3D" parent="."]
+[node name="Hull" type="MeshInstance3D" parent="Facing"]
+rotation = Vector3(1.5708,0,0)
+mesh = SubResource("Hull")
+material_override = SubResource("Copper")
+[node name="Wings" type="MeshInstance3D" parent="Facing"]
+mesh = SubResource("Wing")
+material_override = SubResource("Copper")
+[node name="Nose" type="MeshInstance3D" parent="Facing"]
+position = Vector3(0,0,-0.85)
+mesh = SubResource("Nose")
+material_override = SubResource("Gold")
+[node name="Camera" type="Camera3D" parent="."]
+position = Vector3(0,16,9)
+projection = 1
+size = 16
+current = true
+script = ExtResource("2")

@@ -1,0 +1,56 @@
+[
+  {
+    "file": "cobre.glb",
+    "bytes": 650112,
+    "sha256": "bad7275ac13935f9b7db354a7b811151c567eb6a905e0a2dcc7babf0f58ec367",
+    "meshes": 1,
+    "materials": 7,
+    "primitives": 7,
+    "triangles": 15332,
+    "vertices": 8669,
+    "bones": 16,
+    "animations": [
+      "Flight",
+      "Attack",
+      "Hit",
+      "Death"
+    ],
+    "images": 1
+  },
+  {
+    "file": "jade.glb",
+    "bytes": 651152,
+    "sha256": "6741a1f96ad4f9147570c0c1b62257d4a127050388081ba3181496ec5ce49487",
+    "meshes": 1,
+    "materials": 7,
+    "primitives": 7,
+    "triangles": 15332,
+    "vertices": 8669,
+    "bones": 16,
+    "animations": [
+      "Flight",
+      "Attack",
+      "Hit",
+      "Death"
+    ],
+    "images": 1
+  },
+  {
+    "file": "sentinela.glb",
+    "bytes": 651764,
+    "sha256": "3f825caf362842a27e27e94d4c553dbcd6f3a6651dcbcc9428402abc7ba81294",
+    "meshes": 1,
+    "materials": 7,
+    "primitives": 7,
+    "triangles": 15332,
+    "vertices": 8669,
+    "bones": 16,
+    "animations": [
+      "Flight",
+      "Attack",
+      "Hit",
+      "Death"
+    ],
+    "images": 1
+  }
+]

@@ -1,0 +1,43 @@
+[gd_scene load_steps=7 format=3]
+
+[ext_resource type="Script" path="res://scripts/dragon_controller.gd" id="1_controller"]
+[ext_resource type="PackedScene" path="res://scenes/dragon_visual.tscn" id="2_visual"]
+[ext_resource type="Script" path="res://scripts/weapon.gd" id="3_weapon"]
+[ext_resource type="PackedScene" path="res://scenes/power_projectile.tscn" id="4_power"]
+[ext_resource type="Script" path="res://scripts/pulse_ability.gd" id="5_pulse"]
+
+[sub_resource type="SphereShape3D" id="Shape_body"]
+radius = 0.8
+
+[node name="Dragon" type="CharacterBody3D"]
+collision_layer = 1
+collision_mask = 0
+script = ExtResource("1_controller")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="."]
+shape = SubResource("Shape_body")
+
+[node name="Facing" parent="." instance=ExtResource("2_visual")]
+
+[node name="Weapon" type="Node3D" parent="."]
+script = ExtResource("3_weapon")
+
+[node name="PowerWeapon" type="Node3D" parent="."]
+script = ExtResource("3_weapon")
+damage = 45
+projectile_speed = 36.0
+projectile_lifetime = 2.0
+cooldown = 2.5
+projectile_scene = ExtResource("4_power")
+
+[node name="PulseAbility" type="Node3D" parent="."]
+script = ExtResource("5_pulse")
+
+[node name="Camera" type="Camera3D" parent="."]
+position = Vector3(18, 22, 18)
+rotation = Vector3(-0.7129307, 0.7853982, 0)
+projection = 1
+current = true
+size = 18.0
+near = 0.1
+far = 100.0
