@@ -1199,3 +1199,14 @@ Consulta `docs/obsidian/Wiki y cobertura jugable.md` para ver las fuentes, las d
 Escena de formas básicas conectada al atlas. Comparación y ajustes en [[Práctica de vuelo]]. Verificar el tacto con ratón en Windows. Siguiente sistema de la serie: disparo.
 
 Pruebas en Godot 4.6.3 sin ventana: siete comprobaciones del laboratorio, treinta y cuatro del controlador previo y recorrido automatizado de Proving Grounds. La sesión carece de pantalla gráfica habilitada para guardar la comparación visual.
+
+
+## 27 de noviembre de 2026 — Primer avance visual basado en video
+
+Rama `feat/nethergate-video-visual`, base `main` cbe893c. Referencia: video del usuario de 6 min 57 s; se extrajeron doce fotogramas. Barrancos, agua, vegetación y plataformas de piedra orientan este primer acabado, aún estilizado y distante de la fidelidad visual solicitada.
+
+Nethergate: materiales procedurales, mayor profundidad, vegetación, pavimento y portales propios. Se conserva la API `points`, `rings`, `signs`, `lintels` y `show_rune`; no se agregan colisiones. Tema compartido aplicado al atlas, selector y ventanas de guía/preparación. Icono dragon-head de Lorc, Game-icons.net, CC BY 3.0; licencia incluida.
+
+Validación: importación de los recursos de la escena aislada y render Windows real con Godot 4.6.3 Compatibility/NVIDIA GTX 1650. Escena y ventana capturadas. Tres comprobaciones de contrato (2 dinteles, 3 anillos, 3 rótulos). Sin errores de script en la escena final. El entorno informa fallos de acceso a caché user:// y certificados; se redirigió el registro a la carpeta de trabajo. No se ejecutó la partida completa ni las regresiones del repositorio: la clonación y la descarga de binarios están bloqueadas por red. Atlas/selector modificados pero no validados con todos sus recursos.
+
+Pendiente: relieve orgánico menos geométrico, recursos ambientales externos, revisión del atlas completo, cámara y partida con bots. Este avance no termina el rediseño solicitado. La ventana de la captura es una demostración del tema, no una captura de una partida completa.

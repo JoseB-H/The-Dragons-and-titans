@@ -1,18 +1,18 @@
 extends Control
 
 const MODES := [
-	["Frontera de Ceniza", "MOBA · 5 contra 5 con bots", "Avanza con las oleadas de ángeles. Derriba las tres torres rivales para retirar el escudo del núcleo y destruirlo.", "frontier", Vector2(.23,.19)],
-	["Nethergate", "Asedio con titanes · 5 contra 5 con bots", "Domina las runas para invocar antes a tu titán. Escóltalo hasta la puerta enemiga y rompe el cristal para liberar a tu titán.", "nethergate", Vector2(.77,.20)],
-	["Santuario", "Captura de balizas · Solitario", "Mantente sobre las dos balizas hasta capturarlas. Vence al Sentinela para asegurar el santuario.", "beacon_arena", Vector2(.47,.50)],
-	["Arena de vuelo", "Entrenamiento · Solitario", "Practica el vuelo, el disparo y las habilidades de tu dragón en un duelo contra el Sentinela.", "arena", Vector2(.18,.77)],
-	["La Caldera", "Asedio · 2 contra 2 con bots", "Combate junto a tu aliado. Derriba la torre que protege el núcleo rival y destruye el núcleo antes de perder el tuyo.", "siege_arena", Vector2(.79,.81)],
-	["Las Agujas", "Multijugador LAN · 1 contra 1", "Crea una sala o entra con la IP del anfitrión. Dos jinetes se enfrentan en tiempo real. Gana quien agote primero la salud rival.", "lan_duel", Vector2(.83,.49)],
-	["Cinco bastiones","Capture Points · 5 contra 5 con bots","Ocupa cinco puntos para desgastar la jaula rival. Cada bastión conquistado levanta cuatro torretas y activa un portal de tu base.","capture_points",Vector2(.30,.46)],
-	["Halvalas","ARAM · 5 contra 5 con bots","Recibe un dragón al azar, elige el arma y combate en un solo carril. El oro del equipo activa la balista.","aram_lobby",Vector2(.53,.78)],
-	["El Pacto","MOBA clásico · 5 contra 5 con bots","Derriba torres, santuarios y obeliscos. Deposita oro para llamar al Titán del Caos y abre la jaula rival.","classic_moba",Vector2(.55,.25)],
-	["Mire Bog","Aventura · misión original del prototipo","Vence al guardián, recoge al anciano de Morth y vuelve con él a la aldea. La primera victoria guarda una estrella.","mire_bog",Vector2(.14,.58)],
-	["Proving Grounds","Tutorial PvE · Un jugador","Elige tu equipo, defiende el obelisco y rompe el escudo de la jaula enemiga.","proving_grounds",Vector2(.54,.94)],
-	["Práctica de vuelo","Laboratorio · Movimiento","Vuela entre las balizas y apunta mientras te alejas. F12 guarda una captura.","levels/flight_lab",Vector2(.37,.66)]
+	["Frontera de Ceniza", "MOBA � 5 contra 5 con bots", "Avanza con las oleadas de �ngeles. Derriba las tres torres rivales para retirar el escudo del n�cleo y destruirlo.", "frontier", Vector2(.23,.19)],
+	["Nethergate", "Asedio con titanes � 5 contra 5 con bots", "Domina las runas para invocar antes a tu tit�n. Esc�ltalo hasta la puerta enemiga y rompe el cristal para liberar a tu tit�n.", "nethergate", Vector2(.77,.20)],
+	["Santuario", "Captura de balizas � Solitario", "Mantente sobre las dos balizas hasta capturarlas. Vence al Sentinela para asegurar el santuario.", "beacon_arena", Vector2(.47,.50)],
+	["Arena de vuelo", "Entrenamiento � Solitario", "Practica el vuelo, el disparo y las habilidades de tu drag�n en un duelo contra el Sentinela.", "arena", Vector2(.18,.77)],
+	["La Caldera", "Asedio � 2 contra 2 con bots", "Combate junto a tu aliado. Derriba la torre que protege el n�cleo rival y destruye el n�cleo antes de perder el tuyo.", "siege_arena", Vector2(.79,.81)],
+	["Las Agujas", "Multijugador LAN � 1 contra 1", "Crea una sala o entra con la IP del anfitri�n. Dos jinetes se enfrentan en tiempo real. Gana quien agote primero la salud rival.", "lan_duel", Vector2(.83,.49)],
+	["Cinco bastiones","Capture Points � 5 contra 5 con bots","Ocupa cinco puntos para desgastar la jaula rival. Cada basti�n conquistado levanta cuatro torretas y activa un portal de tu base.","capture_points",Vector2(.30,.46)],
+	["Halvalas","ARAM � 5 contra 5 con bots","Recibe un drag�n al azar, elige el arma y combate en un solo carril. El oro del equipo activa la balista.","aram_lobby",Vector2(.53,.78)],
+	["El Pacto","MOBA cl�sico � 5 contra 5 con bots","Derriba torres, santuarios y obeliscos. Deposita oro para llamar al Tit�n del Caos y abre la jaula rival.","classic_moba",Vector2(.55,.25)],
+	["Mire Bog","Aventura � misi�n original del prototipo","Vence al guardi�n, recoge al anciano de Morth y vuelve con �l a la aldea. La primera victoria guarda una estrella.","mire_bog",Vector2(.14,.58)],
+	["Proving Grounds","Tutorial PvE � Un jugador","Elige tu equipo, defiende el obelisco y rompe el escudo de la jaula enemiga.","proving_grounds",Vector2(.54,.94)],
+	["Pr�ctica de vuelo","Laboratorio � Movimiento","Vuela entre las balizas y apunta mientras te alejas. F12 guarda una captura.","levels/flight_lab",Vector2(.37,.66)]
 ]
 var index := 0
 var map_area := TextureRect.new()
@@ -25,6 +25,7 @@ var panel := VBoxContainer.new()
 
 
 func _ready() -> void:
+	theme = preload("res://scripts/fantasy_theme.gd").create()
 	var background := ColorRect.new()
 	background.color = Color("#10191d")
 	background.set_anchors_and_offsets_preset(Control.PRESET_FULL_RECT)
@@ -39,6 +40,13 @@ func _ready() -> void:
 	frame.add_child(page)
 	var header := HBoxContainer.new()
 	page.add_child(header)
+	var emblem := TextureRect.new()
+	emblem.texture = preload("res://assets/third_party/game-icons/dragon-head.svg")
+	emblem.custom_minimum_size = Vector2(40,40)
+	emblem.expand_mode = TextureRect.EXPAND_IGNORE_SIZE
+	emblem.stretch_mode = TextureRect.STRETCH_KEEP_ASPECT_CENTERED
+	emblem.modulate = Color("#dfbd73")
+	header.add_child(emblem)
 	var heading := Label.new()
 	heading.text = "Dragons and Titans   /   Atlas de los reinos"
 	heading.add_theme_font_size_override("font_size", 29)
@@ -49,14 +57,15 @@ func _ready() -> void:
 	header.add_child(lan)
 	lan.pressed.connect(func(): select_mode(5))
 	var guide := AcceptDialog.new()
-	guide.title = "Guía de modos"
+	guide.theme = theme
+	guide.title = "Gu�a de modos"
 	var summaries := PackedStringArray()
 	for destination in MODES:
-		summaries.append("%s · %s" % [destination[0], destination[2]])
+		summaries.append("%s � %s" % [destination[0], destination[2]])
 	guide.dialog_text = "\n\n".join(summaries)
 	add_child(guide)
 	var help := Button.new()
-	help.text = "Guía de modos"
+	help.text = "Gu�a de modos"
 	header.add_child(help)
 	help.pressed.connect(func(): guide.popup_centered())
 	var equipment := Button.new()
@@ -94,7 +103,7 @@ func _ready() -> void:
 	var codex := preload("res://scripts/codex.gd").new()
 	add_child(codex)
 	var read := Button.new()
-	read.text = "Códice de los jinetes"
+	read.text = "C�dice de los jinetes"
 	panel.add_child(read)
 	read.pressed.connect(func(): codex.popup_centered_clamped(Vector2i(720,510)))
 	select_mode(0)
@@ -124,7 +133,8 @@ func _enter_destination() -> void:
 		return
 	var roster := get_node("/root/DragonRoster")
 	var dialog := ConfirmationDialog.new()
-	dialog.title = "Preparar la misión"
+	dialog.theme = theme
+	dialog.title = "Preparar la misi�n"
 	dialog.ok_button_text = "Iniciar vuelo"
 	var choices := VBoxContainer.new()
 	dialog.add_child(choices)
@@ -144,12 +154,12 @@ func _enter_destination() -> void:
 		var record: ConfigFile = roster.training_record()
 		var balance := int(record.get_value("mission","crystals",0))
 		var owned := bool(record.get_value("mission","trail",false))
-		shop.text = "Estela turquesa equipada" if owned else "Estela turquesa · 50 cristales (tienes %d)" % balance
+		shop.text = "Estela turquesa equipada" if owned else "Estela turquesa � 50 cristales (tienes %d)" % balance
 		shop.disabled = owned or balance < 50
 	refresh_shop.call()
 	shop.pressed.connect(func(): roster.buy_training_trail(); refresh_shop.call())
 	var reward := Label.new()
-	reward.text = "Primera victoria · 50 cristales"
+	reward.text = "Primera victoria � 50 cristales"
 	choices.add_child(reward)
 	add_child(dialog)
 	dialog.confirmed.connect(func():
@@ -158,3 +168,4 @@ func _enter_destination() -> void:
 		get_tree().change_scene_to_file("res://scenes/proving_grounds.tscn"))
 	dialog.canceled.connect(dialog.queue_free)
 	dialog.popup_centered(Vector2i(340,160))
+

@@ -7,11 +7,27 @@ var signs: Array[Label3D] = []
 var rng := RandomNumberGenerator.new()
 var basalt := _material(Color("#43454c"))
 var shale := _material(Color("#666456"))
-var moss := _material(Color("#67753d"))
+var moss := _material(Color("#3a5128"))
 
 
 func _ready() -> void:
 	rng.seed = 81472
+	for mat in [basalt, shale, moss]:
+		var noise := FastNoiseLite.new()
+		noise.seed = 81472
+		noise.frequency = .07
+		var texture := NoiseTexture2D.new()
+		texture.width = 256
+		texture.height = 256
+		texture.noise = noise
+		var gradient := Gradient.new()
+		gradient.set_color(0, mat.albedo_color.darkened(.5))
+		gradient.set_color(1, mat.albedo_color.lightened(.16))
+		texture.color_ramp = gradient
+		mat.albedo_color = Color.WHITE
+		mat.albedo_texture = texture
+		mat.uv1_triplanar = true
+		mat.uv1_scale = Vector3.ONE*.35
 	_plane(Vector2(240, 170), -9, preload("res://assets/nether_water.gdshader"))
 	for edge in [-1, 1]:
 		for i in 14:
@@ -50,16 +66,17 @@ func _ready() -> void:
 		add_child(sign_node)
 		signs.append(sign_node)
 		show_rune(i, 0, 0)
+	add_child(preload("res://scripts/nether_scenery.gd").new())
 
 
 func _island(center: Vector3, radius: float) -> void:
-	for level in 3:
+	for level in 5:
 		var shelf := CylinderMesh.new()
-		shelf.radial_segments = 9
+		shelf.radial_segments = 13
 		shelf.top_radius = radius * (1 - .12 * level)
-		shelf.bottom_radius = radius * (.86 - .22 * level)
-		shelf.height = 3.4
-		_boulder(shelf, shale if level == 0 else basalt, center + Vector3.DOWN * (1.7 + level * 3.25), Vector3.ONE, .16 * level)
+		shelf.bottom_radius = radius * (.86 - .14 * level)
+		shelf.height = 4.0
+		_boulder(shelf, shale if level == 0 else basalt, center + Vector3.DOWN * (2.0 + level * 3.8), Vector3.ONE, .16 * level)
 	var turf := CylinderMesh.new()
 	turf.radial_segments = 9
 	turf.top_radius = radius * .92
@@ -79,4 +96,6 @@ func show_rune(i: int, owner_id: int, progress: float) -> void:
 	var hue: Color = [Color("#dfc478"), Color("#49cff1"), Color("#f56749")][owner_id]
 	rings[i].albedo_color = hue
 	rings[i].emission = hue
-	signs[i].text = "%s · %s %d%%" % [String.chr(65 + i), ["Neutral", "Aliada", "Rival"][owner_id], roundi(absf(progress)*100)]
+	signs[i].text = "%s � %s %d%%" % [String.chr(65 + i), ["Neutral", "Aliada", "Rival"][owner_id], roundi(absf(progress)*100)]
+
+
