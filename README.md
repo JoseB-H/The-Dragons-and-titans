@@ -602,3 +602,17 @@ Trazabilidad y hashes: docs/validacion/V02-T02-paquete.json.
 Para probar solo el movimiento en Godot 4.6.3, importa `game/project.godot`, pulsa F5 y elige **Práctica de vuelo** en el atlas. El árbol de nodos y los ajustes de cámara están en [Práctica de vuelo](docs/obsidian/Práctica%20de%20vuelo.md).
 
 </details>
+
+
+## Revisión visual de Nethergate y del atlas
+
+En la rama `feat/nethergate-video-visual`: barrancos con contorno irregular, roca/hierba procedural, vegetación agrupada, nuevo atlas y ventanas adaptadas a 1280×720 y 960×540. Cuatro iconos de Lorc / Game-icons.net (CC BY 3.0); procedencia en [Recursos visuales](docs/arte/RECURSOS_VISUALES_VIDEO.md).
+
+Con Godot 4.6.3, desde la raíz del repositorio (sustituye `RUTA_SALIDA` por una carpeta absoluta escribible):
+
+```powershell
+godot --path game --audio-driver Dummy --log-file RUTA_SALIDA/escena.log --script res://tools/review_nethergate.gd -- RUTA_SALIDA
+godot --path game --audio-driver Dummy --log-file RUTA_SALIDA/menu.log --script res://tests/review_menu.gd -- RUTA_SALIDA
+```
+
+La primera ejecución captura el escenario aislado y un ejemplo del tema. La segunda revisa el atlas real, su guía y su ventana de preparación en dos resoluciones. Si se ejecuta en el proyecto parcial sin autoload, usa datos de revisión. Ninguna sustituye la prueba de una partida completa. Consulta el estado de validación y sus límites en [ESTADO](docs/ESTADO.md).

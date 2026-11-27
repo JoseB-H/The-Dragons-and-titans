@@ -1,5 +1,19 @@
 # Estado del proyecto
 
+## 27 de noviembre de 2026 — Revisión visual V2: Nethergate, atlas y ventanas
+
+Rama `feat/nethergate-video-visual`, continuación de 30356da. El barranco usa ahora mallas de contorno irregular y materiales de roca/hierba con detalle procedural. Se eliminan las plataformas cilíndricas apiladas y los cantos esféricos repetidos. Follaje agrupado mediante MultiMesh y agua menos contrastada. Las reglas, posiciones de captura y colisiones se conservan.
+
+El atlas organiza los doce destinos en una lista con desplazamiento, una vista escénica de Nethergate y un panel de objetivo/entrada. Para los otros destinos conserva la ilustración original del atlas. Guía y preparación de misión incorporan distribución y desplazamiento; el botón de entrada sigue visible a 960×540. Encabezados con fuente serif del sistema y alternativas libres, sin redistribuir fuentes. Se corrige la codificación de los acentos en los scripts publicados en el primer avance.
+
+Recursos externos integrados: cuatro iconos de Lorc / Game-icons.net, CC BY 3.0, con licencia y procedencia. Se retira su fondo negro y se aplica color dorado. El relieve, materiales, vegetación y fondo escénico se generan con recursos propios. La wiki aporta contexto; los fotogramas del video usados como referencia muestran combate, no una pantalla de menú que se pueda identificar como réplica exacta.
+
+Validación real Windows / Godot 4.6.3 Compatibility / GTX 1650: escena aislada renderizada, tres comprobaciones de contrato (dos dinteles, tres anillos y tres rótulos); atlas, guía y preparación revisados a 1280×720 y 960×540. La revisión de UI recorre doce destinos por resolución y comprueba el botón de entrada y el ajuste de las ventanas. Capturas inspeccionadas; sin errores de script en estas ejecuciones. Persisten avisos del entorno sobre caché user:// y almacén de certificados; se usa --log-file en carpeta de trabajo.
+
+Límites: proyecto materializado parcialmente por bloqueo de descarga. El ensayo aislado de UI usa un roster de revisión si el autoload real no existe. No valida selección persistente, entrada en arenas ni combate. No se ejecutan aquí las 27 regresiones ni una partida completa con bots. La geometría sigue siendo una recreación estilizada: no se declara fidelidad al arte original ni rediseño terminado de todos los mapas.
+
+Evidencia reproducible: `game/tools/review_nethergate.gd`, `game/tests/review_menu.gd` y comandos en README. Pendiente integrar/recorrer el juego completo y extender el acabado a otros mapas.
+
 ## v0.7.1 · Fase 0 · 19 de noviembre de 2026
 
 Base de entrega `release/v0.7.1` en `ff4ec9e`. Rama de mantenimiento `chore/v0.7.1-fase0`. El atlas reúne doce destinos, incluidos Nethergate, Proving Grounds, el laboratorio de vuelo y Las Agujas (1v1 LAN). La tabla del [README](../README.md) describe cada modo.

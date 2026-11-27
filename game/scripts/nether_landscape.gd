@@ -70,32 +70,49 @@ func _ready() -> void:
 
 
 func _island(center: Vector3, radius: float) -> void:
-	for level in 5:
-		var shelf := CylinderMesh.new()
-		shelf.radial_segments = 13
-		shelf.top_radius = radius * (1 - .12 * level)
-		shelf.bottom_radius = radius * (.86 - .14 * level)
-		shelf.height = 4.0
-		_boulder(shelf, shale if level == 0 else basalt, center + Vector3.DOWN * (2.0 + level * 3.8), Vector3.ONE, .16 * level)
-	var turf := CylinderMesh.new()
-	turf.radial_segments = 9
-	turf.top_radius = radius * .92
-	turf.bottom_radius = radius
-	turf.height = .24
-	_boulder(turf, moss, center, Vector3.ONE, 0)
-	var rock := SphereMesh.new()
-	rock.radial_segments = 6
-	rock.rings = 3
-	for i in 11:
-		var angle := TAU * i / 11
-		var offset := Vector3(cos(angle) * radius, -.9, sin(angle) * radius)
-		_boulder(rock, basalt, center + offset, Vector3(1.6, rng.randf_range(2,4), 1.5), angle)
+	var noise := FastNoiseLite.new()
+	noise.seed = int(center.x*43.0+center.z*97.0)+81472
+	noise.frequency = .23
+	var contours: Array[PackedVector3Array] = []
+	const SEGMENTS := 48
+	for layer in 8:
+		var contour := PackedVector3Array()
+		for i in SEGMENTS:
+			var angle := TAU*i/SEGMENTS
+			var scallop := .12*sin(angle*5.0+center.x)+.07*sin(angle*9.0+center.z)
+			var r := radius*(1.0+scallop-layer*.025)
+			r += noise.get_noise_3d(cos(angle)*radius,layer*2.1,sin(angle)*radius)*radius*.17
+			var height := -layer*1.9
+			if layer == 0:
+				height = .05+noise.get_noise_2d(cos(angle)*radius,sin(angle)*radius)*.4
+			contour.append(Vector3(cos(angle)*r,height,sin(angle)*r))
+		contours.append(contour)
+	var surface := SurfaceTool.new()
+	surface.begin(Mesh.PRIMITIVE_TRIANGLES)
+	for layer in 7:
+		for i in SEGMENTS:
+			var j := (i+1)%SEGMENTS
+			for p in [contours[layer][i],contours[layer+1][i],contours[layer][j],contours[layer][j],contours[layer+1][i],contours[layer+1][j]]:
+				surface.add_vertex(p)
+	surface.generate_normals()
+	var rock_material := ShaderMaterial.new()
+	rock_material.shader = preload("res://assets/nether_cliff.gdshader")
+	_boulder(surface.commit(),rock_material,center,Vector3.ONE,0)
+	var top := SurfaceTool.new()
+	top.begin(Mesh.PRIMITIVE_TRIANGLES)
+	for i in SEGMENTS:
+		for p in [Vector3(0,.04,0),contours[0][(i+1)%SEGMENTS],contours[0][i]]:
+			top.add_vertex(p)
+	top.generate_normals()
+	var top_material := ShaderMaterial.new()
+	top_material.shader = rock_material.shader
+	top_material.set_shader_parameter("turf",true)
+	_boulder(top.commit(),top_material,center,Vector3.ONE,0)
 
 
 func show_rune(i: int, owner_id: int, progress: float) -> void:
 	var hue: Color = [Color("#dfc478"), Color("#49cff1"), Color("#f56749")][owner_id]
 	rings[i].albedo_color = hue
 	rings[i].emission = hue
-	signs[i].text = "%s � %s %d%%" % [String.chr(65 + i), ["Neutral", "Aliada", "Rival"][owner_id], roundi(absf(progress)*100)]
-
+	signs[i].text = "%s · %s %d%%" % [String.chr(65 + i), ["Neutral", "Aliada", "Rival"][owner_id], roundi(absf(progress)*100)]
 

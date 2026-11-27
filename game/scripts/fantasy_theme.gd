@@ -1,5 +1,10 @@
 extends RefCounted
 ## Tema compartido; colores propios y controles nativos de Godot.
+static func heading_font() -> Font:
+	var font := SystemFont.new()
+	font.font_names = PackedStringArray(["Georgia","Noto Serif","Liberation Serif"])
+	return font
+
 static func create() -> Theme:
 	var result := Theme.new()
 	result.default_font_size = 17

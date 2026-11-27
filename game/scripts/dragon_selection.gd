@@ -1,5 +1,5 @@
 extends Control
-## Men� propio del prototipo: presenta el cat�logo sin modificar sus recursos.
+## Menú propio del prototipo: presenta el catálogo sin modificar sus recursos.
 
 const FRONTIER_PATH := "res://scenes/frontier.tscn"
 const SIEGE_ARENA_PATH := "res://scenes/siege_arena.tscn"
@@ -60,21 +60,21 @@ func _ready() -> void:
 	chain.append(beacon_button)
 	var siege_button := Button.new()
 	siege_button.name = "SiegeButton"
-	siege_button.text = "Asedio de la Caldera � 2 contra 2"
+	siege_button.text = "Asedio de la Caldera · 2 contra 2"
 	siege_button.pressed.connect(start_siege_match)
 	$Margin/Content.add_child(siege_button)
 	$Margin/Content.move_child(siege_button, $Margin/Content/Footer.get_index())
 	chain.append(siege_button)
 	var frontier_button := Button.new()
 	frontier_button.name = "FrontierButton"
-	frontier_button.text = "Frontera de Ceniza � 5 contra 5"
+	frontier_button.text = "Frontera de Ceniza · 5 contra 5"
 	frontier_button.pressed.connect(start_frontier_match)
 	$Margin/Content.add_child(frontier_button)
 	$Margin/Content.move_child(frontier_button, $Margin/Content/Footer.get_index())
 	chain.append(frontier_button)
 	var nether := Button.new()
 	nether.name = "NethergateButton"
-	nether.text = "Nethergate � 5 contra 5"
+	nether.text = "Nethergate · 5 contra 5"
 	nether.pressed.connect(_open_arena.bind("res://scenes/nethergate.tscn"))
 	$Margin/Content.add_child(nether)
 	$Margin/Content.move_child(nether, $Margin/Content/Footer.get_index())
@@ -86,8 +86,8 @@ func _ready() -> void:
 		chain[i].focus_neighbor_bottom = chain[i].focus_next
 		chain[i].focus_neighbor_top = chain[i].focus_previous
 	_refresh_selection()
-	# Volver al men� enfoca la elecci�n actual; Enter repetido no inicia Arena.
-	# _ready ya est� dentro del �rbol; el foco no debe sobrevivir a una salida r�pida.
+	# Volver al menú enfoca la elección actual; Enter repetido no inicia Arena.
+	# _ready ya está dentro del árbol; el foco no debe sobrevivir a una salida rápida.
 	_button_for(selected_profile_id()).grab_focus()
 
 
@@ -127,7 +127,7 @@ func _open_arena(scene_path: String) -> Error:
 	if error != OK:
 		_navigating = false
 		play_button.disabled = false
-		details.text = "No se pudo abrir la arena. Int�ntalo de nuevo."
+		details.text = "No se pudo abrir la arena. Inténtalo de nuevo."
 	return error
 
 
@@ -141,7 +141,7 @@ func _button_for(id: StringName) -> Button:
 
 
 func _profile_text(profile: Resource) -> String:
-	return "%s\n%s\n\nSalud: %s\nVelocidad: %s\nB�sico: %s da�o � %s s\nQ: %s da�o � %s s\nE: %s da�o � radio %s � %s s" % [
+	return "%s\n%s\n\nSalud: %s\nVelocidad: %s\nBásico: %s daño · %s s\nQ: %s daño · %s s\nE: %s daño · radio %s · %s s" % [
 		profile.display_name, profile.description, profile.max_health,
 		String.num(profile.movement_speed, 2), profile.basic_damage,
 		String.num(profile.basic_cooldown, 2), profile.power_damage,
@@ -157,8 +157,8 @@ func _refresh_selection() -> void:
 	var equipment: Resource = _roster.selected_weapon()
 	for i in range(weapon_buttons.size()):
 		weapon_buttons[i].set_pressed_no_signal(_roster.get_weapons()[i].id == equipment.id)
-	details.text = "Elegido: %s\nBalance provisional � La elecci�n se conserva al reiniciar." % profile.display_name
-	details.text = "%s / %s � B�sico: %d da�o � %.2f s\nQ/E del drag�n � Balance provisional" % [profile.display_name, equipment.display_name, equipment.damage_for(profile), equipment.cooldown_for(profile)]
+	details.text = "Elegido: %s\nBalance provisional · La elección se conserva al reiniciar." % profile.display_name
+	details.text = "%s / %s · Básico: %d daño · %.2f s\nQ/E del dragón · Balance provisional" % [profile.display_name, equipment.display_name, equipment.damage_for(profile), equipment.cooldown_for(profile)]
 	play_button.text = "Jugar con %s" % profile.display_name
 
 func select_weapon(id: StringName) -> bool:
